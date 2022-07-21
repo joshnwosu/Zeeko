@@ -7,9 +7,15 @@
     console.log('The Location: ', location)
     console.log('The Query String: ', querystring)
   }
+
+  const cleanUp = () => {
+    if( document.querySelector(".contextOptions")) {
+      document.querySelector(".contextOptions").style.height = `0px`
+    }
+  }
 </script>
 
-<div class="app">
+<div id="app" on:click={cleanUp} on:contextmenu={cleanUp}>
   <nav>
     <p class="go-back" on:click={pop}>Go back</p>
     <a href="/" use:link>Home</a>
@@ -20,29 +26,30 @@
   </nav>
   <!-- <p>Location: {$location}</p> -->
   <!-- <p>Query String: {$querystring}</p> -->
-  <Router {routes} on:routeLoaded={routeLoaded} />
+  <div class="main-view">
+     <Router {routes} on:routeLoaded={routeLoaded} />
+  </div>
+ 
 </div>
 
 <style>
-  :global(*){
-    padding: 0 !important;
-    margin: 0 !important;
-    box-sizing: border-box;
-  }
   :global(main.page) {
     position: absolute;
     width: 100%;
-    background-color: #FFFFFF;
   }
-  .app {
-    position: relative;
+  #app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #222222;
+    color: #FFFFFF;
+    padding: 0;
   }
-
   .go-back {
     cursor: pointer;
   }
   @media (min-width: 640px) {
-    .app {
+    #app {
       max-width: none;
     }
   }
