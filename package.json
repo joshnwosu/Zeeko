@@ -1,0 +1,42 @@
+{
+  "name": "svelte-app",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public --no-clear",
+    "electron": "wait-on http://localhost:8080 && electron .",
+    "dist": "npm run build && electron-builder",
+    "preelectron-pack": "yarn run build",
+    "electron-pack": "electron-builder",
+    "electron-dev": "concurrently \"npm run dev\" \"npm run electron\"",
+    "electron-start": "concurrently \"npm:svelte-dev\" \"electron-forge start\""
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-node-resolve": "^11.0.0",
+    "concurrently": "^7.3.0",
+    "electron": "^19.0.8",
+    "electron-builder": "^23.1.0",
+    "electron-reload": "^2.0.0-alpha.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-svelte": "^7.0.0",
+    "rollup-plugin-terser": "^7.0.0",
+    "svelte": "^3.0.0",
+    "wait-on": "^6.0.1"
+  },
+  "dependencies": {
+    "electron-is-dev": "^2.0.0",
+    "electron-json-storage": "^4.5.0",
+    "music-metadata": "^7.12.4",
+    "node-id3": "^0.2.3",
+    "sirv-cli": "^2.0.0",
+    "svelte-navigator": "^3.1.6",
+    "svelte-router-spa": "^6.0.3",
+    "svelte-spa-router": "^3.2.0"
+  }
+}
