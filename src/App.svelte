@@ -36,6 +36,7 @@
   :global(main.page) {
     position: absolute;
     width: 100%;
+    background: #222222;
   }
   #app {
     height: 100vh;
@@ -43,7 +44,6 @@
     flex-direction: column;
     background: #222222;
     color: #FFFFFF;
-    padding: 0;
   }
   .go-back {
     cursor: pointer;

@@ -26,7 +26,7 @@
         contextOptions.style.left = `${cordinates.x}px`;
         setTimeout(() => {
             contextOptions.style.height = `200px`
-        }, 1)
+        }, 100)
 
         // set track details
         trackName = track;
@@ -38,10 +38,10 @@
         
     }
 </script>
-<main class="page" transition:scale>
+<main class="page" transition:slide>
     <h1>Home page</h1>
     {#each tracks as track, index}
-        <p on:contextmenu={(e) => showContext(e, track, index)} on:click={(e) => playTrack(e, track, index)} class="track">{track}-{index}</p>
+        <div on:contextmenu={(e) => showContext(e, track, index)} on:click={(e) => playTrack(e, track, index)} class="track">{track}-{index}</div>
     {/each}
     <input bind:value={msg}/>
 
@@ -54,7 +54,7 @@
     </div>
 </main>
 
-<style type="css">
+<style>
     .contextOptions {
         width: 200px;
         height: 0px;
@@ -65,13 +65,13 @@
         left: 10px;
         overflow: hidden;
         box-shadow: 0px 0px 15px rgba(0,0,0,0.597) !important;
-        transition: 0.5s ease;
+        transition: 0.2s ease;
     } 
     .options {
         padding: 20px;
 }
-    p{
-        border: 1px solid red;
+    .track{
+        border: 1px solid blue;
         padding: 10px;
     }
 </style>

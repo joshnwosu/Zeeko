@@ -4,6 +4,6 @@
     
 </script>
 
-<main class="page" transition:scale>
+<main class="page" transition:slide>
     <h1>{params.first} {params.last}</h1>
 </main>
