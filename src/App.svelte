@@ -5,26 +5,24 @@
   const routeLoaded = (event) => {
     console.log('The Event:', event);
     console.log('The Location: ', location)
+    console.log('The Query String: ', querystring)
   }
 </script>
 
-  <div class="app">
-    
-    <nav>
-      <p class="go-back" on:click={pop}>Go back</p>
-      <a href="/" use:link>Home</a>
-      <a href="/about" use:link>About</a>
-      <a href="/contact" use:link>Contact</a>
-      <a href="/author/Joshua/Nwosu" use:link>Author</a>
-      <a href="/book?search=joshua" use:link>Book</a>
-    </nav>
+<div class="app">
+  <nav>
+    <p class="go-back" on:click={pop}>Go back</p>
+    <a href="/" use:link>Home</a>
+    <a href="/about" use:link>About</a>
+    <a href="/contact" use:link>Contact</a>
+    <a href="/author/Joshua/Nwosu" use:link>Author</a>
+    <a href="/book?search=joshua" use:link>Book</a>
+  </nav>
+  <!-- <p>Location: {$location}</p> -->
+  <!-- <p>Query String: {$querystring}</p> -->
+  <Router {routes} on:routeLoaded={routeLoaded} />
+</div>
 
-    <!-- <p>Location: {$location}</p> -->
-    <!-- <p>Query String: {$querystring}</p> -->
-
-      <Router {routes} on:routeLoaded={routeLoaded} />
-
-  </div>
 <style>
   :global(*){
     padding: 0 !important;
@@ -33,7 +31,6 @@
   }
   :global(main.page) {
     position: absolute;
-    /* border: 1px solid red; */
     width: 100%;
     background-color: #FFFFFF;
   }
