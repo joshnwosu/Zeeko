@@ -1,6 +1,8 @@
 <script>
   import Router, {link, location, querystring, pop} from "svelte-spa-router";
-  import { routes } from "./RendererProcess/router"
+  import { routes } from "./RendererProcess/router";
+  import Icon from "svelte-icons-pack/Icon.svelte"
+  import leftArrow from "svelte-icons-pack/cg/CgArrowLeft"
 
   const routeLoaded = (event) => {
     console.log('The Event:', event);
@@ -17,7 +19,9 @@
 
 <div id="app" on:click={cleanUp} on:contextmenu={cleanUp}>
   <nav>
-    <p class="go-back" on:click={pop}>Go back</p>
+    <p class="go-back" on:click={pop}>
+      <Icon src={leftArrow} color="#FFFFFF" size={30} />
+    </p>
     <a href="/" use:link>Home</a>
     <a href="/about" use:link>About</a>
     <a href="/contact" use:link>Contact</a>
