@@ -3,8 +3,5 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "svelte.svelte-vscode"
   },
-  "svelte.plugin.svelte.format.config.singleQuote": true,
-  "svelte-intellisense.trace.server": "messages",
-  "svelte.trace.server": "messages",
-  "prettier.requireConfig": true
+  "reactSnippets.settings.prettierEnabled": true
 }
