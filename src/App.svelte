@@ -36,7 +36,7 @@
  
 </div>
 
-<style>
+<style lang="scss">
   :global(main.page) {
     position: absolute;
     width: 100%;
@@ -51,6 +51,15 @@
   }
   .go-back {
     cursor: pointer;
+  }
+  nav {
+    position: relative;
+    a {
+      font-size: 20px;
+    }
+    p {
+      background-color: red !important;
+    }
   }
   @media (min-width: 640px) {
     #app {

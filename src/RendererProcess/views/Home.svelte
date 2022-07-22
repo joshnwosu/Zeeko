@@ -1,7 +1,7 @@
 <script>
     export let msg = "";
-    export let trackName;
-    export let trackIndex;
+    export let trackName = "";
+    export let trackIndex = "";
     import { fade, fly, slide, scale } from "svelte/transition";
 
     const tracks = ["Omah Lay", "Johnny Drille", "Ruger", "BNXN", "Justin Beiber"];
