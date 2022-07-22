@@ -31,7 +31,12 @@
   <!-- <p>Location: {$location}</p> -->
   <!-- <p>Query String: {$querystring}</p> -->
   <div class="main-view">
-     <Router {routes} on:routeLoaded={routeLoaded} />
+  <Router {routes} on:routeLoaded={routeLoaded} />
+  </div>
+
+  <div>
+    <p>hello</p>
+      <p>world</p>
   </div>
  
 </div>
@@ -58,7 +63,7 @@
       font-size: 20px;
     }
     p {
-      background-color: red !important;
+      background-color: red ;
     }
   }
   @media (min-width: 640px) {
