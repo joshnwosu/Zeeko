@@ -1,7 +1,9 @@
-const { app, BrowserWindow } = require("electron");
+const { app, screen, BrowserWindow } = require("electron");
 const path = require("path");
 const url = require("url");
 const isDev = require("electron-is-dev");
+
+// use ping | request | message
 
 process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
 
@@ -20,16 +22,29 @@ if (isDev) {
 }
 
 const createWindow = () => {
+  const display = screen.getPrimaryDisplay();
+  const { width, height } = display.workAreaSize;
   window = new BrowserWindow({
-    width: 1200,
-    height: 600,
+    width: width / 1.2,
+    height: height / 1.2,
+    maxWidth: width,
+    maxHeight: height,
+
     // icon: __dirname + '/public/assets/images/icon.png',
+
+    // frame: false,
+    // opacity: 0.9,
+    // backgroundColor: "#222222",
+    // transparent: true,
+
     webPreferences: {
       contextIsolation: false,
       nodeIntegration: false,
       enableRemoteModule: true,
       backgroundThrottling: false,
       webSecurity: true,
+      webviewTag: true,
+      webgl: false,
     },
   });
 
