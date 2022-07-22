@@ -35,8 +35,10 @@
     "music-metadata": "^7.12.4",
     "node-id3": "^0.2.3",
     "sirv-cli": "^2.0.0",
+    "svelte-icons-pack": "^2.0.0",
     "svelte-navigator": "^3.1.6",
     "svelte-router-spa": "^6.0.3",
-    "svelte-spa-router": "^3.2.0"
+    "svelte-spa-router": "^3.2.0",
+    "wavesurfer.js": "^6.2.0"
   }
 }
