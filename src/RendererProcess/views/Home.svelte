@@ -2,7 +2,7 @@
     export let msg = "";
     export let trackName = "";
     export let trackIndex = "";
-    import { fade, fly, slide, scale } from "svelte/transition";
+    import {fade, fly, scale, slide, crossfade, draw} from "svelte/transition";
 
     const tracks = ["Omah Lay", "Johnny Drille", "Ruger", "BNXN", "Justin Beiber"];
 
@@ -38,7 +38,7 @@
         
     }
 </script>
-<main class="page" transition:slide>
+<main class="page" transition:fade>
     <h1>Home page</h1>
     {#each tracks as track, index}
         <div on:contextmenu={(e) => showContext(e, track, index)} on:click={(e) => playTrack(e, track, index)} class="track">{track}-{index}</div>
