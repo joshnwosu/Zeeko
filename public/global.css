@@ -24,20 +24,20 @@ body {
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
-a {
+/* a {
   color: rgb(0, 100, 200);
   text-decoration: none;
-}
+} */
 
-a:hover {
+/* a:hover {
   text-decoration: underline;
-}
+} */
 
-a:visited {
+/* a:visited {
   color: rgb(0, 80, 160);
-}
+} */
 
-label {
+/* label {
   display: block;
 }
 
@@ -75,4 +75,4 @@ button:not(:disabled):active {
 
 button:focus {
   border-color: #666;
-}
+} */
