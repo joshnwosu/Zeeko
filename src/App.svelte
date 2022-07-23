@@ -22,14 +22,8 @@
 
   <!-- <p>Location: {$location}</p> -->
   <!-- <p>Query String: {$querystring}</p> -->
+
   <div class="main-view">
-    <!-- <nav>
-      <a href="/" use:link>Home</a>
-      <a href="/about" use:link>About</a>
-      <a href="/contact" use:link>Contact</a>
-      <a href="/author/Joshua/Nwosu" use:link>Author</a>
-      <a href="/book?search=joshua" use:link>Book</a>
-    </nav> -->
      <!-- <Router {routes} on:routeLoaded={routeLoaded} /> -->
   </div>
  
@@ -56,12 +50,6 @@
     flex-direction: column;
     /* background: rgba(34, 34, 34, 1); */
     color: #FFFFFF;
-  }
-  nav {
-    position: relative;
-    a {
-      font-size: 20px ;
-    }
   }
   @media (min-width: 640px) {
     #app {
