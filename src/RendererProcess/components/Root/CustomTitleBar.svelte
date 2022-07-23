@@ -60,7 +60,6 @@
         height: 100%;
         display: flex;
         align-items: center;
-        background-color: #111111;
     }
 
     .title-bar-controls {
@@ -71,7 +70,6 @@
     .title-bar p {
         font-size: 12px;
         font-family: inherit;
-        padding-right: 20px;
     }
     .go-back {
         margin-right: 10px;
