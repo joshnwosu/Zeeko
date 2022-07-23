@@ -51,9 +51,11 @@
         align-items: center;
         padding: 0;
         -webkit-app-region: drag;
-        position: relative;
+        position: absolute;
         z-index: 100;
-        background-color: #000000;
+        /* background-color: #000000; */
+        /* background-color: rgba(17, 17, 17, 0.5); */
+        /* background-color: none; */
     }
 
     .title-bar, .title-bar-controls {
