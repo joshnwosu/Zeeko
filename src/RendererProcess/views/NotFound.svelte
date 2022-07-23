@@ -1,7 +1,7 @@
 <script>
     export let params = {}
-    import {slide, scale} from "svelte/transition"
+    import {fade, fly, scale, slide, crossfade, draw} from "svelte/transition"
 </script>
-<main class="page" transition:slide>
+<main class="page" transition:fade>
     <h1>{params && 'Page Not Found'}</h1>
 </main>
