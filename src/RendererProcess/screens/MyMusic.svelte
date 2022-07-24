@@ -17,80 +17,24 @@
             <a href="/my-music/albums" use:link>Albums</a>
             <a href="/my-music/folders" use:link>Folders</a>
         </nav>
+
+        {#if $location == "/my-music/" }
+            <h1>Songs</h1>
+        {:else if $location == '/my-music/artists'}
+            <h1>Artists</h1>
+        {:else if $location == '/my-music/albums'}
+            <h1>Albums</h1>
+        {:else if $location == '/my-music/folders'}
+            <h1>Folders</h1>
+        {/if}
     
-        <h1>Location: {$location}</h1>
-        <h1>Query: {$querystring}</h1>
+        <!-- <h1>Location: {$location}</h1> -->
+        <!-- <h1>Query: {$querystring}</h1> -->
     
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
+        <!-- <h1>Hello world</h1> -->
+        
+        
+
     </div>
     
 </main>
