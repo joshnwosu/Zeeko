@@ -49,13 +49,13 @@ import ScreenHeader from "./RendererProcess/components/Root/ScreenHeader.svelte"
     overflow-y: auto;
   }
 
-  :global(svg) {
+  :global(svg.svg-icon) {
     padding: 0 !important;
     margin: 0 !important;
     width: 18px;
     height: 18px;
     :global(path) {
-      fill: #AAAAAA;
+      fill: #FFFFFF;
     }
   }
 
