@@ -6,12 +6,18 @@ import Book from "../views/Book.svelte";
 
 export const routes = {
   // Exact path
+  // "/": Home,
+  // "/about": About,
+  // // Using named parameters, with last being optional
+  // "/author/:first/:last?": Author,
+  // "/book": Book,
+  // // Catch-all
+  // // This is optional, but if present it must be the last
+  // "*": NotFound,
+
   "/": Home,
-  "/about": About,
-  // Using named parameters, with last being optional
-  "/author/:first/:last?": Author,
-  "/book": Book,
-  // Catch-all
-  // This is optional, but if present it must be the last
+  "/recent-plays": About,
+  "/now-playing": Author,
+  "/playlists": Book,
   "*": NotFound,
 };
