@@ -19,7 +19,7 @@
         height: 100px;
         display: flex;
         align-items: center;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.8);
         backdrop-filter: blur(20px);
         padding: 0 20px 20px;
         clear: both;
