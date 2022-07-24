@@ -1,23 +1,29 @@
+import MyMusic from "../screens/MyMusic.svelte";
+import RecentPlays from "../screens/RecentPlays.svelte";
+import NowPlaying from "../screens/NowPlaying.svelte";
+import Playlists from "../screens/Playlists.svelte";
+import Favorite from "../screens/Favorite.svelte";
+import NotFound from "../views/NotFound.svelte";
+
 import About from "../views/About.svelte";
 import Author from "../views/Author.svelte";
 import Home from "../views/Home.svelte";
-import NotFound from "../views/NotFound.svelte";
 import Book from "../views/Book.svelte";
 
 export const routes = {
-  // Exact path
-  // "/": Home,
-  // "/about": About,
-  // // Using named parameters, with last being optional
-  // "/author/:first/:last?": Author,
-  // "/book": Book,
-  // // Catch-all
-  // // This is optional, but if present it must be the last
-  // "*": NotFound,
-
-  "/": Home,
-  "/recent-plays": About,
-  "/now-playing": Author,
-  "/playlists": Book,
+  "/my-music/*": MyMusic,
+  "/recent-plays": RecentPlays,
+  "/now-playing": NowPlaying,
+  "/playlists": Playlists,
+  "/favorite": Favorite,
+  // "/music/*": About,
   "*": NotFound,
 };
+
+// export const routes = [
+//   { name: "#/", componet: MyMusic },
+//   { name: "#/recent-plays", componet: RecentPlays },
+//   { name: "#/now-playing", componet: NowPlaying },
+//   { name: "#/playlists", componet: Playlists },
+//   { name: "*", componet: NotFound },
+// ];
