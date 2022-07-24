@@ -3,11 +3,10 @@
 </script>
 <div class="side-nav">
     <nav>
-      <a href="/" use:link>Home</a>
-      <a href="/about" use:link>About</a>
-      <a href="/contact" use:link>Contact</a>
-      <a href="/author/Joshua/Nwosu" use:link>Author</a>
-      <a href="/book?search=joshua" use:link>Book</a>
+      <a href="/" use:link>My music</a>
+      <a href="/recent-plays" use:link>Recent plays</a>
+      <a href="/now-playing" use:link>Now playing</a>
+      <a href="/playlists" use:link>Playlists</a>
     </nav>
 </div>
 
