@@ -1,19 +1,17 @@
 <script>
-    export let windowSize = null;
     import Icon from "svelte-icons-pack/Icon.svelte"
     import leftArrowIcon from "svelte-icons-pack/vsc/VscArrowLeft";
+    import rightArrowIcon from "svelte-icons-pack/vsc/VscArrowRight";
     import closeIcon from "svelte-icons-pack/vsc/VscChromeClose";
     import minimizeIcon from "svelte-icons-pack/vsc/VscChromeMinimize"
     import restoreIcon from "svelte-icons-pack/vsc/VscChromeRestore"
     import maximizeIcon from "svelte-icons-pack/vsc/VscChromeMaximize"
-    import { pop} from "svelte-spa-router";
+    import settingsIcon from "svelte-icons-pack/vsc/VscSettingsGear"
+    import { pop, push} from "svelte-spa-router";
 
-    import { pingRequestToNode, setWindowSize } from "../../utilities"
+    import { pingRequestToNode } from "../../utilities"
  
     const pingRequest = (msg) => {
-        // console.log('hhh: ', setWindowSize)
-        windowSize = setWindowSize;
-
         pingRequestToNode(msg);
     }
 </script>
@@ -24,10 +22,16 @@
             <div class="go-back title-action" on:click={pop}>
                 <Icon src={leftArrowIcon} color="#FFFFFF" size={14} />
             </div>
+            <!-- <div class="go-back title-action" on:click={push}>
+                <Icon src={rightArrowIcon} color="#FFFFFF" size={14} />
+            </div> -->
             <p>Zeeko Music</p>
         </div>
 
         <div class="title-bar-controls">
+            <div class="title-action" on:click={() => push('/settings')}>
+                <Icon src={settingsIcon} color="#FFFFFF" size={18} />
+            </div>
             <div class="title-action" on:click={() => pingRequest('minimize')}>
                 <Icon src={minimizeIcon} color="#FFFFFF" size={14} />
             </div>
@@ -45,7 +49,7 @@
 <style>
     .custom-title-bar {
         width: 100vw;
-        height: 40px;
+        height: 30px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -64,18 +68,19 @@
         align-items: center;
     }
 
-    .title-bar-controls {
+    /* .title-bar-controls {
         background-color: #111111;
-    }
+    } */
 
 
     .title-bar p {
         font-size: 12px;
         font-family: inherit;
+        margin-left: 10px;
     }
-    .go-back {
+    /* .go-back {
         margin-right: 10px;
-    }
+    } */
 
     .go-back:hover {
         background-color: white;
@@ -83,7 +88,7 @@
 
     .title-action {
         background-color: transparent;
-        width: 50px;
+        width: 45px;
         height: 100%;
         display: flex;
         justify-content: center;
