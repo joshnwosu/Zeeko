@@ -1,10 +1,11 @@
 <script>
-  import Router, {link, location, querystring} from "svelte-spa-router";
+  import Router, {location, querystring, replace} from "svelte-spa-router";
   import { routes } from "./RendererProcess/router";
 
   import CustomTitleBar from "./RendererProcess/components/Root/CustomTitleBar.svelte";
   import SideNav from "./RendererProcess/components/Root/SideNav.svelte";
   import ControlPanel from "./RendererProcess/components/Root/ControlPanel.svelte";
+import ScreenHeader from "./RendererProcess/components/Root/ScreenHeader.svelte";
 
   const routeLoaded = (event) => {
     console.log('The Event:', event);
@@ -17,67 +18,73 @@
       document.querySelector(".contextOptions").style.height = `0px`
     }
   }
+
+  replace('/my-music/') // this is My music route (Default)
+  // replace('/now-playing') // this is My music route (Default)
 </script>
 
 <div id="app" on:click={cleanUp} on:contextmenu={cleanUp}>
   <CustomTitleBar />
-
-  <!-- <p>Query String: {$querystring}</p> -->
-
   <section class="main-view">
-    <SideNav />
+    {#if $location != "/now-playing"}
+      <SideNav />
+    {/if}
     <div class="router-container">
-      <!-- <p>Location: {$location}</p> -->
       <Router {routes} on:routeLoaded={routeLoaded} />
     </div>
-    <ControlPanel />
+    {#if $location != "/now-playing"}
+      <ControlPanel />
+    {/if}
   </section>
  
 </div>
 
 <style lang="scss">
   :global(main.page) {
-    position: absolute;
     width: 100%;
     height: 100%;
-    /* border: 1px solid red; */
-    padding: 20px;
-    flex: 1;
-    padding: 30px 20px 0px 20px;
+    /* padding: 0px 0px 100px 0px; */
     background: #000000 !important;
+    position: absolute;
+    overflow-y: auto;
+  }
+
+  :global(svg) {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 18px;
+    height: 18px;
+    :global(path) {
+      fill: #AAAAAA;
+    }
+  }
+
+  :global(.screen-view) {
+    padding: 0px 20px 100px 20px;
   }
 
   .main-view {
-    /* background-color: transparent; */
     position: relative;
-    /* width: 100vw; */
-    /* height: 100vh; */
-    /* border: 1px solid red; */
-    /* background: #000000; */
     width: 100%;
     display: flex;
-    /* border: 1px solid red; */
-    height: 100%
+    height: 100%;
   }
-
   .router-container {
-    /* border: 1px solid blue; */
+    flex: 1;
+    overflow-y: auto;
     position: relative;
-    /* display: flex; */
-    /* flex: 1; */
     width: 100%;
-    /* height: 100%; */
-    /* padding: 30px 20px 0px 20px; */
-    
+    height: 100%;
   }
   #app {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    /* background: rgba(34, 34, 34, 1); */
     color: #FFFFFF;
     background-color: #000000;
+    overflow: hidden;
   }
+
   @media (min-width: 640px) {
     #app {
       max-width: none;
