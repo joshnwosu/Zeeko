@@ -24,55 +24,33 @@ body {
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
-/* a {
-  color: rgb(0, 100, 200);
-  text-decoration: none;
-} */
-
-/* a:hover {
-  text-decoration: underline;
-} */
-
-/* a:visited {
-  color: rgb(0, 80, 160);
-} */
-
-/* label {
+::-webkit-scrollbar {
   display: block;
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-input,
-button,
-select,
-textarea {
-  font-family: inherit;
-  font-size: inherit;
-  -webkit-padding: 0.4em 0;
-  padding: 0.4em;
-  margin: 0 0 0.5em 0;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 2px;
+::-webkit-scrollbar-thumb {
+  background-color: #8888;
+  border-right: none;
+  border-left: none;
+  background-clip: content-box;
+  -webkit-background-clip: content-box;
 }
 
-input:disabled {
-  color: #ccc;
+::-webkit-scrollbar-track-piece:end {
+  background: transparent;
+  margin-bottom: 80px;
 }
 
-button {
-  color: #333;
-  background-color: #f4f4f4;
-  outline: none;
+::-webkit-scrollbar-track-piece:start {
+  background: transparent;
+  margin-top: 100px;
 }
 
-button:disabled {
-  color: #999;
+::-webkit-scrollbar-thumb:hover {
+  background-clip: border-box;
+  -webkit-background-clip: border-box;
 }
-
-button:not(:disabled):active {
-  background-color: #ddd;
-}
-
-button:focus {
-  border-color: #666;
-} */
