@@ -22,21 +22,21 @@
     <div class="custom-title-bar">
         <div class="title-bar">
             <div class="go-back title-action" on:click={pop}>
-                <Icon src={leftArrowIcon} color="#FFFFFF" size={16} />
+                <Icon src={leftArrowIcon} color="#FFFFFF" size={14} />
             </div>
             <p>Zeeko Music</p>
         </div>
 
         <div class="title-bar-controls">
             <div class="title-action" on:click={() => pingRequest('minimize')}>
-                <Icon src={minimizeIcon} color="#FFFFFF" size={16} />
+                <Icon src={minimizeIcon} color="#FFFFFF" size={14} />
             </div>
             <div class="title-action" on:click={() => pingRequest('maximize')}>
                 <!-- <Icon src={windowSize == null ? maximizeIcon : windowSize == "max" ? maximizeIcon : restoreIcon} color="#FFFFFF" size={16} /> -->
-                <Icon src={maximizeIcon} color="#FFFFFF" size={16} />
+                <Icon src={maximizeIcon} color="#FFFFFF" size={14} />
             </div>
             <div class="title-action close-icon" on:click={() => pingRequest('closeWindow')}>
-                <Icon src={closeIcon} color="#FFFFFF" size={16} />
+                <Icon src={closeIcon} color="#FFFFFF" size={14} />
             </div>
         </div>
     </div>
@@ -45,13 +45,13 @@
 <style>
     .custom-title-bar {
         width: 100vw;
-        height: 30px;
+        height: 40px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 0;
         -webkit-app-region: drag;
-        position: absolute;
+        position: fixed;
         z-index: 100;
         /* background-color: #000000; */
         /* background-color: rgba(17, 17, 17, 0.5); */
@@ -91,6 +91,8 @@
         cursor: default;
         z-index: 999;
         -webkit-app-region: no-drag;
+
+
     }
 
     .title-action:hover:not(.close-icon) {
