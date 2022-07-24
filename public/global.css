@@ -54,3 +54,7 @@ body {
   background-clip: border-box;
   -webkit-background-clip: border-box;
 }
+
+a.active {
+  border-left: 4px solid rgb(68, 68, 68) !important;
+}
