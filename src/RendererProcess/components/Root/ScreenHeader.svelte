@@ -7,6 +7,7 @@
 
 <div class="screen-header">
     <h1>{name}</h1>
+    <slot />
 </div>
 
 <style lang="scss">
@@ -16,14 +17,15 @@
         right: 0;
         left: 0;
         width: 100%;
-        height: 100px;
+        min-height: 150px;
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        justify-content: flex-end;
         background-color: rgba(0, 0, 0, 0.8);
         backdrop-filter: blur(20px);
-        padding: 0 20px 20px;
-        clear: both;
-        /* border: 1px solid red; */
+        padding: 0px 20px 20px;
+        border-bottom: 1px solid #222222;
+
         
         h1 {
             font-size: 30px;
