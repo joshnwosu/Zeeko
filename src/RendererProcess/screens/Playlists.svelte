@@ -5,6 +5,6 @@
 <main class="page" transition:fade>
     <ScreenHeader name="Playlists" />
     <div class="screen-view">
-        <p>Playlists</p>
+        <!-- <p>Playlists</p> -->
     </div>
 </main>
