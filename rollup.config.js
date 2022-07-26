@@ -5,6 +5,7 @@ import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
 import css from "rollup-plugin-css-only";
 import preprocess from "svelte-preprocess";
+import nodePolyfills from "rollup-plugin-polyfill-node";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -42,6 +43,7 @@ export default {
     file: "public/build/bundle.js",
   },
   plugins: [
+    // nodePolyfills("node_modules/**/*.js"),
     svelte({
       compilerOptions: {
         // enable run-time checks when not in production
