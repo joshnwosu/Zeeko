@@ -10,12 +10,7 @@ process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
 let window = null;
 
 if (isDev) {
-  // require("electron-reload")(__dirname, {
-  //   electron: require(`${__dirname}/node_modules/electron`),
-  // });
-
   require("electron-reload")(__dirname, {
-    // electron: path.join(__dirname, "../node_modules", ".bin", "electron"),
     electron: require(`${__dirname}/node_modules/electron`),
     awaitWriteFinish: true,
   });
@@ -29,28 +24,19 @@ const createWindow = () => {
     height: height / 1.2,
     maxWidth: width,
     maxHeight: height,
-
+    minWidth: 400,
+    minHeight: 500,
     // icon: __dirname + '/public/assets/images/icon.png',
-
     frame: false,
-    // opacity: 0.9,
-    // backgroundColor: "#222222",
-    // transparent: true,
-    // titleBarStyle: "hiddenInset",
-    // titleBarOverlay: true,
-    fullscreenable: true,
-    maximizable: true,
-    resizable: true,
-    minimizable: true,
 
     webPreferences: {
-      contextIsolation: false,
-      nodeIntegration: true,
+      contextIsolation: true,
+      // nodeIntegration: true,
       enableRemoteModule: true,
       backgroundThrottling: false,
       webSecurity: false,
       webviewTag: true,
-      // webgl: false,
+      preload: path.join(__dirname, "preload.js"),
     },
   });
 
@@ -65,14 +51,6 @@ const createWindow = () => {
   window.webContents.on("did-fail-load", () => {
     window.loadURL(path.join(__dirname, "public/index.html"));
   });
-
-  // window.on("show", () => {
-  //   window.center();
-  // });
-
-  // window.once("ready-to-show", () => {
-  //   window.show();
-  // });
 };
 
 app.on("ready", () => {
@@ -82,25 +60,28 @@ app.on("ready", () => {
 ipcMain.on("minimize", () => window.minimize());
 ipcMain.on("maximize", () => {
   if (window.isMaximized()) {
-    window.webContents.send("window-min");
     window.unmaximize();
     window.center();
   } else {
-    window.webContents.send("window-max");
     window.maximize();
   }
 });
-// ipcMain.on("maximize", () => {
-//   window.unmaximize();
-//   window.center();
-// });
-// ipcMain.on("restore", () => {
-//   window.webContents.send("window-size", { restore: true });
-//   window.maximize();
-// });
 ipcMain.on("closeWindow", () => {
   saveAppData();
   window.close();
+});
+
+ipcMain.on("titlebar", (event, arg) => {
+  if (arg === "destroy") window.destroy();
+  else if (arg === "kill") app.quit();
+  else if (arg === "minimize") window.minimize();
+  else if (arg === "maximize") {
+    if (window.isMaximized()) window.unmaximize();
+    else window.maximize();
+  } else if (arg === "closeWindow") {
+    saveAppData();
+    window.close();
+  }
 });
 
 function saveAppData() {
