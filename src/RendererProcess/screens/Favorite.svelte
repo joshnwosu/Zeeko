@@ -5,6 +5,6 @@
 <main class="page" transition:fade>
     <ScreenHeader name="Favorite" />
     <div class="screen-view">
-        <p>Favorite</p>
+        <!-- <p>Favorite</p> -->
     </div>
 </main>
