@@ -1,3 +1,4 @@
+import Discover from "../screens/Discover.svelte";
 import MyMusic from "../screens/MyMusic.svelte";
 import RecentPlays from "../screens/RecentPlays.svelte";
 import NowPlaying from "../screens/NowPlaying.svelte";
@@ -12,13 +13,13 @@ import Home from "../views/Home.svelte";
 import Book from "../views/Book.svelte";
 
 export const routes = {
+  "/": Discover,
   "/my-music/*": MyMusic,
   "/recent-plays": RecentPlays,
   "/now-playing": NowPlaying,
   "/playlists": Playlists,
   "/favorite": Favorite,
   "/settings": Settings,
-  // "/music/*": About,
   "*": NotFound,
 };
 
