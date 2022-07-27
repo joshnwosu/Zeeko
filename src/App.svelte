@@ -1,13 +1,10 @@
 <script>
   import "./RendererProcess/assets/css/global.css";
 
-  import Router, { location, querystring, replace } from "svelte-spa-router";
+  import Router, { location, querystring } from "svelte-spa-router";
   import { routes } from "./RendererProcess/router";
 
-  import CustomTitleBar from "./RendererProcess/components/Root/CustomTitleBar.svelte";
-  import SideNav from "./RendererProcess/components/Root/SideNav.svelte";
   import ControlPanel from "./RendererProcess/components/Root/ControlPanel.svelte";
-  import ScreenHeader from "./RendererProcess/components/Root/ScreenHeader.svelte";
   import SideBar from "./RendererProcess/components/Root/SideBar.svelte";
   import Bg from "./RendererProcess/components/Root/BG.svelte";
   import RightBar from "./RendererProcess/components/Root/RightBar.svelte";
@@ -25,54 +22,59 @@
     }
   };
 
-  // replace('/my-music/') // this is My music route (Default)
-  // replace('/now-playing') // this is My music route (Default)
+  // replace("/my-music/"); // this is My music route (Default)
 </script>
 
 <div id="app" on:click={cleanUp} on:contextmenu={cleanUp}>
   <Bg />
-  <!-- <CustomTitleBar /> -->
   <Frame />
   <section class="main-view">
-    <!-- {#if $location != "/now-playing"} -->
-    <!-- <SideNav /> -->
     <SideBar />
-    <!-- {/if} -->
-    <!-- <div class="router-container">
+    <div class="router-container">
       <Router {routes} on:routeLoaded={routeLoaded} />
-    </div> -->
-    <div />
+      {#if $location != "/now-playing"}
+        <ControlPanel />
+      {/if}
+    </div>
     <RightBar />
-    <!-- {#if $location != "/now-playing"} -->
-    <!-- <ControlPanel /> -->
-    <!-- {/if} -->
   </section>
 </div>
 
 <style lang="scss">
-  /* @import "./RendererProcess/assets/css/global.css"; */
+  #app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+    overflow: hidden;
+    background-color: #0e121a;
+  }
   :global(main.page) {
     width: 100%;
     height: 100%;
-    /* padding: 0px 0px 100px 0px; */
-    /* background: #000000 !important; */
     position: absolute;
     overflow-y: auto;
-  }
-
-  :global(svg.svg-icon) {
-    /* width: 18px; */
-    /* height: 18px; */
-    :global(path) {
-      fill: none;
-      stroke: #ffffff;
+    &::-webkit-scrollbar-track-piece:end {
+      margin-bottom: 100px;
     }
   }
-
+  :global(svg.svg-icon) {
+    width: 18px;
+    height: 18px;
+  }
+  :global(.svg-icon-bold) {
+    :global(path) {
+      fill: #999999;
+    }
+  }
+  :global(.svg-icon-outline) {
+    :global(path) {
+      stroke: #999999;
+    }
+  }
   :global(.screen-view) {
     padding: 0px 20px 100px 20px;
   }
-
   .main-view {
     position: relative;
     width: 100%;
@@ -82,24 +84,15 @@
     justify-content: flex-end;
   }
   .router-container {
-    /* flex: 1; */
     overflow-y: auto;
     position: relative;
-    width: calc(100% - 300px);
+    width: calc(100% - 160px); // when nav closed
+    width: calc(100% - 360px);
     height: 100%;
-    /* border: 1px solid blue; */
-  }
-  #app {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    color: #ffffff;
-    /* background-color: #000000; */
-    overflow: hidden;
-    /* background: rgb(8, 8, 8); */
+    right: 60px;
     background-color: #0e121a;
+    box-shadow: -2px 0px 10px 0px rgba(0, 0, 0, 0.1);
   }
-
   @media (max-width: 1000px) {
     .router-container {
       width: calc(100% - 50px);
