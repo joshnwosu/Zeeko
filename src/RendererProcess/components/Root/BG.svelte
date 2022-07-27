@@ -1,5 +1,6 @@
 <script>
   const src = "./assets/images/431311.jpg";
+  // const src = "./assets/images/andy-holmes-xA26xebY3dw-unsplash.jpg";
 </script>
 
 <div class="bg">
@@ -15,7 +16,7 @@
     right: 0;
     left: 0;
     bottom: 0;
-    filter: blur(20px);
+    filter: blur(100px);
     pointer-events: none;
   }
 
@@ -24,8 +25,8 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-    opacity: 0.3;
+    opacity: 0.5;
     position: fixed;
-    display: none;
+    /* display: none; */
   }
 </style>
