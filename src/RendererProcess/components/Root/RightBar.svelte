@@ -1,36 +1,39 @@
 <script>
-  import {
-    HeartIcon,
-    MusicFilterIcon,
-    MusicIcon,
-    SettingIcon,
-    SunnyIcon,
-  } from "../Icons";
+  import { push } from "svelte-spa-router";
+
+  import { HeartIcon, SettingIcon, SunnyIcon } from "../Icons";
 </script>
 
-<div class="right-nav">
-  <div class="top">
-    <span>
-      <svelte:component this={MusicFilterIcon} />
-    </span>
-    <span>
-      <svelte:component this={HeartIcon} />
-    </span>
-  </div>
-  <div class="bottom">
-    <span>
-      <svelte:component this={SunnyIcon} />
-    </span>
-    <span>
-      <svelte:component this={SettingIcon} />
-    </span>
-  </div>
-</div>
+<nav class="right-nav">
+  <ul class="top">
+    <li on:click={() => push("/favorite")}>
+      <span class="icon">
+        <svelte:component this={HeartIcon} />
+      </span>
+      <span class="tooltip">Favorite</span>
+    </li>
+  </ul>
+
+  <ul class="bottom">
+    <li>
+      <span class="icon">
+        <svelte:component this={SunnyIcon} />
+      </span>
+      <span class="tooltip">Theme</span>
+    </li>
+    <li on:click={() => push("/settings")}>
+      <span class="icon">
+        <svelte:component this={SettingIcon} />
+      </span>
+      <span class="tooltip">Manage</span>
+    </li>
+  </ul>
+</nav>
 
 <style lang="scss">
   .right-nav {
     background-color: rgba(14, 18, 26, 0.7);
-    background-color: rgba(23, 28, 38, 0.7);
+    background-color: rgba(23, 28, 38, 0.8);
     width: 60px;
     position: fixed;
     top: 0;
@@ -39,16 +42,51 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    padding: 50px 0;
+    /* align-items: center; */
+    padding: 20px 0 0;
+    z-index: 99999999;
   }
 
   .bottom,
   .top {
     display: flex;
     flex-direction: column;
-    span {
-      margin-top: 10px;
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      cursor: pointer;
+      position: relative;
+      &:hover {
+        .tooltip {
+          visibility: visible;
+          opacity: 1;
+          right: 60px;
+        }
+      }
+
+      .icon {
+        :global(svg) {
+          width: 25px;
+          height: 25px;
+        }
+      }
+
+      .tooltip {
+        background-color: #171c26;
+        position: absolute;
+        right: 40px;
+        padding: 8px 15px;
+        border-radius: 3px;
+        opacity: 0;
+        visibility: hidden;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        box-shadow: -2px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        transition: right 300ms ease-in-out;
+        pointer-events: none;
+      }
     }
   }
 </style>
