@@ -22,6 +22,9 @@ import BackwardIcon from "./outline/Backward.svelte";
 import ForwardIcon from "./outline/Forward.svelte";
 import MoreIcon from "./outline/More.svelte";
 import MoreTwoIcon from "./outline/MoreTwo.svelte";
+import VolumeHighIcon from "./outline/VolumeHigh.svelte";
+import MaximizeIcon from "./outline/Maximize.svelte";
+import CandleIcon from "./outline/Candle.svelte";
 
 // bold icons import
 import HomeBoldIcon from "./bold/HomeBold.svelte";
@@ -38,6 +41,11 @@ import RepeatOneBoldIcon from "./bold/RepeatOne.svelte";
 import HeartBoldIcon from "./bold/Heart.svelte";
 import MusicFilterBoldIcon from "./bold/MusicFilter.svelte";
 import MenuBoldIcon from "./bold/Menu.svelte";
+import VolumeHighBoldIcon from "./bold/VolumeHigh.svelte";
+import VolumeLowBoldIcon from "./bold/VolumeLow.svelte";
+import VolumeLowOneBoldIcon from "./bold/VolumeLowOne.svelte";
+import VolumeMuteBoldIcon from "./bold/VolumeMute.svelte";
+import CandleBoldIcon from "./bold/Candle.svelte";
 
 export {
   // outline icons
@@ -64,6 +72,9 @@ export {
   NoteIcon,
   MoreIcon,
   MoreTwoIcon,
+  VolumeHighIcon,
+  MaximizeIcon,
+  CandleIcon,
 
   // bold icons
   HomeBoldIcon,
@@ -80,4 +91,9 @@ export {
   HeartBoldIcon,
   MusicFilterBoldIcon,
   MenuBoldIcon,
+  VolumeHighBoldIcon,
+  VolumeLowBoldIcon,
+  VolumeLowOneBoldIcon,
+  VolumeMuteBoldIcon,
+  CandleBoldIcon,
 };

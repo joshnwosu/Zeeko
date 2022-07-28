@@ -16,27 +16,13 @@
   } from "../Icons";
   import { link, location, pop, querystring } from "svelte-spa-router";
   import active from "svelte-spa-router/active";
+  import { toggleSidebar } from "../../store/clickFunc";
+  import ActionButton from "./ActionButton.svelte";
 </script>
 
-<div class="side-nav">
+<div class="side-nav" class:toggle-sidenav={$toggleSidebar}>
   <div>
-    <div class="action-wrapper">
-      <div class="window-action-button">
-        <span on:click={() => window?.api?.titlebar("closeWindow")} />
-        <span on:click={() => window?.api?.titlebar("minimize")} />
-        <span on:click={() => window?.api?.titlebar("maximize")} />
-      </div>
-
-      <div class="navigation-action-button">
-        <span on:click={pop}>
-          <svelte:component this={ArrowLeftIcon} />
-        </span>
-        <span>
-          <svelte:component this={ArrowRightIcon} />
-        </span>
-      </div>
-    </div>
-
+    <!-- <ActionButton /> -->
     <div class="logo">
       <div class="logo-inner">
         <p>Z</p>
@@ -116,18 +102,6 @@
 
       <ul>
         <div class="ul-head">Playlists</div>
-        <!-- <li class={$location == "/favorite" && "active-link-li"}>
-          <a
-            href={"/favorite"}
-            use:link
-            use:active={{ className: "active-link", inactiveClassName: "" }}
-          >
-            <span class="icon">
-              <svelte:component this={HeartIcon} />
-            </span>
-            <span class="label"> Favorite </span>
-          </a>
-        </li> -->
 
         <li class={$location == "/playlists" && "active-link-li"}>
           <a
@@ -158,68 +132,11 @@
     padding: 20px 0 0;
     display: flex;
     flex-direction: column;
-  }
-
-  .action-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-  }
-
-  .window-action-button {
-    display: flex;
-  }
-
-  .window-action-button span {
-    display: block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin-right: 5px;
-    cursor: default;
-  }
-
-  .window-action-button span:hover {
-    opacity: 0.5;
-  }
-
-  .window-action-button span:nth-child(1) {
-    background-color: #ff5a4e;
-  }
-
-  .window-action-button span:nth-child(2) {
-    background-color: #ffbd38;
-  }
-
-  .window-action-button span:nth-child(3) {
-    background-color: #65e14d;
-  }
-
-  .navigation-action-button {
-    display: flex;
-  }
-
-  .navigation-action-button span {
-    width: block;
-    width: 30px;
-    height: 30px;
-    background-color: #0e121a;
-    border-radius: 50%;
-    margin-left: 10px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .navigation-action-button span:nth-child(2) {
-    opacity: 0.5;
-    pointer-events: none;
+    transition: all 300ms ease-in-out;
   }
 
   .logo {
-    padding: 40px 20px;
+    padding: 0px 20px 20px;
     display: flex;
     align-items: center;
     display: none;
@@ -247,7 +164,7 @@
   }
 
   .search-bar {
-    margin: 20px 10px 0 10px;
+    margin: 0px 10px 0 10px;
     overflow: hidden;
     position: relative;
     border-radius: 10px;
@@ -319,7 +236,7 @@
             /* background-color: rgba(14, 18, 26, 0.2); */
             background-image: linear-gradient(
               90deg,
-              rgba(14, 18, 26, 0.2),
+              rgba(14, 18, 26, 0.5),
               transparent
             );
             .icon {
@@ -355,9 +272,10 @@
           }
           .label {
             color: #ffffff;
+            white-space: nowrap;
           }
           .icon {
-            width: 50px;
+            width: 40px;
             display: flex;
             justify-content: center;
             align-items: center;

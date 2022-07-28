@@ -1,14 +1,16 @@
 <script>
   import "./RendererProcess/assets/css/global.css";
-
   import Router, { location, querystring } from "svelte-spa-router";
   import { routes } from "./RendererProcess/router";
+
+  import { toggleSidebar } from "./RendererProcess/store/clickFunc";
 
   import ControlPanel from "./RendererProcess/components/Root/ControlPanel.svelte";
   import SideBar from "./RendererProcess/components/Root/SideBar.svelte";
   import Bg from "./RendererProcess/components/Root/BG.svelte";
   import RightBar from "./RendererProcess/components/Root/RightBar.svelte";
   import Frame from "./RendererProcess/components/Root/Frame.svelte";
+  import Header from "./RendererProcess/components/Root/Header.svelte";
 
   const routeLoaded = (event) => {
     console.log("The Event:", event);
@@ -30,12 +32,13 @@
   <Frame />
   <section class="main-view">
     <SideBar />
-    <div class="router-container">
+    <div class="router-container" class:toggle-sidebar={$toggleSidebar}>
+      <Header />
       <Router {routes} on:routeLoaded={routeLoaded} />
-      {#if $location != "/now-playing"}
-        <ControlPanel />
-      {/if}
     </div>
+    {#if $location != "/now-playing"}
+      <ControlPanel />
+    {/if}
     <RightBar />
   </section>
 </div>
@@ -61,6 +64,9 @@
   :global(svg.svg-icon) {
     width: 18px;
     height: 18px;
+    :global(path) {
+      fill: #999999;
+    }
   }
   :global(.svg-icon-bold) {
     :global(path) {
@@ -69,6 +75,7 @@
   }
   :global(.svg-icon-outline) {
     :global(path) {
+      fill: none !important;
       stroke: #999999;
     }
   }
@@ -80,18 +87,23 @@
     width: 100%;
     display: flex;
     height: 100%;
-    align-items: flex-start;
+    align-items: flex-end;
     justify-content: flex-end;
   }
   .router-container {
     overflow-y: auto;
     position: relative;
-    width: calc(100% - 160px); // when nav closed
     width: calc(100% - 360px);
     height: 100%;
+    bottom: 0;
     right: 60px;
     background-color: #0e121a;
     box-shadow: -2px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    transition: width 300ms ease-in-out;
+    &.toggle-sidebar {
+      width: calc(100% - 60px);
+      box-shadow: none;
+    }
   }
   @media (max-width: 1000px) {
     .router-container {

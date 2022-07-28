@@ -1,5 +1,6 @@
 <script>
   import { push } from "svelte-spa-router";
+  import { toggleSidebar } from "../../store/clickFunc";
 
   import { HeartIcon, SettingIcon, SunnyIcon } from "../Icons";
 </script>
@@ -16,7 +17,7 @@
 
   <ul class="bottom">
     <li>
-      <span class="icon">
+      <span class="icon" on:click={() => ($toggleSidebar = !$toggleSidebar)}>
         <svelte:component this={SunnyIcon} />
       </span>
       <span class="tooltip">Theme</span>
@@ -43,8 +44,9 @@
     flex-direction: column;
     justify-content: space-between;
     /* align-items: center; */
-    padding: 20px 0 0;
-    z-index: 99999999;
+    padding: 10px 0 0;
+    padding-bottom: 100px;
+    z-index: 999;
   }
 
   .bottom,
@@ -64,6 +66,14 @@
           opacity: 1;
           right: 60px;
         }
+
+        .icon {
+          :global(svg) {
+            :global(path) {
+              stroke: #ffffff;
+            }
+          }
+        }
       }
 
       .icon {
@@ -74,7 +84,7 @@
       }
 
       .tooltip {
-        background-color: #171c26;
+        background-color: rgba(23, 28, 38, 0.95);
         position: absolute;
         right: 40px;
         padding: 8px 15px;

@@ -1,12 +1,4 @@
-<script>
-  export let name;
-  // const formatRoute  = (str) => {
-  //     return str.toLowerCase().replace(/[/]/g, '').replace(/[-]/, ' ').replace(/\b\w/i, c => c.toUpperCase())
-  // }
-</script>
-
 <div class="screen-header">
-  <h1>{name}</h1>
   <slot />
 </div>
 
@@ -25,9 +17,5 @@
     backdrop-filter: blur(20px);
     padding: 0px 20px 20px;
     border-bottom: 1px solid #171c26;
-    h1 {
-      font-size: 30px;
-      font-weight: 200;
-    }
   }
 </style>

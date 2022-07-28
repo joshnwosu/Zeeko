@@ -8,4 +8,7 @@ contextBridge.exposeInMainWorld("api", {
   titlebar: (action) => {
     ipcRenderer.send("titlebar", action);
   },
+  media: (action) => {
+    ipcRenderer.send("media", action);
+  },
 });

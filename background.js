@@ -57,23 +57,10 @@ app.on("ready", () => {
   createWindow();
 });
 
-ipcMain.on("minimize", () => window.minimize());
-ipcMain.on("maximize", () => {
-  if (window.isMaximized()) {
-    window.unmaximize();
-    window.center();
-  } else {
-    window.maximize();
-  }
-});
-ipcMain.on("closeWindow", () => {
-  saveAppData();
-  window.close();
-});
-
 ipcMain.on("titlebar", (event, arg) => {
   if (arg === "destroy") window.destroy();
   else if (arg === "kill") app.quit();
+  else if (arg === "fullscreen") app.fullscreen();
   else if (arg === "minimize") window.minimize();
   else if (arg === "maximize") {
     if (window.isMaximized()) window.unmaximize();

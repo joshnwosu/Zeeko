@@ -21,31 +21,38 @@
     MusicFilterBoldIcon,
     MoreIcon,
     RepeatOneBoldIcon,
+    VolumeHighIcon,
+    VolumeHighBoldIcon,
+    MaximizeIcon,
+    CandleIcon,
+    CandleBoldIcon,
   } from "../../components/Icons";
   let playing = false;
+  const src = "./assets/images/281951.jpg";
 </script>
 
 <div class="control-panel">
   <div class="wrapper left">
-    <div class="cover-art" />
+    <div class="cover-art">
+      <img {src} alt={src} />
+    </div>
     <div class="title-artist-wrapper">
       <div class="title">
-        <p>Talking to the moon</p>
+        <p>Ed Sheeran - Bad Habits [Official]</p>
       </div>
       <div class="artist" on:click={() => push("/my-music/artists")}>
-        <p>Bruno Mars</p>
+        <p>Ed Sheeran</p>
       </div>
     </div>
   </div>
   <div class="wrapper middle">
     <div class="control-button">
       <div class="control-button-inner">
-        <span class="icon shuffle-icon left-flare">
-          <svelte:component this={ShuffleBoldIcon} />
+        <span class="icon heart-icon left-flare">
+          <svelte:component this={HeartBoldIcon} />
         </span>
-        <span class="icon repeat-icon left-flare">
-          <!-- <svelte:component this={RepeatBoldIcon} /> -->
-          <svelte:component this={RepeatOneBoldIcon} />
+        <span class="icon more-icon left-flare">
+          <svelte:component this={MoreIcon} />
         </span>
       </div>
       <div class="control-button-inner main-control">
@@ -72,30 +79,125 @@
         </span>
       </div>
       <div class="control-button-inner">
-        <span class="icon heart-icon right-flare">
-          <svelte:component this={HeartBoldIcon} />
+        <span class="icon shuffle-icon right-flare">
+          <svelte:component this={ShuffleBoldIcon} />
         </span>
-        <span class="icon more-icon right-flare">
-          <svelte:component this={MoreIcon} />
+        <span class="icon repeat-icon right-flare">
+          <svelte:component this={RepeatOneBoldIcon} />
         </span>
       </div>
     </div>
     <div class="track-bar">
-      <p>03:49</p>
+      <span class="icon left-flare">
+        <p>01:08</p>
+      </span>
       <div class="seek-bar">
-        <div class="seek-progress" />
+        <div class="seek-progress">
+          <div class="seek-knob" />
+        </div>
       </div>
-      <p>01:08</p>
+      <span class="icon right-flare">
+        <p>03:49</p>
+      </span>
     </div>
   </div>
-  <div class="wrapper right" />
+  <div class="wrapper right">
+    <span class="icon equalizer-icon left-flare">
+      <svelte:component this={CandleBoldIcon} />
+    </span>
+    <div class="volume-bar">
+      <span class="icon volum-icon left-flare">
+        <svelte:component this={VolumeHighBoldIcon} />
+      </span>
+      <div class="seek-bar">
+        <div class="seek-progress">
+          <div class="seek-knob" />
+        </div>
+      </div>
+    </div>
+    <span
+      class="icon expand-icon right-flare"
+      on:click={() => window?.api?.titlebar("fullscreen")}
+    >
+      <svelte:component this={MaximizeIcon} />
+    </span>
+  </div>
 </div>
 
 <style lang="scss">
+  .seek-bar {
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.05);
+    margin-left: 10px;
+    border-radius: 5px;
+    position: relative;
+    .seek-progress {
+      background-color: #65e14d;
+      width: 50%;
+      height: 100%;
+      border-radius: 5px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      .seek-knob {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        position: absolute;
+      }
+    }
+  }
+  .icon {
+    display: inline-flex;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+
+    &:hover {
+      p {
+        opacity: 1 !important;
+      }
+    }
+
+    &.left-flare:hover {
+      background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.05),
+        transparent
+      );
+    }
+    &.right-flare:hover {
+      background-image: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.05)
+      );
+    }
+    :global(svg) {
+      width: 24px;
+      height: 24px;
+    }
+    &:hover:not(.play-pause-icon) {
+      :global(svg) {
+        /* width: 25px; */
+        /* height: 25px; */
+        :global(path) {
+          fill: #ffffff;
+        }
+      }
+    }
+  }
   .control-panel {
     position: absolute;
     /* border: 1px solid green; */
-    width: 100%;
+    width: calc(100% - 0px);
     left: 0;
     height: 100px;
     bottom: 0;
@@ -107,90 +209,87 @@
     display: flex;
     flex: 1;
     justify-content: space-between;
-    padding: 10px 10px;
+    padding: 0px 20px;
 
     .wrapper {
       /* border: 1px solid red; */
       display: flex;
+      position: relative;
+      overflow: hidden;
+      flex: 1;
       &.left {
-        width: 20%;
+        /* width: 30%; */
         align-items: center;
       }
       &.middle {
-        width: 60%;
+        /* width: 40%; */
         flex-direction: column;
         justify-content: space-between;
+        flex: 1.5;
       }
       &.right {
-        width: 20%;
+        /* width: 30%; */
+        justify-content: flex-end;
       }
       .cover-art {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
         border-radius: 5px;
-        background-color: #f7f8d9;
-        /* background-color: #65e14d; */
-        margin-right: 10px;
+        /* background-color: #ffffff; */
+        margin-right: 20px;
+        position: relative;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+        }
       }
       .title-artist-wrapper {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
+        overflow: hidden;
+        flex: 1;
+      }
+      .title,
+      .artist {
+        width: 100%;
+        p {
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
       }
       .title {
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 200;
-        opacity: 0.8;
-        margin-bottom: 5px;
+        margin-bottom: 2px;
       }
       .artist {
         font-size: 12px;
-        font-weight: 400;
+        font-weight: 200;
       }
     }
 
     .middle {
       padding: 0 20px;
-      :global(svg) {
+      /* :global(svg) {
         width: 22px;
         height: 22px;
         :global(path) {
           fill: #999999;
         }
-      }
-      .icon {
-        display: inline-flex;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        justify-content: center;
-        align-items: center;
-        cursor: default;
-        &.left-flare:hover {
-          background-image: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.05),
-            transparent
-          );
-        }
-        &.right-flare:hover {
-          background-image: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.05)
-          );
-        }
-        &:hover:not(.play-pause-icon) {
-          :global(svg) {
-            /* width: 25px; */
-            /* height: 25px; */
-            :global(path) {
-              fill: #ffffff;
-            }
-          }
-        }
-      }
+      } */
+
       .control-button {
         display: flex;
         align-items: center;
@@ -231,6 +330,8 @@
         align-items: center;
         justify-content: space-between;
         /* padding: 0 20px; */
+        /* border: 1px solid blue; */
+        height: 50px;
 
         p {
           font-size: 10px;
@@ -239,21 +340,23 @@
         }
 
         .seek-bar {
-          width: 100%;
-          height: 5px;
-          background-color: rgba(255, 255, 255, 0.05);
           margin: 0 20px;
-          border-radius: 5px;
-          position: relative;
-          .seek-progress {
-            background-color: #65e14d;
-            width: 100px;
-            height: 100%;
-            border-radius: 5px;
-            position: absolute;
-            left: 0;
-            top: 0;
-          }
+          flex: 1;
+        }
+      }
+    }
+
+    .right {
+      align-items: flex-end;
+      justify-content: flex-end;
+      /* border: 1px solid red; */
+      .volume-bar {
+        /* width: 200px; */
+        height: 50px;
+        display: flex;
+        align-items: center;
+        .seek-bar {
+          width: 150px;
         }
       }
     }

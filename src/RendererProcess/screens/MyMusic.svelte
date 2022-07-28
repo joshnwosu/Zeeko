@@ -15,7 +15,7 @@
 </script>
 
 <main class="page" transition:fade>
-  <ScreenHeader name="My music">
+  <ScreenHeader>
     <div class="song-tab">
       <nav>
         <a
