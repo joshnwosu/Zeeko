@@ -1,6 +1,14 @@
 <script>
-  import { push } from "svelte-spa-router";
+  import { location } from "svelte-spa-router";
+  let src = "./assets/images/281951.jpg";
 
+  let browserFile;
+  let audio;
+  let audioCurrentTime;
+  let audioDuration;
+
+  import { push } from "svelte-spa-router";
+  import isElectron from "../../../../isElectron";
   import {
     PlayIcon,
     PauseIcon,
@@ -27,21 +35,94 @@
     CandleIcon,
     CandleBoldIcon,
   } from "../../components/Icons";
-  let playing = false;
-  const src = "./assets/images/281951.jpg";
+  import {
+    playerStore,
+    playbackManager,
+    audioContext,
+    selectedSong,
+    queuelistStore,
+  } from "../../store";
+  import {
+    formatDuration,
+    getSong,
+    getSongIndex,
+    nextSong,
+    prevSong,
+    stepbackward,
+    stepforward,
+    togglePlaying,
+  } from "../../store/playbackManager";
+
+  $: if ($playerStore.length) $audioContext = audio;
+
+  $: if ($selectedSong) initPlayer();
+
+  function initPlayer() {
+    let index = getSongIndex($queuelistStore, $selectedSong);
+    audio.src = $queuelistStore[index].r_fileLocation;
+
+    audio.onloadeddata = () => {
+      audio.play();
+      $playbackManager.nowPlaying = getSong($queuelistStore, $selectedSong);
+    };
+
+    audio.oncanplay = () => {
+      $playbackManager.duration = audio.duration;
+      $playbackManager.currentTime = audio.currentTime;
+    };
+
+    audio.onplaying = () => {
+      $playbackManager.playing = true;
+    };
+
+    audio.onpause = () => {
+      $playbackManager.playing = false;
+    };
+
+    audio.ontimeupdate = () => {
+      audioDuration = formatDuration(audio.duration);
+      audioCurrentTime = formatDuration(audio.currentTime);
+    };
+  }
+
+  const pickFolder = () => {
+    if (isElectron()) {
+      window?.api?.media("addScanFolder");
+    } else {
+      console.log("Opening Browser Dialog...");
+      // browserFile.click();
+      getDir();
+    }
+  };
+
+  async function getDir() {
+    const dirHandle = await window?.showDirectoryPicker();
+    // run code for dirHandle
+    console.log("Browser Dir HERE: ", dirHandle);
+  }
 </script>
 
-<div class="control-panel">
+<audio bind:this={audio} />
+
+<div class="control-panel" class:hide={$location == "/now-playing"}>
   <div class="wrapper left">
     <div class="cover-art">
-      <img {src} alt={src} />
+      <img src={$playbackManager?.nowPlaying?.albumArt || src} alt={src} />
     </div>
     <div class="title-artist-wrapper">
       <div class="title">
-        <p>Ed Sheeran - Bad Habits [Official]</p>
+        <p>
+          {$playbackManager?.nowPlaying?.title ||
+            $playbackManager?.nowPlaying?.defaultTitle ||
+            "Click to play"}
+        </p>
       </div>
       <div class="artist" on:click={() => push("/my-music/artists")}>
-        <p>Ed Sheeran</p>
+        <p>
+          {$playbackManager?.nowPlaying?.artist ||
+            $playbackManager?.nowPlaying?.defaultArtist ||
+            "Select a song to play"}
+        </p>
       </div>
     </div>
   </div>
@@ -49,32 +130,32 @@
     <div class="control-button">
       <div class="control-button-inner">
         <span class="icon heart-icon left-flare">
-          <svelte:component this={HeartBoldIcon} />
+          <svelte:component this={HeartIcon} />
         </span>
         <span class="icon more-icon left-flare">
           <svelte:component this={MoreIcon} />
         </span>
       </div>
       <div class="control-button-inner main-control">
-        <span class="icon previous-icon left-flare">
+        <span class="icon previous-icon left-flare" on:click={prevSong}>
           <svelte:component this={PreviousBoldIcon} />
         </span>
-        <span class="icon backward-icon left-flare">
+        <span class="icon backward-icon left-flare" on:click={stepbackward}>
           <svelte:component this={BackwardBoldIcon} />
         </span>
-        <div class="play-pause">
+        <div class="play-pause" on:click={togglePlaying}>
           <span class="icon play-pause-icon">
-            {#if playing}
-              <svelte:component this={PlayBoldIcon} />
-            {:else}
+            {#if $playbackManager.playing}
               <svelte:component this={PauseBoldIcon} />
+            {:else}
+              <svelte:component this={PlayBoldIcon} />
             {/if}
           </span>
         </div>
-        <span class="icon forward-icon right-flare">
+        <span class="icon forward-icon right-flare" on:click={stepforward}>
           <svelte:component this={ForwardBoldIcon} />
         </span>
-        <span class="icon next-icon right-flare">
+        <span class="icon next-icon right-flare" on:click={nextSong}>
           <svelte:component this={NextBoldIcon} />
         </span>
       </div>
@@ -88,21 +169,21 @@
       </div>
     </div>
     <div class="track-bar">
-      <span class="icon left-flare">
-        <p>01:08</p>
+      <span class="">
+        <p>{audioCurrentTime || "00:00"}</p>
       </span>
       <div class="seek-bar">
         <div class="seek-progress">
-          <div class="seek-knob" />
+          <!-- <div class="seek-knob" /> -->
         </div>
       </div>
-      <span class="icon right-flare">
-        <p>03:49</p>
+      <span class="">
+        <p>{audioDuration || "00:00"}</p>
       </span>
     </div>
   </div>
   <div class="wrapper right">
-    <span class="icon equalizer-icon left-flare">
+    <span class="icon equalizer-icon left-flare" on:click={pickFolder}>
       <svelte:component this={CandleBoldIcon} />
     </span>
     <div class="volume-bar">
@@ -160,12 +241,6 @@
     align-items: center;
     cursor: default;
 
-    &:hover {
-      p {
-        opacity: 1 !important;
-      }
-    }
-
     &.left-flare:hover {
       background-image: linear-gradient(
         90deg,
@@ -181,15 +256,22 @@
       );
     }
     :global(svg) {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
     }
     &:hover:not(.play-pause-icon) {
-      :global(svg) {
+      :global(svg.svg-icon-bold) {
         /* width: 25px; */
         /* height: 25px; */
         :global(path) {
           fill: #ffffff;
+        }
+      }
+      :global(svg.svg-icon-outline) {
+        /* width: 25px; */
+        /* height: 25px; */
+        :global(path) {
+          stroke: #ffffff;
         }
       }
     }
@@ -201,15 +283,23 @@
     left: 0;
     height: 100px;
     bottom: 0;
-    background-color: rgba(14, 18, 26, 0.8);
+    background-color: rgba(14, 18, 26, 0.6);
     /* background-color: rgba(23, 28, 38, 0.9); */
     backdrop-filter: blur(50px);
-    z-index: 1000;
+    z-index: 1000000;
 
     display: flex;
     flex: 1;
     justify-content: space-between;
-    padding: 0px 20px;
+    padding: 0px 10px;
+    /* padding-top: 20px; */
+    /* padding-right: 20px; */
+    /* border-top: 1px solid rgba(23, 28, 38, 1); */
+    transition: 300ms ease-in-out;
+
+    &.hide {
+      transform: translateY(100px);
+    }
 
     .wrapper {
       /* border: 1px solid red; */
@@ -224,7 +314,7 @@
       &.middle {
         /* width: 40%; */
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
         flex: 1.5;
       }
       &.right {
@@ -232,8 +322,8 @@
         justify-content: flex-end;
       }
       .cover-art {
-        width: 70px;
-        height: 70px;
+        width: 80px;
+        height: 80px;
         border-radius: 5px;
         /* background-color: #ffffff; */
         margin-right: 20px;
@@ -331,7 +421,8 @@
         justify-content: space-between;
         /* padding: 0 20px; */
         /* border: 1px solid blue; */
-        height: 50px;
+        height: 20px;
+        margin-top: 5px;
 
         p {
           font-size: 10px;
@@ -347,7 +438,7 @@
     }
 
     .right {
-      align-items: flex-end;
+      align-items: center;
       justify-content: flex-end;
       /* border: 1px solid red; */
       .volume-bar {

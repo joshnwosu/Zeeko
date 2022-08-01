@@ -17,12 +17,10 @@
   import { link, location, pop, querystring } from "svelte-spa-router";
   import active from "svelte-spa-router/active";
   import { toggleSidebar } from "../../store/clickFunc";
-  import ActionButton from "./ActionButton.svelte";
 </script>
 
 <div class="side-nav" class:toggle-sidenav={$toggleSidebar}>
   <div>
-    <!-- <ActionButton /> -->
     <div class="logo">
       <div class="logo-inner">
         <p>Z</p>
@@ -42,7 +40,7 @@
     <nav>
       <ul>
         <div class="ul-head">Menu</div>
-        <li class={$location == "/" && "active-link-li"}>
+        <li class:active-link-li={$location == "/"}>
           <a
             href={"/"}
             use:link
@@ -54,7 +52,7 @@
             <span class="label"> Discover </span>
           </a>
         </li>
-        <li class={$location == "/my-music/" && "active-link-li"}>
+        <li class:active-link-li={$location.includes("/my-music/")}>
           <a
             href={"/my-music/"}
             use:link
@@ -73,7 +71,7 @@
             <span class="label"> My music </span>
           </a>
         </li>
-        <li class={$location == "/recent-plays" && "active-link-li"}>
+        <li class:active-link-li={$location == "/recent-plays"}>
           <a
             href={"/recent-plays"}
             use:link
@@ -82,11 +80,11 @@
             <span class="icon">
               <svelte:component this={ClockIcon} />
             </span>
-            <span class="label"> Recent plays </span>
-            <!-- <span class="label">你好吗 我很好</span> -->
+            <!-- <span class="label"> Recent plays </span> -->
+            <span class="label">你好吗 我很好</span>
           </a>
         </li>
-        <li class={$location == "/now-playing" && "active-link-li"}>
+        <li class:active-link-li={$location == "/now-playing"}>
           <a
             href={"/now-playing"}
             use:link
@@ -103,7 +101,7 @@
       <ul>
         <div class="ul-head">Playlists</div>
 
-        <li class={$location == "/playlists" && "active-link-li"}>
+        <li class:active-link-li={$location == "/playlists"}>
           <a
             href={"/playlists"}
             use:link
@@ -129,7 +127,7 @@
     top: 0;
     left: 0;
     bottom: 0;
-    padding: 20px 0 0;
+    padding: 50px 0 0;
     display: flex;
     flex-direction: column;
     transition: all 300ms ease-in-out;
@@ -164,10 +162,10 @@
   }
 
   .search-bar {
-    margin: 0px 10px 0 10px;
+    margin: 0px 0px;
     overflow: hidden;
     position: relative;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     input {
       background-color: rgba(14, 18, 26, 0.5);
       width: 100%;
@@ -206,12 +204,12 @@
         font-weight: 600;
         color: #ffffff;
         opacity: 0.5;
-        padding-left: 30px;
+        padding-left: 20px;
         margin-bottom: 10px;
         text-transform: uppercase;
       }
       li {
-        padding: 0px 10px;
+        padding: 0px 0px;
         position: relative;
         &.active-link-li::after {
           content: "";
@@ -231,7 +229,7 @@
           display: flex;
           align-items: center;
           padding: 15px 10px;
-          border-radius: 10px;
+          /* border-radius: 10px; */
           &:hover {
             /* background-color: rgba(14, 18, 26, 0.2); */
             background-image: linear-gradient(

@@ -1,4 +1,4 @@
-export const SUPPORTED_FORMAT = [
+module.exports.SUPPORTED_FORMATS = [
   ".mp3",
   ".wav",
   ".ogg",
@@ -6,4 +6,5 @@ export const SUPPORTED_FORMAT = [
   ".flac",
   ".webm",
   ".m4a",
+  ".opus",
 ];

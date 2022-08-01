@@ -1,12 +1,19 @@
-const { app, screen, BrowserWindow, ipcMain } = require("electron");
+const { app, screen, BrowserWindow, ipcMain, dialog } = require("electron");
 const path = require("path");
+const fs = require("fs");
 const url = require("url");
+const chokidar = require("chokidar");
 const isDev = require("electron-is-dev");
-
-// use ping | request | message
+const { directories } = require("./src/MainProcess/modules/directories");
+const { SUPPORTED_FORMATS } = require("./src/MainProcess/constants/constant");
+const { fileTracker } = require("./src/MainProcess/modules/filesTracker");
+const {
+  createParsedTrack,
+} = require("./src/MainProcess/core/createParsedTrack");
 
 process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
 
+let watcher = null;
 let window = null;
 
 if (isDev) {
@@ -20,8 +27,8 @@ const createWindow = () => {
   const display = screen.getPrimaryDisplay();
   const { width, height } = display.workAreaSize;
   window = new BrowserWindow({
-    width: width / 1.2,
-    height: height / 1.2,
+    width: width - 10,
+    height: height - 10,
     maxWidth: width,
     maxHeight: height,
     minWidth: 400,
@@ -31,7 +38,7 @@ const createWindow = () => {
 
     webPreferences: {
       contextIsolation: true,
-      // nodeIntegration: true,
+      nodeIntegration: true,
       enableRemoteModule: true,
       backgroundThrottling: false,
       webSecurity: false,
@@ -42,7 +49,7 @@ const createWindow = () => {
 
   window.loadURL(path.join(__dirname, "public/index.html"));
 
-  if (isDev) window.webContents.openDevTools({ mode: "right" });
+  // if (isDev) window.webContents.openDevTools({ mode: "right" });
 
   window.on("closed", () => {
     window = null;
@@ -51,16 +58,55 @@ const createWindow = () => {
   window.webContents.on("did-fail-load", () => {
     window.loadURL(path.join(__dirname, "public/index.html"));
   });
+
+  refreshTracks();
 };
+
+// listen for file changes
+watcher = chokidar
+  .watch(`${directories.musicDirectory}`, {
+    ignored: /[\/\\]\./,
+    persistent: true,
+    ignoreInitial: true,
+    awaitWriteFinish: true,
+  })
+  .on("add", async (path) => {
+    console.log(`File ${path} has been added`);
+    const newTrack = await createParsedTrack(path);
+    window.webContents.send("newTrack", newTrack);
+    fileTracker.saveChanges();
+  })
+
+  .on("change", (path) => {
+    console.log(`File ${path} has been changed`);
+    playerReady();
+  })
+  .on("unlink", (path) => {
+    console.log(`File ${path} has been removed`);
+    fileTracker.deleteFile(path);
+    playerReady();
+  })
+  .on("ready", () => {
+    console.log("Done.");
+    // watcherHandler();
+    // refreshTracks();
+  });
 
 app.on("ready", () => {
   createWindow();
 });
 
+function watcherHandler() {
+  console.log("Hello I am watcher.");
+}
+
+function isValidFileType(path) {
+  return path.match(/\.mp3|\.webm|\.m4a|\.ogg/gi);
+}
+
 ipcMain.on("titlebar", (event, arg) => {
   if (arg === "destroy") window.destroy();
   else if (arg === "kill") app.quit();
-  else if (arg === "fullscreen") app.fullscreen();
   else if (arg === "minimize") window.minimize();
   else if (arg === "maximize") {
     if (window.isMaximized()) window.unmaximize();
@@ -71,6 +117,129 @@ ipcMain.on("titlebar", (event, arg) => {
   }
 });
 
+ipcMain.on("media", async (event, arg) => {
+  if (arg === "addScanFolder") {
+    dialog
+      .showOpenDialog(window, { properties: ["openDirectory"] })
+      .then((data) => {
+        console.log(data.filePaths[0]);
+      })
+      .catch((err) => console.log("Error: ", err));
+  }
+  if (arg === "getTracks") {
+    playerReady();
+  }
+
+  if (arg === "initializePlayer") {
+    // playerReady();
+  }
+});
+
+function playerReady() {
+  const processedFiles = fileTracker.getTracks;
+  if (processedFiles.length > 0) {
+    window.webContents.send("processedFiles", processedFiles);
+    refreshTracks();
+
+    console.log("PF: ", processedFiles.length);
+  }
+}
+
+function refreshTracks() {
+  const folders = [directories.musicDirectory];
+  // console.log(folders);
+  let superFolder = [];
+  handleAllFolders(folders, folders.length, 0);
+  function handleAllFolders(folders, length, index) {
+    parseFolder(folders[index], [], []).then((data) => {
+      superFolder = [...superFolder, ...data];
+      index += 1;
+      if (index <= length - 1) {
+        handleAllFolders(folders, length, index);
+      } else {
+        prepareTracksForProcessing(superFolder);
+        // console.log("SUper: ", superFolder);
+      }
+    });
+  }
+}
+
+async function prepareTracksForProcessing(foldersFinalData) {
+  const data = [];
+  foldersFinalData.forEach((folder) => {
+    folder.tracks.forEach((fileName) => {
+      const filePath = path.join(folder.path, fileName);
+      const parsed = fileTracker.getTracks.some(
+        (file) => file.fileLocation == filePath
+      );
+      if (!parsed) {
+        data.push({ fileName, filePath, folder });
+      }
+    });
+  });
+  if (data.length !== 0) {
+    processTracks(data, 0);
+    // console.log("process Tracks: ", data);
+  }
+}
+
+async function processTracks(data, index) {
+  console.log("Beginning to parse " + data[index].fileName);
+  const newTrack = await createParsedTrack(data[index].filePath);
+  window.webContents.send("newTrack", newTrack);
+  console.log("newTrack:", newTrack);
+  console.log("Done parsing " + data[index].fileName);
+  if (index !== data.length - 1) {
+    processTracks(data, index + 1);
+    // win.webContents.send("parsingProgress", [index + 2, data.length]);
+    console.log("parsingProgress", [index + 2, data.length]);
+  } else {
+    fileTracker.saveChanges();
+    // win.webContents.send("parsingDone", data.length);
+    console.log("parsingDone", data.length);
+    return;
+  }
+}
+
+async function parseFolder(folderPath, subFolders, foldersFinalData) {
+  return new Promise((resolve) => {
+    (function recursiveReader(folderPath, subFolders, foldersFinalData) {
+      subFolders.shift();
+      const folderObject_notParsed = {
+        name: folderPath.replace(/(.*)[\/\\]/, "").split(".")[0],
+        path: folderPath,
+        tracks: [],
+      };
+      fs.readdir(folderPath, async (err, files) => {
+        let newSubFolders = files.filter((file) =>
+          fs.lstatSync(path.join(folderPath, file)).isDirectory()
+        );
+        newSubFolders = newSubFolders.map((item) =>
+          path.join(folderPath, item)
+        );
+        subFolders = [...subFolders, ...newSubFolders];
+        const audioFiles = files.filter((file) =>
+          SUPPORTED_FORMATS.includes(path.parse(file).ext)
+        );
+        folderObject_notParsed.tracks = audioFiles;
+
+        foldersFinalData = [...foldersFinalData, folderObject_notParsed];
+        if (subFolders[0]) {
+          recursiveReader(subFolders[0], subFolders, foldersFinalData);
+        } else {
+          resolve(foldersFinalData);
+          console.log("I'm Done Reading all the folders");
+          // playerReady();
+        }
+      });
+    })(folderPath, subFolders, foldersFinalData);
+  });
+}
+
 function saveAppData() {
   console.log("Savings App Data...");
 }
+
+// module.exports = {
+//   fileTracker,
+// };

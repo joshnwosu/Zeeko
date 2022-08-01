@@ -4,7 +4,7 @@
 </script>
 
 <main class="page" transition:fade>
-  <ScreenHeader />
+  <ScreenHeader title="Recent plays" />
   <div class="screen-view">
     <!-- <p>Recent plays</p> -->
   </div>

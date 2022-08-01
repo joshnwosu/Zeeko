@@ -1,4 +1,4 @@
-const { contextBridge, ipcRenderer } = require("electron");
+const { contextBridge, ipcRenderer, ipcMain } = require("electron");
 
 contextBridge.exposeInMainWorld("api", {
   // we can also expose variables, not just functions
@@ -10,5 +10,11 @@ contextBridge.exposeInMainWorld("api", {
   },
   media: (action) => {
     ipcRenderer.send("media", action);
+  },
+  processedFiles: (action) => {
+    ipcRenderer.on("processedFiles", action);
+  },
+  newTrack: (action) => {
+    ipcRenderer.on("newTrack", action);
   },
 });

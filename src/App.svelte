@@ -11,11 +11,13 @@
   import RightBar from "./RendererProcess/components/Root/RightBar.svelte";
   import Frame from "./RendererProcess/components/Root/Frame.svelte";
   import Header from "./RendererProcess/components/Root/Header.svelte";
+  import IpcListener from "./RendererProcess/components/Root/IpcListener.svelte";
+  import LeftBar from "./RendererProcess/components/Root/LeftBar.svelte";
 
   const routeLoaded = (event) => {
-    console.log("The Event:", event);
-    console.log("The Location: ", location);
-    console.log("The Query String: ", querystring);
+    // console.log("The Event:", event);
+    // console.log("The Location: ", location);
+    // console.log("The Query String: ", querystring);
   };
 
   const cleanUp = () => {
@@ -28,17 +30,19 @@
 </script>
 
 <div id="app" on:click={cleanUp} on:contextmenu={cleanUp}>
+  <IpcListener />
   <Bg />
   <Frame />
   <section class="main-view">
     <SideBar />
     <div class="router-container" class:toggle-sidebar={$toggleSidebar}>
-      <Header />
-      <Router {routes} on:routeLoaded={routeLoaded} />
+      <LeftBar />
+      <div class="router-wrapper" class:toggle-wrapper={$toggleSidebar}>
+        <!-- <Header /> -->
+        <Router {routes} on:routeLoaded={routeLoaded} />
+      </div>
     </div>
-    {#if $location != "/now-playing"}
-      <ControlPanel />
-    {/if}
+    <ControlPanel />
     <RightBar />
   </section>
 </div>
@@ -57,6 +61,8 @@
     height: 100%;
     position: absolute;
     overflow-y: auto;
+    /* border: 1px solid red; */
+    flex: 1;
     &::-webkit-scrollbar-track-piece:end {
       margin-bottom: 100px;
     }
@@ -99,7 +105,22 @@
     right: 60px;
     background-color: #0e121a;
     box-shadow: -2px 0px 10px 0px rgba(0, 0, 0, 0.1);
-    transition: width 300ms ease-in-out;
+    transition: 300ms ease;
+    display: flex;
+    .router-wrapper {
+      width: 100%;
+      position: absolute;
+      height: 100%;
+      transform: translateX(0px);
+      transition: 300ms ease;
+      /* border: 1px solid green; */
+      right: 0;
+      z-index: 999;
+      background-color: #0e121a;
+      &.toggle-wrapper {
+        width: calc(100% - 60px);
+      }
+    }
     &.toggle-sidebar {
       width: calc(100% - 60px);
       box-shadow: none;

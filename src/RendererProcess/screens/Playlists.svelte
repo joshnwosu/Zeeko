@@ -4,7 +4,7 @@
 </script>
 
 <main class="page" transition:fade>
-  <ScreenHeader />
+  <ScreenHeader title="Playlists" />
   <div class="screen-view">
     <!-- <p>Playlists</p> -->
   </div>

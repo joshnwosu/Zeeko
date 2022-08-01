@@ -59,7 +59,3 @@ body {
 a.active {
   border-left-color: rgb(68, 68, 68) !important;
 }
-
-a.active-tab {
-  background: #171c26 !important;
-}

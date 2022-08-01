@@ -1,5 +1,7 @@
 {
-  "name": "svelte-app",
+  "name": "zeeko-music",
+  "productName": "Zeeko Music",
+  "appId": "com.zeekomusic",
   "version": "1.0.0",
   "private": true,
   "main": "background.js",
@@ -36,6 +38,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.7",
+    "chokidar": "^3.5.3",
     "electron-is-dev": "^2.0.0",
     "electron-json-storage": "^4.5.0",
     "music-metadata": "^7.12.4",

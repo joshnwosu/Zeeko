@@ -4,7 +4,7 @@
 </script>
 
 <main class="page" transition:fade>
-  <ScreenHeader />
+  <ScreenHeader title="Favorite" />
   <div class="screen-view">
     <!-- <p>Favorite</p> -->
   </div>

@@ -1,9 +1,37 @@
-<div class="frame" />
+<script>
+  import { MenuBoldIcon } from "../Icons";
+  import { toggleSidebar } from "../../store/clickFunc";
 
-<style>
+  import ActionButton from "./ActionButton.svelte";
+  import { pop } from "svelte-spa-router";
+  import { ArrowLeftIcon, ArrowRightIcon } from "../Icons";
+</script>
+
+<div class="frame">
+  <div class="left">
+    <span class="icon" on:click={() => ($toggleSidebar = !$toggleSidebar)}>
+      <svelte:component this={MenuBoldIcon} />
+    </span>
+
+    <div class="navigation-action-button">
+      <span on:click={pop}>
+        <svelte:component this={ArrowLeftIcon} />
+      </span>
+      <span>
+        <svelte:component this={ArrowRightIcon} />
+      </span>
+    </div>
+  </div>
+
+  <div class="right">
+    <ActionButton />
+  </div>
+</div>
+
+<style lang="scss">
   .frame {
     width: 100%;
-    height: 20px;
+    height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,7 +40,71 @@
     top: 0;
     -webkit-app-region: drag;
     position: fixed;
-    z-index: 999;
+    z-index: 99999999;
     background-color: transparent;
+    padding-right: 100px;
+    /* padding-left: 10px; */
+    .left,
+    .right {
+      /* border: 1px solid red; */
+      -webkit-app-region: no-drag;
+    }
+    .left {
+      width: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-left: 10px;
+      padding-right: 10px;
+      .icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20px;
+        border-radius: 50%;
+        cursor: pointer;
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.05);
+          :global(svg) {
+            :global(path) {
+              fill: #ffffff;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .navigation-action-button {
+    display: flex;
+  }
+
+  .navigation-action-button span {
+    width: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .navigation-action-button span:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    :global(svg) {
+      :global(path) {
+        stroke: #ffffff !important;
+      }
+    }
+  }
+
+  .navigation-action-button span:nth-child(2) {
+    opacity: 0.3;
+    pointer-events: none;
   }
 </style>

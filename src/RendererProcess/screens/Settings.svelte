@@ -5,7 +5,7 @@
 </script>
 
 <main class="page" transition:fade>
-  <ScreenHeader />
+  <ScreenHeader title="Settings" />
   <div class="screen-view">
     <p>Settings</p>
 

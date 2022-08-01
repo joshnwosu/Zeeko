@@ -15,7 +15,7 @@
     right: 0;
     left: 0;
     bottom: 0;
-    filter: blur(100px);
+    filter: blur(20px);
     pointer-events: none;
     img {
       width: 100%;

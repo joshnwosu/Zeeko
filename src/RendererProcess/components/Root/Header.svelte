@@ -4,13 +4,13 @@
 
   import { MenuBoldIcon } from "../Icons/";
   import ActionButton from "./ActionButton.svelte";
-  const formatLocation = (str) => {
-    return str
-      .toString()
-      .replace(/[/]/g, "")
-      .replace(/[-]/, " ")
-      .replace(/\b\w/i, (c) => c.toUpperCase());
-  };
+  // const formatLocation = (str) => {
+  //   return str
+  //     .toString()
+  //     .replace(/[/]/g, "")
+  //     .replace(/[-]/, " ")
+  //     .replace(/\b\w/i, (c) => c.toUpperCase());
+  // };
 </script>
 
 <div class="header">
@@ -18,7 +18,6 @@
     <span class="icon" on:click={() => ($toggleSidebar = !$toggleSidebar)}>
       <svelte:component this={MenuBoldIcon} />
     </span>
-    <span class="location">{formatLocation($location)}</span>
   </div>
 
   <div class="right">
@@ -62,11 +61,6 @@
             }
           }
         }
-      }
-
-      .location {
-        font-size: 20px;
-        font-weight: 200;
       }
     }
   }

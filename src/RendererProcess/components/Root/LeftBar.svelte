@@ -5,7 +5,7 @@
   import { HeartIcon, SettingIcon, SunnyIcon } from "../Icons";
 </script>
 
-<nav class="right-nav">
+<nav class="left-nav" class:show={$toggleSidebar}>
   <ul class="top">
     <li on:click={() => push("/favorite")}>
       <span class="icon">
@@ -32,13 +32,12 @@
 </nav>
 
 <style lang="scss">
-  .right-nav {
+  .left-nav {
     background-color: rgba(14, 18, 26, 1);
-    background-color: rgba(23, 28, 38, 0.8);
     width: 60px;
-    position: fixed;
+    position: relative;
     top: 0;
-    right: 0;
+    left: 0;
     bottom: 0;
     display: flex;
     flex-direction: column;
@@ -48,7 +47,10 @@
     padding-bottom: 100px;
     padding-top: 50px;
     z-index: 999;
-    /* border-left: 1px solid rgba(23, 28, 38, 1); */
+    transition: transform 300ms ease-in-out;
+    &.show {
+      z-index: 9999;
+    }
   }
 
   .bottom,
@@ -66,7 +68,7 @@
         .tooltip {
           visibility: visible;
           opacity: 1;
-          right: 60px;
+          left: 60px;
         }
 
         .icon {
@@ -88,7 +90,7 @@
       .tooltip {
         background-color: rgba(23, 28, 38, 0.95);
         position: absolute;
-        right: 40px;
+        left: 40px;
         padding: 8px 15px;
         border-radius: 3px;
         opacity: 0;
@@ -96,7 +98,7 @@
         font-size: 13px;
         letter-spacing: 0.5px;
         box-shadow: -2px 0px 10px 0px rgba(0, 0, 0, 0.1);
-        transition: right 300ms ease-in-out;
+        transition: left 300ms ease-in-out;
         pointer-events: none;
       }
     }

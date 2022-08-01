@@ -4,7 +4,7 @@
 </script>
 
 <main class="page" transition:fade>
-  <ScreenHeader />
+  <ScreenHeader title="Discover" />
   <div class="screen-view">
     <!-- <p>Discover</p> -->
   </div>
