@@ -17,4 +17,10 @@ contextBridge.exposeInMainWorld("api", {
   newTrack: (action) => {
     ipcRenderer.on("newTrack", action);
   },
+  userPlaylists: (action) => {
+    ipcRenderer.on("userPlaylists", action);
+  },
+  updatePlaylists: (action) => {
+    ipcRenderer.send("updatePlaylists", action);
+  },
 });

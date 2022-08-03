@@ -9,18 +9,17 @@
 
 <div class="frame">
   <div class="left">
-    <span class="icon" on:click={() => ($toggleSidebar = !$toggleSidebar)}>
-      <svelte:component this={MenuBoldIcon} />
-    </span>
-
     <div class="navigation-action-button">
       <span on:click={pop}>
         <svelte:component this={ArrowLeftIcon} />
       </span>
-      <span>
+      <!-- <span>
         <svelte:component this={ArrowRightIcon} />
-      </span>
+      </span> -->
     </div>
+    <span class="icon" on:click={() => ($toggleSidebar = !$toggleSidebar)}>
+      <svelte:component this={MenuBoldIcon} />
+    </span>
   </div>
 
   <div class="right">
@@ -31,10 +30,10 @@
 <style lang="scss">
   .frame {
     width: 100%;
-    height: 50px;
+    height: 40px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     padding: 0;
     right: 0;
     top: 0;
@@ -42,7 +41,7 @@
     position: fixed;
     z-index: 99999999;
     background-color: transparent;
-    padding-right: 100px;
+    padding-right: 60px;
     /* padding-left: 10px; */
     .left,
     .right {
@@ -50,23 +49,25 @@
       -webkit-app-region: no-drag;
     }
     .left {
-      width: 300px;
+      width: 360px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-left: 10px;
-      padding-right: 10px;
+      /* padding-left: 12px; */
+      /* padding-right: 10px; */
       .icon {
-        width: 40px;
+        width: 60px;
         height: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-right: 20px;
-        border-radius: 50%;
+        /* margin-right: 20px; */
+        /* border-radius: 50%; */
         cursor: pointer;
         &:hover {
-          background-color: rgba(255, 255, 255, 0.05);
+          /* background-color: #0e121a; */
+          /* background-color: #121212; */
+          background-color: #ffffff20;
           :global(svg) {
             :global(path) {
               fill: #ffffff;
@@ -83,19 +84,23 @@
 
   .navigation-action-button span {
     width: block;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin-right: 10px;
+    width: 60px;
+    height: 40px;
+    /* border-radius: 50%; */
+    /* margin-right: 10px; */
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.05);
+    :global(svg) {
+      width: 20px !important;
+      height: 20px !important;
+    }
   }
 
   .navigation-action-button span:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    /* background-color: #0e121a; */
+    background-color: #ffffff20;
     :global(svg) {
       :global(path) {
         stroke: #ffffff !important;

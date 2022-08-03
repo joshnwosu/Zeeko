@@ -33,8 +33,9 @@
 
 <style lang="scss">
   .right-nav {
-    background-color: rgba(14, 18, 26, 1);
-    background-color: rgba(23, 28, 38, 0.8);
+    /* background-color: rgba(14, 18, 26, 1); */
+    /* background-color: rgba(23, 28, 38, 0.9); */
+    background-color: #12121280;
     width: 60px;
     position: fixed;
     top: 0;
@@ -87,6 +88,7 @@
 
       .tooltip {
         background-color: rgba(23, 28, 38, 0.95);
+        background-color: #121212;
         position: absolute;
         right: 40px;
         padding: 8px 15px;

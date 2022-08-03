@@ -39,7 +39,11 @@
       <LeftBar />
       <div class="router-wrapper" class:toggle-wrapper={$toggleSidebar}>
         <!-- <Header /> -->
-        <Router {routes} on:routeLoaded={routeLoaded} />
+        <Router
+          {routes}
+          on:routeLoaded={routeLoaded}
+          restoreScrollState={false}
+        />
       </div>
     </div>
     <ControlPanel />
@@ -54,7 +58,8 @@
     flex-direction: column;
     color: #ffffff;
     overflow: hidden;
-    background-color: #0e121a;
+    /* background-color: #0e121a; */
+    /* background-color: #000000; */
   }
   :global(main.page) {
     width: 100%;
@@ -66,23 +71,26 @@
     &::-webkit-scrollbar-track-piece:end {
       margin-bottom: 100px;
     }
+    &::-webkit-scrollbar-track-piece:start {
+      margin-top: 50px;
+    }
   }
   :global(svg.svg-icon) {
     width: 18px;
     height: 18px;
     :global(path) {
-      fill: #999999;
+      fill: rgba(255, 255, 255, 0.6);
     }
   }
   :global(.svg-icon-bold) {
     :global(path) {
-      fill: #999999;
+      fill: rgba(255, 255, 255, 0.6);
     }
   }
   :global(.svg-icon-outline) {
     :global(path) {
       fill: none !important;
-      stroke: #999999;
+      stroke: rgba(255, 255, 255, 0.6);
     }
   }
   :global(.screen-view) {
@@ -103,7 +111,8 @@
     height: 100%;
     bottom: 0;
     right: 60px;
-    background-color: #0e121a;
+    /* background-color: #0e121a; */
+    /* background-color: #000000; */
     box-shadow: -2px 0px 10px 0px rgba(0, 0, 0, 0.1);
     transition: 300ms ease;
     display: flex;
@@ -112,11 +121,12 @@
       position: absolute;
       height: 100%;
       transform: translateX(0px);
-      transition: 300ms ease;
+      /* transition: 300ms ease; */
       /* border: 1px solid green; */
       right: 0;
       z-index: 999;
-      background-color: #0e121a;
+      /* background-color: #0e121a; */
+      background-color: #000000;
       &.toggle-wrapper {
         width: calc(100% - 60px);
       }

@@ -2,31 +2,57 @@
   import { push } from "svelte-spa-router";
   import { toggleSidebar } from "../../store/clickFunc";
 
-  import { HeartIcon, SettingIcon, SunnyIcon } from "../Icons";
+  // import { HeartIcon, SettingIcon, SunnyIcon } from "../Icons";
+
+  import {
+    SearchIcon,
+    HomeIcon,
+    HeartIcon,
+    MusicFilterIcon,
+    MusicIcon,
+    MusicPlaylistIcon,
+    ClockIcon,
+    NoteIcon,
+  } from "../Icons";
 </script>
 
 <nav class="left-nav" class:show={$toggleSidebar}>
   <ul class="top">
     <li on:click={() => push("/favorite")}>
       <span class="icon">
-        <svelte:component this={HeartIcon} />
+        <svelte:component this={SearchIcon} />
       </span>
-      <span class="tooltip">Favorite</span>
+      <span class="tooltip">Search</span>
     </li>
-  </ul>
-
-  <ul class="bottom">
+    <li on:click={() => push("/favorite")}>
+      <span class="icon">
+        <svelte:component this={HomeIcon} />
+      </span>
+      <span class="tooltip">Discover</span>
+    </li>
     <li>
       <span class="icon" on:click={() => ($toggleSidebar = !$toggleSidebar)}>
-        <svelte:component this={SunnyIcon} />
+        <svelte:component this={MusicIcon} />
       </span>
-      <span class="tooltip">Theme</span>
+      <span class="tooltip">My music</span>
     </li>
     <li on:click={() => push("/settings")}>
       <span class="icon">
-        <svelte:component this={SettingIcon} />
+        <svelte:component this={ClockIcon} />
       </span>
-      <span class="tooltip">Manage</span>
+      <span class="tooltip">Recent plays</span>
+    </li>
+    <li on:click={() => push("/favorite")}>
+      <span class="icon">
+        <svelte:component this={NoteIcon} />
+      </span>
+      <span class="tooltip">Now playing</span>
+    </li>
+    <li>
+      <span class="icon" on:click={() => ($toggleSidebar = !$toggleSidebar)}>
+        <svelte:component this={MusicPlaylistIcon} />
+      </span>
+      <span class="tooltip">Playlists</span>
     </li>
   </ul>
 </nav>
@@ -34,6 +60,7 @@
 <style lang="scss">
   .left-nav {
     background-color: rgba(14, 18, 26, 1);
+    background-color: #000000;
     width: 60px;
     position: relative;
     top: 0;
@@ -45,15 +72,16 @@
     /* align-items: center; */
     padding: 10px 0 0;
     padding-bottom: 100px;
-    padding-top: 50px;
+    padding-top: 100px;
     z-index: 999;
     transition: transform 300ms ease-in-out;
+    border-right: 1px solid #171c26;
+    border-right: 1px solid #121212;
     &.show {
-      z-index: 9999;
+      z-index: 9999 !important;
     }
   }
 
-  .bottom,
   .top {
     display: flex;
     flex-direction: column;
@@ -61,10 +89,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 50px;
+      height: 60px;
       cursor: pointer;
       position: relative;
+      /* background-color: red; */
       &:hover {
+        background-color: #171c26;
+        background-color: #121212;
         .tooltip {
           visibility: visible;
           opacity: 1;
@@ -82,13 +113,14 @@
 
       .icon {
         :global(svg) {
-          width: 25px;
-          height: 25px;
+          width: 20px;
+          height: 20px;
         }
       }
 
       .tooltip {
         background-color: rgba(23, 28, 38, 0.95);
+        background-color: #12121280;
         position: absolute;
         left: 40px;
         padding: 8px 15px;
@@ -100,6 +132,7 @@
         box-shadow: -2px 0px 10px 0px rgba(0, 0, 0, 0.1);
         transition: left 300ms ease-in-out;
         pointer-events: none;
+        white-space: nowrap;
       }
     }
   }

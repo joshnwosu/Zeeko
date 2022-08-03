@@ -1,6 +1,6 @@
 <script>
   export let params = {};
-  console.log(params); // just for removing the annoying warning
+  // console.log(params); // just for removing the annoying warning
 
   import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
   import Router, { link, location, querystring, push } from "svelte-spa-router";
@@ -27,41 +27,27 @@
 </script>
 
 <main class="page" transition:fade>
-  <ScreenHeader title="My music" />
+  {#if params}
+    <ScreenHeader title="My music" />
+  {/if}
   <div class="song-tab">
     <nav>
-      <a
-        href={`${prefix}/`}
-        use:link
-        use:active={{ className: "active-tab", inactiveClassName: "" }}
-      >
+      <button on:click={() => push(`${prefix}/`)}>
         <span>Songs</span>
-      </a>
-      <a
-        href={`${prefix}/artists`}
-        use:link
-        use:active={{ className: "active-tab", inactiveClassName: "" }}
-      >
+      </button>
+      <button on:click={() => push(`${prefix}/artists`)}>
         <span>Artists</span>
-      </a>
-      <a
-        href={`${prefix}/albums`}
-        use:link
-        use:active={{ className: "active-tab", inactiveClassName: "" }}
-      >
+      </button>
+      <button on:click={() => push(`${prefix}/albums`)}>
         <span>Albums</span>
-      </a>
-      <a
-        href={`${prefix}/folders`}
-        use:link
-        use:active={{ className: "active-tab", inactiveClassName: "" }}
-      >
+      </button>
+      <button on:click={() => push(`${prefix}/folders`)}>
         <span>Folders</span>
-      </a>
+      </button>
     </nav>
   </div>
   <div class="screen-view">
-    <Router {routes} {prefix} restoreScrollState={true} />
+    <Router {routes} {prefix} restoreScrollState={false} />
     <!-- <h1>Location: {$location}</h1> -->
     <!-- <h1>Query: {$querystring}</h1> -->
   </div>
@@ -72,14 +58,17 @@
     position: sticky;
     top: 150px;
     padding: 20px;
-    background-color: #0e121a;
     /* background-color: rgba(14, 18, 26, 0.8); */
+    background-color: #0e121a;
+    background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(20px);
     z-index: 2;
     nav {
-      a {
+      button {
         font-size: 18px;
         color: #ffffff;
+        background-color: transparent;
+        border: none;
       }
     }
   }

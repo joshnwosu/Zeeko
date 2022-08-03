@@ -1,9 +1,12 @@
 <script>
-  const src = "./assets/images/281951.jpg";
+  import { playbackManager, selectedSong } from "../../store";
+  let src;
+  let defaultsrc = "./assets/images/281951.jpg";
+  $: if ($selectedSong) src = $playbackManager.nowPlaying?.albumArt;
 </script>
 
 <div class="bg">
-  <img {src} alt={src} />
+  <img src={src || defaultsrc} alt="Album art" />
 </div>
 
 <style lang="scss">
@@ -15,7 +18,7 @@
     right: 0;
     left: 0;
     bottom: 0;
-    filter: blur(20px);
+    filter: blur(100px);
     pointer-events: none;
     img {
       width: 100%;

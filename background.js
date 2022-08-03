@@ -10,6 +10,9 @@ const { fileTracker } = require("./src/MainProcess/modules/filesTracker");
 const {
   createParsedTrack,
 } = require("./src/MainProcess/core/createParsedTrack");
+const {
+  playlistTracker,
+} = require("./src/MainProcess/modules/playlistsTracker");
 
 process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
 
@@ -42,7 +45,7 @@ const createWindow = () => {
       enableRemoteModule: true,
       backgroundThrottling: false,
       webSecurity: false,
-      webviewTag: true,
+      // webviewTag: true,
       preload: path.join(__dirname, "preload.js"),
     },
   });
@@ -59,6 +62,7 @@ const createWindow = () => {
     window.loadURL(path.join(__dirname, "public/index.html"));
   });
 
+  // playerReady();
   refreshTracks();
 };
 
@@ -117,8 +121,8 @@ ipcMain.on("titlebar", (event, arg) => {
   }
 });
 
-ipcMain.on("media", async (event, arg) => {
-  if (arg === "addScanFolder") {
+ipcMain.on("media", async (event, payload) => {
+  if (payload === "addScanFolder") {
     dialog
       .showOpenDialog(window, { properties: ["openDirectory"] })
       .then((data) => {
@@ -126,22 +130,27 @@ ipcMain.on("media", async (event, arg) => {
       })
       .catch((err) => console.log("Error: ", err));
   }
-  if (arg === "getTracks") {
+  if (payload === "getTracks") {
     playerReady();
   }
 
-  if (arg === "initializePlayer") {
+  if (payload === "initializePlayer") {
     // playerReady();
+    refreshTracks();
   }
+});
+
+ipcMain.on("updatePlaylists", async (event, payload) => {
+  playlistTracker.updatePlaylists(payload);
 });
 
 function playerReady() {
   const processedFiles = fileTracker.getTracks;
+  const playlists = playlistTracker.getPlaylists;
   if (processedFiles.length > 0) {
     window.webContents.send("processedFiles", processedFiles);
+    window.webContents.send("userPlaylists", playlists);
     refreshTracks();
-
-    console.log("PF: ", processedFiles.length);
   }
 }
 

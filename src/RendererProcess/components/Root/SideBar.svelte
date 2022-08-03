@@ -80,8 +80,8 @@
             <span class="icon">
               <svelte:component this={ClockIcon} />
             </span>
-            <!-- <span class="label"> Recent plays </span> -->
-            <span class="label">你好吗 我很好</span>
+            <span class="label"> Recent plays </span>
+            <!-- <span class="label">你好吗 我很好</span> -->
           </a>
         </li>
         <li class:active-link-li={$location == "/now-playing"}>
@@ -120,14 +120,15 @@
 
 <style lang="scss">
   .side-nav {
-    background-color: rgba(14, 18, 26, 0.7);
-    background-color: rgba(23, 28, 38, 0.8);
+    /* background-color: rgba(14, 18, 26, 0.7); */
+    /* background-color: rgba(23, 28, 38, 0.9); */
+    background-color: #12121280;
     width: 300px;
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
-    padding: 50px 0 0;
+    padding: 40px 0 0;
     display: flex;
     flex-direction: column;
     transition: all 300ms ease-in-out;
@@ -168,6 +169,8 @@
     /* border-radius: 10px; */
     input {
       background-color: rgba(14, 18, 26, 0.5);
+      background-color: #000000;
+      background-color: rgba(255, 255, 255, 0.05);
       width: 100%;
       height: 50px;
       padding: 0px 50px 0px 60px;
@@ -232,11 +235,7 @@
           /* border-radius: 10px; */
           &:hover {
             /* background-color: rgba(14, 18, 26, 0.2); */
-            background-image: linear-gradient(
-              90deg,
-              rgba(14, 18, 26, 0.5),
-              transparent
-            );
+            background-image: linear-gradient(90deg, #ffffff10, transparent);
             .icon {
               :global(.svg-icon-bold) {
                 :global(path) {

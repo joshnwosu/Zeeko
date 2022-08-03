@@ -25,9 +25,10 @@ function createParsedTrack(fileLocation) {
       extractedArtist: "",
       defaultArtist: "",
       fileName: "",
-      formattedLength: "",
-      duration: "",
+      length: "",
+      date: "",
       dateAdded: 0,
+      trackNumber: "",
       folderInfo: {
         name: path.parse(path.parse(fileLocation).dir).base,
         path: path.parse(fileLocation).dir,
@@ -42,7 +43,9 @@ function createParsedTrack(fileLocation) {
         tags.image.mime = tags.image.mime.replace(/image\//g, "") || "jpg";
         const albumArtPath = path.join(
           directories.albumCover,
-          `${removeMIME(track.fileName)}.${tags.image.mime}`
+          `${removeMIME(
+            decodeURI(track.fileName).replace(/[^a-zA-Z0-9-_]/g, "")
+          )}.${tags.image.mime}`
         );
         writeImageBuffer(tags.image.imageBuffer, albumArtPath);
         track.albumArt = albumArtPath;
@@ -64,7 +67,13 @@ function createParsedTrack(fileLocation) {
 
       track.defaultArtist = track.artist || track.extractedArtist;
 
-      // track.duration = tags?.format?.duration;
+      track.length = tags.length;
+
+      track.date = tags.date;
+
+      track.trackNumber = tags.trackNumber;
+
+      console.log("The tag: ", tags);
 
       fs.stat(track.fileLocation, (err, stats) => {
         track.dateAdded = stats.ctimeMs;

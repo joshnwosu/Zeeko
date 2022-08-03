@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { playerStore } from "../../store";
+  import { playerStore, playlistStore } from "../../store";
 
   onMount(async () => {
     window?.api?.media("getTracks");
@@ -11,6 +11,10 @@
     });
     window?.api?.newTrack((e, newTrack) => {
       $playerStore = [newTrack, ...$playerStore];
+    });
+    window?.api?.userPlaylists((e, playlists) => {
+      // console.log("The playlists is here: ", playlists);
+      $playlistStore = playlists;
     });
 
     window?.api?.init?.newTrack();
