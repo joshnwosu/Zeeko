@@ -40,6 +40,12 @@
     <nav>
       <ul>
         <div class="ul-head">Menu</div>
+        <li class:active-link-li={$location.includes("/my-music/")}>
+          <span class="icon">
+            <svelte:component this={MusicIcon} />
+          </span>
+          <span class="label"> Menu </span>
+        </li>
         <li class:active-link-li={$location == "/"}>
           <a
             href={"/"}
@@ -63,9 +69,6 @@
             }}
           >
             <span class="icon">
-              <!-- <svelte:component
-                this={$location == "/my-music/" ? MusicIcon : MusicBoldIcon}
-              /> -->
               <svelte:component this={MusicIcon} />
             </span>
             <span class="label"> My music </span>
@@ -120,8 +123,6 @@
 
 <style lang="scss">
   .side-nav {
-    /* background-color: rgba(14, 18, 26, 0.7); */
-    /* background-color: rgba(23, 28, 38, 0.9); */
     background-color: #12121280;
     width: 300px;
     position: fixed;
@@ -133,7 +134,6 @@
     flex-direction: column;
     transition: all 300ms ease-in-out;
     &.toggle-sidenav {
-      /* padding-top: 100px; */
       nav {
         ul {
           .ul-head {
@@ -141,6 +141,24 @@
           }
         }
       }
+    }
+  }
+
+  .label {
+    font-size: 12px;
+    color: #ffffff;
+    white-space: nowrap;
+  }
+  .icon {
+    width: 60px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    :global(svg) {
+      width: 20px;
+      height: 20px;
     }
   }
 
@@ -177,10 +195,7 @@
     margin-bottom: 20px;
     overflow: hidden;
     position: relative;
-    /* border-radius: 10px; */
     input {
-      background-color: rgba(14, 18, 26, 0.5);
-      background-color: #000000;
       background-color: rgba(255, 255, 255, 0.05);
       width: 100%;
       height: 50px;
@@ -212,7 +227,6 @@
   }
   nav {
     ul {
-      /* margin-top: 20px; */
       .ul-head {
         font-size: 12px;
         font-weight: 600;
@@ -226,6 +240,8 @@
       li {
         padding: 0px 0px;
         position: relative;
+        display: flex;
+        align-items: center;
         &.active-link-li::after {
           content: "";
           position: absolute;
@@ -243,32 +259,11 @@
           font-weight: 400;
           display: flex;
           align-items: center;
-          /* padding: 15px 10px; */
-          /* border: 1px solid red; */
-          .label {
-            color: #ffffff;
-            white-space: nowrap;
-          }
-          .icon {
-            width: 60px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 10px;
-            /* border: 1px solid green; */
-            :global(svg) {
-              width: 20px;
-              height: 20px;
-            }
-          }
+          flex: 1;
 
           &:hover {
-            /* background-color: rgba(14, 18, 26, 0.2); */
             background-image: linear-gradient(90deg, #ffffff10, transparent);
             .icon {
-              /* border: 1px solid blue; */
-
               :global(.svg-icon-bold) {
                 :global(path) {
                   fill: #ffffff;
