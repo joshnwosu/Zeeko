@@ -51,6 +51,7 @@
         width: 60px;
         height: 40px;
         display: flex;
+        display: none;
         justify-content: center;
         align-items: center;
         cursor: pointer;
