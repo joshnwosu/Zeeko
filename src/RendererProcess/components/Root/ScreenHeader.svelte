@@ -18,10 +18,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    /* background-color: rgba(14, 18, 26, 1); */
-    /* background-color: #000000; */
     background-color: rgba(0, 0, 0, 1);
-    /* backdrop-filter: blur(20px); */
     padding: 0px 20px 20px;
     z-index: 2;
     h1 {
