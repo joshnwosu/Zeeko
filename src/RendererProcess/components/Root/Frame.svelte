@@ -4,7 +4,7 @@
 
   import ActionButton from "./ActionButton.svelte";
   import { pop } from "svelte-spa-router";
-  import { ArrowLeftIcon, ArrowRightIcon } from "../Icons";
+  import { ArrowLeftIcon } from "../Icons";
 </script>
 
 <div class="frame">
@@ -13,9 +13,6 @@
       <span on:click={pop}>
         <svelte:component this={ArrowLeftIcon} />
       </span>
-      <!-- <span>
-        <svelte:component this={ArrowRightIcon} />
-      </span> -->
     </div>
     <span class="icon" on:click={() => ($toggleSidebar = !$toggleSidebar)}>
       <svelte:component this={MenuBoldIcon} />
@@ -42,31 +39,22 @@
     z-index: 99999999;
     background-color: transparent;
     padding-right: 60px;
-    /* padding-left: 10px; */
     .left,
     .right {
-      /* border: 1px solid red; */
       -webkit-app-region: no-drag;
     }
     .left {
-      /* width: 360px; */
       display: flex;
       align-items: center;
       justify-content: space-between;
-      /* padding-left: 12px; */
-      /* padding-right: 10px; */
       .icon {
         width: 60px;
         height: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
-        /* margin-right: 20px; */
-        /* border-radius: 50%; */
         cursor: pointer;
         &:hover {
-          /* background-color: #0e121a; */
-          /* background-color: #121212; */
           background-color: #ffffff20;
           :global(svg) {
             :global(path) {
@@ -86,8 +74,6 @@
     width: block;
     width: 60px;
     height: 40px;
-    /* border-radius: 50%; */
-    /* margin-right: 10px; */
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -99,7 +85,6 @@
   }
 
   .navigation-action-button span:hover {
-    /* background-color: #0e121a; */
     background-color: #ffffff20;
     :global(svg) {
       :global(path) {
