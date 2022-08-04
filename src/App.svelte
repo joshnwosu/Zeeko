@@ -1,23 +1,17 @@
 <script>
   import "./RendererProcess/assets/css/global.css";
-  import Router, { location, querystring } from "svelte-spa-router";
+  import Router from "svelte-spa-router";
   import { routes } from "./RendererProcess/router";
-
   import { toggleSidebar } from "./RendererProcess/store/clickFunc";
-
   import ControlPanel from "./RendererProcess/components/Root/ControlPanel.svelte";
   import SideBar from "./RendererProcess/components/Root/SideBar.svelte";
   import Bg from "./RendererProcess/components/Root/BG.svelte";
   import RightBar from "./RendererProcess/components/Root/RightBar.svelte";
   import Frame from "./RendererProcess/components/Root/Frame.svelte";
-  import Header from "./RendererProcess/components/Root/Header.svelte";
   import IpcListener from "./RendererProcess/components/Root/IpcListener.svelte";
-  import LeftBar from "./RendererProcess/components/Root/LeftBar.svelte";
 
   const routeLoaded = (event) => {
-    // console.log("The Event:", event);
-    // console.log("The Location: ", location);
-    // console.log("The Query String: ", querystring);
+    console.log("The Event:", event);
   };
 
   const cleanUp = () => {
@@ -25,8 +19,6 @@
       document.querySelector(".contextOptions").style.height = `0px`;
     }
   };
-
-  // replace("/my-music/"); // this is My music route (Default)
 </script>
 
 <div id="app" on:click={cleanUp} on:contextmenu={cleanUp}>
@@ -36,15 +28,11 @@
   <section class="main-view">
     <SideBar />
     <div class="router-container" class:toggle-sidebar={$toggleSidebar}>
-      <!-- <LeftBar /> -->
-      <!-- <div class="router-wrapper" class:toggle-wrapper={$toggleSidebar}> -->
-      <!-- <Header /> -->
       <Router
         {routes}
         on:routeLoaded={routeLoaded}
         restoreScrollState={false}
       />
-      <!-- </div> -->
     </div>
     <ControlPanel />
     <RightBar />
@@ -58,15 +46,12 @@
     flex-direction: column;
     color: #ffffff;
     overflow: hidden;
-    /* background-color: #0e121a; */
-    /* background-color: #000000; */
   }
   :global(main.page) {
     width: 100%;
     height: 100%;
     position: absolute;
     overflow-y: auto;
-    /* border: 1px solid red; */
     flex: 1;
     &::-webkit-scrollbar-track-piece:end {
       margin-bottom: 100px;
@@ -111,9 +96,8 @@
     height: 100%;
     bottom: 0;
     right: 60px;
-    /* background-color: #0e121a; */
     background-color: #000000;
-    /* box-shadow: -2px 0px 10px 0px rgba(0, 0, 0, 0.1); */
+    box-shadow: -2px 0px 10px 0px rgba(0, 0, 0, 0.1);
     transition: 300ms ease;
     display: flex;
 
