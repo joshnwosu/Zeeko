@@ -65,7 +65,6 @@
 
   .windows-style {
     span {
-      /* margin-left: 20px; */
       background-color: transparent;
       display: flex;
       justify-content: center;
