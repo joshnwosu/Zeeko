@@ -13,6 +13,7 @@
     NoteIcon,
     HomeBoldIcon,
     MusicBoldIcon,
+    MenuBoldIcon,
   } from "../Icons";
   import { link, location, pop, querystring } from "svelte-spa-router";
   import active from "svelte-spa-router/active";
@@ -40,9 +41,12 @@
     <nav>
       <ul>
         <div class="ul-head">Menu</div>
-        <li class:active-link-li={$location.includes("/my-music/")}>
-          <span class="icon">
-            <svelte:component this={MusicIcon} />
+        <li class="menu-icon">
+          <span
+            class="icon"
+            on:click={() => ($toggleSidebar = !$toggleSidebar)}
+          >
+            <svelte:component this={MenuBoldIcon} />
           </span>
           <span class="label"> Menu </span>
         </li>
@@ -140,6 +144,15 @@
             display: none;
           }
         }
+      }
+    }
+  }
+
+  .menu-icon {
+    .icon {
+      cursor: pointer;
+      &:hover {
+        background-color: #ffffff10;
       }
     }
   }
