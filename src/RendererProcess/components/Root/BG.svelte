@@ -1,7 +1,7 @@
 <script>
   import { playbackManager, selectedSong } from "../../store";
   let src;
-  let defaultsrc = "./assets/images/281951.jpg";
+  let defaultsrc = "./assets/images/default-cover-art.jpg";
   $: if ($selectedSong) src = $playbackManager.nowPlaying?.albumArt;
 </script>
 

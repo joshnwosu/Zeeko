@@ -1,0 +1,237 @@
+<script>
+  import { playerStore, playbackManager, selectedSong } from "../../store";
+  import {
+    formatIndex,
+    pauseSong,
+    playSong,
+    selectedTrack,
+  } from "../../store/playbackManager";
+  import { HeartIcon, MoreIcon, PauseIcon, PlayIcon } from "../Icons";
+</script>
+
+<table>
+  <!-- <thead>
+    <tr>
+      <th />
+      <th />
+      <th>Title</th>
+      <th>Artist</th>
+      <th>Album</th>
+      <th>Genre</th>
+      <th />
+      <th />
+    </tr>
+  </thead> -->
+  <tbody>
+    {#if $playerStore.length}
+      {#each $playerStore as track, index}
+        <tr
+          class="track"
+          class:playing-track={$selectedSong == track.fileLocation}
+          on:dblclick|preventDefault={() => {
+            selectedTrack(track.fileLocation, $playerStore);
+          }}
+        >
+          <td class="check-box">
+            <span class="icon">
+              <span class="checker" />
+            </span>
+          </td>
+          <td class="index">
+            {#if $selectedSong == track.fileLocation}
+              <div class="is-playing" />
+            {:else}
+              <p>{formatIndex(index)}</p>
+            {/if}
+          </td>
+          <td class="title">
+            <div class="title-wrapper">
+              <p>{track.title}</p>
+              <div class="icon-wrapper">
+                {#if $selectedSong == track.fileLocation}
+                  {#if $playbackManager.playing}
+                    <span class="icon" on:click={pauseSong}
+                      ><svelte:component this={PauseIcon} /></span
+                    >
+                  {:else}
+                    <span class="icon" on:click={playSong}
+                      ><svelte:component this={PlayIcon} /></span
+                    >
+                  {/if}
+                {:else}
+                  <span
+                    class="icon"
+                    on:click={() =>
+                      selectedTrack(track.fileLocation, $playerStore)}
+                    ><svelte:component this={PlayIcon} /></span
+                  >
+                {/if}
+                <span class="icon"><svelte:component this={MoreIcon} /></span>
+              </div>
+            </div>
+          </td>
+          <td class="artist"><p>{track.artist}</p></td>
+          <td class="album"><p>{track.album}</p></td>
+          <td class="genre"><p>{track.genre}</p></td>
+          <td class="year" align="right"><p>{track.year || ""}</p></td>
+          <td class="favorite" align="right">
+            <span class="icon"><svelte:component this={HeartIcon} /></span>
+          </td>
+        </tr>
+      {/each}
+    {/if}
+  </tbody>
+</table>
+
+<style lang="scss">
+  .is-playing {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #65e14d;
+  }
+  table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    tbody {
+      white-space: nowrap;
+
+      tr {
+        width: 100%;
+        padding: 10px 0;
+        height: 50px;
+        &.playing-track {
+          /* background-color: #65e14d20; */
+          background-color: transparent !important;
+          background-image: linear-gradient(
+            45deg,
+            transparent,
+            #222222
+          ) !important;
+          td {
+            p {
+              color: #ffffff;
+            }
+          }
+        }
+        &:nth-child(even) {
+          background-color: #121212;
+        }
+        &:hover {
+          background-color: #222222;
+          .check-box {
+            .checker {
+              visibility: visible;
+              opacity: 1;
+            }
+          }
+
+          td {
+            .icon {
+              display: flex !important;
+            }
+            p {
+              color: #ffffff;
+            }
+          }
+        }
+      }
+      td {
+        width: 100%;
+        flex: 1;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-right: 20px;
+        :global(svg.svg-icon-outline) {
+          :global(path) {
+            stroke: #ffffff;
+          }
+        }
+
+        :global(svg.svg-icon-bold) {
+          :global(path) {
+            fill: #ffffff;
+          }
+        }
+        /* &:first-child {
+          padding-right: 20px;
+        } */
+        &:last-child {
+          padding-right: 0;
+        }
+        p {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size: 12px;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  .icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    &:hover {
+      background-color: #333333;
+    }
+  }
+
+  .title {
+    .title-wrapper {
+      display: flex;
+      align-items: center;
+      p {
+        margin-right: 20px;
+      }
+      .icon-wrapper {
+        flex: 1;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .index {
+    width: 50px;
+    p {
+      color: #ffffff60;
+    }
+  }
+
+  .year {
+    p {
+      color: #ffffff60;
+    }
+  }
+
+  .year {
+    width: 100px;
+  }
+
+  .favorite {
+    width: 50px;
+  }
+
+  .check-box {
+    width: 70px;
+
+    .checker {
+      display: inline-flex;
+      width: 15px;
+      height: 15px;
+      border: 1px solid #ffffff;
+      visibility: hidden;
+      opacity: 0;
+      &:hover {
+        border-color: #ffffff;
+      }
+    }
+  }
+</style>

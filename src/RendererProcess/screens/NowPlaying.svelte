@@ -29,15 +29,22 @@
   // });
 </script>
 
-<main class="page">
-  <div class="now-playing">
+<main class="now-playing">
+  <div class="">
     <div id="waveform" />
   </div>
 </main>
 
-<style>
-  .now-playing {
+<style lang="scss">
+  :global(.now-playing) {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    background-color: red;
+    z-index: 999999999;
   }
 </style>

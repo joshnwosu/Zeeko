@@ -32,43 +32,35 @@
   {/if}
   <div class="song-tab">
     <nav>
-      <button on:click={() => push(`${prefix}/`)}>
-        <span>Songs</span>
-      </button>
-      <button on:click={() => push(`${prefix}/artists`)}>
-        <span>Artists</span>
-      </button>
-      <button on:click={() => push(`${prefix}/albums`)}>
-        <span>Albums</span>
-      </button>
-      <button on:click={() => push(`${prefix}/folders`)}>
-        <span>Folders</span>
-      </button>
+      <span on:click={() => push(`${prefix}/`)}> Songs </span>
+      <span on:click={() => push(`${prefix}/artists`)}> Artists </span>
+      <span on:click={() => push(`${prefix}/albums`)}> Albums </span>
+      <span on:click={() => push(`${prefix}/folders`)}> Folders </span>
     </nav>
   </div>
   <div class="screen-view">
     <Router {routes} {prefix} restoreScrollState={false} />
-    <!-- <h1>Location: {$location}</h1> -->
-    <!-- <h1>Query: {$querystring}</h1> -->
   </div>
 </main>
 
 <style lang="scss">
   .song-tab {
     position: sticky;
-    top: 150px;
+    top: 80px;
     padding: 20px;
-    /* background-color: rgba(14, 18, 26, 0.8); */
-    background-color: #0e121a;
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(20px);
+    background-color: rgba(0, 0, 0, 1);
+    /* backdrop-filter: blur(100px); */
     z-index: 2;
     nav {
-      button {
-        font-size: 18px;
+      span {
+        font-size: 12px;
         color: #ffffff;
         background-color: transparent;
         border: none;
+        /* border: 1px solid red; */
+        margin-right: 20px;
+        text-transform: uppercase;
+        font-weight: 400;
       }
     }
   }

@@ -36,15 +36,15 @@
   <section class="main-view">
     <SideBar />
     <div class="router-container" class:toggle-sidebar={$toggleSidebar}>
-      <LeftBar />
-      <div class="router-wrapper" class:toggle-wrapper={$toggleSidebar}>
-        <!-- <Header /> -->
-        <Router
-          {routes}
-          on:routeLoaded={routeLoaded}
-          restoreScrollState={false}
-        />
-      </div>
+      <!-- <LeftBar /> -->
+      <!-- <div class="router-wrapper" class:toggle-wrapper={$toggleSidebar}> -->
+      <!-- <Header /> -->
+      <Router
+        {routes}
+        on:routeLoaded={routeLoaded}
+        restoreScrollState={false}
+      />
+      <!-- </div> -->
     </div>
     <ControlPanel />
     <RightBar />
@@ -79,18 +79,18 @@
     width: 18px;
     height: 18px;
     :global(path) {
-      fill: rgba(255, 255, 255, 0.6);
+      fill: rgba(255, 255, 255, 1);
     }
   }
   :global(.svg-icon-bold) {
     :global(path) {
-      fill: rgba(255, 255, 255, 0.6);
+      fill: rgba(255, 255, 255, 1);
     }
   }
   :global(.svg-icon-outline) {
     :global(path) {
       fill: none !important;
-      stroke: rgba(255, 255, 255, 0.6);
+      stroke: rgba(255, 255, 255, 1);
     }
   }
   :global(.screen-view) {
@@ -112,27 +112,13 @@
     bottom: 0;
     right: 60px;
     /* background-color: #0e121a; */
-    /* background-color: #000000; */
-    box-shadow: -2px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    background-color: #000000;
+    /* box-shadow: -2px 0px 10px 0px rgba(0, 0, 0, 0.1); */
     transition: 300ms ease;
     display: flex;
-    .router-wrapper {
-      width: 100%;
-      position: absolute;
-      height: 100%;
-      transform: translateX(0px);
-      /* transition: 300ms ease; */
-      /* border: 1px solid green; */
-      right: 0;
-      z-index: 999;
-      /* background-color: #0e121a; */
-      background-color: #000000;
-      &.toggle-wrapper {
-        width: calc(100% - 60px);
-      }
-    }
+
     &.toggle-sidebar {
-      width: calc(100% - 60px);
+      width: calc(100% - 120px);
       box-shadow: none;
     }
   }

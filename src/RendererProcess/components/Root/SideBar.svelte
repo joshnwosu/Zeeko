@@ -128,10 +128,20 @@
     top: 0;
     left: 0;
     bottom: 0;
-    padding: 40px 0 0;
+    padding: 100px 0 0;
     display: flex;
     flex-direction: column;
     transition: all 300ms ease-in-out;
+    &.toggle-sidenav {
+      /* padding-top: 100px; */
+      nav {
+        ul {
+          .ul-head {
+            display: none;
+          }
+        }
+      }
+    }
   }
 
   .logo {
@@ -164,6 +174,7 @@
 
   .search-bar {
     margin: 0px 0px;
+    margin-bottom: 20px;
     overflow: hidden;
     position: relative;
     /* border-radius: 10px; */
@@ -201,7 +212,7 @@
   }
   nav {
     ul {
-      margin-top: 20px;
+      /* margin-top: 20px; */
       .ul-head {
         font-size: 12px;
         font-weight: 600;
@@ -210,6 +221,7 @@
         padding-left: 20px;
         margin-bottom: 10px;
         text-transform: uppercase;
+        display: none;
       }
       li {
         padding: 0px 0px;
@@ -231,12 +243,32 @@
           font-weight: 400;
           display: flex;
           align-items: center;
-          padding: 15px 10px;
-          /* border-radius: 10px; */
+          /* padding: 15px 10px; */
+          /* border: 1px solid red; */
+          .label {
+            color: #ffffff;
+            white-space: nowrap;
+          }
+          .icon {
+            width: 60px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            /* border: 1px solid green; */
+            :global(svg) {
+              width: 20px;
+              height: 20px;
+            }
+          }
+
           &:hover {
             /* background-color: rgba(14, 18, 26, 0.2); */
             background-image: linear-gradient(90deg, #ffffff10, transparent);
             .icon {
+              /* border: 1px solid blue; */
+
               :global(.svg-icon-bold) {
                 :global(path) {
                   fill: #ffffff;
@@ -265,21 +297,6 @@
                   stroke: #65e14d !important;
                 }
               }
-            }
-          }
-          .label {
-            color: #ffffff;
-            white-space: nowrap;
-          }
-          .icon {
-            width: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 10px;
-            :global(svg) {
-              width: 20px;
-              height: 20px;
             }
           }
         }

@@ -60,7 +60,7 @@ function createParsedTrack(fileLocation) {
 
       track.genre = tags.genre || "Unknown Genre";
 
-      track.year = tags.year || "Unknown Year";
+      track.year = tags.year;
 
       track.defaultTitle =
         track.title || track.extractedTitle || track.fileName;

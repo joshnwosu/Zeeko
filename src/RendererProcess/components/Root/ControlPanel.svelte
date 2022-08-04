@@ -274,7 +274,7 @@
 <style lang="scss">
   .seek-bar {
     height: 5px;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.1);
     margin-left: 10px;
     border-radius: 5px;
     position: relative;
