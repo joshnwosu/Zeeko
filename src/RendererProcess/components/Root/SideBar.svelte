@@ -205,7 +205,6 @@
 
   .search-bar {
     margin: 0px 0px;
-    margin-bottom: 20px;
     overflow: hidden;
     position: relative;
     input {
