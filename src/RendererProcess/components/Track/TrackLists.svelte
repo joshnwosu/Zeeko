@@ -102,7 +102,6 @@
         padding: 10px 0;
         height: 50px;
         &.playing-track {
-          /* background-color: #65e14d20; */
           background-color: transparent !important;
           background-image: linear-gradient(
             45deg,
@@ -154,9 +153,6 @@
             fill: #ffffff;
           }
         }
-        /* &:first-child {
-          padding-right: 20px;
-        } */
         &:last-child {
           padding-right: 0;
         }
