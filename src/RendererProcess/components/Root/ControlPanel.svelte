@@ -265,12 +265,15 @@
       <span class="">
         <p>{formatDuration($playbackManager.currentTime) || "00:00"}</p>
       </span>
-      <div class="seek-bar" on:click={goToPosition}>
-        <input on:input={seek} type="range" value="0" min="0" max="100" />
-        <div class="seek-progress" style="width: {seekBarWidth}">
-          <div class="seek-knob" />
+      <div class="seek-bar-wrap" on:click={goToPosition}>
+        <div class="seek-bar">
+          <input on:input={seek} type="range" value="0" min="0" max="100" />
+          <div class="seek-progress" style="width: {seekBarWidth}">
+            <div class="seek-knob" />
+          </div>
         </div>
       </div>
+
       <span class="">
         <p>{formatDuration($playbackManager.duration) || "00:00"}</p>
       </span>
@@ -284,17 +287,19 @@
       <span class="icon volum-icon left-flare">
         <svelte:component this={VolumeHighBoldIcon} />
       </span>
-      <div class="seek-bar">
-        <input
-          on:input={changeVolume}
-          min="0"
-          value=".5"
-          max="1"
-          step="0.05"
-          type="range"
-        />
-        <div class="seek-progress" style="width: {volume}">
-          <div class="seek-knob" />
+      <div class="seek-bar-wrap">
+        <div class="seek-bar">
+          <input
+            on:input={changeVolume}
+            min="0"
+            value=".5"
+            max="1"
+            step="0.05"
+            type="range"
+          />
+          <div class="seek-progress" style="width: {volume}">
+            <div class="seek-knob" />
+          </div>
         </div>
       </div>
     </div>
@@ -308,10 +313,17 @@
 </div>
 
 <style lang="scss">
+  .seek-bar-wrap {
+    width: 100%;
+    height: 10px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+  }
   .seek-bar {
-    height: 5px;
+    height: 3px;
     background-color: rgba(255, 255, 255, 0.1);
-    margin-left: 10px;
     border-radius: 5px;
     position: relative;
     input {
@@ -532,7 +544,6 @@
         }
 
         .seek-bar {
-          margin: 0 20px;
           flex: 1;
         }
       }
