@@ -42,7 +42,7 @@
           >
             <svelte:component this={MenuBoldIcon} />
           </span>
-          <span class="label"> Menu </span>
+          <!-- <span class="label"> Menu </span> -->
         </li>
         <div class="search-bar">
           <span class="icon">
