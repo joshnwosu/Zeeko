@@ -60,7 +60,7 @@
       margin-top: 50px;
     }
   }
-  :global(svg.svg-icon) {
+  :global(svg) {
     width: 18px;
     height: 18px;
     :global(path) {

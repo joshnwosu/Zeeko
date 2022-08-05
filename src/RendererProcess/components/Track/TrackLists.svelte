@@ -7,6 +7,7 @@
     selectedTrack,
   } from "../../store/playbackManager";
   import { HeartIcon, MoreIcon, PauseIcon, PlayIcon } from "../Icons";
+  import PlayAnimation from "../Widget/PlayAnimation.svelte";
 </script>
 
 <table>
@@ -39,7 +40,7 @@
           </td>
           <td class="index">
             {#if $selectedSong == track.fileLocation}
-              <div class="is-playing" />
+              <PlayAnimation />
             {:else}
               <p>{formatIndex(index)}</p>
             {/if}
@@ -84,12 +85,6 @@
 </table>
 
 <style lang="scss">
-  .is-playing {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #65e14d;
-  }
   table {
     width: 100%;
     table-layout: fixed;
@@ -180,6 +175,7 @@
   }
 
   .title {
+    width: 300px;
     .title-wrapper {
       display: flex;
       align-items: center;

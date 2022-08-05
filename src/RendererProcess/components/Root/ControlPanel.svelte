@@ -473,16 +473,16 @@
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        background-color: #ffffff;
+        /* background-color: #ffffff; */
         display: flex;
         justify-content: center;
         align-items: center;
         margin: 0 4px;
         :global(svg) {
-          width: 30px !important;
-          height: 30px !important;
+          width: 50px !important;
+          height: 50px !important;
           :global(path) {
-            fill: rgba(14, 18, 26, 0.8);
+            fill: #ffffff;
           }
         }
       }
