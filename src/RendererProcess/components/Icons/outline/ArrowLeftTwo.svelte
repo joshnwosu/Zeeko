@@ -1,5 +1,5 @@
 <svg
-  class="svg-icon"
+  class="svg-icon svg-icon-outline"
   width="24"
   height="24"
   viewBox="0 0 24 24"

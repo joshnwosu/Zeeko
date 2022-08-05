@@ -43,7 +43,7 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 10px 0 0;
-    padding-top: 30px;
+    padding-top: 40px;
     padding-bottom: 100px;
     z-index: 999;
   }

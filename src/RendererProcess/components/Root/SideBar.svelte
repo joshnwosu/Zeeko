@@ -143,7 +143,7 @@
     top: 0;
     left: 0;
     bottom: 0;
-    padding-top: 30px;
+    padding-top: 40px;
     padding-bottom: 100px;
     display: flex;
     flex-direction: column;

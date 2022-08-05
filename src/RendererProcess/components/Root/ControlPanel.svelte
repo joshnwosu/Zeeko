@@ -348,12 +348,12 @@
       justify-content: flex-end;
       align-items: center;
       .seek-knob {
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
         background-color: #ffffff;
         position: absolute;
-        margin-right: -8px;
+        margin-right: -9px;
       }
     }
   }

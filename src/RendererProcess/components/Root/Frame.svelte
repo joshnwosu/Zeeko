@@ -34,7 +34,7 @@
 <style lang="scss">
   .frame {
     width: 100%;
-    height: 30px;
+    height: 40px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -60,7 +60,7 @@
 
       .icon {
         width: 60px;
-        height: 30px;
+        height: 100%;
         display: flex;
         display: none;
         justify-content: center;
@@ -85,7 +85,7 @@
   .navigation-action-button span {
     width: block;
     width: 60px;
-    height: 30px;
+    height: 40px;
     cursor: pointer;
     display: flex;
     justify-content: center;
