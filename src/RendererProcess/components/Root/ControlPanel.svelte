@@ -523,8 +523,8 @@
         justify-content: space-between;
         height: 20px;
         margin-top: 5px;
-        margin-left: 20px;
-        margin-right: 20px;
+        margin-left: 15px;
+        margin-right: 15px;
 
         p {
           font-size: 12px;
