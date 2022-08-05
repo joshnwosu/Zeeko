@@ -73,16 +73,10 @@
     let index = getSongIndex($queuelistStore, $selectedSong);
     audio.src = encodeTrackFile($queuelistStore[index]);
 
-    console.log("track", encodeTrackFile($queuelistStore[index]));
-    console.log("trac image", $queuelistStore[index].albumArt);
-
     audio.onloadeddata = () => {
       audio.play();
       $playbackManager.nowPlaying = getSong($queuelistStore, $selectedSong);
       checkIfInFavorite();
-      console.log("now playing", $playbackManager.nowPlaying);
-
-      // console.log(encodeURI($playbackManager?.nowPlaying?.albumArt));
     };
 
     audio.oncanplay = () => {
@@ -122,9 +116,7 @@
     console.log("Browser Dir HERE: ", dirHandle);
   }
 
-  function toggleFromFavorites() {
-    // checkIfInFavorite();
-    // addToSelectedTracks($playbackManager.nowPlaying);
+  function toggleFavorite() {
     if (!audio.src) return;
     if (isInFavorites()) {
       console.log("Track removed from favorite");
@@ -170,7 +162,7 @@
         <span
           class="icon heart-icon left-flare"
           class:in-favorite={$playbackManager?.isInFavorite}
-          on:click={toggleFromFavorites}
+          on:click={toggleFavorite}
         >
           {#if $playbackManager?.isInFavorite}
             <svelte:component this={HeartBoldIcon} />

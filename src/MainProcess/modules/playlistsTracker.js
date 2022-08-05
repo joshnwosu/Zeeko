@@ -2,7 +2,7 @@ const fs = require("fs");
 const { directories } = require("./directories");
 
 class PlaylistsTracker {
-  playlists = [{ name: "Favorite", track: [] }];
+  playlists = [{ name: "Favorites", tracks: [] }];
 
   constructor() {
     if (fs.existsSync(directories.playlistsLocation)) {

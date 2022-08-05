@@ -293,6 +293,7 @@ export function checkIfInFavorite() {
 }
 
 export function isInFavorites() {
+  // console.log(playlists[0]);
   return playlists[0].tracks.some(
     (track) => track.fileLocation == status.nowPlaying.fileLocation
   );
