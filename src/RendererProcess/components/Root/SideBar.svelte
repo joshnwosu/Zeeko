@@ -35,7 +35,7 @@
     <nav>
       <ul>
         <div class="ul-head">Menu</div>
-        <li class="no-link-icon">
+        <li class="menu-li">
           <span
             class="icon"
             on:click={() => ($toggleSidebar = !$toggleSidebar)}
@@ -117,11 +117,8 @@
             <span class="label"> Playlists </span>
           </a>
         </li>
-        <li class="no-link-icon">
-          <span
-            class="icon"
-            on:click={() => ($toggleSidebar = !$toggleSidebar)}
-          >
+        <li on:click={() => ($toggleSidebar = !$toggleSidebar)}>
+          <span class="icon">
             <svelte:component this={AddIcon} />
           </span>
           <span class="label"> Add playlist </span>
@@ -152,15 +149,6 @@
             display: none;
           }
         }
-      }
-    }
-  }
-
-  .no-link-icon {
-    .icon {
-      cursor: pointer;
-      &:hover {
-        background-color: #ffffff10;
       }
     }
   }
@@ -262,6 +250,29 @@
         position: relative;
         display: flex;
         align-items: center;
+        &.menu-li {
+          .icon {
+            cursor: pointer;
+            &:hover {
+              background-color: #ffffff10;
+            }
+          }
+        }
+        &:hover:not(.menu-li) {
+          background-image: linear-gradient(90deg, #ffffff10, transparent);
+          .icon {
+            :global(.svg-icon-bold) {
+              :global(path) {
+                fill: #ffffff;
+              }
+            }
+            :global(.svg-icon-outline) {
+              :global(path) {
+                stroke: #ffffff;
+              }
+            }
+          }
+        }
         &.active-link-li::after {
           content: "";
           position: absolute;
@@ -280,22 +291,6 @@
           display: flex;
           align-items: center;
           flex: 1;
-
-          &:hover {
-            background-image: linear-gradient(90deg, #ffffff10, transparent);
-            .icon {
-              :global(.svg-icon-bold) {
-                :global(path) {
-                  fill: #ffffff;
-                }
-              }
-              :global(.svg-icon-outline) {
-                :global(path) {
-                  stroke: #ffffff;
-                }
-              }
-            }
-          }
 
           &.active-link {
             .label {
