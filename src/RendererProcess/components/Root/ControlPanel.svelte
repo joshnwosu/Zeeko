@@ -426,7 +426,7 @@
       &.middle {
         flex-direction: column;
         justify-content: center;
-        flex: 2;
+        flex: 1.5;
       }
       &.right {
         justify-content: flex-end;
@@ -523,6 +523,8 @@
         justify-content: space-between;
         height: 20px;
         margin-top: 5px;
+        margin-left: 20px;
+        margin-right: 20px;
 
         p {
           font-size: 12px;
