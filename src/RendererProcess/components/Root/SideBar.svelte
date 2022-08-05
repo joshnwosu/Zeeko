@@ -124,8 +124,8 @@
           >
             <svelte:component this={AddIcon} />
           </span>
-          <!-- <span class="label"> Create playlist </span> -->
-          <span class="label">你好吗 我很好</span>
+          <span class="label"> Add playlist </span>
+          <!-- <span class="label">你好吗 我很好</span> -->
         </li>
       </ul>
     </nav>
