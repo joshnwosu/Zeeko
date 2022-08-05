@@ -21,6 +21,7 @@
   };
 </script>
 
+<div class="dim" />
 <div id="app" on:click={cleanUp} on:contextmenu={cleanUp}>
   <IpcListener />
   <Bg />
@@ -46,6 +47,18 @@
     flex-direction: column;
     color: #ffffff;
     overflow: hidden;
+  }
+  .dim {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #00000050;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999999999999;
+    pointer-events: none;
   }
   :global(main.page) {
     width: 100%;
