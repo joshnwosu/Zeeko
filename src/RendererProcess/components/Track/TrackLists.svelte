@@ -184,7 +184,7 @@
   }
 
   .title {
-    width: 300px;
+    width: 200%;
     .title-wrapper {
       display: flex;
       align-items: center;
