@@ -17,7 +17,7 @@
 <style lang="scss">
   .contextOptions {
     width: 120px;
-    background-color: #12121280;
+    background-color: #22222280;
     z-index: 999999999999;
     position: fixed;
     height: 0px;
