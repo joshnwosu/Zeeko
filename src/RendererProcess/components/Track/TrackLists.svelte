@@ -6,7 +6,7 @@
     playSong,
     selectedTrack,
   } from "../../store/playbackManager";
-  import { HeartIcon, MoreIcon, PauseIcon, PlayIcon } from "../Icons";
+  import { AddIcon, HeartIcon, MoreIcon, PauseIcon, PlayIcon } from "../Icons";
   import PlayAnimation from "../Widget/PlayAnimation.svelte";
 </script>
 
@@ -67,7 +67,7 @@
                     ><svelte:component this={PlayIcon} /></span
                   >
                 {/if}
-                <span class="icon"><svelte:component this={MoreIcon} /></span>
+                <span class="icon"><svelte:component this={AddIcon} /></span>
               </div>
             </div>
           </td>

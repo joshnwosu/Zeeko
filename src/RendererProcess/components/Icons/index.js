@@ -25,6 +25,7 @@ import MoreTwoIcon from "./outline/MoreTwo.svelte";
 import VolumeHighIcon from "./outline/VolumeHigh.svelte";
 import MaximizeIcon from "./outline/Maximize.svelte";
 import CandleIcon from "./outline/Candle.svelte";
+import AddIcon from "./outline/Add.svelte";
 
 // bold icons import
 import HomeBoldIcon from "./bold/HomeBold.svelte";
@@ -75,6 +76,7 @@ export {
   VolumeHighIcon,
   MaximizeIcon,
   CandleIcon,
+  AddIcon,
 
   // bold icons
   HomeBoldIcon,
