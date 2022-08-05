@@ -317,8 +317,6 @@
     &.shuffle-on,
     &.repeat-on,
     &.in-favorite {
-      /* background-color: #171c26; */
-      /* background-color: rgba(255, 255, 255, 0.05); */
       :global(svg) {
         :global(path) {
           fill: #65e14d !important;
@@ -331,15 +329,11 @@
     }
     &:hover:not(.play-pause-icon) {
       :global(svg.svg-icon-bold) {
-        /* width: 25px; */
-        /* height: 25px; */
         :global(path) {
           fill: #ffffff;
         }
       }
       :global(svg.svg-icon-outline) {
-        /* width: 25px; */
-        /* height: 25px; */
         :global(path) {
           stroke: #ffffff;
         }
@@ -348,14 +342,12 @@
   }
   .control-panel {
     position: absolute;
-    /* border: 1px solid green; */
     width: calc(100% - 0px);
     left: 0;
     height: 100px;
     bottom: 0;
-    /* background-color: rgba(23, 28, 38, 0.9); */
-    /* background-color: rgba(14, 18, 26, 0.6); */
     background-color: rgba(0, 0, 0, 0.6);
+    background-color: #12121280;
     backdrop-filter: blur(20px);
     z-index: 1000000;
 
@@ -363,9 +355,6 @@
     flex: 1;
     justify-content: space-between;
     padding: 0px 10px;
-    /* padding-top: 20px; */
-    /* padding-right: 20px; */
-    /* border-top: 1px solid rgba(23, 28, 38, 1); */
     transition: 300ms ease-in-out;
 
     &.hide {
@@ -373,30 +362,24 @@
     }
 
     .wrapper {
-      /* border: 1px solid red; */
       display: flex;
       position: relative;
       overflow: hidden;
       flex: 1;
       &.left {
-        /* width: 30%; */
         align-items: center;
       }
       &.middle {
-        /* width: 40%; */
         flex-direction: column;
         justify-content: center;
         flex: 1.5;
       }
       &.right {
-        /* width: 30%; */
         justify-content: flex-end;
       }
       .cover-art {
         width: 80px;
         height: 80px;
-        /* border-radius: 5px; */
-        /* background-color: #ffffff; */
         margin-right: 20px;
         position: relative;
         overflow: hidden;
@@ -444,20 +427,11 @@
 
     .middle {
       padding: 0 20px;
-      /* :global(svg) {
-        width: 22px;
-        height: 22px;
-        :global(path) {
-          fill: #999999;
-        }
-      } */
 
       .control-button {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        /* padding: 0 20px; */
-        /* border: 1px solid red; */
         .control-button-inner {
           display: flex;
           align-items: center;
