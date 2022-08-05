@@ -414,7 +414,7 @@
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.6);
     background-color: #12121290;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(100px);
     z-index: 1000000;
 
     display: flex;
