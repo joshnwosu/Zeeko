@@ -1,6 +1,7 @@
 // outline icons import
 import PlayIcon from "./outline/Play.svelte";
 import PauseIcon from "./outline/Pause.svelte";
+import ArrowLeftTwoIcon from "./outline/ArrowLeftTwo.svelte";
 import ArrowLeftIcon from "./outline/ArrowLeft.svelte";
 import ArrowRightIcon from "./outline/ArrowRight.svelte";
 import SettingIcon from "./outline/Setting.svelte";
@@ -56,6 +57,7 @@ export {
   PreviousIcon,
   BackwardIcon,
   ForwardIcon,
+  ArrowLeftTwoIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
   SettingIcon,

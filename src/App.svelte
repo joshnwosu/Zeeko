@@ -1,6 +1,6 @@
 <script>
   import "./RendererProcess/assets/css/global.css";
-  import Router from "svelte-spa-router";
+  import Router, { location } from "svelte-spa-router";
   import { routes } from "./RendererProcess/router";
   import { toggleSidebar } from "./RendererProcess/store/clickFunc";
   import ControlPanel from "./RendererProcess/components/Root/ControlPanel.svelte";
@@ -23,6 +23,9 @@
 
 <div class="dim" />
 <div id="app" on:click={cleanUp} on:contextmenu={cleanUp}>
+  {#if $location == "/now-playing"}
+    <div class="now-playing" />
+  {/if}
   <IpcListener />
   <Bg />
   <Frame />
@@ -52,7 +55,7 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: #00000050;
+    background-color: #00000000;
     top: 0;
     left: 0;
     right: 0;
@@ -60,6 +63,19 @@
     z-index: 9999999999999;
     pointer-events: none;
   }
+
+  .now-playing {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9;
+  }
+
   :global(main.page) {
     width: 100%;
     height: 100%;

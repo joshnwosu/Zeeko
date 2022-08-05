@@ -1,17 +1,16 @@
 <script>
-  import { MenuBoldIcon } from "../Icons";
+  import { ArrowLeftTwoIcon, MenuBoldIcon } from "../Icons";
   import { toggleSidebar } from "../../store/clickFunc";
 
   import ActionButton from "./ActionButton.svelte";
   import { pop } from "svelte-spa-router";
-  import { ArrowLeftIcon } from "../Icons";
 </script>
 
 <div class="frame">
   <div class="left">
     <div class="navigation-action-button">
       <span on:click={pop}>
-        <svelte:component this={ArrowLeftIcon} />
+        <svelte:component this={ArrowLeftTwoIcon} />
       </span>
     </div>
     <span class="icon" on:click={() => ($toggleSidebar = !$toggleSidebar)}>
