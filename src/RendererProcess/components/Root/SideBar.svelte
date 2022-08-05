@@ -18,7 +18,7 @@
   } from "../Icons";
   import { link, location, pop, querystring } from "svelte-spa-router";
   import active from "svelte-spa-router/active";
-  import { toggleSidebar } from "../../store/clickFunc";
+  import { toggleNowPlaying, toggleSidebar } from "../../store/clickFunc";
 </script>
 
 <div class="side-nav" class:toggle-sidenav={$toggleSidebar}>
@@ -90,7 +90,7 @@
             <span class="label"> Recent plays </span>
           </a>
         </li>
-        <li class:active-link-li={$location == "/now-playing"}>
+        <!-- <li class:active-link-li={$location == "/now-playing"}>
           <a
             href={"/now-playing"}
             use:link
@@ -101,6 +101,12 @@
             </span>
             <span class="label"> Now playing </span>
           </a>
+        </li> -->
+        <li on:click={() => ($toggleNowPlaying = !$toggleNowPlaying)}>
+          <span class="icon">
+            <svelte:component this={NoteIcon} />
+          </span>
+          <span class="label"> Now playing </span>
         </li>
 
         <div class="ul-head">Playlists</div>
@@ -137,7 +143,7 @@
     top: 0;
     left: 0;
     bottom: 0;
-    padding-top: 40px;
+    padding-top: 30px;
     padding-bottom: 100px;
     display: flex;
     flex-direction: column;

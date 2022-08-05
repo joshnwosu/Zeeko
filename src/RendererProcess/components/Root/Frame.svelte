@@ -1,15 +1,23 @@
 <script>
   import { ArrowLeftTwoIcon, MenuBoldIcon } from "../Icons";
-  import { toggleSidebar } from "../../store/clickFunc";
+  import { toggleNowPlaying, toggleSidebar } from "../../store/clickFunc";
 
   import ActionButton from "./ActionButton.svelte";
   import { pop } from "svelte-spa-router";
+
+  function handleNavigation() {
+    if ($toggleNowPlaying) {
+      $toggleNowPlaying = false;
+    } else {
+      pop();
+    }
+  }
 </script>
 
 <div class="frame">
   <div class="left">
     <div class="navigation-action-button">
-      <span on:click={pop}>
+      <span on:click={handleNavigation}>
         <svelte:component this={ArrowLeftTwoIcon} />
       </span>
     </div>
@@ -26,7 +34,7 @@
 <style lang="scss">
   .frame {
     width: 100%;
-    height: 40px;
+    height: 30px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -37,18 +45,22 @@
     position: fixed;
     z-index: 99999999;
     background-color: transparent;
-    padding-right: 60px;
+    /* padding-right: 60px; */
     .left,
     .right {
       -webkit-app-region: no-drag;
+    }
+    .right {
+      background-color: #000000;
     }
     .left {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       .icon {
         width: 60px;
-        height: 40px;
+        height: 30px;
         display: flex;
         display: none;
         justify-content: center;
@@ -73,7 +85,7 @@
   .navigation-action-button span {
     width: block;
     width: 60px;
-    height: 40px;
+    height: 30px;
     cursor: pointer;
     display: flex;
     justify-content: center;

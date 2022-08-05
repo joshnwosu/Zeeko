@@ -26,7 +26,7 @@
     overflow: hidden;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.597) !important;
     transition: 0.2s ease;
-    padding: 5px 0;
+    /* padding: 5px 0; */
     backdrop-filter: blur(100px);
     .options {
       .line-wrap {

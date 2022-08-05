@@ -47,6 +47,7 @@
     selectedSong,
     queuelistStore,
   } from "../../store";
+  import { toggleNowPlaying } from "../../store/clickFunc";
   import {
     formatDuration,
     getSong,
@@ -170,7 +171,7 @@
 
 <audio bind:this={audio} />
 
-<div class="control-panel" class:hide={$location == "/now-playing"}>
+<div class="control-panel" class:hide={$toggleNowPlaying}>
   <div class="wrapper left">
     <div class="cover-art">
       <img src={$playbackManager?.nowPlaying?.albumArt || src} alt={src} />
