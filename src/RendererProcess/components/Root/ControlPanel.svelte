@@ -232,7 +232,7 @@
             $playbackManager.duration) *
             100 || '0'}%"
         >
-          <!-- <div class="seek-knob" /> -->
+          <div class="seek-knob" />
         </div>
       </div>
       <span class="">
@@ -265,7 +265,7 @@
 
 <style lang="scss">
   .seek-bar {
-    height: 5px;
+    height: 4px;
     background-color: rgba(255, 255, 255, 0.1);
     margin-left: 10px;
     border-radius: 5px;
@@ -372,7 +372,7 @@
       &.middle {
         flex-direction: column;
         justify-content: center;
-        flex: 1.5;
+        flex: 2;
       }
       &.right {
         justify-content: flex-end;
@@ -435,6 +435,9 @@
         .control-button-inner {
           display: flex;
           align-items: center;
+          /* &:not(.main-control) {
+            opacity: 0;
+          } */
           &.main-control {
             :global(svg) {
               width: 25px;
@@ -447,7 +450,6 @@
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        /* background-color: #ffffff; */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -465,14 +467,11 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        /* padding: 0 20px; */
-        /* border: 1px solid blue; */
         height: 20px;
         margin-top: 5px;
 
         p {
-          font-size: 10px;
-          opacity: 0.5;
+          font-size: 12px;
           letter-spacing: 0.5px;
         }
 
@@ -486,14 +485,12 @@
     .right {
       align-items: center;
       justify-content: flex-end;
-      /* border: 1px solid red; */
       .volume-bar {
-        /* width: 200px; */
         height: 50px;
         display: flex;
         align-items: center;
         .seek-bar {
-          width: 150px;
+          width: 120px;
         }
       }
     }
