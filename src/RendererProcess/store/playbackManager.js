@@ -370,3 +370,18 @@ export function restorePlaylists(payload) {
     return store;
   });
 }
+
+export function getToPosition(e) {
+  if (audio.src) {
+    const seekBar = document.querySelector(".seek-bar");
+    const seekProgress = document.querySelector(".seek-progress");
+    const length = e.clientX - seekBar.getBoundingClientRect().x;
+    const percentageSeek = Math.ceil(
+      (length / window.getComputedStyle(seekBar).width.replace("px", "")) * 100
+    );
+    // console.log(percentageSeek);
+    seekProgress.style.width = `${percentageSeek}%`;
+    audio.currentTime = percentageSeek * audio.duration;
+    console.log(percentageSeek * audio.duration);
+  }
+}

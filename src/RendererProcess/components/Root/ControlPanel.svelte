@@ -9,6 +9,8 @@
 
   let browserFile;
   let audio;
+  let seekBarWidth;
+  let volume = 0.5;
 
   import { push } from "svelte-spa-router";
   import isElectron from "../../../../isElectron";
@@ -93,6 +95,10 @@
 
     audio.ontimeupdate = () => {
       $playbackManager.currentTime = audio.currentTime;
+      const percent = Math.floor(
+        ($playbackManager.currentTime / $playbackManager.duration) * 100
+      );
+      seekBarWidth = `${percent}%`;
     };
 
     audio.onended = () => {
@@ -124,6 +130,40 @@
     } else {
       console.log("Track added to favorite");
       addSelectedTracksToPlaylist("Favorites");
+    }
+  }
+
+  function seek(e) {
+    if (audio.src) {
+      let seekPercent = parseInt(e.srcElement.value);
+      seekBarWidth = `${seekPercent}%`;
+      audio.currentTime = (seekPercent * audio.duration) / 100;
+    }
+  }
+
+  function changeVolume(e) {
+    console.log(e.srcElement.value);
+    volume = `${Math.trunc(e.srcElement.value * 100)}%`;
+    audio.volume = e.srcElement.value;
+    // gainNode.gain.value = this.volume;
+    // this.setSettingValue({ property: "volume", newValue: this.volume });
+  }
+
+  function volumeBarWidth() {
+    return `${Math.trunc(volume * 100)}%`;
+  }
+
+  function goToPosition(e) {
+    if (audio.src) {
+      const seekBar = document.querySelector(".seek-bar");
+      const seekProgress = document.querySelector(".seek-progress");
+      const length = e.clientX - seekBar.getBoundingClientRect().x;
+      const percentageSeek = Math.ceil(
+        (length / window.getComputedStyle(seekBar).width.replace("px", "")) *
+          100
+      );
+      seekProgress.style.width = `${percentageSeek}%`;
+      audio.currentTime = (percentageSeek * audio.duration) / 100;
     }
   }
 </script>
@@ -225,13 +265,9 @@
       <span class="">
         <p>{formatDuration($playbackManager.currentTime) || "00:00"}</p>
       </span>
-      <div class="seek-bar">
-        <div
-          class="seek-progress"
-          style="width:{($playbackManager.currentTime /
-            $playbackManager.duration) *
-            100 || '0'}%"
-        >
+      <div class="seek-bar" on:click={goToPosition}>
+        <input on:input={seek} type="range" value="0" min="0" max="100" />
+        <div class="seek-progress" style="width: {seekBarWidth}">
           <div class="seek-knob" />
         </div>
       </div>
@@ -249,7 +285,15 @@
         <svelte:component this={VolumeHighBoldIcon} />
       </span>
       <div class="seek-bar">
-        <div class="seek-progress">
+        <input
+          on:input={changeVolume}
+          min="0"
+          value=".5"
+          max="1"
+          step="0.05"
+          type="range"
+        />
+        <div class="seek-progress" style="width: {volume}">
           <div class="seek-knob" />
         </div>
       </div>
@@ -265,14 +309,23 @@
 
 <style lang="scss">
   .seek-bar {
-    height: 4px;
+    height: 5px;
     background-color: rgba(255, 255, 255, 0.1);
     margin-left: 10px;
     border-radius: 5px;
     position: relative;
+    input {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      top: 0px;
+      cursor: pointer;
+      opacity: 0;
+    }
     .seek-progress {
       background-color: #65e14d;
-      width: 50%;
+      /* width: 50%; */
       height: 100%;
       border-radius: 5px;
       position: absolute;
@@ -282,11 +335,12 @@
       justify-content: flex-end;
       align-items: center;
       .seek-knob {
-        width: 15px;
-        height: 15px;
+        width: 16px;
+        height: 16px;
         border-radius: 50%;
         background-color: #ffffff;
         position: absolute;
+        margin-right: -8px;
       }
     }
   }
