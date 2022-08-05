@@ -140,7 +140,8 @@
     top: 0;
     left: 0;
     bottom: 0;
-    padding: 100px 0 0;
+    padding-top: 40px;
+    padding-bottom: 100px;
     display: flex;
     flex-direction: column;
     transition: all 300ms ease-in-out;
