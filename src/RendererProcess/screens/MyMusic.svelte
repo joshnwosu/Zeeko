@@ -53,13 +53,13 @@
     z-index: 2;
     nav {
       span {
-        font-size: 12px;
+        font-size: 14px;
         color: #ffffff;
         background-color: transparent;
         border: none;
         /* border: 1px solid red; */
         margin-right: 20px;
-        text-transform: uppercase;
+        text-transform: capitalize;
         font-weight: 400;
       }
     }

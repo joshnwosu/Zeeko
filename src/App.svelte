@@ -9,6 +9,7 @@
   import RightBar from "./RendererProcess/components/Root/RightBar.svelte";
   import Frame from "./RendererProcess/components/Root/Frame.svelte";
   import IpcListener from "./RendererProcess/components/Root/IpcListener.svelte";
+  import TrackContextMenu from "./RendererProcess/components/Track/TrackContextMenu.svelte";
 
   const routeLoaded = (event) => {
     // console.log("The Event:", event);
@@ -17,6 +18,7 @@
   const cleanUp = () => {
     if (document.querySelector(".contextOptions")) {
       document.querySelector(".contextOptions").style.height = `0px`;
+      document.querySelector(".contextOptions").style.padding = `0px`;
     }
   };
 </script>
@@ -31,6 +33,7 @@
   <Frame />
   <section class="main-view">
     <SideBar />
+    <TrackContextMenu />
     <div class="router-container" class:toggle-sidebar={$toggleSidebar}>
       <Router
         {routes}

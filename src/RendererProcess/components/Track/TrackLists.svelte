@@ -8,6 +8,23 @@
   } from "../../store/playbackManager";
   import { AddIcon, HeartIcon, MoreIcon, PauseIcon, PlayIcon } from "../Icons";
   import PlayAnimation from "../Widget/PlayAnimation.svelte";
+
+  function showContextMenu(e) {
+    e.preventDefault();
+    // document.querySelector("#tabsArea").classList.remove("multiSelectMode");
+    const cordinates = {
+      x: e.clientX + 5,
+      y: e.clientY,
+    };
+    if (cordinates.y > 500) cordinates.y = 500;
+    const contextOptions = document.querySelector(".contextOptions");
+    contextOptions.style.height = `0px`;
+    contextOptions.style.top = `${cordinates.y}px`;
+    contextOptions.style.left = `${cordinates.x}px`;
+    setTimeout(() => {
+      contextOptions.style.height = `auto`;
+    }, 100);
+  }
 </script>
 
 <table>
@@ -32,6 +49,7 @@
           on:dblclick|preventDefault={() => {
             selectedTrack(track.fileLocation, $playerStore);
           }}
+          on:contextmenu|preventDefault={showContextMenu}
         >
           <td class="check-box">
             <span class="icon">

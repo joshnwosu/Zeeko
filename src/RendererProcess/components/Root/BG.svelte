@@ -7,6 +7,7 @@
 
 <div class="bg">
   <img src={src || defaultsrc} alt="Album art" />
+  <div class="overlay" />
 </div>
 
 <style lang="scss">
@@ -18,15 +19,26 @@
     right: 0;
     left: 0;
     bottom: 0;
-    filter: blur(100px);
     pointer-events: none;
+    .overlay {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-color: #00000080;
+      backdrop-filter: blur(100px);
+    }
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
-      opacity: 0.3;
+      opacity: 1;
       position: fixed;
+      /* backdrop-filter: blur(20px); */
       /* display: none; */
     }
   }
