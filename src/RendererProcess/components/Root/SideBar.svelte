@@ -14,6 +14,7 @@
     HomeBoldIcon,
     MusicBoldIcon,
     MenuBoldIcon,
+    AddIcon,
   } from "../Icons";
   import { link, location, pop, querystring } from "svelte-spa-router";
   import active from "svelte-spa-router/active";
@@ -28,20 +29,13 @@
       </div>
       <h3>eeko music</h3>
     </div>
-
-    <div class="search-bar">
-      <span class="icon">
-        <svelte:component this={SearchIcon} />
-      </span>
-      <input bind:value={search} placeholder="Search" />
-    </div>
   </div>
 
   <div class="scroll-nav">
     <nav>
       <ul>
         <div class="ul-head">Menu</div>
-        <li class="menu-icon">
+        <li class="no-link-icon">
           <span
             class="icon"
             on:click={() => ($toggleSidebar = !$toggleSidebar)}
@@ -50,6 +44,12 @@
           </span>
           <span class="label"> Menu </span>
         </li>
+        <div class="search-bar">
+          <span class="icon">
+            <svelte:component this={SearchIcon} />
+          </span>
+          <input bind:value={search} placeholder="Search" />
+        </div>
         <li class:active-link-li={$location == "/"}>
           <a
             href={"/"}
@@ -88,7 +88,6 @@
               <svelte:component this={ClockIcon} />
             </span>
             <span class="label"> Recent plays </span>
-            <!-- <span class="label">你好吗 我很好</span> -->
           </a>
         </li>
         <li class:active-link-li={$location == "/now-playing"}>
@@ -103,9 +102,7 @@
             <span class="label"> Now playing </span>
           </a>
         </li>
-      </ul>
 
-      <ul>
         <div class="ul-head">Playlists</div>
 
         <li class:active-link-li={$location == "/playlists"}>
@@ -119,6 +116,16 @@
             </span>
             <span class="label"> Playlists </span>
           </a>
+        </li>
+        <li class="no-link-icon">
+          <span
+            class="icon"
+            on:click={() => ($toggleSidebar = !$toggleSidebar)}
+          >
+            <svelte:component this={AddIcon} />
+          </span>
+          <!-- <span class="label"> Create playlist </span> -->
+          <span class="label">你好吗 我很好</span>
         </li>
       </ul>
     </nav>
@@ -148,7 +155,7 @@
     }
   }
 
-  .menu-icon {
+  .no-link-icon {
     .icon {
       cursor: pointer;
       &:hover {
@@ -208,7 +215,7 @@
     overflow: hidden;
     position: relative;
     input {
-      background-color: rgba(255, 255, 255, 0.05);
+      background-color: rgba(0, 0, 0, 0.5);
       width: 100%;
       height: 50px;
       padding: 0px 50px 0px 60px;

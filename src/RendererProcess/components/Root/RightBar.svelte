@@ -33,8 +33,6 @@
 
 <style lang="scss">
   .right-nav {
-    /* background-color: rgba(14, 18, 26, 1); */
-    /* background-color: rgba(23, 28, 38, 0.9); */
     background-color: #12121280;
     width: 60px;
     position: fixed;
@@ -44,12 +42,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* align-items: center; */
     padding: 10px 0 0;
     padding-bottom: 100px;
     padding-top: 50px;
     z-index: 999;
-    /* border-left: 1px solid rgba(23, 28, 38, 1); */
   }
 
   .bottom,
@@ -64,10 +60,10 @@
       cursor: pointer;
       position: relative;
       &:hover {
+        background-color: #ffffff10;
         .tooltip {
           visibility: visible;
           opacity: 1;
-          right: 60px;
         }
 
         .icon {
@@ -87,18 +83,16 @@
       }
 
       .tooltip {
-        background-color: rgba(23, 28, 38, 0.95);
         background-color: #121212;
         position: absolute;
-        right: 40px;
+        right: 60px;
         padding: 8px 15px;
         border-radius: 3px;
-        opacity: 0;
+        opacity: 1;
         visibility: hidden;
         font-size: 13px;
         letter-spacing: 0.5px;
         box-shadow: -2px 0px 10px 0px rgba(0, 0, 0, 0.1);
-        transition: right 300ms ease-in-out;
         pointer-events: none;
       }
     }

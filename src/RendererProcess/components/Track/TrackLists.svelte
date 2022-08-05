@@ -107,6 +107,15 @@
             p {
               color: #ffffff;
             }
+
+            .icon {
+              display: flex !important;
+            }
+
+            .checker {
+              visibility: visible;
+              opacity: 1;
+            }
           }
         }
         &:nth-child(even) {
