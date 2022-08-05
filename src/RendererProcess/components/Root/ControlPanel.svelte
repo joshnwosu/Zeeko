@@ -426,7 +426,7 @@
       &.middle {
         flex-direction: column;
         justify-content: center;
-        flex: 1.5;
+        flex: 2;
       }
       &.right {
         justify-content: flex-end;
