@@ -14,13 +14,13 @@
 
   <div class="window-action-button windows-style">
     <span on:click={() => window?.api?.titlebar("minimize")}>
-      <Icon src={minimizeWindowIcon} />
+      <Icon src={minimizeWindowIcon} size={16} />
     </span>
     <span on:click={() => window?.api?.titlebar("maximize")}>
-      <Icon src={maximizeWindowIcon} />
+      <Icon src={maximizeWindowIcon} size={16} />
     </span>
     <span class="close" on:click={() => window?.api?.titlebar("closeWindow")}>
-      <Icon src={closeWindowIcon} />
+      <Icon src={closeWindowIcon} size={16} />
     </span>
   </div>
 </div>
@@ -64,6 +64,12 @@
   }
 
   .windows-style {
+    /* icons */
+    :global(svg) {
+      :global(path) {
+        fill: #ffffff;
+      }
+    }
     span {
       background-color: transparent;
       display: flex;

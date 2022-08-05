@@ -73,7 +73,7 @@
       margin-top: 50px;
     }
   }
-  :global(svg) {
+  :global(svg.svg-icon) {
     width: 18px;
     height: 18px;
     :global(path) {
