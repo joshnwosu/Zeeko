@@ -111,11 +111,6 @@
             .icon {
               display: flex !important;
             }
-
-            .checker {
-              visibility: visible;
-              opacity: 1;
-            }
           }
         }
         &:nth-child(even) {
@@ -123,14 +118,11 @@
         }
         &:hover {
           background-color: #222222;
-          .check-box {
+          td {
             .checker {
               visibility: visible;
               opacity: 1;
             }
-          }
-
-          td {
             .icon {
               display: flex !important;
             }
