@@ -23,7 +23,7 @@
     z-index: 2;
     h1 {
       font-size: 30px;
-      font-weight: 400;
+      font-weight: 300;
     }
   }
 </style>

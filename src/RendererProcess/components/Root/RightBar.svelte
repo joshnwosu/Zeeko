@@ -45,7 +45,7 @@
     padding: 10px 0 0;
     padding-top: 40px;
     padding-bottom: 100px;
-    z-index: 999;
+    z-index: 99;
   }
 
   .bottom,

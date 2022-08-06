@@ -13,6 +13,7 @@
   import Frame from "./RendererProcess/components/Root/Frame.svelte";
   import IpcListener from "./RendererProcess/components/Root/IpcListener.svelte";
   import TrackContextMenu from "./RendererProcess/components/Track/TrackContextMenu.svelte";
+  import CreatePlaylist from "./RendererProcess/components/Widget/CreatePlaylist.svelte";
 
   const routeLoaded = (event) => {
     // console.log("The Event:", event);
@@ -29,6 +30,7 @@
 <div class="dim" />
 <div id="app" on:click={cleanUp} on:contextmenu={cleanUp}>
   <div class="now-playing" class:show-now-playing={$toggleNowPlaying} />
+  <CreatePlaylist />
   <IpcListener />
   <Bg />
   <Frame />
@@ -86,7 +88,7 @@
     &.show-now-playing {
       visibility: visible;
       opacity: 1;
-      transform: translateY(0px);
+      transform: translateY(0);
     }
   }
 
