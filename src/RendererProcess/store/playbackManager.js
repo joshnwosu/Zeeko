@@ -340,15 +340,27 @@ export function isInFavorites() {
 //   }
 // }
 
+export function createPlaylist(payload) {
+  const newPlaylist = {
+    name: payload,
+    tracks: [],
+  };
+  playlistStore.update((store) => {
+    store.push(newPlaylist);
+    return store;
+  });
+  window?.api?.updatePlaylists(playlists);
+}
+
 export function addSelectedTracksToPlaylist(payload) {
   if (payload == "Favorites") {
     playlistStore.update((store) => {
       store[0].tracks.push(status.nowPlaying);
       return store;
     });
-    // console.log({ playlists: playlists[0] });
     window?.api?.updatePlaylists(playlists);
   }
+
   checkIfInFavorite();
 }
 

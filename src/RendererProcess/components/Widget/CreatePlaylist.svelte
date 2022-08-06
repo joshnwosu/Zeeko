@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
 
   import { toggleCreatePlaylist } from "../../store/clickFunc";
+  import { createPlaylist } from "../../store/playbackManager";
   let input;
   let inputValue;
 
@@ -15,6 +16,9 @@
 
   function handleCreatePlaylist() {
     console.log("Hello world...", inputValue);
+    createPlaylist(inputValue);
+    inputValue = "";
+    $toggleCreatePlaylist = false;
   }
 </script>
 
@@ -57,7 +61,7 @@
     opacity: 0;
     visibility: hidden;
     z-index: 9999;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
 
     &.show {
       opacity: 1;
