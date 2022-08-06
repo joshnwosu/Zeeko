@@ -355,7 +355,7 @@ export function createPlaylist(payload) {
 export function addSelectedTracksToPlaylist(payload) {
   if (payload == "Favorites") {
     playlistStore.update((store) => {
-      store[0].tracks.push(status.nowPlaying);
+      store[0].tracks.unshift(status.nowPlaying);
       return store;
     });
     window?.api?.updatePlaylists(playlists);
