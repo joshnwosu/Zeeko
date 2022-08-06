@@ -62,21 +62,15 @@
     &.show {
       opacity: 1;
       visibility: visible;
-      .create-playlist-card {
-        transform: scale(1);
-        transition: 0.2s ease;
-      }
     }
 
     .create-playlist-card {
       width: 500px;
-      /* min-height: 200px; */
       background-color: #222222;
       padding: 50px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      transform: scale(0.8);
       h1 {
         font-size: 30px;
         font-weight: 300;
