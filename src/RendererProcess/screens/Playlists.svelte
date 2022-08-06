@@ -26,7 +26,6 @@
   }
   .playlist-card {
     margin-right: 10px;
-    border: 1px solid red;
     .cover {
       width: 250px;
       height: 180px;
@@ -39,6 +38,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 0 10px;
 
       p {
         font-size: 14px;
