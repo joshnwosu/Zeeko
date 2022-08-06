@@ -9,10 +9,48 @@
   <div class="screen-view">
     <!-- <p>Playlists</p> -->
     {#each $playlistStore as playlist}
-      <div>
-        <p>{playlist.name}</p>
-        <p>{playlist.tracks.length}</p>
+      <div class="playlist-card">
+        <div class="cover" />
+        <div class="label">
+          <p class="name">{playlist.name}</p>
+          <p class="length">{playlist.tracks.length} Songs</p>
+        </div>
       </div>
     {/each}
   </div>
 </main>
+
+<style lang="scss">
+  .screen-view {
+    display: flex;
+  }
+  .playlist-card {
+    margin-right: 10px;
+    border: 1px solid red;
+    .cover {
+      width: 250px;
+      height: 180px;
+      background-color: #121212;
+
+      padding: 20px;
+    }
+    .label {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      p {
+        font-size: 14px;
+        &.name {
+          opacity: 1;
+          font-weight: 400;
+        }
+        &.length {
+          opacity: 0.6;
+          font-size: 10px;
+        }
+      }
+    }
+  }
+</style>
