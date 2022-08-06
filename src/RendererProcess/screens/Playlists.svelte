@@ -1,6 +1,11 @@
 <script>
   import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
-  import { MusicPlaylistIcon } from "../components/Icons";
+  import {
+    AddIcon,
+    MusicPlaylistIcon,
+    PlayBoldIcon,
+    PlayIcon,
+  } from "../components/Icons";
   import ScreenHeader from "../components/Root/ScreenHeader.svelte";
   import { playlistStore } from "../store";
   function getFisrtAlbumArt(playlist) {
@@ -23,6 +28,14 @@
                 <div class="filler" />
                 <div class="filler" />
                 <div class="filler">
+                  <div class="hover">
+                    <span class="hover-btn">
+                      <svelte:component this={AddIcon} />
+                    </span>
+                    <span class="hover-btn">
+                      <svelte:component this={PlayBoldIcon} />
+                    </span>
+                  </div>
                   <img src={getFisrtAlbumArt(playlist)} alt={`album-art`} />
                 </div>
               {:else}
@@ -30,6 +43,14 @@
                 <div class="filler" />
                 <div class="filler" />
                 <div class="filler no-img">
+                  <div class="hover">
+                    <span class="hover-btn">
+                      <svelte:component this={AddIcon} />
+                    </span>
+                    <span class="hover-btn">
+                      <svelte:component this={PlayBoldIcon} />
+                    </span>
+                  </div>
                   <span>
                     <svelte:component this={MusicPlaylistIcon} />
                   </span>
@@ -70,17 +91,28 @@
         left: 0;
         -webkit-transition: all 0.3s;
         transition: all 0.3s;
-        outline: 1px solid transparent;
       }
 
       .stack .filler:last-child {
         position: relative;
         background-color: #121212;
+        overflow: hidden;
+        &:hover {
+          .hover {
+            visibility: visible;
+            opacity: 1;
+          }
+          img {
+            transform: scale(1);
+          }
+        }
         img {
           width: 100%;
           height: 100%;
           object-fit: cover;
           object-position: center;
+          transform: scale(2);
+          transition: 0.2s ease;
         }
         &.no-img {
           display: flex;
@@ -90,6 +122,43 @@
             width: 80px;
             height: 80px;
             opacity: 0.05;
+          }
+        }
+
+        .hover {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          /* top: 0; */
+          /* left: 0; */
+          background-color: #12121280;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 2;
+          /* backdrop-filter: blur(5px); */
+          visibility: hidden;
+          opacity: 0;
+          transition: 0.2s ease;
+          .hover-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            background-color: #00000050;
+            border-radius: 50%;
+            margin: 0 10px;
+            cursor: pointer;
+            :global(svg) {
+              width: 30px;
+              height: 30px;
+              opacity: 1 !important;
+              /* :global(path) {
+                fill: #ffffff !important;
+                stroke: #ffffff !important;
+              } */
+            }
           }
         }
       }
