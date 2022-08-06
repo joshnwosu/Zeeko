@@ -9,6 +9,8 @@ import {
   playlistStore,
   selectedTracksStore,
 } from ".";
+// import * as getColors from "get-image-colors";
+// const getColors = require("get-image-colors");
 
 let audio;
 let player;
@@ -385,3 +387,13 @@ export function getToPosition(e) {
     console.log(percentageSeek * audio.duration);
   }
 }
+
+// export function extractColorFromImage() {
+//   getColors("./assets/images/default-cover-art.jpg")
+//     .then((colors) => {
+//       console.log("The Colors: ", colors);
+//     })
+//     .catch((err) => {
+//       console.log("Error: ", err);
+//     });
+// }

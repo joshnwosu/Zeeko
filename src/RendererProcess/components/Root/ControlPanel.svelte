@@ -39,6 +39,8 @@
     MaximizeIcon,
     CandleIcon,
     CandleBoldIcon,
+    Forward10Icon,
+    Backward10Icon,
   } from "../../components/Icons";
   import {
     playerStore,
@@ -220,7 +222,7 @@
           <svelte:component this={PreviousBoldIcon} />
         </span>
         <span class="icon backward-icon left-flare" on:click={stepbackward}>
-          <svelte:component this={BackwardBoldIcon} />
+          <svelte:component this={Backward10Icon} />
         </span>
         <div class="play-pause" on:click={togglePlaying}>
           <span class="icon play-pause-icon">
@@ -232,7 +234,7 @@
           </span>
         </div>
         <span class="icon forward-icon right-flare" on:click={stepforward}>
-          <svelte:component this={ForwardBoldIcon} />
+          <svelte:component this={Forward10Icon} />
         </span>
         <span class="icon next-icon right-flare" on:click={nextSong}>
           <svelte:component this={NextBoldIcon} />
@@ -557,6 +559,12 @@
         height: 50px;
         display: flex;
         align-items: center;
+        .seek-bar-wrap {
+          flex: 1;
+          margin: 0;
+          margin-left: 9px;
+          /* border: 1px solid red; */
+        }
         .seek-bar {
           width: 120px;
         }

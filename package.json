@@ -42,6 +42,7 @@
     "electron-is-dev": "^2.0.0",
     "electron-json-storage": "^4.5.0",
     "get-image-colors": "^4.0.1",
+    "gsap": "^3.10.4",
     "music-metadata": "^7.12.4",
     "node-id3": "^0.2.3",
     "sirv-cli": "^2.0.0",

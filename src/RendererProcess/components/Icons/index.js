@@ -20,7 +20,9 @@ import NoteIcon from "./outline/Note.svelte";
 import NextIcon from "./outline/Next.svelte";
 import PreviousIcon from "./outline/Previous.svelte";
 import BackwardIcon from "./outline/Backward.svelte";
+import Backward10Icon from "./outline/Backward10.svelte";
 import ForwardIcon from "./outline/Forward.svelte";
+import Forward10Icon from "./outline/Forward10.svelte";
 import MoreIcon from "./outline/More.svelte";
 import MoreTwoIcon from "./outline/MoreTwo.svelte";
 import VolumeHighIcon from "./outline/VolumeHigh.svelte";
@@ -56,7 +58,9 @@ export {
   NextIcon,
   PreviousIcon,
   BackwardIcon,
+  Backward10Icon,
   ForwardIcon,
+  Forward10Icon,
   ArrowLeftTwoIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
