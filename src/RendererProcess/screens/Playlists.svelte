@@ -9,7 +9,10 @@
   <div class="screen-view">
     <!-- <p>Playlists</p> -->
     {#each $playlistStore as playlist}
-      <p>{playlist.name}</p>
+      <div>
+        <p>{playlist.name}</p>
+        <p>{playlist.tracks.length}</p>
+      </div>
     {/each}
   </div>
 </main>
