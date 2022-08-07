@@ -7,7 +7,7 @@
 
 <nav class="right-nav">
   <ul class="top">
-    <li on:click={() => push("/favorite")}>
+    <li on:click={() => push("/playlist-details/Favorites")}>
       <span class="icon">
         <svelte:component this={HeartIcon} />
       </span>
