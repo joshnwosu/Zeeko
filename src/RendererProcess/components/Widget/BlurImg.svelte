@@ -17,9 +17,9 @@
     .overlay {
       width: 100%;
       height: 100%;
-      background-color: #00000090;
+      background-color: #12121280;
       position: absolute;
-      backdrop-filter: blur(50px);
+      backdrop-filter: blur(100px);
       z-index: 2;
     }
     img {
