@@ -1,9 +1,12 @@
 <script>
   import { playerStore } from "../../store";
+  import { toggleNowPlaying } from "../../store/clickFunc";
 
   import TrackLists from "./TrackLists.svelte";
 </script>
 
 <div>
-  <TrackLists tracks={$playerStore} />
+  {#if !$toggleNowPlaying}
+    <TrackLists tracks={$playerStore} />
+  {/if}
 </div>

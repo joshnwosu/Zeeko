@@ -2,10 +2,7 @@
   import "./RendererProcess/assets/css/global.css";
   import Router, { location } from "svelte-spa-router";
   import { routes } from "./RendererProcess/router";
-  import {
-    toggleNowPlaying,
-    toggleSidebar,
-  } from "./RendererProcess/store/clickFunc";
+  import { toggleSidebar } from "./RendererProcess/store/clickFunc";
   import ControlPanel from "./RendererProcess/components/Root/ControlPanel.svelte";
   import SideBar from "./RendererProcess/components/Root/SideBar.svelte";
   import Bg from "./RendererProcess/components/Root/BG.svelte";
@@ -14,6 +11,7 @@
   import IpcListener from "./RendererProcess/components/Root/IpcListener.svelte";
   import TrackContextMenu from "./RendererProcess/components/Track/TrackContextMenu.svelte";
   import CreatePlaylist from "./RendererProcess/components/Widget/CreatePlaylist.svelte";
+  import NowPlaying from "./RendererProcess/components/Root/NowPlaying.svelte";
 
   const routeLoaded = (event) => {
     // console.log("The Event:", event);
@@ -29,7 +27,7 @@
 
 <div class="dim" />
 <div id="app" on:click={cleanUp} on:contextmenu={cleanUp}>
-  <div class="now-playing" class:show-now-playing={$toggleNowPlaying} />
+  <NowPlaying />
   <CreatePlaylist />
   <IpcListener />
   <Bg />
@@ -68,28 +66,6 @@
     bottom: 0;
     z-index: 9999999999999;
     pointer-events: none;
-  }
-
-  .now-playing {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: #00000080;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 9999;
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(50%);
-    transition: 0.2s ease;
-    backdrop-filter: blur(100px);
-    &.show-now-playing {
-      visibility: visible;
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 
   :global(main.page) {
