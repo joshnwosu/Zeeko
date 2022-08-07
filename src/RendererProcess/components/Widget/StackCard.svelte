@@ -21,11 +21,6 @@
       transition: all 0.3s;
       backface-visibility: hidden;
       transform-origin: 50% -50%;
-      /* &:last-child {
-        position: relative;
-        background-color: #121212;
-        overflow: hidden;
-      } */
 
       &:first-child {
         transform: scale(0.7);

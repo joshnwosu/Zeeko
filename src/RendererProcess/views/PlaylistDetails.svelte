@@ -1,7 +1,7 @@
 <script>
   export let params;
   import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
-  import StackCard from "../components/Widget/StackCard.svelte";
+  import Cover from "../components/Widget/Cover.svelte";
   import { playlistStore } from "../store";
   let playlist;
 
@@ -12,9 +12,7 @@
 
 <main class="page playlist-details" transition:fade>
   <div class="header">
-    <StackCard>
-      <!--  -->
-    </StackCard>
+    <Cover {playlist} />
     <div class="details">
       <h1>{params.name}</h1>
       <p>{playlist.tracks.length} Songs</p>
@@ -31,13 +29,11 @@
 <style lang="scss">
   .header {
     width: 100%;
-    /* height: 250px; */
     background-color: #121212;
     display: flex;
     padding: 50px 20px;
-    /* align-items: flex; */
     .details {
-      padding: 20px 0;
+      padding: 20px;
       h1 {
         font-weight: 200;
       }
