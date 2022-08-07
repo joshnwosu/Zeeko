@@ -1,11 +1,8 @@
 <script>
-  import Track from "../components/Track/Track.svelte";
+  export let params;
   import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
 </script>
 
 <div transition:fade>
-  <Track />
+  <h1>{params.name}</h1>
 </div>
-
-<style lang="scss">
-</style>

@@ -7,6 +7,7 @@ import Favorite from "../screens/Favorite.svelte";
 import Settings from "../screens/Settings.svelte";
 import NotFound from "../views/NotFound.svelte";
 import ArtistDetails from "../views/ArtistDetails.svelte";
+import PlaylistDetails from "../views/PlaylistDetails.svelte";
 
 export const routes = {
   "/": Discover,
@@ -17,5 +18,6 @@ export const routes = {
   "/favorite": Favorite,
   "/settings": Settings,
   "/artist-details/:name": ArtistDetails,
+  "/playlist-details/:name": PlaylistDetails,
   "*": NotFound,
 };

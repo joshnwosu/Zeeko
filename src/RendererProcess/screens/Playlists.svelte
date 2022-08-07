@@ -1,4 +1,6 @@
 <script>
+  import { push } from "svelte-spa-router";
+
   import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
   import {
     AddIcon,
@@ -19,7 +21,10 @@
   <ScreenHeader title="Playlists" />
   <div class="screen-view">
     {#each $playlistStore as playlist}
-      <div class="playlist-card">
+      <div
+        class="playlist-card"
+        on:click={() => push(`/playlist-details/${playlist.name}`)}
+      >
         <figure>
           <div class="cover">
             <div class="stack stack-queue">

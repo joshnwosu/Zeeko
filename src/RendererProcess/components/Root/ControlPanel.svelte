@@ -441,7 +441,7 @@
       &.middle {
         flex-direction: column;
         justify-content: center;
-        flex: 2;
+        flex: 2.5;
       }
       &.right {
         justify-content: flex-end;
