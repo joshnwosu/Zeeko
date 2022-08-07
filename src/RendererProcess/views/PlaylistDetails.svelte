@@ -8,7 +8,11 @@
   let playlist;
 
   $: (function getPlaylist(payload) {
-    playlist = $playlistStore.filter((playlist) => playlist.name == payload)[0];
+    if (params.name) {
+      playlist = $playlistStore.filter(
+        (playlist) => playlist.name == payload
+      )[0];
+    }
   })(params.name);
 </script>
 
@@ -19,15 +23,17 @@
       <Cover img={getFisrtAlbumArt(playlist)} />
       <div class="details">
         <h1>{params.name}</h1>
-        <p>{playlist.tracks.length} Songs</p>
+        <p>{playlist?.tracks?.length} Songs</p>
       </div>
     </div>
   </div>
 
   <div class="playlist-view">
-    {#each playlist.tracks as playlist}
-      <p>{playlist.fileLocation}</p>
-    {/each}
+    {#if params?.name}
+      {#each playlist?.tracks as playlist}
+        <p>{playlist.fileLocation}</p>
+      {/each}
+    {/if}
   </div>
 </main>
 

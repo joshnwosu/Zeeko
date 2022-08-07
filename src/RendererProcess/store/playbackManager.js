@@ -56,7 +56,7 @@ function removeDuplicates(targetArray, prop) {
 
 export function getFisrtAlbumArt(playlist) {
   let v;
-  playlist.tracks.some((track) => (v = track.albumArt));
+  playlist?.tracks?.some((track) => (v = track.albumArt));
   return v;
 }
 
