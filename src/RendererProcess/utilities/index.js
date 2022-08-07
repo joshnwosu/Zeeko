@@ -22,3 +22,12 @@ function shuffleArray(array) {
 var arr = [2, 11, 37, 42];
 shuffle(arr);
 console.log(arr);
+
+// example 2
+
+let unshuffled = ["hello", "a", "t", "q", 1, 2, 3, { cats: true }];
+
+let shuffled = unshuffled
+  .map((value) => ({ value, sort: Math.random() }))
+  .sort((a, b) => a.sort - b.sort)
+  .map(({ value }) => value);
