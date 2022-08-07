@@ -12,7 +12,7 @@
 <style lang="scss">
   .content {
     p {
-      margin-bottom: 5px;
+      margin-bottom: 2px;
       font-weight: 200;
       &.name {
         opacity: 1;
@@ -20,8 +20,8 @@
       }
       &.length {
         opacity: 0.6;
-        font-size: 10px;
-        word-spacing: 5px;
+        font-size: 12px;
+        word-spacing: 2px;
       }
     }
   }
