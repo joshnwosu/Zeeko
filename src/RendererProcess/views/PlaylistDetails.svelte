@@ -1,8 +1,8 @@
 <script>
   export let params;
   import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
-  import PlaylistHeader from "../components/Root/PlaylistHeader.svelte";
-  import PlaylistView from "../components/Root/PlaylistView.svelte";
+  import PlaylistHeader from "../components/Playlist/PlaylistHeader.svelte";
+  import PlaylistView from "../components/Playlist/PlaylistView.svelte";
   import TrackLists from "../components/Track/TrackLists.svelte";
   import { playlistStore } from "../store";
   let playlist;

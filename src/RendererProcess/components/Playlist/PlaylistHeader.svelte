@@ -2,16 +2,20 @@
   export let playlist;
   import { getFisrtAlbumArt } from "../../store/playbackManager";
   import BlurImg from "../Widget/BlurImg.svelte";
-  import Cover from "../Widget/Cover.svelte";
+  import PlaylistCover from "../Widget/PlaylistCover.svelte";
+  import PlaylistCaption from "./PlaylistCaption.svelte";
 </script>
 
 <div class="header">
   <BlurImg img={getFisrtAlbumArt(playlist)} />
   <div class="header-content">
-    <Cover img={getFisrtAlbumArt(playlist)} />
+    <PlaylistCover img={getFisrtAlbumArt(playlist)} />
     <div class="details">
-      <h1>{playlist?.name}</h1>
-      <p>{playlist?.tracks?.length} Songs</p>
+      <PlaylistCaption
+        name={playlist.name}
+        length={playlist.tracks.length}
+        fontSize={30}
+      />
     </div>
   </div>
 </div>
@@ -29,7 +33,7 @@
       z-index: 3;
       .details {
         padding: 20px;
-        h1 {
+        /* h1 {
           font-weight: 100;
           font-size: 30px;
         }
@@ -38,7 +42,7 @@
           font-size: 12px;
           margin-top: 10px;
           opacity: 0.6;
-        }
+        } */
       }
     }
   }

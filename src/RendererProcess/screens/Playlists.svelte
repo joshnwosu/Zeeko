@@ -1,8 +1,9 @@
 <script>
   import { push } from "svelte-spa-router";
   import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
+  import PlaylistCaption from "../components/Playlist/PlaylistCaption.svelte";
   import ScreenHeader from "../components/Root/ScreenHeader.svelte";
-  import Cover from "../components/Widget/Cover.svelte";
+  import PlaylistCover from "../components/Widget/PlaylistCover.svelte";
   import { playlistStore } from "../store";
   import { getFisrtAlbumArt } from "../store/playbackManager";
 </script>
@@ -16,10 +17,13 @@
         on:click={() => push(`/playlist-details/${playlist.name}`)}
       >
         <figure>
-          <Cover img={getFisrtAlbumArt(playlist)} />
-          <figcaption class="label">
-            <p class="name">{playlist.name}</p>
-            <p class="length">{playlist.tracks.length} Songs</p>
+          <PlaylistCover img={getFisrtAlbumArt(playlist)} />
+          <figcaption>
+            <PlaylistCaption
+              name={playlist.name}
+              length={playlist.tracks.length}
+              fontSize={14}
+            />
           </figcaption>
         </figure>
       </div>
@@ -36,21 +40,9 @@
   .playlist-card {
     margin-bottom: 50px;
     margin-right: 20px;
-    .label {
+    figcaption {
       padding-left: 5px;
       margin-top: 10px;
-      p {
-        font-size: 14px;
-        margin-bottom: 5px;
-        &.name {
-          opacity: 1;
-          font-weight: 400;
-        }
-        &.length {
-          opacity: 0.6;
-          font-size: 10px;
-        }
-      }
     }
   }
 </style>
