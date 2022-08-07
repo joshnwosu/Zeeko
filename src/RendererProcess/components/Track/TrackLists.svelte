@@ -1,12 +1,13 @@
 <script>
-  import { playerStore, playbackManager, selectedSong } from "../../store";
+  export let tracks;
+  import { playbackManager, selectedSong } from "../../store";
   import {
     formatIndex,
     pauseSong,
     playSong,
     selectedTrack,
   } from "../../store/playbackManager";
-  import { AddIcon, HeartIcon, MoreIcon, PauseIcon, PlayIcon } from "../Icons";
+  import { AddIcon, HeartIcon, PauseIcon, PlayIcon } from "../Icons";
   import PlayAnimation from "../Widget/PlayAnimation.svelte";
 
   function showContextMenu(e) {
@@ -28,26 +29,14 @@
 </script>
 
 <table>
-  <!-- <thead>
-    <tr>
-      <th />
-      <th />
-      <th>Title</th>
-      <th>Artist</th>
-      <th>Album</th>
-      <th>Genre</th>
-      <th />
-      <th />
-    </tr>
-  </thead> -->
   <tbody>
-    {#if $playerStore.length}
-      {#each $playerStore as track, index}
+    {#if tracks.length}
+      {#each tracks as track, index}
         <tr
           class="track"
           class:playing-track={$selectedSong == track.fileLocation}
           on:dblclick|preventDefault={() => {
-            selectedTrack(track.fileLocation, $playerStore);
+            selectedTrack(track.fileLocation, tracks);
           }}
           on:contextmenu|preventDefault={showContextMenu}
         >
@@ -80,8 +69,7 @@
                 {:else}
                   <span
                     class="icon"
-                    on:click={() =>
-                      selectedTrack(track.fileLocation, $playerStore)}
+                    on:click={() => selectedTrack(track.fileLocation, tracks)}
                     ><svelte:component this={PlayIcon} /></span
                   >
                 {/if}

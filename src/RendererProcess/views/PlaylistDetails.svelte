@@ -1,6 +1,7 @@
 <script>
   export let params;
   import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
+  import TrackLists from "../components/Track/TrackLists.svelte";
   import BlurImg from "../components/Widget/BlurImg.svelte";
   import Cover from "../components/Widget/Cover.svelte";
   import { playlistStore } from "../store";
@@ -30,9 +31,7 @@
 
   <div class="playlist-view">
     {#if params?.name}
-      {#each playlist?.tracks as playlist}
-        <p>{playlist.fileLocation}</p>
-      {/each}
+      <TrackLists tracks={playlist?.tracks} />
     {/if}
   </div>
 </main>
@@ -51,7 +50,8 @@
       .details {
         padding: 20px;
         h1 {
-          font-weight: 200;
+          font-weight: 100;
+          font-size: 30px;
         }
 
         p {
