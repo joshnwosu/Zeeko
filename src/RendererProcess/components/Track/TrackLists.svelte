@@ -77,9 +77,13 @@
               </div>
             </div>
           </td>
-          <td class="artist"><p><a href="/">{track.artist}</a></p></td>
-          <td class="album"><p><a href="/">{track.album}</a></p></td>
-          <td class="genre"><p><a href="/">{track.genre}</a></p></td>
+          <td class="artist"
+            ><p>
+              <a href="#/artist-details/{track.artist}">{track.artist}</a>
+            </p></td
+          >
+          <td class="album"><p><a href="#/">{track.album}</a></p></td>
+          <td class="genre"><p><a href="#/">{track.genre}</a></p></td>
           <td class="year" align="right"><p>{track.year || ""}</p></td>
           <td class="favorite" align="right">
             <span class="icon"><svelte:component this={HeartIcon} /></span>

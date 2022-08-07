@@ -1,4 +1,6 @@
 <script>
+  import { onMount } from "svelte";
+
   export let params;
   import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
   import PlaylistHeader from "../components/Playlist/PlaylistHeader.svelte";

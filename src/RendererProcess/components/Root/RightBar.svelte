@@ -72,13 +72,13 @@
           opacity: 1;
         }
 
-        .icon {
+        /* .icon {
           :global(svg) {
             :global(path) {
               stroke: #ffffff;
             }
           }
-        }
+        } */
       }
 
       .icon {

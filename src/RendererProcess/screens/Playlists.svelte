@@ -6,6 +6,41 @@
   import PlaylistCover from "../components/Widget/PlaylistCover.svelte";
   import { playlistStore } from "../store";
   import { getFisrtAlbumArt } from "../store/playbackManager";
+  import {
+    gsap,
+    ScrollTrigger,
+    Draggable,
+    MotionPathPlugin,
+    Flip,
+  } from "gsap/all";
+
+  function tweenMe(node) {
+    let tl = gsap.timeline();
+    const duration = 1;
+
+    tl.from(node, {
+      duration,
+      opacity: 0,
+    }).from(
+      node,
+      {
+        duration,
+        xPercent: 20,
+        rotation: 9,
+        yPercent: 20,
+        ease: "bounce.out",
+      },
+      `-=${duration * 0.75}`
+    );
+
+    // return {
+    //   /* GSAP's duration is in seconds. Svelte's is in miliseconds */
+    //   duration: tl.totalDuration() * 1000,
+    //   tick: (t) => {
+    //     tl.progress(t);
+    //   },
+    // };
+  }
 </script>
 
 <main class="page" transition:fade>
@@ -16,7 +51,7 @@
         class="playlist-card"
         on:click={() => push(`/playlist-details/${playlist.name}`)}
       >
-        <figure>
+        <figure transition:tweenMe>
           <PlaylistCover img={getFisrtAlbumArt(playlist)} />
           <figcaption>
             <PlaylistCaption

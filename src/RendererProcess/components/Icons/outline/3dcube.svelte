@@ -1,5 +1,5 @@
 <svg
-  class="svg-icon svg-icon-bold"
+  class="svg-icon"
   width="24"
   height="24"
   viewBox="0 0 24 24"
