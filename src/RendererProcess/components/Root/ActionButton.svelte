@@ -76,7 +76,7 @@
       justify-content: center;
       align-items: center;
       width: 50px;
-      height: 40px;
+      height: 30px;
       &:hover:not(.close) {
         background-color: #ffffff20;
       }

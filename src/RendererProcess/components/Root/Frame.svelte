@@ -57,7 +57,7 @@
       -webkit-app-region: no-drag;
     }
     .right {
-      background-color: #000000;
+      background-color: transparent;
     }
     .left {
       display: flex;
