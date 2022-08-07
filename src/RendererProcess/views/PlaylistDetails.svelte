@@ -15,10 +15,12 @@
 <main class="page playlist-details" transition:fade>
   <div class="header">
     <BlurImg img={getFisrtAlbumArt(playlist)} />
-    <Cover img={getFisrtAlbumArt(playlist)} />
-    <div class="details">
-      <h1>{params.name}</h1>
-      <p>{playlist.tracks.length} Songs</p>
+    <div class="header-content">
+      <Cover img={getFisrtAlbumArt(playlist)} />
+      <div class="details">
+        <h1>{params.name}</h1>
+        <p>{playlist.tracks.length} Songs</p>
+      </div>
     </div>
   </div>
 
@@ -33,18 +35,24 @@
   .header {
     width: 100%;
     background-color: #121212;
-    display: flex;
-    padding: 50px 20px;
-    .details {
-      padding: 20px;
-      h1 {
-        font-weight: 200;
-      }
+    position: relative;
+    .header-content {
+      width: 100%;
+      display: flex;
+      position: relative;
+      padding: 50px 20px;
+      z-index: 3;
+      .details {
+        padding: 20px;
+        h1 {
+          font-weight: 200;
+        }
 
-      p {
-        font-size: 12px;
-        margin-top: 10px;
-        opacity: 0.6;
+        p {
+          font-size: 12px;
+          margin-top: 10px;
+          opacity: 0.6;
+        }
       }
     }
   }
