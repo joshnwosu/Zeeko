@@ -325,9 +325,8 @@
     margin: 0 20px;
   }
   .seek-bar {
-    height: 3px;
+    height: 2px;
     background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
     position: relative;
     input {
       position: absolute;

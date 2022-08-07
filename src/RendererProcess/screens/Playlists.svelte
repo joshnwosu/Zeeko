@@ -76,8 +76,10 @@
 <style lang="scss">
   .screen-view {
     display: flex;
+    flex-wrap: wrap;
   }
   .playlist-card {
+    margin-bottom: 20px;
     .cover {
       position: relative;
       .stack {
@@ -108,7 +110,7 @@
             opacity: 1;
           }
           img {
-            transform: scale(1);
+            transform: scale(1.2);
           }
         }
         img {
@@ -116,7 +118,7 @@
           height: 100%;
           object-fit: cover;
           object-position: center;
-          transform: scale(2);
+          transform: scale(1);
           transition: 0.2s ease;
         }
         &.no-img {
