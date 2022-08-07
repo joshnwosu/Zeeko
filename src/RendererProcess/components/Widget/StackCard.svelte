@@ -8,7 +8,7 @@
 <style lang="scss">
   .stack {
     width: 200px;
-    height: 150px;
+    height: 180px;
     padding: 0;
     position: relative;
     .shadow {
