@@ -5,9 +5,9 @@
 </script>
 
 <div class="now-playing" class:show-now-playing={$toggleNowPlaying}>
-  {#if $toggleNowPlaying}
+  <!-- {#if $toggleNowPlaying}
     <TrackLists tracks={$queuelistStore} />
-  {/if}
+  {/if} -->
 </div>
 
 <style lang="scss">

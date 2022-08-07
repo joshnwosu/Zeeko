@@ -2,7 +2,7 @@
   import { push } from "svelte-spa-router";
   import { toggleSidebar } from "../../store/clickFunc";
 
-  import { HeartIcon, SettingIcon, SunnyIcon } from "../Icons";
+  import { CubeIcon, HeartIcon, SettingIcon, SunnyIcon } from "../Icons";
 </script>
 
 <nav class="right-nav">
@@ -12,6 +12,12 @@
         <svelte:component this={HeartIcon} />
       </span>
       <span class="tooltip">Favorite</span>
+    </li>
+    <li>
+      <span class="icon">
+        <svelte:component this={CubeIcon} />
+      </span>
+      <span class="tooltip">Zen mode</span>
     </li>
   </ul>
 
@@ -94,6 +100,7 @@
         letter-spacing: 0.5px;
         box-shadow: -2px 0px 10px 0px rgba(0, 0, 0, 0.1);
         pointer-events: none;
+        white-space: nowrap;
       }
     }
   }

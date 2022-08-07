@@ -17,6 +17,7 @@
     top: 0;
     bottom: 0;
     background-color: #000000;
+    overflow: hidden;
     .overlay {
       width: 100%;
       height: 100%;

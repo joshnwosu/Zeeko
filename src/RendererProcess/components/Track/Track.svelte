@@ -6,7 +6,7 @@
 </script>
 
 <div>
-  {#if !$toggleNowPlaying}
-    <TrackLists tracks={$playerStore} />
-  {/if}
+  <!-- {#if !$toggleNowPlaying} -->
+  <TrackLists tracks={$playerStore} />
+  <!-- {/if} -->
 </div>

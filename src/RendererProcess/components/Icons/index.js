@@ -1,4 +1,5 @@
 // outline icons import
+import CubeIcon from "./outline/3dcube.svelte";
 import PlayIcon from "./outline/Play.svelte";
 import PauseIcon from "./outline/Pause.svelte";
 import ArrowLeftTwoIcon from "./outline/ArrowLeftTwo.svelte";
@@ -53,6 +54,7 @@ import CandleBoldIcon from "./bold/Candle.svelte";
 
 export {
   // outline icons
+  CubeIcon,
   PlayIcon,
   PauseIcon,
   NextIcon,

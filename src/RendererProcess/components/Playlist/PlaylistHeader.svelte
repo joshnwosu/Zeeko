@@ -1,5 +1,6 @@
 <script>
   export let playlist;
+  export let name;
   import { getFisrtAlbumArt } from "../../store/playbackManager";
   import BlurImg from "../Widget/BlurImg.svelte";
   import PlaylistCover from "../Widget/PlaylistCover.svelte";
@@ -11,11 +12,7 @@
   <div class="header-content">
     <PlaylistCover img={getFisrtAlbumArt(playlist)} />
     <div class="details">
-      <PlaylistCaption
-        name={playlist.name}
-        length={playlist.tracks.length}
-        fontSize={30}
-      />
+      <PlaylistCaption {name} length={playlist?.tracks?.length} fontSize={30} />
     </div>
   </div>
 </div>
