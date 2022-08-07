@@ -77,9 +77,9 @@
               </div>
             </div>
           </td>
-          <td class="artist"><p>{track.artist}</p></td>
-          <td class="album"><p>{track.album}</p></td>
-          <td class="genre"><p>{track.genre}</p></td>
+          <td class="artist"><p><a href="/">{track.artist}</a></p></td>
+          <td class="album"><p><a href="/">{track.album}</a></p></td>
+          <td class="genre"><p><a href="/">{track.genre}</a></p></td>
           <td class="year" align="right"><p>{track.year || ""}</p></td>
           <td class="favorite" align="right">
             <span class="icon"><svelte:component this={HeartIcon} /></span>
@@ -164,6 +164,13 @@
           white-space: nowrap;
           font-size: 12px;
           color: #ffffff;
+          a {
+            color: #ffffff;
+            opacity: 1;
+            &:hover {
+              opacity: 0.5;
+            }
+          }
         }
       }
     }
