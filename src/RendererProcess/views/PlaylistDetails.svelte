@@ -1,8 +1,10 @@
 <script>
   export let params;
   import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
+  import BlurImg from "../components/Widget/BlurImg.svelte";
   import Cover from "../components/Widget/Cover.svelte";
   import { playlistStore } from "../store";
+  import { getFisrtAlbumArt } from "../store/playbackManager";
   let playlist;
 
   $: (function getPlaylist(payload) {
@@ -12,7 +14,8 @@
 
 <main class="page playlist-details" transition:fade>
   <div class="header">
-    <Cover {playlist} />
+    <BlurImg img={getFisrtAlbumArt(playlist)} />
+    <Cover img={getFisrtAlbumArt(playlist)} />
     <div class="details">
       <h1>{params.name}</h1>
       <p>{playlist.tracks.length} Songs</p>

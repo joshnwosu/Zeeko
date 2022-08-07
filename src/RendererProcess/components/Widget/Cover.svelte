@@ -1,20 +1,14 @@
 <script>
-  export let playlist;
+  export let img;
   import { MusicPlaylistIcon } from "../Icons";
   import StackCard from "./StackCard.svelte";
-
-  function getFisrtAlbumArt(playlist) {
-    let v;
-    playlist.tracks.some((track) => (v = track.albumArt));
-    return v;
-  }
 </script>
 
 <div>
-  {#if getFisrtAlbumArt(playlist)}
+  {#if img}
     <StackCard>
       <div class="cover">
-        <img src={getFisrtAlbumArt(playlist)} alt={`album-art`} />
+        <img src={img} alt={`album-art`} />
       </div>
     </StackCard>
   {:else}

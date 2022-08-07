@@ -54,6 +54,12 @@ function removeDuplicates(targetArray, prop) {
   });
 }
 
+export function getFisrtAlbumArt(playlist) {
+  let v;
+  playlist.tracks.some((track) => (v = track.albumArt));
+  return v;
+}
+
 export function formatDuration(length) {
   let seconds = Math.floor(length % 60) || 0;
   let minutes = Math.floor(length / 60) || 0;

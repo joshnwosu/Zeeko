@@ -4,6 +4,7 @@
   import ScreenHeader from "../components/Root/ScreenHeader.svelte";
   import Cover from "../components/Widget/Cover.svelte";
   import { playlistStore } from "../store";
+  import { getFisrtAlbumArt } from "../store/playbackManager";
 </script>
 
 <main class="page" transition:fade>
@@ -15,7 +16,7 @@
         on:click={() => push(`/playlist-details/${playlist.name}`)}
       >
         <figure>
-          <Cover {playlist} />
+          <Cover img={getFisrtAlbumArt(playlist)} />
           <figcaption class="label">
             <p class="name">{playlist.name}</p>
             <p class="length">{playlist.tracks.length} Songs</p>
