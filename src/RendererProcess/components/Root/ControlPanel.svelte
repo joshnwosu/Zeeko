@@ -451,6 +451,7 @@
         margin-right: 20px;
         position: relative;
         overflow: hidden;
+        border-radius: 5px;
 
         img {
           width: 100%;
