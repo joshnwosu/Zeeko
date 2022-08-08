@@ -39,7 +39,7 @@
     </nav>
   </div>
   <div class="screen-view">
-    <Router {routes} {prefix} restoreScrollState={false} />
+    <Router {routes} {prefix} restoreScrollState={true} />
   </div>
 </main>
 
