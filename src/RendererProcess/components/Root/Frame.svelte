@@ -71,7 +71,7 @@
         display: none;
         justify-content: center;
         align-items: center;
-        cursor: pointer;
+        cursor: default;
         &:hover {
           background-color: #ffffff20;
           :global(svg) {
