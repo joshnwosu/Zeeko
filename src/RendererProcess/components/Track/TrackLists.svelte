@@ -36,15 +36,24 @@
         <tr
           class="track"
           class:playing-track={$selectedSong == track.fileLocation}
-          on:dblclick|preventDefault={() => {
+          on:dblclick={(e) => {
+            // console.log(e.target);
+            // Please don't touch this code
+            // prevents bubbling when clicked on BUTTON elements
+            if (
+              e.target.tagName === "BUTTON" ||
+              e.target.parentElement.tagName === "BUTTON"
+            ) {
+              return false;
+            }
             selectedTrack(track.fileLocation, tracks);
           }}
-          on:contextmenu|preventDefault={showContextMenu}
+          on:contextmenu|stopPropagation={showContextMenu}
         >
           <td class="check-box">
-            <span class="icon">
+            <button class="icon">
               <span class="checker" />
-            </span>
+            </button>
           </td>
           <td class="index">
             {#if $selectedSong == track.fileLocation}
@@ -59,22 +68,27 @@
               <div class="icon-wrapper">
                 {#if $selectedSong == track.fileLocation}
                   {#if $playbackManager.playing}
-                    <span class="icon" on:click={pauseSong}
-                      ><svelte:component this={PauseIcon} /></span
+                    <button class="icon" on:click|stopPropagation={pauseSong}
+                      ><svelte:component this={PauseIcon} /></button
                     >
                   {:else}
-                    <span class="icon" on:click={playSong}
-                      ><svelte:component this={PlayIcon} /></span
+                    <button class="icon" on:click|stopPropagation={playSong}
+                      ><svelte:component this={PlayIcon} /></button
                     >
                   {/if}
                 {:else}
-                  <span
+                  <button
                     class="icon"
-                    on:click={() => selectedTrack(track.fileLocation, tracks)}
-                    ><svelte:component this={PlayIcon} /></span
+                    on:click|stopPropagation={() =>
+                      selectedTrack(track.fileLocation, tracks)}
+                    ><svelte:component this={PlayIcon} /></button
                   >
                 {/if}
-                <span class="icon"><svelte:component this={AddIcon} /></span>
+                <button
+                  class="icon"
+                  on:click|capture={() => console.log("Addy")}
+                  ><svelte:component this={AddIcon} /></button
+                >
               </div>
             </div>
           </td>
@@ -95,7 +109,9 @@
           <td class="genre"><p>{track.genre}</p></td>
           <td class="year" align="right"><p>{track.year || ""}</p></td>
           <td class="favorite" align="right">
-            <span class="icon"><svelte:component this={HeartIcon} /></span>
+            <button class="icon" on:click={() => console.log("Hearty")}>
+              <svelte:component this={HeartIcon} />
+            </button>
           </td>
         </tr>
       {/each}

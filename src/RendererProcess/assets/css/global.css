@@ -56,8 +56,17 @@ body {
   -webkit-background-clip: border-box;
 }
 
+button {
+  background-color: transparent;
+  border: none;
+}
+
 /* global active style */
 
 a.active {
   border-left-color: rgb(68, 68, 68) !important;
+}
+
+svg {
+  pointer-events: none;
 }
