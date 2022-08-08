@@ -16,7 +16,6 @@
   import Artist from "../views/Artists.svelte";
   import Albums from "../views/Albums.svelte";
   import Folders from "../views/Folders.svelte";
-  import ArtistModal from "../components/Modal/ArtistModal.svelte";
 
   const prefix = "/my-music";
   const routes = {
@@ -28,7 +27,6 @@
 </script>
 
 <main class="page" transition:fade>
-  <ArtistModal />
   {#if params}
     <ScreenHeader title="My music" />
   {/if}
