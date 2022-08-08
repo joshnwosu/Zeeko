@@ -14,5 +14,6 @@
 <div>
   <!-- {#if !$toggleNowPlaying} -->
   <TrackLists tracks={sortByTitle()} />
+  <!-- <svelte:component this={TrackLists} tracks={sortByTitle()} /> -->
   <!-- {/if} -->
 </div>

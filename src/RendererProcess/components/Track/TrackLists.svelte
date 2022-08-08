@@ -1,5 +1,6 @@
 <script>
   export let tracks;
+  import { push } from "svelte-spa-router";
   import { playbackManager, selectedSong } from "../../store";
   import {
     formatIndex,
@@ -79,11 +80,19 @@
           </td>
           <td class="artist"
             ><p>
-              <a href="#/artist-details/{track.artist}">{track.artist}</a>
+              <span on:click={() => push(`#/artist-details/${track.artist}`)}
+                >{track.artist}</span
+              >
             </p></td
           >
-          <td class="album"><p><a href="#/">{track.album}</a></p></td>
-          <td class="genre"><p><a href="#/">{track.genre}</a></p></td>
+          <td class="album"
+            ><p>
+              <span on:click={() => push(`#/artist-details/${track.album}`)}
+                >{track.album}</span
+              >
+            </p></td
+          >
+          <td class="genre"><p>{track.genre}</p></td>
           <td class="year" align="right"><p>{track.year || ""}</p></td>
           <td class="favorite" align="right">
             <span class="icon"><svelte:component this={HeartIcon} /></span>
@@ -168,9 +177,10 @@
           white-space: nowrap;
           font-size: 12px;
           color: #ffffff;
-          a {
+          span {
             color: #ffffff;
             opacity: 1;
+            cursor: pointer;
             &:hover {
               opacity: 0.5;
             }
