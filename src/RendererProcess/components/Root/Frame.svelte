@@ -92,7 +92,7 @@
     width: block;
     width: 60px;
     height: 40px;
-    cursor: pointer;
+    cursor: default;
     display: flex;
     justify-content: center;
     align-items: center;
