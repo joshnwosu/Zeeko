@@ -13,7 +13,11 @@
 
 <div>
   <!-- {#if !$toggleNowPlaying} -->
-  <TrackLists tracks={sortByTitle()} />
+  <TrackLists
+    tracks={$playerStore.sort(
+      (a, b) => a.title.localeCompare(b.title) || b.title - a.title
+    )}
+  />
   <!-- <svelte:component this={TrackLists} tracks={sortByTitle()} /> -->
   <!-- {/if} -->
 </div>
