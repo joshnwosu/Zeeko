@@ -43,9 +43,10 @@ const createWindow = () => {
       contextIsolation: true,
       nodeIntegration: true,
       enableRemoteModule: true,
-      backgroundThrottling: false,
+      // backgroundThrottling: false,
       webSecurity: false,
-      // webviewTag: true,
+      webgl: false,
+      webviewTag: true,
       preload: path.join(__dirname, "preload.js"),
     },
   });
