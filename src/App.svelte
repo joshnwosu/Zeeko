@@ -2,7 +2,10 @@
   import "./RendererProcess/assets/css/global.css";
   import Router, { location } from "svelte-spa-router";
   import { routes } from "./RendererProcess/router";
-  import { toggleSidebar } from "./RendererProcess/store/clickFunc";
+  import {
+    toggleContextMenu,
+    toggleSidebar,
+  } from "./RendererProcess/store/clickFunc";
   import ControlPanel from "./RendererProcess/components/Root/ControlPanel.svelte";
   import SideBar from "./RendererProcess/components/Root/SideBar.svelte";
   import Bg from "./RendererProcess/components/Root/BG.svelte";
@@ -12,12 +15,14 @@
   import TrackContextMenu from "./RendererProcess/components/Track/TrackContextMenu.svelte";
   import CreatePlaylist from "./RendererProcess/components/Widget/CreatePlaylist.svelte";
   import NowPlaying from "./RendererProcess/components/Root/NowPlaying.svelte";
+  import ContextMenu from "./RendererProcess/components/ContextMenu/ContextMenu.svelte";
 
   const routeLoaded = (event) => {
     // console.log("The Event:", event);
   };
 
   const cleanUp = () => {
+    toggleContextMenu.set(false);
     if (document.querySelector(".contextOptions")) {
       document.querySelector(".contextOptions").style.height = `0px`;
       document.querySelector(".contextOptions").style.padding = `0px`;
@@ -27,6 +32,8 @@
 
 <div class="dim" />
 <div id="app" on:click={cleanUp} on:contextmenu={cleanUp}>
+  <!-- <ContextMenu /> -->
+
   <NowPlaying />
   <CreatePlaylist />
   <IpcListener />

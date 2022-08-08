@@ -1,4 +1,4 @@
-<div class="contextOptions">
+<!-- <div class="contextOptions">
   <ul class="options">
     <li><span>Play</span></li>
     <li><span>Play next</span></li>
@@ -12,15 +12,39 @@
     </div>
     <li><span>Select</span></li>
   </ul>
-</div>
+</div> -->
 
-<style lang="scss">
+<ul class="contextMenu" data-theme="light">
+  <li class="contextMenu-item">
+    <button class="contextMenu-button">Play </button>
+  </li>
+  <li class="contextMenu-item">
+    <button class="contextMenu-button">Play next</button>
+  </li>
+  <li class="contextMenu-item">
+    <button class="contextMenu-button">Show album</button>
+  </li>
+  <li class="contextMenu-item">
+    <button class="contextMenu-button">Edit info</button>
+  </li>
+  <li class="contextMenu-item">
+    <button class="contextMenu-button">Properties</button>
+  </li>
+  <li class="contextMenu-item">
+    <button class="contextMenu-button">Delete</button>
+  </li>
+  <li class="contextMenu-item" data-divider="top">
+    <button class="contextMenu-button">Select</button>
+  </li>
+</ul>
+
+<!-- <style lang="scss">
   .contextOptions {
     width: 120px;
     background-color: #22222280;
     z-index: 999999999999;
     position: fixed;
-    height: 0px;
+    height: 0;
     top: 50px;
     right: 50px;
     overflow: hidden;
@@ -28,6 +52,8 @@
     transition: 0.2s ease;
     /* padding: 5px 0; */
     backdrop-filter: blur(100px);
+    animation: menuAnimation 0.4s 0s both;
+    transform-origin: left;
     .options {
       .line-wrap {
         width: 100%;
@@ -53,4 +79,30 @@
       }
     }
   }
-</style>
+
+  @keyframes menuAnimation {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    100% {
+      height: var(--height);
+      opacity: 1;
+      border-radius: 8px;
+      transform: scale(1);
+    }
+  }
+
+  @-webkit-keyframes menuAnimation {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    100% {
+      height: var(--height);
+      opacity: 1;
+      border-radius: 8px;
+      transform: scale(1);
+    }
+  }
+</style> -->

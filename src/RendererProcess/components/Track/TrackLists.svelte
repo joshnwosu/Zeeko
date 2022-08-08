@@ -1,7 +1,9 @@
 <script>
   export let tracks;
   import { push } from "svelte-spa-router";
+  import { onMount } from "svelte";
   import { playbackManager, selectedSong } from "../../store";
+  import { toggleContextMenu } from "../../store/clickFunc";
   import {
     formatIndex,
     pauseSong,
@@ -11,21 +13,37 @@
   import { AddIcon, HeartIcon, PauseIcon, PlayIcon } from "../Icons";
   import PlayAnimation from "../Widget/PlayAnimation.svelte";
 
-  function showContextMenu(e) {
+  const newspaperSpinning = [
+    { transform: "rotate(360deg) scale(0.5)" },
+    { transform: "rotate(0) scale(1)" },
+  ];
+
+  const newspaperTiming = {
+    duration: 200,
+    iterations: 1,
+  };
+
+  function displayContextMenu(e) {
     e.preventDefault();
-    // document.querySelector("#tabsArea").classList.remove("multiSelectMode");
-    const cordinates = {
-      x: e.clientX + 5,
-      y: e.clientY,
-    };
-    if (cordinates.y > 500) cordinates.y = 500;
-    const contextOptions = document.querySelector(".contextOptions");
-    contextOptions.style.height = `0px`;
-    contextOptions.style.top = `${cordinates.y}px`;
-    contextOptions.style.left = `${cordinates.x}px`;
-    setTimeout(() => {
-      contextOptions.style.height = `auto`;
-    }, 100);
+    const { clientX, clientY } = e;
+    const contextMenu = document.querySelector(".contextMenu");
+    const positionY =
+      clientY + contextMenu.scrollHeight >= window.innerHeight
+        ? window.innerHeight - contextMenu.scrollHeight - 20
+        : clientY;
+    const positionX =
+      clientX + contextMenu.scrollWidth >= window.innerWidth
+        ? window.innerWidth - contextMenu.scrollWidth - 20
+        : clientX;
+    contextMenu.setAttribute(
+      "style",
+      `
+      --top: ${positionY}px;
+      --left: ${positionX}px;
+      --width: ${contextMenu.scrollWidth}px;
+      --height: ${contextMenu.scrollHeight}px;`
+    );
+    contextMenu.animate(newspaperSpinning, newspaperTiming);
   }
 </script>
 
@@ -48,7 +66,9 @@
             }
             selectedTrack(track.fileLocation, tracks);
           }}
-          on:contextmenu|stopPropagation={showContextMenu}
+          on:contextmenu|stopPropagation={(e) => {
+            displayContextMenu(e);
+          }}
         >
           <td class="check-box">
             <button class="icon">
