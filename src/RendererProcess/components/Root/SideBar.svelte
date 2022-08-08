@@ -262,7 +262,7 @@
         align-items: center;
         &.menu-li {
           .icon {
-            cursor: pointer;
+            cursor: default;
             &:hover {
               background-color: #ffffff10;
             }
@@ -301,6 +301,7 @@
           display: flex;
           align-items: center;
           flex: 1;
+          cursor: default;
 
           &.active-link {
             .label {
