@@ -13,20 +13,16 @@
   import { AddIcon, HeartIcon, PauseIcon, PlayIcon } from "../Icons";
   import PlayAnimation from "../Widget/PlayAnimation.svelte";
 
-  const newspaperSpinning = [
+  const spin = [
     { transform: "rotate(360deg) scale(0.5)" },
     { transform: "rotate(0) scale(1)" },
   ];
-
-  const newspaperTiming = {
-    duration: 200,
-    iterations: 1,
-  };
 
   function displayContextMenu(e) {
     e.preventDefault();
     const { clientX, clientY } = e;
     const contextMenu = document.querySelector(".contextMenu");
+
     const positionY =
       clientY + contextMenu.scrollHeight >= window.innerHeight
         ? window.innerHeight - contextMenu.scrollHeight - 20
@@ -35,15 +31,32 @@
       clientX + contextMenu.scrollWidth >= window.innerWidth
         ? window.innerWidth - contextMenu.scrollWidth - 20
         : clientX;
+
     contextMenu.setAttribute(
       "style",
       `
       --top: ${positionY}px;
       --left: ${positionX}px;
       --width: ${contextMenu.scrollWidth}px;
-      height: ${contextMenu.scrollHeight}px;`
+      height: ${contextMenu.scrollHeight}px;
+      `
     );
-    // contextMenu.animate(newspaperSpinning, newspaperTiming);
+
+    const newspaperSpinning = [
+      { opacity: 0, transform: "scale(1) translateY(0px)", height: 0 },
+      {
+        opacity: 1,
+        transform: "scale(1) translateY(0px)",
+        height: `${contextMenu.scrollHeight}px`,
+      },
+    ];
+
+    const newspaperTiming = {
+      duration: 200,
+      iterations: 1,
+    };
+
+    contextMenu.animate(newspaperSpinning, newspaperTiming);
   }
 </script>
 

@@ -76,8 +76,8 @@ svg {
   --menu-border: rgba(255, 255, 255, 0.08);
   --menu-bg: linear-gradient(
     45deg,
-    rgba(10, 20, 28, 0.2) 0%,
-    rgba(10, 20, 28, 0.7) 100%
+    rgba(34, 34, 34, 1) 0%,
+    rgba(34, 34, 34, 1) 100%
   );
   --item-border: rgba(255, 255, 255, 0.1);
   --item-color: #fff;
@@ -99,11 +99,11 @@ svg {
   display: flex;
   flex-direction: column;
   z-index: 999999999;
-  box-shadow: 0 0 0 1px var(--menu-border), 0 2px 2px rgba(0, 0, 0, 0.03),
+  /* box-shadow: 0 0 0 1px var(--menu-border), 0 2px 2px rgba(0, 0, 0, 0.03),
     0 4px 4px rgba(0, 0, 0, 0.04), 0 10px 8px rgba(0, 0, 0, 0.05),
     0 15px 15px rgba(0, 0, 0, 0.06), 0 30px 30px rgba(0, 0, 0, 0.07),
-    0 70px 65px rgba(0, 0, 0, 0.09);
-  transition: 0.2s ease;
+    0 70px 65px rgba(0, 0, 0, 0.09); */
+  /* transition: 0.2s ease-in-out; */
   border-radius: 8px;
   /* transform: scale(0); */
 }
@@ -136,8 +136,8 @@ svg {
   align-items: center;
   font-size: 14px;
   width: 100%;
-  -webkit-animation: menuItemAnimation 0.2s 0s both;
-  animation: menuItemAnimation 0.2s 0s both;
+  /* -webkit-animation: menuItemAnimation 0.2s 0s both; */
+  /* animation: menuItemAnimation 0.2s 0s both; */
   font-family: "Inter", sans-serif;
   cursor: pointer;
 }

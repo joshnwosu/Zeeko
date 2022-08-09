@@ -14,7 +14,7 @@
   </ul>
 </div> -->
 
-<ul class="contextMenu" data-theme="light">
+<ul class="contextMenu" data-theme="dark">
   <li class="contextMenu-item">
     <button class="contextMenu-button">Play </button>
   </li>
