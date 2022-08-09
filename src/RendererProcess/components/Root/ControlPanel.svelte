@@ -190,11 +190,7 @@
             "Click to play"}
         </p>
       </div>
-      <div
-        class="artist"
-        on:click={() =>
-          push(`/artist-details/${$playbackManager?.nowPlaying?.artist}`)}
-      >
+      <div class="artist">
         <p>
           {$playbackManager?.nowPlaying?.artist ||
             $playbackManager?.nowPlaying?.defaultArtist ||
@@ -327,7 +323,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 1;
     visibility: hidden;
     opacity: 0;
   }
@@ -451,7 +447,7 @@
       flex: 1;
       &.left {
         align-items: center;
-        padding-left: 10px;
+        padding: 0 10px;
         &:hover {
           .overlay {
             visibility: visible;
@@ -474,6 +470,7 @@
         position: relative;
         overflow: hidden;
         border-radius: 5px;
+        z-index: 2;
 
         img {
           width: 100%;
