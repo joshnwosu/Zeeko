@@ -24,20 +24,9 @@
     "/albums": Albums,
     "/folders": Folders,
   };
-  let main;
-  function parseScroll() {
-    let x = main.scrollLeft;
-    let y = main.scrollTop;
-    // console.log({ x, y });
-  }
 </script>
 
-<main
-  class="page"
-  transition:fade
-  bind:this={main}
-  on:scroll|stopPropagation={parseScroll}
->
+<main class="page" transition:fade>
   {#if params}
     <ScreenHeader title="My music" />
   {/if}

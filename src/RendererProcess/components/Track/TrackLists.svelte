@@ -215,9 +215,10 @@
           text-overflow: ellipsis;
           white-space: nowrap;
           font-size: 12px;
-          color: #ffffff;
+          font-weight: 400;
+          color: #e9e9e9;
           span {
-            color: #ffffff;
+            /* color: #ffffff; */
             opacity: 1;
             cursor: pointer;
             &:hover {
@@ -248,6 +249,8 @@
       align-items: center;
       p {
         margin-right: 20px;
+        color: #ffffff;
+        font-weight: 400;
       }
       .icon-wrapper {
         flex: 1;
@@ -259,15 +262,6 @@
 
   .index {
     width: 50px;
-    p {
-      color: #ffffff60;
-    }
-  }
-
-  .year {
-    p {
-      color: #ffffff60;
-    }
   }
 
   .year {

@@ -12,7 +12,6 @@
   import RightBar from "./RendererProcess/components/Root/RightBar.svelte";
   import Frame from "./RendererProcess/components/Root/Frame.svelte";
   import IpcListener from "./RendererProcess/components/Root/IpcListener.svelte";
-  import TrackContextMenu from "./RendererProcess/components/Track/TrackContextMenu.svelte";
   import CreatePlaylist from "./RendererProcess/components/Widget/CreatePlaylist.svelte";
   import NowPlaying from "./RendererProcess/components/Root/NowPlaying.svelte";
   import ContextMenu from "./RendererProcess/components/ContextMenu/ContextMenu.svelte";
@@ -40,8 +39,7 @@
   on:scroll={cleanUp}
   on:blur={cleanUp}
 >
-  <!-- <ContextMenu /> -->
-
+  <ContextMenu />
   <NowPlaying />
   <CreatePlaylist />
   <IpcListener />
@@ -49,7 +47,7 @@
   <Frame />
   <section class="main-view">
     <SideBar />
-    <TrackContextMenu />
+
     <div class="router-container" class:toggle-sidebar={$toggleSidebar}>
       <Router {routes} on:routeLoaded={routeLoaded} restoreScrollState={true} />
     </div>
