@@ -49,7 +49,7 @@
     selectedSong,
     queuelistStore,
   } from "../../store";
-  import { toggleNowPlaying } from "../../store/clickFunc";
+  import { toggleNowPlaying } from "../../store/status";
   import {
     formatDuration,
     getSong,

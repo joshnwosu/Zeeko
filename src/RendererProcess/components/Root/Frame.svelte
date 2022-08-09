@@ -4,7 +4,7 @@
     toggleCreatePlaylist,
     toggleNowPlaying,
     toggleSidebar,
-  } from "../../store/clickFunc";
+  } from "../../store/status";
 
   import ActionButton from "./ActionButton.svelte";
   import { pop } from "svelte-spa-router";

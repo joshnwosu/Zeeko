@@ -8,7 +8,7 @@ import {
   queuelistStore,
   playlistStore,
   selectedTracksStore,
-} from ".";
+} from "./player";
 // import * as getColors from "get-image-colors";
 // const getColors = require("get-image-colors");
 

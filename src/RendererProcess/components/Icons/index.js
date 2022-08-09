@@ -7,6 +7,7 @@ import ArrowLeftIcon from "./outline/ArrowLeft.svelte";
 import ArrowRightIcon from "./outline/ArrowRight.svelte";
 import SettingIcon from "./outline/Setting.svelte";
 import SunnyIcon from "./outline/Sunny.svelte";
+import MoonIcon from "./outline/Moon.svelte";
 import HeartIcon from "./outline/Heart.svelte";
 import MusicIcon from "./outline/Music.svelte";
 import MusicFilterIcon from "./outline/MusicFilter.svelte";
@@ -68,6 +69,7 @@ export {
   ArrowRightIcon,
   SettingIcon,
   SunnyIcon,
+  MoonIcon,
   HeartIcon,
   MusicIcon,
   MusicFilterIcon,

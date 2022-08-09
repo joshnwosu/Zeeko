@@ -5,7 +5,7 @@
   import {
     toggleContextMenu,
     toggleSidebar,
-  } from "./RendererProcess/store/clickFunc";
+  } from "./RendererProcess/store/status";
   import ControlPanel from "./RendererProcess/components/Root/ControlPanel.svelte";
   import SideBar from "./RendererProcess/components/Root/SideBar.svelte";
   import Bg from "./RendererProcess/components/Root/BG.svelte";
@@ -15,7 +15,7 @@
   import CreatePlaylist from "./RendererProcess/components/Widget/CreatePlaylist.svelte";
   import NowPlaying from "./RendererProcess/components/Root/NowPlaying.svelte";
   import ContextMenu from "./RendererProcess/components/ContextMenu/ContextMenu.svelte";
-  import Dim from "./RendererProcess/components/Root/Dim.svelte";
+  import DimMode from "./RendererProcess/components/Root/DimMode.svelte";
 
   const routeLoaded = (event) => {
     // console.log('Event: ', event)
@@ -32,7 +32,7 @@
   };
 </script>
 
-<Dim />
+<DimMode />
 <div id="app" on:click={cleanUp} on:contextmenu={cleanUp} on:scroll={cleanUp}>
   <ContextMenu />
   <NowPlaying />

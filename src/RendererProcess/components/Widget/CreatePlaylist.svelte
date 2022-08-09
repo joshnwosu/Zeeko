@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
 
-  import { toggleCreatePlaylist } from "../../store/clickFunc";
+  import { toggleCreatePlaylist } from "../../store/status";
   import { createPlaylist } from "../../store/playbackManager";
   let input;
   let inputValue;

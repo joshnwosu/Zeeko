@@ -22,7 +22,13 @@
     toggleCreatePlaylist,
     toggleNowPlaying,
     toggleSidebar,
-  } from "../../store/clickFunc";
+  } from "../../store/status";
+
+  function handleToggleSidebar() {
+    let sidebar = !$toggleSidebar;
+    localStorage.setItem("Sidebar", JSON.stringify(sidebar));
+    toggleSidebar.set(sidebar);
+  }
 </script>
 
 <div class="side-nav" class:toggle-sidenav={$toggleSidebar}>
@@ -40,10 +46,7 @@
       <ul>
         <div class="ul-head">Menu</div>
         <li class="menu-li">
-          <span
-            class="icon"
-            on:click={() => ($toggleSidebar = !$toggleSidebar)}
-          >
+          <span class="icon" on:click={handleToggleSidebar}>
             <svelte:component this={MenuBoldIcon} />
           </span>
           <!-- <span class="label"> Menu </span> -->

@@ -1,6 +1,6 @@
 <script>
   import { location } from "svelte-spa-router";
-  import { toggleSidebar } from "../../store/clickFunc";
+  import { toggleSidebar } from "../../store/status";
 
   import { MenuBoldIcon } from "../Icons/";
   import ActionButton from "./ActionButton.svelte";

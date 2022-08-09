@@ -1,5 +1,5 @@
 <script>
-  import { toggleDim } from "../../store/clickFunc";
+  import { toggleDim } from "../../store/status";
 </script>
 
 <div class="dim" class:show={$toggleDim} />
@@ -9,7 +9,7 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: #00000050;
+    background-color: #00000090;
     top: 0;
     left: 0;
     right: 0;
@@ -18,6 +18,7 @@
     pointer-events: none;
     opacity: 0;
     visibility: hidden;
+    transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     &.show {
       opacity: 1;
       visibility: visible;

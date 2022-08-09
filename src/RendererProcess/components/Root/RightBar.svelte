@@ -1,8 +1,20 @@
 <script>
   import { push } from "svelte-spa-router";
-  import { toggleSidebar } from "../../store/clickFunc";
+  import { toggleDim } from "../../store/status";
 
-  import { CubeIcon, HeartIcon, SettingIcon, SunnyIcon } from "../Icons";
+  import {
+    CubeIcon,
+    HeartIcon,
+    MoonIcon,
+    SettingIcon,
+    SunnyIcon,
+  } from "../Icons";
+
+  function toggleDimMode() {
+    let dim = !$toggleDim;
+    localStorage.setItem("DimMode", JSON.stringify(dim));
+    toggleDim.set(dim);
+  }
 </script>
 
 <nav class="right-nav">
@@ -11,7 +23,7 @@
       <span class="icon">
         <svelte:component this={HeartIcon} />
       </span>
-      <span class="tooltip">Favorite</span>
+      <span class="tooltip">Favorites</span>
     </li>
     <li>
       <span class="icon">
@@ -23,16 +35,18 @@
 
   <ul class="bottom">
     <li>
-      <span class="icon" on:click={() => ($toggleSidebar = !$toggleSidebar)}>
-        <svelte:component this={SunnyIcon} />
+      <span class="icon" on:click={toggleDimMode}>
+        <svelte:component this={$toggleDim ? MoonIcon : SunnyIcon} />
       </span>
-      <span class="tooltip">Theme</span>
+      <span class="tooltip">
+        {$toggleDim ? "Dim mode: on" : "Dim mode: off"}
+      </span>
     </li>
     <li on:click={() => push("/settings")}>
       <span class="icon">
         <svelte:component this={SettingIcon} />
       </span>
-      <span class="tooltip">Manage</span>
+      <span class="tooltip">Settings</span>
     </li>
   </ul>
 </nav>
@@ -63,7 +77,7 @@
       justify-content: center;
       align-items: center;
       height: 50px;
-      cursor: pointer;
+      cursor: default;
       position: relative;
       &:hover {
         background-color: #ffffff10;
@@ -71,14 +85,6 @@
           visibility: visible;
           opacity: 1;
         }
-
-        /* .icon {
-          :global(svg) {
-            :global(path) {
-              stroke: #ffffff;
-            }
-          }
-        } */
       }
 
       .icon {
