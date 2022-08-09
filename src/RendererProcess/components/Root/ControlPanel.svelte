@@ -174,7 +174,10 @@
 <audio bind:this={audio} />
 
 <div class="control-panel" class:hide={$toggleNowPlaying}>
-  <div class="wrapper left">
+  <div
+    class="wrapper left"
+    on:click={() => ($toggleNowPlaying = !$toggleNowPlaying)}
+  >
     <div class="cover-art">
       <img src={$playbackManager?.nowPlaying?.albumArt || src} alt={src} />
     </div>
