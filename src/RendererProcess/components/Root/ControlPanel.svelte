@@ -178,6 +178,7 @@
     class="wrapper left"
     on:click={() => ($toggleNowPlaying = !$toggleNowPlaying)}
   >
+    <div class="overlay" />
     <div class="cover-art">
       <img src={$playbackManager?.nowPlaying?.albumArt || src} alt={src} />
     </div>
@@ -319,6 +320,17 @@
 </div>
 
 <style lang="scss">
+  .overlay {
+    background-color: #22222250;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    visibility: hidden;
+    opacity: 0;
+  }
   .seek-bar-wrap {
     width: 100%;
     height: 10px;
@@ -425,7 +437,7 @@
     display: flex;
     flex: 1;
     justify-content: space-between;
-    padding: 0px 10px;
+    padding: 0px 10px 0 0;
     transition: 300ms ease-in-out;
 
     &.hide {
@@ -439,6 +451,13 @@
       flex: 1;
       &.left {
         align-items: center;
+        padding-left: 10px;
+        &:hover {
+          .overlay {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
       }
       &.middle {
         flex-direction: column;
@@ -475,6 +494,8 @@
         justify-content: center;
         overflow: hidden;
         flex: 1;
+        position: relative;
+        z-index: 2;
       }
       .title,
       .artist {
