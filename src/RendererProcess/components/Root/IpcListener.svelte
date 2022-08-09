@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { playerStore, playlistStore } from "../../store";
+  import { playerStore, playlistStore } from "../../store/player";
 
   onMount(async () => {
     window?.api?.media("getTracks");

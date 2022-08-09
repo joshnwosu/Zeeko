@@ -4,7 +4,7 @@
   import PlaylistCaption from "../components/Playlist/PlaylistCaption.svelte";
   import ScreenHeader from "../components/Root/ScreenHeader.svelte";
   import PlaylistCover from "../components/Widget/PlaylistCover.svelte";
-  import { playlistStore } from "../store";
+  import { playlistStore } from "../store/player";
   import { getFisrtAlbumArt } from "../store/playbackManager";
   import {
     gsap,

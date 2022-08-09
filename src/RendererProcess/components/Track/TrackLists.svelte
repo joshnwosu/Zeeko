@@ -1,7 +1,7 @@
 <script>
   export let tracks;
   import { push } from "svelte-spa-router";
-  import { playbackManager, selectedSong } from "../../store";
+  import { playbackManager, selectedSong } from "../../store/player";
   import {
     formatIndex,
     pauseSong,

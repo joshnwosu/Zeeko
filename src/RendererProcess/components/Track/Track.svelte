@@ -1,5 +1,5 @@
 <script>
-  import { playerStore } from "../../store";
+  import { playerStore } from "../../store/player";
   import { toggleNowPlaying } from "../../store/status";
 
   import TrackLists from "./TrackLists.svelte";

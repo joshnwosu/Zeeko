@@ -6,7 +6,7 @@
   import PlaylistHeader from "../components/Playlist/PlaylistHeader.svelte";
   import PlaylistView from "../components/Playlist/PlaylistView.svelte";
   import TrackLists from "../components/Track/TrackLists.svelte";
-  import { playlistStore } from "../store";
+  import { playlistStore } from "../store/player";
   let playlist;
 
   // $: (function getPlaylist(payload) {

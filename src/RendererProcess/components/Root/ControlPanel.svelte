@@ -48,7 +48,7 @@
     audioContext,
     selectedSong,
     queuelistStore,
-  } from "../../store";
+  } from "../../store/player";
   import { toggleNowPlaying } from "../../store/status";
   import {
     formatDuration,

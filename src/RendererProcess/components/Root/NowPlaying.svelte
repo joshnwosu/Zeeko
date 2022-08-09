@@ -1,5 +1,5 @@
 <script>
-  import { queuelistStore } from "../../store";
+  import { queuelistStore } from "../../store/player";
   import { toggleNowPlaying } from "../../store/status";
   import TrackLists from "../Track/TrackLists.svelte";
 </script>

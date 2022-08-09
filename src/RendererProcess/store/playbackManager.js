@@ -1,4 +1,3 @@
-// const path = require("path");
 import path from "path";
 import {
   audioContext,
@@ -9,8 +8,6 @@ import {
   playlistStore,
   selectedTracksStore,
 } from "./player";
-// import * as getColors from "get-image-colors";
-// const getColors = require("get-image-colors");
 
 let audio;
 let player;

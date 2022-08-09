@@ -1,5 +1,5 @@
 <script>
-  import { playbackManager } from "../../store";
+  import { playbackManager } from "../../store/player";
 </script>
 
 <div
