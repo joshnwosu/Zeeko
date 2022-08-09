@@ -27,7 +27,7 @@
   const cleanUp = () => {
     let contextMenu = document.querySelector(".contextMenu");
     if (contextMenu) {
-      contextMenu.setAttribute("style", `height: 0px; box-shadow: none`);
+      contextMenu.setAttribute("style", `height: 0px;`);
     }
   };
 </script>
