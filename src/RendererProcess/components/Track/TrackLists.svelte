@@ -110,12 +110,7 @@
         padding: 10px 0;
         height: 50px;
         &.playing-track {
-          background-color: transparent !important;
-          background-image: linear-gradient(
-            45deg,
-            transparent,
-            #222222
-          ) !important;
+          background-color: #222222 !important;
           td {
             p {
               color: #ffffff;
@@ -126,9 +121,9 @@
             }
           }
         }
-        &:nth-child(even) {
+        /* &:nth-child(even) {
           background-color: #121212;
-        }
+        } */
         &:hover {
           background-color: #222222;
           td {
