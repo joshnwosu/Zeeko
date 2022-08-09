@@ -1,9 +1,7 @@
 <script>
   export let tracks;
   import { push } from "svelte-spa-router";
-  import { onMount } from "svelte";
   import { playbackManager, selectedSong } from "../../store";
-  import { toggleContextMenu } from "../../store/clickFunc";
   import {
     formatIndex,
     pauseSong,
@@ -12,11 +10,6 @@
   } from "../../store/playbackManager";
   import { AddIcon, HeartIcon, PauseIcon, PlayIcon } from "../Icons";
   import PlayAnimation from "../Widget/PlayAnimation.svelte";
-
-  const spin = [
-    { transform: "rotate(360deg) scale(0.5)" },
-    { transform: "rotate(0) scale(1)" },
-  ];
 
   function displayContextMenu(e) {
     e.preventDefault();
@@ -42,8 +35,8 @@
       `
     );
 
-    const newspaperSpinning = [
-      { opacity: 0, transform: "scale(1) translateY(0px)", height: 0 },
+    const keyframes = [
+      { opacity: 0, transform: "scale(0.5) translateY(-10px)", height: 0 },
       {
         opacity: 1,
         transform: "scale(1) translateY(0px)",
@@ -51,12 +44,12 @@
       },
     ];
 
-    const newspaperTiming = {
-      duration: 200,
+    const timing = {
+      duration: 100,
       iterations: 1,
     };
 
-    contextMenu.animate(newspaperSpinning, newspaperTiming);
+    contextMenu.animate(keyframes, timing);
   }
 </script>
 
@@ -68,7 +61,6 @@
           class="track"
           class:playing-track={$selectedSong == track.fileLocation}
           on:dblclick={(e) => {
-            // console.log(e.target);
             // Please don't touch this code
             // prevents bubbling when clicked on BUTTON elements
             if (
@@ -79,9 +71,7 @@
             }
             selectedTrack(track.fileLocation, tracks);
           }}
-          on:contextmenu|stopPropagation={(e) => {
-            displayContextMenu(e);
-          }}
+          on:contextmenu|stopPropagation={displayContextMenu}
         >
           <td class="check-box">
             <button class="icon">

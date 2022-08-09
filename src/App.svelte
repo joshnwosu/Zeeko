@@ -16,21 +16,33 @@
   import CreatePlaylist from "./RendererProcess/components/Widget/CreatePlaylist.svelte";
   import NowPlaying from "./RendererProcess/components/Root/NowPlaying.svelte";
   import ContextMenu from "./RendererProcess/components/ContextMenu/ContextMenu.svelte";
+  import { onMount } from "svelte";
 
   const routeLoaded = (event) => {
     // console.log("The Event:", event);
   };
 
   const cleanUp = () => {
-    if (document.querySelector(".contextMenu")) {
-      document.querySelector(".contextMenu").style.height = `0px`;
-      // document.querySelector(".contextMenu").style.padding = `0px`;
+    let contextMenu = document.querySelector(".contextMenu");
+    if (contextMenu) {
+      contextMenu.setAttribute("style", `height: 0px; box-shadow: none`);
     }
   };
+
+  onMount(() => {
+    document.querySelectorAll(".page").forEach((el) => {
+      el.addEventListener("scroll", () => cleanUp());
+    });
+  });
 </script>
 
 <div class="dim" />
-<div id="app" on:click={cleanUp} on:contextmenu={cleanUp}>
+<div
+  id="app"
+  on:click={cleanUp}
+  on:contextmenu={cleanUp}
+  on:scroll|trusted={cleanUp}
+>
   <!-- <ContextMenu /> -->
 
   <NowPlaying />
