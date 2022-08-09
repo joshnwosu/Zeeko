@@ -22,10 +22,9 @@
   };
 
   const cleanUp = () => {
-    toggleContextMenu.set(false);
-    if (document.querySelector(".contextOptions")) {
-      document.querySelector(".contextOptions").style.height = `0px`;
-      document.querySelector(".contextOptions").style.padding = `0px`;
+    if (document.querySelector(".contextMenu")) {
+      document.querySelector(".contextMenu").style.height = `0px`;
+      // document.querySelector(".contextMenu").style.padding = `0px`;
     }
   };
 </script>
@@ -43,11 +42,7 @@
     <SideBar />
     <TrackContextMenu />
     <div class="router-container" class:toggle-sidebar={$toggleSidebar}>
-      <Router
-        {routes}
-        on:routeLoaded={routeLoaded}
-        restoreScrollState={false}
-      />
+      <Router {routes} on:routeLoaded={routeLoaded} restoreScrollState={true} />
     </div>
     <ControlPanel />
     <RightBar />

@@ -41,9 +41,9 @@
       --top: ${positionY}px;
       --left: ${positionX}px;
       --width: ${contextMenu.scrollWidth}px;
-      --height: ${contextMenu.scrollHeight}px;`
+      height: ${contextMenu.scrollHeight}px;`
     );
-    contextMenu.animate(newspaperSpinning, newspaperTiming);
+    // contextMenu.animate(newspaperSpinning, newspaperTiming);
   }
 </script>
 
