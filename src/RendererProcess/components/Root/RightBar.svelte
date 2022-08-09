@@ -1,7 +1,7 @@
 <script>
   import { push } from "svelte-spa-router";
   import { toggleDim } from "../../store/status";
-
+  import { handleToggleDimMode } from "../../store/statusManager";
   import {
     CubeIcon,
     HeartIcon,
@@ -9,12 +9,6 @@
     SettingIcon,
     SunnyIcon,
   } from "../Icons";
-
-  function toggleDimMode() {
-    let dim = !$toggleDim;
-    localStorage.setItem("DimMode", JSON.stringify(dim));
-    toggleDim.set(dim);
-  }
 </script>
 
 <nav class="right-nav">
@@ -35,7 +29,7 @@
 
   <ul class="bottom">
     <li>
-      <span class="icon" on:click={toggleDimMode}>
+      <span class="icon" on:click={handleToggleDimMode}>
         <svelte:component this={$toggleDim ? MoonIcon : SunnyIcon} />
       </span>
       <span class="tooltip">

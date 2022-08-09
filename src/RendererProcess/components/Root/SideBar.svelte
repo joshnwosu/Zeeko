@@ -23,12 +23,7 @@
     toggleNowPlaying,
     toggleSidebar,
   } from "../../store/status";
-
-  function handleToggleSidebar() {
-    let sidebar = !$toggleSidebar;
-    localStorage.setItem("Sidebar", JSON.stringify(sidebar));
-    toggleSidebar.set(sidebar);
-  }
+  import { handleToggleSidebar } from "../../store/statusManager";
 </script>
 
 <div class="side-nav" class:toggle-sidenav={$toggleSidebar}>
