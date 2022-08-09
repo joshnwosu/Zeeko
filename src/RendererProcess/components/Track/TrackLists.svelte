@@ -7,7 +7,7 @@
     pauseSong,
     playSong,
     selectedTrack,
-  } from "../../store/playbackManager";
+  } from "../../store/playerManager";
   import { displayContextMenu } from "../../utilities/contextMenu";
   import { AddIcon, HeartIcon, PauseIcon, PlayIcon } from "../Icons";
   import PlayAnimation from "../Widget/PlayAnimation.svelte";

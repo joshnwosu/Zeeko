@@ -68,7 +68,7 @@
     deleteSelectedTrackFromPlaylist,
     checkIfInFavorite,
     encodeTrackFile,
-  } from "../../store/playbackManager";
+  } from "../../store/playerManager";
 
   $: if ($playerStore.length) $audioContext = audio;
 

@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
 
   import { toggleCreatePlaylist } from "../../store/status";
-  import { createPlaylist } from "../../store/playbackManager";
+  import { createPlaylist } from "../../store/playerManager";
   let input;
   let inputValue;
 
