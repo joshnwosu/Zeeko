@@ -13,6 +13,7 @@
     MotionPathPlugin,
     Flip,
   } from "gsap/all";
+  import { displayContextMenu } from "../utilities/contextMenu";
 
   function tweenMe(node) {
     let tl = gsap.timeline();
@@ -69,6 +70,7 @@
       <div
         class="playlist-card"
         on:click={() => push(`/playlist-details/${playlist.name}`)}
+        on:contextmenu={displayContextMenu}
       >
         <figure transition:tweenMe>
           <PlaylistCover img={getFisrtAlbumArt(playlist)} />

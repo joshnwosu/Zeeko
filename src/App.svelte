@@ -15,6 +15,7 @@
   import CreatePlaylist from "./RendererProcess/components/Widget/CreatePlaylist.svelte";
   import NowPlaying from "./RendererProcess/components/Root/NowPlaying.svelte";
   import ContextMenu from "./RendererProcess/components/ContextMenu/ContextMenu.svelte";
+  import Dim from "./RendererProcess/components/Root/Dim.svelte";
 
   const routeLoaded = (event) => {
     // console.log('Event: ', event)
@@ -31,7 +32,7 @@
   };
 </script>
 
-<div class="dim" />
+<Dim />
 <div id="app" on:click={cleanUp} on:contextmenu={cleanUp} on:scroll={cleanUp}>
   <ContextMenu />
   <NowPlaying />
@@ -58,19 +59,6 @@
     color: #ffffff;
     overflow: hidden !important;
   }
-  .dim {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: #00000000;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 9999999999999;
-    pointer-events: none;
-  }
-
   :global(main.page) {
     width: 100%;
     height: 100%;

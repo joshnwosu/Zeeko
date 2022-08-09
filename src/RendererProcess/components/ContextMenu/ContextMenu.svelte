@@ -3,7 +3,7 @@
 
 <ul class="contextMenu" data-theme="dark">
   <li class="contextMenu-item">
-    <button class="contextMenu-button">Play Joshua</button>
+    <button class="contextMenu-button">Play</button>
   </li>
   <li class="contextMenu-item">
     <button class="contextMenu-button">Play next</button>
