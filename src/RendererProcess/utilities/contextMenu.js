@@ -1,5 +1,6 @@
 export function displayContextMenu(e) {
   e.preventDefault();
+  e.stopPropagation();
   const { clientX, clientY } = e;
   const contextMenu = document.querySelector(".contextMenu");
 

@@ -8,51 +8,9 @@
     playSong,
     selectedTrack,
   } from "../../store/playbackManager";
-  import { preventBubbling } from "../../utilities";
-  // import { displayContextMenu } from "../../utilities/contextMenu";
+  import { displayContextMenu } from "../../utilities/contextMenu";
   import { AddIcon, HeartIcon, PauseIcon, PlayIcon } from "../Icons";
   import PlayAnimation from "../Widget/PlayAnimation.svelte";
-
-  function displayContextMenu(e) {
-    e.preventDefault();
-    const { clientX, clientY } = e;
-    const contextMenu = document.querySelector(".contextMenu");
-
-    const positionY =
-      clientY + contextMenu.scrollHeight >= window.innerHeight
-        ? window.innerHeight - contextMenu.scrollHeight - 20
-        : clientY;
-    const positionX =
-      clientX + contextMenu.scrollWidth >= window.innerWidth
-        ? window.innerWidth - contextMenu.scrollWidth - 20
-        : clientX;
-
-    contextMenu.setAttribute(
-      "style",
-      `
-      --top: ${positionY}px;
-      --left: ${positionX}px;
-      --width: ${contextMenu.scrollWidth}px;
-      height: ${contextMenu.scrollHeight}px;
-      `
-    );
-
-    const keyframes = [
-      { opacity: 0, transform: "scale(0.5) translateY(-10px)", height: 0 },
-      {
-        opacity: 1,
-        transform: "scale(1) translateY(0px)",
-        height: `${contextMenu.scrollHeight}px`,
-      },
-    ];
-
-    const timing = {
-      duration: 100,
-      iterations: 1,
-    };
-
-    contextMenu.animate(keyframes, timing);
-  }
 </script>
 
 <table>
@@ -62,11 +20,16 @@
         <tr
           class="track"
           class:playing-track={$selectedSong == track.fileLocation}
-          on:dblclick|stopPropagation={(e) => {
-            preventBubbling(e);
+          on:dblclick={(e) => {
+            if (
+              e.target.tagName === "BUTTON" ||
+              e.target.parentElement.tagName === "BUTTON"
+            ) {
+              return false;
+            }
             selectedTrack(track.fileLocation, tracks);
           }}
-          on:contextmenu={(e) => displayContextMenu(e)}
+          on:contextmenu={displayContextMenu}
         >
           <td class="check-box">
             <button class="icon" on:click={() => console.log("Checky")}>

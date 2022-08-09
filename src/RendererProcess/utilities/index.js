@@ -37,21 +37,21 @@ export function shuffleArrayTwo(unshuffled) {
 // shuffleArrayTwo(unshuffled)
 // console.log(unshuffled)
 
-export function preventBubbling(e) {
-  // Please don't touch this code
-  // Prevents bubbling when clicked on BUTTON elements
-  // You might want to update the function to accept the type
-  // of tags you would like to prevent
-  // example: preventBubbling(e, tag);
-  // notice we ain't passing tag in the function, and
-  // we also hardcoded "BUTTON" tag
-  // we could the replace "BUTTON" to tag in
-  // our update function
+// export function preventBubbling(e) {
+//   // Please don't touch this code
+//   // Prevents bubbling when clicked on BUTTON elements
+//   // You might want to update the function to accept the type
+//   // of tags you would like to prevent
+//   // example: preventBubbling(e, tag);
+//   // notice we ain't passing tag in the function, and
+//   // we also hardcoded "BUTTON" tag
+//   // we could the replace "BUTTON" to tag in
+//   // our update function
 
-  if (
-    e.target.tagName === "BUTTON" ||
-    e.target.parentElement.tagName === "BUTTON"
-  ) {
-    return false;
-  }
-}
+//   if (
+//     e.target.tagName === "BUTTON" ||
+//     e.target.parentElement.tagName === "BUTTON"
+//   ) {
+//     return false;
+//   }
+// }
