@@ -64,7 +64,7 @@
   }
 
   .windows-style {
-    /* icons */
+    display: flex;
     :global(svg) {
       :global(path) {
         fill: #ffffff;
@@ -78,7 +78,7 @@
       width: 50px;
       height: 30px;
       &:hover:not(.close) {
-        background-color: #ffffff20;
+        background-color: #333333;
       }
       &.close:hover {
         background-color: rgb(172, 15, 15);
