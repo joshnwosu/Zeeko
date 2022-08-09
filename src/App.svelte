@@ -15,6 +15,7 @@
   import CreatePlaylist from "./RendererProcess/components/Widget/CreatePlaylist.svelte";
   import NowPlaying from "./RendererProcess/components/Root/NowPlaying.svelte";
   import ContextMenu from "./RendererProcess/components/ContextMenu/ContextMenu.svelte";
+  import TrackContextMenu from "./RendererProcess/components/Track/TrackContextMenu.svelte";
 
   const routeLoaded = (event) => {
     // console.log('Event: ', event)
@@ -32,14 +33,9 @@
 </script>
 
 <div class="dim" />
-<div
-  id="app"
-  on:click={cleanUp}
-  on:contextmenu={cleanUp}
-  on:scroll={cleanUp}
-  on:blur={cleanUp}
->
+<div id="app" on:click={cleanUp} on:contextmenu={cleanUp} on:scroll={cleanUp}>
   <ContextMenu />
+  <!-- <TrackContextMenu /> -->
   <NowPlaying />
   <CreatePlaylist />
   <IpcListener />

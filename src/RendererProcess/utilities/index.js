@@ -1,4 +1,4 @@
-function shuffleArray(array) {
+export function shuffleArray(array) {
   let currentIndex = array.length,
     randomIndex;
 
@@ -18,16 +18,40 @@ function shuffleArray(array) {
   return array;
 }
 
-// Used like so
-var arr = [2, 11, 37, 42];
-shuffle(arr);
-console.log(arr);
+// // example 1
+// // Used like so
+// var arr = [2, 11, 37, 42];
+// shuffle(arr);
+// console.log(arr);
 
-// example 2
+export function shuffleArrayTwo(unshuffled) {
+  let shuffled = unshuffled
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+  return shuffled;
+}
+// // example 2
+// // Used like so
+// let unshuffled = ["hello", "a", "t", "q", 1, 2, 3, { cats: true }];
+// shuffleArrayTwo(unshuffled)
+// console.log(unshuffled)
 
-let unshuffled = ["hello", "a", "t", "q", 1, 2, 3, { cats: true }];
+export function preventBubbling(e) {
+  // Please don't touch this code
+  // Prevents bubbling when clicked on BUTTON elements
+  // You might want to update the function to accept the type
+  // of tags you would like to prevent
+  // example: preventBubbling(e, tag);
+  // notice we ain't passing tag in the function, and
+  // we also hardcoded "BUTTON" tag
+  // we could the replace "BUTTON" to tag in
+  // our update function
 
-let shuffled = unshuffled
-  .map((value) => ({ value, sort: Math.random() }))
-  .sort((a, b) => a.sort - b.sort)
-  .map(({ value }) => value);
+  if (
+    e.target.tagName === "BUTTON" ||
+    e.target.parentElement.tagName === "BUTTON"
+  ) {
+    return false;
+  }
+}

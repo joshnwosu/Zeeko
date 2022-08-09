@@ -8,6 +8,8 @@
     playSong,
     selectedTrack,
   } from "../../store/playbackManager";
+  import { preventBubbling } from "../../utilities";
+  // import { displayContextMenu } from "../../utilities/contextMenu";
   import { AddIcon, HeartIcon, PauseIcon, PlayIcon } from "../Icons";
   import PlayAnimation from "../Widget/PlayAnimation.svelte";
 
@@ -60,21 +62,14 @@
         <tr
           class="track"
           class:playing-track={$selectedSong == track.fileLocation}
-          on:dblclick={(e) => {
-            // Please don't touch this code
-            // prevents bubbling when clicked on BUTTON elements
-            if (
-              e.target.tagName === "BUTTON" ||
-              e.target.parentElement.tagName === "BUTTON"
-            ) {
-              return false;
-            }
+          on:dblclick|stopPropagation={(e) => {
+            preventBubbling(e);
             selectedTrack(track.fileLocation, tracks);
           }}
-          on:contextmenu|stopPropagation={displayContextMenu}
+          on:contextmenu={(e) => displayContextMenu(e)}
         >
           <td class="check-box">
-            <button class="icon">
+            <button class="icon" on:click={() => console.log("Checky")}>
               <span class="checker" />
             </button>
           </td>
@@ -91,25 +86,22 @@
               <div class="icon-wrapper">
                 {#if $selectedSong == track.fileLocation}
                   {#if $playbackManager.playing}
-                    <button class="icon" on:click|stopPropagation={pauseSong}
+                    <button class="icon" on:click={pauseSong}
                       ><svelte:component this={PauseIcon} /></button
                     >
                   {:else}
-                    <button class="icon" on:click|stopPropagation={playSong}
+                    <button class="icon" on:click={playSong}
                       ><svelte:component this={PlayIcon} /></button
                     >
                   {/if}
                 {:else}
                   <button
                     class="icon"
-                    on:click|stopPropagation={() =>
-                      selectedTrack(track.fileLocation, tracks)}
+                    on:click={() => selectedTrack(track.fileLocation, tracks)}
                     ><svelte:component this={PlayIcon} /></button
                   >
                 {/if}
-                <button
-                  class="icon"
-                  on:click|capture={() => console.log("Addy")}
+                <button class="icon" on:click={() => console.log("Addy")}
                   ><svelte:component this={AddIcon} /></button
                 >
               </div>
