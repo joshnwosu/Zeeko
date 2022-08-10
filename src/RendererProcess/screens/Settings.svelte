@@ -20,11 +20,11 @@
       </TabList>
 
       <TabPanel>
-        <General />
+        <Appearance />
       </TabPanel>
 
       <TabPanel>
-        <Appearance />
+        <General />
       </TabPanel>
 
       <TabPanel>

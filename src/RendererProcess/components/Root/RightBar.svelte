@@ -33,7 +33,7 @@
         <svelte:component this={$toggleDim ? MoonIcon : SunnyIcon} />
       </span>
       <span class="tooltip">
-        {$toggleDim ? "Dim mode: on" : "Dim mode: off"}
+        {$toggleDim ? "Dim mode: On" : "Dim mode: Off"}
       </span>
     </li>
     <li on:click={() => push("/settings")}>
