@@ -28,3 +28,9 @@ export function shuffleArrayTwo(unshuffled) {
 // let unshuffled = ["hello", "a", "t", "q", 1, 2, 3, { cats: true }];
 // shuffleArrayTwo(unshuffled)
 // console.log(unshuffled)
+
+export function removeDuplicates(targetArray, prop) {
+  return targetArray.filter((obj, index, arr) => {
+    return arr.map((mapObj) => mapObj[prop]).indexOf(obj[prop]) === index;
+  });
+}

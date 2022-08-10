@@ -45,16 +45,10 @@ selectedSong.subscribe((track) => {
   currentTrack = track;
 });
 
-function removeDuplicates(targetArray, prop) {
-  return targetArray.filter((obj, index, arr) => {
-    return arr.map((mapObj) => mapObj[prop]).indexOf(obj[prop]) === index;
-  });
-}
-
-export function getFisrtAlbumArt(playlist) {
-  let v;
-  playlist?.tracks?.some((track) => (v = track.albumArt));
-  return v;
+export function getFisrtAlbumArt(arr) {
+  let albumArt;
+  arr?.tracks?.some((track) => (albumArt = track.albumArt));
+  return albumArt;
 }
 
 export function formatDuration(length) {
