@@ -60,10 +60,11 @@
     width: 900px;
     .section {
       padding: 10px 0;
+      margin-bottom: 10px;
       h1 {
         font-weight: 400;
         font-size: 18px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
       }
 
       .flex {

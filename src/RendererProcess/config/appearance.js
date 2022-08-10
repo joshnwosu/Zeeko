@@ -22,7 +22,7 @@ export const themesConfig = [
     image: null,
   },
   {
-    name: "Transparent",
+    name: "Transparency",
     image: null,
   },
   {
@@ -38,6 +38,10 @@ export const windowStyleConfig = [
   },
   {
     name: "MacOS",
+    image: null,
+  },
+  {
+    name: "Linux (Ubuntu)",
     image: null,
   },
 ];

@@ -5,8 +5,9 @@
 </script>
 
 <div>
-  <div>
+  <div class="music-select">
     <h1>Music on this PC</h1>
+    <p>Choose where we look for music</p>
   </div>
 
   <h2>First panel</h2>
@@ -14,3 +15,6 @@
   <Switch checked={checked1} toggle={(e) => (checked1 = e.target.checked)} />
   <Switch checked={checked2} toggle={(e) => (checked2 = e.target.checked)} />
 </div>
+
+<style lang="scss">
+</style>
