@@ -2,7 +2,7 @@
   import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
   import Switch from "../components/Addon/Switch.svelte";
   import ScreenHeader from "../components/Root/ScreenHeader.svelte";
-  import { Tabs, TabList, TabPanel, Tab } from "../components/SettingsTab";
+  import { Tabs, TabList, TabPanel, Tab } from "../components/Tab";
   let checked1 = false;
   let checked2 = false;
 </script>
@@ -15,6 +15,7 @@
         <Tab>General</Tab>
         <Tab>Themes</Tab>
         <Tab>Shortcuts</Tab>
+        <Tab>Notifications</Tab>
         <Tab>Updates</Tab>
         <Tab>About</Tab>
       </TabList>
