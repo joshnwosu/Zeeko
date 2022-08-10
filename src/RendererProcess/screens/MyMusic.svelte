@@ -44,6 +44,11 @@
 </main>
 
 <style lang="scss">
+  .page {
+    &::-webkit-scrollbar-track-piece:start {
+      margin-top: 50px;
+    }
+  }
   .song-tab {
     position: sticky;
     top: 80px;

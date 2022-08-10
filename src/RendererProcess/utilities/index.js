@@ -62,3 +62,5 @@ export function removeDuplicates(targetArray, prop) {
     return arr.map((mapObj) => mapObj[prop]).indexOf(obj[prop]) === index;
   });
 }
+
+export const defaultCoverArt = "./assets/images/default-cover-art.png";

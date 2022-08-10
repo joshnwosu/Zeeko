@@ -2,6 +2,7 @@
   import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
   import Appearance from "../components/Layouts/Appearance.svelte";
   import General from "../components/Layouts/General.svelte";
+  import Shortcuts from "../components/Layouts/Shortcuts.svelte";
   import ScreenHeader from "../components/Root/ScreenHeader.svelte";
   import { Tabs, TabList, TabPanel, Tab } from "../components/Tab";
 </script>
@@ -34,7 +35,9 @@
       </TabPanel>
 
       <TabPanel>
-        <h2>Third panel</h2>
+        <div class="tab-panel">
+          <Shortcuts />
+        </div>
       </TabPanel>
 
       <TabPanel>
@@ -52,7 +55,12 @@
   </div>
 </main>
 
-<style>
+<style lang="scss">
+  .page {
+    &::-webkit-scrollbar-track-piece:start {
+      margin-top: 150px;
+    }
+  }
   .tab-list {
     border-bottom: 1px solid #222222;
     position: sticky;

@@ -1,12 +1,14 @@
 <script>
   import { playbackManager, selectedSong } from "../../store/player";
-  let src;
-  let defaultsrc = "./assets/images/default-cover-art.jpg";
-  $: if ($selectedSong) src = $playbackManager.nowPlaying?.albumArt;
+  import { defaultCoverArt } from "../../utilities";
+  // $: if ($selectedSong) src = $playbackManager.nowPlaying?.albumArt;
 </script>
 
 <div class="bg">
-  <img src={src || defaultsrc} alt="Album art" />
+  <img
+    src={$playbackManager.nowPlaying?.albumArt || defaultCoverArt}
+    alt="Album art"
+  />
   <div class="overlay" />
 </div>
 

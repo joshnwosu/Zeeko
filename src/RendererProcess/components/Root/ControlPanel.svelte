@@ -1,11 +1,8 @@
 <script>
-  import { location, replace } from "svelte-spa-router";
+  import { defaultCoverArt } from "../../utilities";
   // import path from "path";
 
   // const path = require("path");
-
-  // let src = "./assets/images/281951.jpg";
-  let src = "./assets/images/default-cover-art.jpg";
 
   let browserFile;
   let audio;
@@ -216,7 +213,10 @@
   >
     <div class="overlay" />
     <div class="cover-art">
-      <img src={$playbackManager?.nowPlaying?.albumArt || src} alt={src} />
+      <img
+        src={$playbackManager?.nowPlaying?.albumArt || defaultCoverArt}
+        alt="cover-art"
+      />
     </div>
     <div class="title-artist-wrapper">
       <div class="title">

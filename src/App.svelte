@@ -68,9 +68,6 @@
     &::-webkit-scrollbar-track-piece:end {
       margin-bottom: 100px;
     }
-    &::-webkit-scrollbar-track-piece:start {
-      margin-top: 50px;
-    }
   }
   :global(svg.svg-icon) {
     width: 18px;
