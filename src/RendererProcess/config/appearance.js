@@ -18,11 +18,15 @@ export const themesConfig = [
     image: null,
   },
   {
-    name: "Eclipse",
+    name: "Sunrise",
     image: null,
   },
   {
-    name: "Sunrise",
+    name: "Transparent",
+    image: null,
+  },
+  {
+    name: "Amoled",
     image: null,
   },
 ];

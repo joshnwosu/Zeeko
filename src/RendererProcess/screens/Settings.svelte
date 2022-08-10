@@ -11,20 +11,24 @@
   <div class="screen-view">
     <Tabs>
       <TabList>
-        <Tab>General</Tab>
-        <Tab>Appearance</Tab>
-        <Tab>Shortcuts</Tab>
-        <Tab>Notifications</Tab>
-        <Tab>Updates</Tab>
-        <Tab>About</Tab>
+        <div class="tab-list">
+          <Tab>General</Tab>
+          <Tab>Appearance</Tab>
+          <Tab>Shortcuts</Tab>
+          <Tab>Notifications</Tab>
+          <Tab>Updates</Tab>
+          <Tab>About</Tab>
+        </div>
       </TabList>
 
       <TabPanel>
-        <Appearance />
+        <General />
       </TabPanel>
 
       <TabPanel>
-        <General />
+        <div class="tab-panel">
+          <Appearance />
+        </div>
       </TabPanel>
 
       <TabPanel>
@@ -45,3 +49,17 @@
     </Tabs>
   </div>
 </main>
+
+<style>
+  .tab-list {
+    border-bottom: 1px solid #222222;
+    position: sticky;
+    top: 100px;
+    background-color: #000000;
+  }
+
+  .tab-panel {
+    padding-bottom: 100px;
+    overflow-y: auto;
+  }
+</style>

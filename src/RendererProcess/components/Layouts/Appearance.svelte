@@ -20,10 +20,10 @@
 
   <div class="section theme-section">
     <h1>Choose your theme</h1>
-    <div class="theme-wrapper">
+    <div class="flex theme-wrapper">
       {#each themesConfig as theme}
-        <div class="theme">
-          <div />
+        <div class="flex-item theme">
+          <div class="box" />
           <p>{theme.name}</p>
         </div>
       {/each}
@@ -32,10 +32,10 @@
 
   <div class="section window-style-section">
     <h1>Choose window style</h1>
-    <div class="window-style-wrapper">
+    <div class="flex window-style-wrapper">
       {#each windowStyleConfig as style}
-        <div class="window-style">
-          <div />
+        <div class="flex-item window-style">
+          <div class="box" />
           <p>{style.name}</p>
         </div>
       {/each}
@@ -44,6 +44,7 @@
 
   <div class="section system-section">
     <p>Use system preference</p>
+    <!-- <h1>Use system preference</h1> -->
     <div class="system-wrapper">
       <Switch
         checked={checked1}
@@ -58,11 +59,37 @@
   .appearance {
     width: 900px;
     .section {
+      padding: 10px 0;
       h1 {
         font-weight: 400;
         font-size: 18px;
+        margin-bottom: 20px;
       }
 
+      .flex {
+        display: flex;
+        .flex-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-right: 10px;
+          .box {
+            width: 180px;
+            height: 120px;
+            background-color: #121212;
+            border-radius: 10px;
+            box-shadow: 0px 2px 2px 0 rgba(0, 0, 0, 0.1);
+          }
+
+          p {
+            margin-top: 10px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .accent-color-section {
       .accent-color {
         display: flex;
         align-items: center;
@@ -73,15 +100,24 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          margin-right: 5px;
+          margin-right: 10px;
         }
       }
     }
 
     .system-section {
+      p {
+        font-size: 16px;
+        font-weight: 300;
+      }
       .system-wrapper {
         display: flex;
         align-items: center;
+        margin-top: 10px;
+        .label {
+          font-size: 12px;
+          margin-left: 10px;
+        }
       }
     }
   }
