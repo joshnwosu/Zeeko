@@ -70,6 +70,7 @@
     deleteSelectedTrackFromPlaylist,
     checkIfInFavorite,
     encodeTrackFile,
+    pauseSong,
   } from "../../store/playerManager";
   import Modal from "../Modal/Modal.svelte";
 
