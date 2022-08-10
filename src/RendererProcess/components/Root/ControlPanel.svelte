@@ -352,6 +352,16 @@
 </div>
 
 <style lang="scss">
+  .shuffle-on,
+  .repeat-on,
+  .in-favorite {
+    :global(svg) {
+      :global(path) {
+        fill: #65e14d !important;
+      }
+    }
+  }
+
   .modal-content {
     width: 400px;
     background-color: #121212;
@@ -473,15 +483,6 @@
         transparent,
         rgba(255, 255, 255, 0.1)
       );
-    }
-    &.shuffle-on,
-    &.repeat-on,
-    &.in-favorite {
-      :global(svg) {
-        :global(path) {
-          fill: #65e14d !important;
-        }
-      }
     }
     :global(svg) {
       width: 20px;

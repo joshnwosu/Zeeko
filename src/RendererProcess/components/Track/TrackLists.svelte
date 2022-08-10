@@ -1,21 +1,32 @@
 <script>
   export let tracks;
   import { push } from "svelte-spa-router";
-  import { playbackManager, selectedSong } from "../../store/player";
+  import {
+    playbackManager,
+    playlistStore,
+    selectedSong,
+  } from "../../store/player";
   import {
     formatIndex,
+    getSong,
     pauseSong,
     playSong,
     selectedTrack,
   } from "../../store/playerManager";
   import { displayContextMenu } from "../../utilities/contextMenu";
-  import { AddIcon, HeartIcon, PauseIcon, PlayIcon } from "../Icons";
+  import {
+    AddIcon,
+    HeartBoldIcon,
+    HeartIcon,
+    PauseIcon,
+    PlayIcon,
+  } from "../Icons";
   import PlayAnimation from "../Widgets/PlayAnimation.svelte";
 </script>
 
 <table>
   <tbody>
-    {#if tracks.length}
+    {#if tracks.length && $playlistStore[0].tracks.length}
       {#each tracks as track, index}
         <tr
           class="track"
@@ -86,9 +97,20 @@
           >
           <td class="genre"><p>{track.genre}</p></td>
           <td class="year" align="right"><p>{track.year || ""}</p></td>
-          <td class="favorite" align="right">
+          <td
+            class="favorite"
+            class:in-favorite={getSong(
+              $playlistStore[0].tracks,
+              track.fileLocation
+            )}
+            align="right"
+          >
             <button class="icon" on:click={() => console.log("Hearty")}>
-              <svelte:component this={HeartIcon} />
+              {#if getSong($playlistStore[0].tracks, track.fileLocation)}
+                <svelte:component this={HeartBoldIcon} />
+              {:else}
+                <svelte:component this={HeartIcon} />
+              {/if}
             </button>
           </td>
         </tr>
@@ -98,6 +120,13 @@
 </table>
 
 <style lang="scss">
+  .in-favorite {
+    :global(svg) {
+      :global(path) {
+        fill: #65e14d !important;
+      }
+    }
+  }
   table {
     width: 100%;
     table-layout: fixed;

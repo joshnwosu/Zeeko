@@ -1,3 +1,5 @@
+export const defaultCoverArt = "./assets/images/default-cover-art.png";
+
 export function sortArrayOfObjects(targetArray, param) {
   function compare(a, b) {
     if (a[`${param}`] < b[`${param}`]) {
@@ -62,5 +64,3 @@ export function removeDuplicates(targetArray, prop) {
     return arr.map((mapObj) => mapObj[prop]).indexOf(obj[prop]) === index;
   });
 }
-
-export const defaultCoverArt = "./assets/images/default-cover-art.png";
