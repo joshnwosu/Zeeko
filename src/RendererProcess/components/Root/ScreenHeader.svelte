@@ -18,7 +18,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    background-color: #121212;
+    background-color: #000000;
     padding: 0px 20px 20px;
     z-index: 2;
     h1 {

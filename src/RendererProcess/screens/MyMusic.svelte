@@ -48,7 +48,7 @@
     position: sticky;
     top: 80px;
     padding: 20px;
-    background-color: #121212;
+    background-color: #000000;
     /* backdrop-filter: blur(100px); */
     z-index: 2;
     nav {
