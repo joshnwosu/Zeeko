@@ -194,7 +194,8 @@
     </div>
 
     <p>
-      Can't play. An error occured trying to play the file. Close to skip file.
+      Can't play. An error occured trying to play the file. Close to skip to
+      next track.
     </p>
 
     <p class="file-location">
