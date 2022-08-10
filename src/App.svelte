@@ -12,7 +12,7 @@
   import RightBar from "./RendererProcess/components/Root/RightBar.svelte";
   import Frame from "./RendererProcess/components/Root/Frame.svelte";
   import IpcListener from "./RendererProcess/components/Root/IpcListener.svelte";
-  import CreatePlaylist from "./RendererProcess/components/Widget/CreatePlaylist.svelte";
+  import CreatePlaylist from "./RendererProcess/components/Widgets/CreatePlaylist.svelte";
   import NowPlaying from "./RendererProcess/components/Root/NowPlaying.svelte";
   import ContextMenu from "./RendererProcess/components/ContextMenu/ContextMenu.svelte";
   import DimMode from "./RendererProcess/components/Root/DimMode.svelte";

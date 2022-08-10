@@ -10,7 +10,7 @@
   } from "../../store/playerManager";
   import { displayContextMenu } from "../../utilities/contextMenu";
   import { AddIcon, HeartIcon, PauseIcon, PlayIcon } from "../Icons";
-  import PlayAnimation from "../Widget/PlayAnimation.svelte";
+  import PlayAnimation from "../Widgets/PlayAnimation.svelte";
 </script>
 
 <table>

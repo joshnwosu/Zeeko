@@ -11,6 +11,7 @@
   let audio;
   let seekBarWidth;
   let volume = 0.5;
+  let show = false;
 
   import { push } from "svelte-spa-router";
   import isElectron from "../../../../isElectron";
@@ -41,6 +42,7 @@
     CandleBoldIcon,
     Forward10Icon,
     Backward10Icon,
+    WarningIcon,
   } from "../../components/Icons";
   import {
     playerStore,
@@ -69,6 +71,7 @@
     checkIfInFavorite,
     encodeTrackFile,
   } from "../../store/playerManager";
+  import Modal from "../Modal/Modal.svelte";
 
   $: if ($playerStore.length) $audioContext = audio;
 
@@ -106,6 +109,11 @@
 
     audio.onended = () => {
       playNextTrack();
+    };
+
+    audio.onerror = () => {
+      show = true;
+      $playbackManager.playing = false;
     };
   }
 
@@ -169,9 +177,35 @@
       audio.currentTime = (percentageSeek * audio.duration) / 100;
     }
   }
+
+  function onClose() {
+    show = false;
+    nextSong();
+  }
 </script>
 
 <audio bind:this={audio} />
+
+<Modal {show}>
+  <div class="modal-content">
+    <div class="modal-content-header">
+      <svelte:component this={WarningIcon} />
+      <h2>File error</h2>
+    </div>
+
+    <p>
+      Can't play. An error occured trying to play the file. Close to skip file.
+    </p>
+
+    <p class="file-location">
+      File Location:
+      <span>{$selectedSong}</span>
+    </p>
+    <div class="modal-button-wrapper">
+      <button on:click={onClose}>Close</button>
+    </div>
+  </div>
+</Modal>
 
 <div class="control-panel" class:hide={$toggleNowPlaying}>
   <div
@@ -316,6 +350,51 @@
 </div>
 
 <style lang="scss">
+  .modal-content {
+    width: 400px;
+    background-color: #121212;
+    padding: 20px;
+    color: #ffffff;
+    position: relative;
+    z-index: 2;
+    .modal-content-header {
+      display: flex;
+      align-items: center;
+      h2 {
+        font-weight: 400;
+        font-size: 18px;
+        margin-left: 10px;
+      }
+      :global(svg) {
+        :global(path) {
+          fill: orangered;
+        }
+      }
+    }
+    p {
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 20px 0;
+      &.file-location {
+        font-size: 12px;
+        span {
+          opacity: 0.5;
+          display: block;
+        }
+      }
+    }
+    .modal-button-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      button {
+        background-color: #333333;
+        padding: 10px 50px;
+        color: #fff;
+        font-weight: 200;
+        font-size: 12px;
+      }
+    }
+  }
   .overlay {
     background-color: #22222250;
     width: 100%;

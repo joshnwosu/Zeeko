@@ -1,7 +1,10 @@
 <script>
   import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
+  import Switch from "../components/Addon/Switch.svelte";
   import ScreenHeader from "../components/Root/ScreenHeader.svelte";
   import { Tabs, TabList, TabPanel, Tab } from "../components/SettingsTab";
+  let checked1 = false;
+  let checked2 = false;
 </script>
 
 <main class="page" transition:fade>
@@ -18,6 +21,15 @@
 
       <TabPanel>
         <h2>First panel</h2>
+        <p>{checked1} {checked2}</p>
+        <Switch
+          checked={checked1}
+          toggle={(e) => (checked1 = e.target.checked)}
+        />
+        <Switch
+          checked={checked2}
+          toggle={(e) => (checked2 = e.target.checked)}
+        />
       </TabPanel>
 
       <TabPanel>

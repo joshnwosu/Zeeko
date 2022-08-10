@@ -2,8 +2,8 @@
   export let playlist;
   export let name;
   import { getFisrtAlbumArt } from "../../store/playerManager";
-  import BlurImg from "../Widget/BlurImg.svelte";
-  import PlaylistCover from "../Widget/PlaylistCover.svelte";
+  import BlurImg from "../Widgets/BlurImg.svelte";
+  import PlaylistCover from "../Widgets/PlaylistCover.svelte";
   import PlaylistCaption from "./PlaylistCaption.svelte";
 </script>
 

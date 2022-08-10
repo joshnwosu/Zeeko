@@ -3,7 +3,7 @@
   import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
   import PlaylistCaption from "../components/Playlist/PlaylistCaption.svelte";
   import ScreenHeader from "../components/Root/ScreenHeader.svelte";
-  import PlaylistCover from "../components/Widget/PlaylistCover.svelte";
+  import PlaylistCover from "../components/Widgets/PlaylistCover.svelte";
   import { playlistStore } from "../store/player";
   import { getFisrtAlbumArt } from "../store/playerManager";
   import {
