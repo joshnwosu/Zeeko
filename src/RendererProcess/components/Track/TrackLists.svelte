@@ -109,13 +109,11 @@
         width: 100%;
         padding: 10px 0;
         height: 50px;
+        display: table-row;
         &.playing-track {
-          background-color: #222222 !important;
-          box-shadow: 2px 2px 15px -2px rgb(50, 50, 50);
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07),
-            0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07),
-            0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07),
-            0 32px 64px rgba(0, 0, 0, 0.07);
+          background-color: #121212 !important;
+          box-shadow: 0 5px 9px 1px rgba(0, 0, 0, 0.5);
+          border: 1px solid #22222280;
           td {
             p {
               color: #ffffff;
@@ -127,7 +125,7 @@
           }
         }
         /* &:nth-child(even) {
-          background-color: #121212;
+          background-color: #222222;
         } */
         &:hover {
           background-color: #222222;

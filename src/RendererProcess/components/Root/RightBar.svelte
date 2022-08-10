@@ -48,7 +48,7 @@
 <style lang="scss">
   .right-nav {
     /* background-color: #12121280; */
-    background-image: linear-gradient(to bottom, #000000, #12121260, #12121280);
+    background-image: linear-gradient(to bottom, #121212, #12121260, #12121280);
     width: 60px;
     position: fixed;
     top: 0;

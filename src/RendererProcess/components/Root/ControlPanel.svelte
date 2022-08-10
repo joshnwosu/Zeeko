@@ -425,8 +425,8 @@
     left: 0;
     height: 100px;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    background-color: #12121290;
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    background-color: #12121260;
     backdrop-filter: blur(100px);
     z-index: 999;
 
