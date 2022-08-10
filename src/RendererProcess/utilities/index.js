@@ -1,3 +1,16 @@
+export function sortArrayOfObjects(targetArray, param) {
+  function compare(a, b) {
+    if (a[`${param}`] < b[`${param}`]) {
+      return -1;
+    }
+    if (a[`${param}`] > b[`${param}`]) {
+      return 1;
+    }
+    return 0;
+  }
+  targetArray.sort(compare);
+}
+
 export function shuffleArray(array) {
   let currentIndex = array.length,
     randomIndex;
@@ -14,9 +27,6 @@ export function shuffleArray(array) {
   }
   return array;
 }
-// var arr = [2, 11, 37, 42];
-// shuffle(arr);
-// console.log(arr);
 
 export function shuffleArrayTwo(unshuffled) {
   let shuffled = unshuffled
@@ -25,9 +35,27 @@ export function shuffleArrayTwo(unshuffled) {
     .map(({ value }) => value);
   return shuffled;
 }
-// let unshuffled = ["hello", "a", "t", "q", 1, 2, 3, { cats: true }];
-// shuffleArrayTwo(unshuffled)
-// console.log(unshuffled)
+
+export function shuffleArrayThree(array) {
+  const arrayCopy = [...array];
+  let currentIndex = arrayCopy.length,
+    temporaryValue,
+    randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = arrayCopy[currentIndex];
+    arrayCopy[currentIndex] = arrayCopy[randomIndex];
+    arrayCopy[randomIndex] = temporaryValue;
+  }
+
+  return arrayCopy;
+}
 
 export function removeDuplicates(targetArray, prop) {
   return targetArray.filter((obj, index, arr) => {

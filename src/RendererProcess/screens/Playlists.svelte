@@ -72,7 +72,8 @@
         on:click={() => push(`/playlist-details/${playlist.name}`)}
         on:contextmenu={displayContextMenu}
       >
-        <figure transition:tweenMe>
+        <!-- transition:tweenMe -->
+        <figure>
           <PlaylistCover img={getFisrtAlbumArt(playlist)} />
           <figcaption>
             <PlaylistCaption
