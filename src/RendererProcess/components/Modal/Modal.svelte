@@ -4,7 +4,9 @@
 
 <div class="modal" class:show>
   <div class="overlay" />
-  <slot />
+  <div class="content">
+    <slot class="content" />
+  </div>
 </div>
 
 <style lang="scss">
@@ -28,6 +30,11 @@
       height: 100%;
       background-color: #00000080;
       position: absolute;
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
       z-index: 1;
     }
   }
