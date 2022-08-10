@@ -22,7 +22,9 @@
       </TabList>
 
       <TabPanel>
-        <General />
+        <div class="tab-panel">
+          <General />
+        </div>
       </TabPanel>
 
       <TabPanel>
@@ -60,6 +62,5 @@
 
   .tab-panel {
     padding-bottom: 100px;
-    overflow-y: auto;
   }
 </style>
