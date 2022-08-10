@@ -1,5 +1,6 @@
 <script>
   import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
+  import Appearance from "../components/Layouts/Appearance.svelte";
   import General from "../components/Layouts/General.svelte";
   import ScreenHeader from "../components/Root/ScreenHeader.svelte";
   import { Tabs, TabList, TabPanel, Tab } from "../components/Tab";
@@ -11,7 +12,7 @@
     <Tabs>
       <TabList>
         <Tab>General</Tab>
-        <Tab>Themes</Tab>
+        <Tab>Appearance</Tab>
         <Tab>Shortcuts</Tab>
         <Tab>Notifications</Tab>
         <Tab>Updates</Tab>
@@ -23,7 +24,7 @@
       </TabPanel>
 
       <TabPanel>
-        <h2>Second panel</h2>
+        <Appearance />
       </TabPanel>
 
       <TabPanel>
@@ -36,6 +37,10 @@
 
       <TabPanel>
         <h2>Fifth panel</h2>
+      </TabPanel>
+
+      <TabPanel>
+        <h2>Sixth panel</h2>
       </TabPanel>
     </Tabs>
   </div>
