@@ -15,6 +15,7 @@
     MusicBoldIcon,
     MenuBoldIcon,
     AddIcon,
+    ArrowLeftTwoIcon,
   } from "../Icons";
   import { link, location, pop, querystring } from "svelte-spa-router";
   import active from "svelte-spa-router/active";
@@ -24,6 +25,16 @@
     toggleSidebar,
   } from "../../store/status";
   import { handleToggleSidebar } from "../../store/statusManager";
+
+  function handleNavigation() {
+    // checks if Now playing or Create playlist modal is visible
+    if ($toggleNowPlaying || $toggleCreatePlaylist) {
+      $toggleNowPlaying = false;
+      $toggleCreatePlaylist = false;
+    } else {
+      pop();
+    }
+  }
 </script>
 
 <div class="side-nav" class:toggle-sidenav={$toggleSidebar}>
@@ -40,6 +51,12 @@
     <nav>
       <ul>
         <div class="ul-head">Menu</div>
+        <li class="menu-li">
+          <span class="icon" on:click={handleNavigation}>
+            <svelte:component this={ArrowLeftTwoIcon} />
+          </span>
+          <!-- <span class="label"> Menu </span> -->
+        </li>
         <li class="menu-li">
           <span class="icon" on:click={handleToggleSidebar}>
             <svelte:component this={MenuBoldIcon} />
@@ -145,7 +162,7 @@
     top: 0;
     left: 0;
     bottom: 0;
-    padding-top: 40px;
+    padding-top: 0px;
     padding-bottom: 100px;
     display: flex;
     flex-direction: column;
