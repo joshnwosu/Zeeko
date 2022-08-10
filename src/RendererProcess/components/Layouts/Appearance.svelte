@@ -1,5 +1,9 @@
 <script>
-  import { accentColorsConfig } from "../../config/accentColors";
+  import {
+    accentColorsConfig,
+    themesConfig,
+    windowStyleConfig,
+  } from "../../config/appearance";
   import Switch from "../Addon/Switch.svelte";
   let checked1 = false;
 </script>
@@ -16,16 +20,43 @@
 
   <div class="section theme-section">
     <h1>Choose your theme</h1>
+    <div class="theme-wrapper">
+      {#each themesConfig as theme}
+        <div class="theme">
+          <div />
+          <p>{theme.name}</p>
+        </div>
+      {/each}
+    </div>
   </div>
 
-  <div class="system">
+  <div class="section window-style-section">
+    <h1>Choose window style</h1>
+    <div class="window-style-wrapper">
+      {#each windowStyleConfig as style}
+        <div class="window-style">
+          <div />
+          <p>{style.name}</p>
+        </div>
+      {/each}
+    </div>
+  </div>
+
+  <div class="section system-section">
     <p>Use system preference</p>
-    <Switch checked={checked1} toggle={(e) => (checked1 = e.target.checked)} />
+    <div class="system-wrapper">
+      <Switch
+        checked={checked1}
+        toggle={(e) => (checked1 = e.target.checked)}
+      />
+      <span class="label">{checked1 ? "On" : "Off"}</span>
+    </div>
   </div>
 </div>
 
 <style lang="scss">
   .appearance {
+    width: 900px;
     .section {
       h1 {
         font-weight: 400;
@@ -42,8 +73,15 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          margin-right: 10px;
+          margin-right: 5px;
         }
+      }
+    }
+
+    .system-section {
+      .system-wrapper {
+        display: flex;
+        align-items: center;
       }
     }
   }
