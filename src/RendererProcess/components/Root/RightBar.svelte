@@ -28,8 +28,8 @@
   </ul>
 
   <ul class="bottom">
-    <li>
-      <span class="icon" on:click={handleToggleDimMode}>
+    <li class="icon" on:click={handleToggleDimMode}>
+      <span>
         <svelte:component this={$toggleDim ? MoonIcon : SunnyIcon} />
       </span>
       <span class="tooltip">
