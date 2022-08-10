@@ -108,7 +108,7 @@
     height: 100%;
     bottom: 0;
     right: 60px;
-    background-color: #000000;
+    background-color: #121212;
     /* box-shadow: -2px 0px 10px 0px rgba(0, 0, 0, 0.1); */
     transition: 300ms ease;
     display: flex;

@@ -28,7 +28,7 @@
     left: 0;
     transition: all 0.3s;
     position: relative;
-    background-color: #121212;
+    background-color: #222222;
     overflow: hidden;
     /* &:hover {
           .hover {
