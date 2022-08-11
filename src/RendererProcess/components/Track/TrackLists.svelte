@@ -7,6 +7,8 @@
     selectedSong,
   } from "../../store/player";
   import {
+    addSelectedTracksToPlaylist,
+    deleteSelectedTrackFromPlaylist,
     formatIndex,
     getSong,
     pauseSong,
@@ -22,11 +24,19 @@
     PlayIcon,
   } from "../Icons";
   import PlayAnimation from "../Widgets/PlayAnimation.svelte";
+
+  function toggleFavorite(track) {
+    if (getSong($playlistStore[0].tracks, track.fileLocation)) {
+      deleteSelectedTrackFromPlaylist(track.fileLocation);
+    } else {
+      addSelectedTracksToPlaylist(track);
+    }
+  }
 </script>
 
 <table>
   <tbody>
-    {#if tracks.length && $playlistStore[0].tracks.length}
+    {#if tracks.length}
       {#each tracks as track, index}
         <tr
           class="track"
@@ -105,7 +115,7 @@
             )}
             align="right"
           >
-            <button class="icon" on:click={() => console.log("Hearty")}>
+            <button class="icon" on:click={() => toggleFavorite(track)}>
               {#if getSong($playlistStore[0].tracks, track.fileLocation)}
                 <svelte:component this={HeartBoldIcon} />
               {:else}

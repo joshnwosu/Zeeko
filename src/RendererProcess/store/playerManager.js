@@ -350,19 +350,19 @@ export function createPlaylist(payload) {
 }
 
 export function addSelectedTracksToPlaylist(payload) {
-  if (payload == "Favorites") {
+  if (payload) {
     playlistStore.update((store) => {
-      store[0].tracks.unshift(status.nowPlaying);
+      store[0].tracks.unshift(payload);
       return store;
     });
     window?.api?.updatePlaylists(playlists);
   }
 
-  checkIfInFavorite();
+  // checkIfInFavorite();
 }
 
 export function deleteSelectedTrackFromPlaylist(payload) {
-  const index = getSongIndex(playlists[0].tracks, currentTrack);
+  const index = getSongIndex(playlists[0].tracks, payload);
   if (payload) {
     playlistStore.update((store) => {
       store[0].tracks.splice(index, 1);
@@ -371,7 +371,7 @@ export function deleteSelectedTrackFromPlaylist(payload) {
     // console.log({ playlists: playlists[0] });
     window?.api?.updatePlaylists(playlists);
   }
-  checkIfInFavorite();
+  // checkIfInFavorite();
 }
 
 export function restorePlaylists(payload) {

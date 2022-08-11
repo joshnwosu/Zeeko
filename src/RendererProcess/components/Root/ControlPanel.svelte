@@ -47,6 +47,7 @@
     audioContext,
     selectedSong,
     queuelistStore,
+    playlistStore,
   } from "../../store/player";
   import { toggleNowPlaying } from "../../store/status";
   import {
@@ -62,12 +63,10 @@
     stepforward,
     addToSelectedTracks,
     togglePlaying,
-    isInFavorites,
     addSelectedTracksToPlaylist,
     deleteSelectedTrackFromPlaylist,
     checkIfInFavorite,
     encodeTrackFile,
-    pauseSong,
   } from "../../store/playerManager";
   import Modal from "../Modal/Modal.svelte";
 
@@ -133,12 +132,17 @@
 
   function toggleFavorite() {
     if (!audio.src) return;
-    if (isInFavorites()) {
+    if (
+      getSong(
+        $playlistStore[0].tracks,
+        $playbackManager?.nowPlaying.fileLocation
+      )
+    ) {
       console.log("Track removed from favorite");
-      deleteSelectedTrackFromPlaylist($playbackManager.nowPlaying);
+      deleteSelectedTrackFromPlaylist($playbackManager.nowPlaying.fileLocation);
     } else {
       console.log("Track added to favorite");
-      addSelectedTracksToPlaylist("Favorites");
+      addSelectedTracksToPlaylist($playbackManager.nowPlaying);
     }
   }
 
@@ -240,10 +244,13 @@
       <div class="control-button-inner">
         <span
           class="icon heart-icon left-flare"
-          class:in-favorite={$playbackManager?.isInFavorite}
+          class:in-favorite={getSong(
+            $playlistStore[0].tracks,
+            $playbackManager?.nowPlaying?.fileLocation
+          )}
           on:click={toggleFavorite}
         >
-          {#if $playbackManager?.isInFavorite}
+          {#if getSong($playlistStore[0].tracks, $playbackManager?.nowPlaying?.fileLocation)}
             <svelte:component this={HeartBoldIcon} />
           {:else}
             <svelte:component this={HeartIcon} />
