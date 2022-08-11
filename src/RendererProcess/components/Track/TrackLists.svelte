@@ -163,9 +163,9 @@
             }
           }
         }
-        /* &:nth-child(even) {
-          background-color: #222222;
-        } */
+        &:nth-child(even) {
+          background-color: #121212;
+        }
         &:hover {
           background-color: #222222;
           td {

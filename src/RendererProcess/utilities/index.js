@@ -1,5 +1,14 @@
 export const defaultCoverArt = "./assets/images/default-cover-art.png";
 
+export const cleanUp = () => {
+  let contextMenu = document.querySelector(".contextMenu");
+  let contextMenuOverlay = document.querySelector(".contextMenu-overlay");
+  if (contextMenu || contextMenuOverlay) {
+    contextMenu.setAttribute("style", `height: 0px;`);
+    contextMenuOverlay.style.display = "none";
+  }
+};
+
 export function sortArrayOfObjects(targetArray, param) {
   function compare(a, b) {
     if (a[`${param}`] < b[`${param}`]) {

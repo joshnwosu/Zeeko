@@ -3,6 +3,9 @@ export function displayContextMenu(e) {
   e.stopPropagation();
   const { clientX, clientY } = e;
   const contextMenu = document.querySelector(".contextMenu");
+  const contextMenuOverlay = document.querySelector(".contextMenu-overlay");
+
+  contextMenuOverlay.style.display = "block";
 
   const positionY =
     clientY + contextMenu.scrollHeight >= window.innerHeight
