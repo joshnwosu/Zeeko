@@ -34,6 +34,7 @@ import AddIcon from "./outline/Add.svelte";
 import WarningIcon from "./outline/Warning.svelte";
 import EditIcon from "./outline/Edit.svelte";
 import TrashIcon from "./outline/Trash.svelte";
+import MusicNoteIcon from "./outline/MusicNote.svelte";
 
 // bold icons import
 import HomeBoldIcon from "./bold/HomeBold.svelte";
@@ -93,6 +94,7 @@ export {
   WarningIcon,
   EditIcon,
   TrashIcon,
+  MusicNoteIcon,
 
   // bold icons
   HomeBoldIcon,

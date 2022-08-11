@@ -15,6 +15,7 @@
   import Song from "../views/Songs.svelte";
   import Artist from "../views/Artists.svelte";
   import Albums from "../views/Albums.svelte";
+  import Genres from "../views/Genres.svelte";
   import Folders from "../views/Folders.svelte";
 
   const prefix = "/my-music";
@@ -22,6 +23,7 @@
     "/": Song,
     "/artists": Artist,
     "/albums": Albums,
+    "/genres": Genres,
     "/folders": Folders,
   };
 </script>
@@ -35,6 +37,7 @@
       <span on:click={() => push(`${prefix}/`)}> Songs </span>
       <span on:click={() => push(`${prefix}/artists`)}> Artists </span>
       <span on:click={() => push(`${prefix}/albums`)}> Albums </span>
+      <span on:click={() => push(`${prefix}/genres`)}> Genres </span>
       <span on:click={() => push(`${prefix}/folders`)}> Folders </span>
     </nav>
   </div>
@@ -51,18 +54,17 @@
   }
   .song-tab {
     position: sticky;
-    top: 80px;
+    top: 100px;
     padding: 20px;
-    background-color: #000000;
-    /* backdrop-filter: blur(100px); */
+    background-color: #00000020;
     z-index: 2;
+    backdrop-filter: blur(20px);
     nav {
       span {
-        font-size: 14px;
+        font-size: 16px;
         color: #ffffff;
         background-color: transparent;
         border: none;
-        /* border: 1px solid red; */
         margin-right: 20px;
         text-transform: capitalize;
         font-weight: 400;

@@ -3,6 +3,7 @@ import { writable } from "svelte/store";
 let loading = writable(false);
 let audioContext = writable(null);
 
+let genresStore = writable([]);
 let foldersStore = writable([]);
 let albumsStore = writable([]);
 let artistsStore = writable([]);
@@ -31,6 +32,7 @@ let playbackManager = writable({
 });
 
 export {
+  genresStore,
   foldersStore,
   albumsStore,
   artistsStore,

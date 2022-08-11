@@ -215,8 +215,7 @@ async function processTracks(data, index) {
     console.log("parsingProgress", [index + 2, data.length]);
   } else {
     fileTracker.saveChanges();
-    // win.webContents.send("parsingDone", data.length);
-    console.log("parsingDone", data.length);
+    window.webContents.send("parsingDone", data.length);
     return;
   }
 }

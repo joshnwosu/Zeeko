@@ -3,7 +3,10 @@
   import {
     addTrack,
     deleteTrack,
-    generateAlbumData,
+    generateAlbumsData,
+    generateArtistsData,
+    generateFoldersData,
+    generateGenreData,
     restorePlaylists,
     restoreRecentlyPlayed,
     restoreTracks,
@@ -16,6 +19,10 @@
     // window?.api?.media("initializePlayer");
     window?.api?.["processedFiles"]((e, tracks) => {
       restoreTracks(tracks);
+      generateGenreData();
+      generateArtistsData();
+      generateAlbumsData();
+      generateFoldersData();
     });
     window?.api?.["newTrack"]((e, newTrack) => {
       addTrack(newTrack);
@@ -35,9 +42,12 @@
     window?.api?.["playStats"]((e, tracks) => {
       setPlayStats(tracks);
     });
-    // window?.api?.parsingDone(() => {
-    //   generateAlbumData();
-    // });
+    window?.api?.["parsingDone"](() => {
+      generateGenreData();
+      generateArtistsData();
+      generateAlbumsData();
+      generateFoldersData();
+    });
 
     // window?.api?.init?.newTrack();
   });

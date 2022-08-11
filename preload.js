@@ -42,4 +42,8 @@ contextBridge.exposeInMainWorld("api", {
   playStats: (action) => {
     ipcRenderer.on("playStats", action);
   },
+  parsingDone: (action) => {
+    ipcRenderer.on("parsingDone", action);
+    // console.log("Parsing done: ", action);
+  },
 });

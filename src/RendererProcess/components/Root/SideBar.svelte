@@ -16,6 +16,7 @@
     MenuBoldIcon,
     AddIcon,
     ArrowLeftTwoIcon,
+    MusicNoteIcon,
   } from "../Icons";
   import { link, location, pop, querystring } from "svelte-spa-router";
   import active from "svelte-spa-router/active";
@@ -98,6 +99,18 @@
             <span class="label"> My music </span>
           </a>
         </li>
+        <li class:active-link-li={$location == "/most-played"}>
+          <a
+            href={"/most-played"}
+            use:link
+            use:active={{ className: "active-link", inactiveClassName: "" }}
+          >
+            <span class="icon">
+              <svelte:component this={MusicNoteIcon} />
+            </span>
+            <span class="label"> Most played </span>
+          </a>
+        </li>
         <li class:active-link-li={$location == "/recent-plays"}>
           <a
             href={"/recent-plays"}
@@ -131,11 +144,14 @@
             <span class="label"> Playlists </span>
           </a>
         </li>
-        <li on:click={() => ($toggleCreatePlaylist = !$toggleCreatePlaylist)}>
+        <li
+          class="menu-li"
+          on:click={() => ($toggleCreatePlaylist = !$toggleCreatePlaylist)}
+        >
           <span class="icon">
             <svelte:component this={AddIcon} />
           </span>
-          <span class="label"> Add playlist </span>
+          <!-- <span class="label"> Add playlist </span> -->
           <!-- <span class="label">你好吗 我很好</span> -->
         </li>
       </ul>
@@ -219,6 +235,7 @@
     position: relative;
     input {
       background-color: rgba(0, 0, 0, 0.5);
+      background-color: #ffffff20;
       width: 100%;
       height: 50px;
       padding: 0px 50px 0px 60px;

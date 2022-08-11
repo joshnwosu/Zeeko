@@ -1,5 +1,6 @@
 import path from "path";
 import {
+  genresStore,
   foldersStore,
   albumsStore,
   artistsStore,
@@ -23,9 +24,10 @@ let currentTrack;
 let selectedTracks;
 let recentlyPlayedTracks;
 
-let folders;
-let albums;
-let artists;
+let storeGenres;
+let storeFolders;
+let storeAlbums;
+let storeArtists;
 
 audioContext.subscribe((context) => {
   audio = context;
@@ -56,20 +58,43 @@ selectedSong.subscribe((track) => {
 });
 
 foldersStore.subscribe((store) => {
-  folders = store;
+  storeFolders = store;
 });
 
 albumsStore.subscribe((store) => {
-  albums = store;
+  storeAlbums = store;
 });
 
 artistsStore.subscribe((store) => {
-  artists = store;
+  storeArtists = store;
+});
+
+genresStore.subscribe((store) => {
+  storeGenres = store;
 });
 
 recentlyPlayedTracksStore.subscribe((store) => {
   recentlyPlayedTracks = store;
 });
+
+function sortArrayOfObjects(targetArray, param) {
+  function compare(a, b) {
+    if (a[`${param}`] < b[`${param}`]) {
+      return -1;
+    }
+    if (a[`${param}`] > b[`${param}`]) {
+      return 1;
+    }
+    return 0;
+  }
+  targetArray.sort(compare);
+}
+
+function removeDuplicates(targetArray, prop) {
+  return targetArray.filter((obj, index, arr) => {
+    return arr.map((mapObj) => mapObj[prop]).indexOf(obj[prop]) === index;
+  });
+}
 
 export function getFisrtAlbumArt(arr) {
   let albumArt;
@@ -442,10 +467,12 @@ export function restoreTracks(payload) {
 
 export function restoreRecentlyPlayed(payload) {
   recentlyPlayedTracksStore.set(payload);
+  console.log("Recent played: ", payload);
 }
 
 export function restorePlaylists(payload) {
   playlistStore.set(payload);
+  console.log("Playlist: ", payload);
 }
 
 export function setPlayStats(payload) {
@@ -453,6 +480,129 @@ export function setPlayStats(payload) {
   console.log("Play stats: ", payload);
 }
 
-export function generateAlbumData() {
-  const albumNames = new Set();
+export function generateGenreData() {
+  genresStore.set([]);
+
+  const genreNames = new Set(
+    player.map((track) => track.genre).filter((genre) => genre)
+  );
+
+  genreNames.forEach((genre) => {
+    const genreInfo = {
+      name: genre,
+      picture: null,
+      tracks: [],
+      albums: [],
+    };
+    const tracks = player.filter((track) => track.genre === genre);
+    genreInfo.tracks = tracks;
+    const albums = tracks.map((track) => track.album).filter((album) => album);
+    albums.forEach((album) => {
+      const newAlbum = {
+        name: album,
+        genre: genre,
+        tracks: tracks.filter((track) => track.album === album),
+      };
+      genreInfo.albums.push(newAlbum);
+    });
+    genreInfo.albums = removeDuplicates(genreInfo.albums, "name");
+    storeGenres.unshift(genreInfo);
+  });
+  sortArrayOfObjects(storeGenres, "name");
+  console.log("Genre: ", storeGenres);
+}
+
+export function generateArtistsData() {
+  artistsStore.set([]);
+
+  // Get list of artist names
+  const artistNames = new Set(
+    player.map((track) => track.artist).filter((artist) => artist)
+  );
+
+  artistNames.forEach((artist) => {
+    const artistInfo = {
+      name: artist,
+      picture: null,
+      tracks: [],
+      albums: [],
+    };
+    const tracksFromCurrentArtist = player.filter(
+      (track) => track.artist === artist
+    );
+    artistInfo.tracks = tracksFromCurrentArtist;
+
+    const albumsFromCurrentArtist = tracksFromCurrentArtist
+      .map((track) => track.album)
+      .filter((album) => album);
+
+    albumsFromCurrentArtist.forEach((album) => {
+      const newAlbum = {
+        name: album,
+        artist: artist,
+        tracks: tracksFromCurrentArtist.filter(
+          (track) => track.album === album
+        ),
+      };
+      artistInfo.albums.push(newAlbum);
+    });
+    artistInfo.albums = removeDuplicates(artistInfo.albums, "name");
+
+    // artistsStore.update((store) => {
+    //   store.unshift(artistInfo);
+    //   return store;
+    // });
+    storeArtists.unshift(artistInfo);
+  });
+
+  sortArrayOfObjects(storeArtists, "name");
+  console.log("Artists:", storeArtists);
+}
+
+export function generateAlbumsData() {
+  albumsStore.set([]);
+
+  const albumNames = new Set(
+    player.map((track) => track.album).filter((album) => album)
+  );
+
+  albumNames.forEach((album) => {
+    const albumInfo = {
+      name: album,
+      artist: "",
+      tracks: [],
+    };
+    const tracks = player.filter((track) => track.album === album);
+    albumInfo.tracks = tracks;
+    albumInfo.artist = tracks[0].artist;
+    albumsStore.update((store) => {
+      store.unshift(albumInfo);
+      return store;
+    });
+  });
+  sortArrayOfObjects(storeAlbums, "name");
+  console.log("Albums:", storeAlbums);
+}
+
+export function generateFoldersData() {
+  foldersStore.set([]);
+  let folders = player.map((track) => track.folderInfo);
+  folders = removeDuplicates(folders, "path");
+  folders.forEach((folder) => {
+    const folderInfo = {
+      name: folder.name,
+      path: folder.path,
+      tracks: [],
+    };
+    const tracks = player.filter(
+      (track) => track.folderInfo.path === folder.path
+    );
+    folderInfo.tracks = tracks;
+    foldersStore.update((store) => {
+      store.unshift(folderInfo);
+      return store;
+    });
+  });
+  sortArrayOfObjects(storeFolders, "name");
+  console.log("Folders:", storeFolders);
 }
