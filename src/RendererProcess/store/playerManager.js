@@ -1,5 +1,8 @@
 import path from "path";
 import {
+  foldersStore,
+  albumsStore,
+  artistsStore,
   audioContext,
   playbackManager,
   selectedSong,
@@ -7,6 +10,8 @@ import {
   queuelistStore,
   playlistStore,
   selectedTracksStore,
+  recentlyPlayedTracksStore,
+  playStatsStore,
 } from "./player";
 
 let audio;
@@ -16,6 +21,11 @@ let playlists;
 let status;
 let currentTrack;
 let selectedTracks;
+let recentlyPlayedTracks;
+
+let folders;
+let albums;
+let artists;
 
 audioContext.subscribe((context) => {
   audio = context;
@@ -43,6 +53,22 @@ playbackManager.subscribe((data) => {
 
 selectedSong.subscribe((track) => {
   currentTrack = track;
+});
+
+foldersStore.subscribe((store) => {
+  folders = store;
+});
+
+albumsStore.subscribe((store) => {
+  albums = store;
+});
+
+artistsStore.subscribe((store) => {
+  artists = store;
+});
+
+recentlyPlayedTracksStore.subscribe((store) => {
+  recentlyPlayedTracks = store;
 });
 
 export function getFisrtAlbumArt(arr) {
@@ -284,20 +310,6 @@ export function clearSelectedTracks() {
   selectedTracks = [];
 }
 
-export function checkIfInFavorite() {
-  playbackManager.update((store) => {
-    store.isInFavorite = isInFavorites();
-    return store;
-  });
-}
-
-export function isInFavorites() {
-  // console.log(playlists[0]);
-  return playlists[0].tracks.some(
-    (track) => track.fileLocation == status.nowPlaying.fileLocation
-  );
-}
-
 // export function addSelectedTracksToPlaylist(payload) {
 //   if (payload == "Favorites") {
 //     // selectedTracks.forEach((track) => {
@@ -337,6 +349,16 @@ export function isInFavorites() {
 //   }
 // }
 
+// export function extractColorFromImage() {
+//   getColors("./assets/images/default-cover-art.jpg")
+//     .then((colors) => {
+//       console.log("The Colors: ", colors);
+//     })
+//     .catch((err) => {
+//       console.log("Error: ", err);
+//     });
+// }
+
 export function createPlaylist(payload) {
   const newPlaylist = {
     name: payload,
@@ -357,8 +379,6 @@ export function addSelectedTracksToPlaylist(payload) {
     });
     window?.api?.updatePlaylists(playlists);
   }
-
-  // checkIfInFavorite();
 }
 
 export function deleteSelectedTrackFromPlaylist(payload) {
@@ -368,18 +388,8 @@ export function deleteSelectedTrackFromPlaylist(payload) {
       store[0].tracks.splice(index, 1);
       return store;
     });
-    // console.log({ playlists: playlists[0] });
     window?.api?.updatePlaylists(playlists);
   }
-  // checkIfInFavorite();
-}
-
-export function restorePlaylists(payload) {
-  // playlists = payload
-  playlistStore.update((store) => {
-    store.push(payload);
-    return store;
-  });
 }
 
 export function getToPosition(e) {
@@ -397,12 +407,52 @@ export function getToPosition(e) {
   }
 }
 
-// export function extractColorFromImage() {
-//   getColors("./assets/images/default-cover-art.jpg")
-//     .then((colors) => {
-//       console.log("The Colors: ", colors);
-//     })
-//     .catch((err) => {
-//       console.log("Error: ", err);
-//     });
-// }
+export function addTrack(payload) {
+  console.log("Called from the store....");
+  const trackAlreadyAdded = player.some(
+    (track) => track.fileLocation == payload.fileLocation
+  );
+  if (!trackAlreadyAdded) {
+    playerStore.update((store) => {
+      store.push(payload);
+      return store;
+    });
+  }
+}
+
+export function updateTrack(payload) {
+  // const trackIndex = getSongIndex(player, payload);
+  // playerStore.update((store) => {
+  //   store.splice(trackIndex, 1);
+  //   return store;
+  // })
+}
+
+export function deleteTrack(payload) {
+  const trackIndex = getSongIndex(player, payload);
+  playerStore.update((store) => {
+    store.splice(trackIndex, 1);
+    return store;
+  });
+}
+
+export function restoreTracks(payload) {
+  playerStore.set(payload);
+}
+
+export function restoreRecentlyPlayed(payload) {
+  recentlyPlayedTracksStore.set(payload);
+}
+
+export function restorePlaylists(payload) {
+  playlistStore.set(payload);
+}
+
+export function setPlayStats(payload) {
+  playStatsStore.set(payload);
+  console.log("Play stats: ", payload);
+}
+
+export function generateAlbumData() {
+  const albumNames = new Set();
+}

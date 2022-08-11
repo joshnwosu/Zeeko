@@ -18,11 +18,6 @@
       (a, b) => a.title.localeCompare(b.title) || b.title - a.title
     )}
   /> -->
-  <svelte:component
-    this={TrackLists}
-    tracks={$playerStore.sort(
-      (a, b) => a.title.localeCompare(b.title) || b.title - a.title
-    )}
-  />
+  <svelte:component this={TrackLists} tracks={$playerStore} />
   <!-- {/if} -->
 </div>

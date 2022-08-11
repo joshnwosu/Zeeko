@@ -1,22 +1,44 @@
 <script>
   import { onMount } from "svelte";
-  import { playerStore, playlistStore } from "../../store/player";
+  import {
+    addTrack,
+    deleteTrack,
+    generateAlbumData,
+    restorePlaylists,
+    restoreRecentlyPlayed,
+    restoreTracks,
+    setPlayStats,
+    updateTrack,
+  } from "../../store/playerManager";
 
   onMount(async () => {
     window?.api?.media("getTracks");
     // window?.api?.media("initializePlayer");
+    window?.api?.["processedFiles"]((e, tracks) => {
+      restoreTracks(tracks);
+    });
+    window?.api?.["newTrack"]((e, newTrack) => {
+      addTrack(newTrack);
+    });
+    window?.api?.["userPlaylists"]((e, playlists) => {
+      restorePlaylists(playlists);
+    });
+    window?.api?.["updateTrack"]((e, track) => {
+      updateTrack(track);
+    });
+    window?.api?.["deleteTrack"]((e, track) => {
+      deleteTrack(track);
+    });
+    window?.api?.["recentlyPlayed"]((e, tracks) => {
+      restoreRecentlyPlayed(tracks);
+    });
+    window?.api?.["playStats"]((e, tracks) => {
+      setPlayStats(tracks);
+    });
+    // window?.api?.parsingDone(() => {
+    //   generateAlbumData();
+    // });
 
-    window?.api?.processedFiles((e, tracks) => {
-      playerStore.set(tracks);
-    });
-    window?.api?.newTrack((e, newTrack) => {
-      $playerStore = [newTrack, ...$playerStore];
-    });
-    window?.api?.userPlaylists((e, playlists) => {
-      // console.log("The playlists is here: ", playlists);
-      $playlistStore = playlists;
-    });
-
-    window?.api?.init?.newTrack();
+    // window?.api?.init?.newTrack();
   });
 </script>

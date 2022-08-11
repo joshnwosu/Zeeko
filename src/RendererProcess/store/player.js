@@ -1,24 +1,24 @@
 import { writable } from "svelte/store";
 
 let loading = writable(false);
-
 let audioContext = writable(null);
 
+let foldersStore = writable([]);
+let albumsStore = writable([]);
+let artistsStore = writable([]);
 let playerStore = writable([]);
-
 let playlistStore = writable([
   {
     name: "Favorites",
     tracks: [],
   },
 ]);
-
+let queuelistStore = writable([]);
 let selectedTracksStore = writable([]);
+let recentlyPlayedTracksStore = writable([]);
+let playStatsStore = writable([]);
 
 let selectedSong = writable(null);
-
-let queuelistStore = writable([]);
-
 let playbackManager = writable({
   playing: false,
   repeat: 0,
@@ -28,10 +28,12 @@ let playbackManager = writable({
   counter: 0,
   lastPlayed: [],
   nowPlaying: null,
-  isInFavorite: false,
 });
 
 export {
+  foldersStore,
+  albumsStore,
+  artistsStore,
   selectedSong,
   loading,
   playerStore,
@@ -40,4 +42,6 @@ export {
   playlistStore,
   queuelistStore,
   selectedTracksStore,
+  recentlyPlayedTracksStore,
+  playStatsStore,
 };

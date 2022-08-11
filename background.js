@@ -6,13 +6,14 @@ const chokidar = require("chokidar");
 const isDev = require("electron-is-dev");
 const { directories } = require("./src/MainProcess/modules/directories");
 const { SUPPORTED_FORMATS } = require("./src/MainProcess/constants/constant");
-const { fileTracker } = require("./src/MainProcess/modules/filesTracker");
 const {
   createParsedTrack,
 } = require("./src/MainProcess/core/createParsedTrack");
+const { fileTracker } = require("./src/MainProcess/modules/filesTracker");
 const {
   playlistTracker,
 } = require("./src/MainProcess/modules/playlistsTracker");
+const { playbackStats } = require("./src/MainProcess/modules/playbackStats");
 
 process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
 
@@ -145,13 +146,22 @@ ipcMain.on("updatePlaylists", async (event, payload) => {
   playlistTracker.updatePlaylists(payload);
 });
 
+ipcMain.on("playingTrack", async (event, track) => {
+  console.log("Adding track...");
+  playbackStats.addFile(track);
+});
+
 function playerReady() {
   const processedFiles = fileTracker.getTracks;
   const playlists = playlistTracker.getPlaylists;
+  const recentlyPlayedTracks = playbackStats.recentlyPlayedTracks;
+  const playStats = playbackStats.playStats;
   if (processedFiles.length > 0) {
     window.webContents.send("processedFiles", processedFiles);
     window.webContents.send("userPlaylists", playlists);
+    window.webContents.send("recentlyPlayed", recentlyPlayedTracks);
     refreshTracks();
+    window.webContents.send("playStats", playStats);
   }
 }
 
@@ -248,6 +258,8 @@ async function parseFolder(folderPath, subFolders, foldersFinalData) {
 
 function saveAppData() {
   console.log("Savings App Data...");
+  fileTracker.saveChanges();
+  playbackStats.saveChanges();
 }
 
 // module.exports = {

@@ -61,11 +61,11 @@
     shuffleSong,
     stepbackward,
     stepforward,
-    addToSelectedTracks,
+    // addToSelectedTracks,
     togglePlaying,
     addSelectedTracksToPlaylist,
     deleteSelectedTrackFromPlaylist,
-    checkIfInFavorite,
+    // checkIfInFavorite,
     encodeTrackFile,
   } from "../../store/playerManager";
   import Modal from "../Modal/Modal.svelte";
@@ -81,11 +81,12 @@
     audio.onloadeddata = () => {
       audio.play();
       $playbackManager.nowPlaying = getSong($queuelistStore, $selectedSong);
-      checkIfInFavorite();
+      // checkIfInFavorite();
     };
 
     audio.oncanplay = () => {
       $playbackManager.duration = audio.duration;
+      window?.api?.playingTrack($playbackManager.nowPlaying);
     };
 
     audio.onplaying = () => {
