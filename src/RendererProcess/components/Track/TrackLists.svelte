@@ -150,12 +150,10 @@
         height: 50px;
         display: table-row;
         &.playing-track {
-          background-color: #121212 !important;
-          box-shadow: 0 5px 9px 1px rgba(0, 0, 0, 0.5);
-          border: 1px solid #22222280;
           td {
             p {
               color: #ffffff;
+              opacity: 0.5;
             }
 
             .icon {
@@ -167,7 +165,7 @@
           background-color: #121212;
         }
         &:hover {
-          background-color: #222222;
+          background-color: #333333;
           td {
             .checker {
               visibility: visible;
@@ -230,7 +228,7 @@
     align-items: center;
     display: none;
     &:hover {
-      background-color: #333333;
+      background-color: #444444;
     }
   }
 

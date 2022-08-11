@@ -1,12 +1,8 @@
 <script>
   import { cleanUp } from "../../utilities";
-
-  function remove() {
-    cleanUp();
-  }
 </script>
 
-<div class="contextMenu-overlay" on:click={remove} />
+<div class="contextMenu-overlay" on:click={cleanUp} on:contextmenu={cleanUp} />
 <ul class="contextMenu" data-theme="dark">
   <li class="contextMenu-item">
     <button class="contextMenu-button">Play</button>

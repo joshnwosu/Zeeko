@@ -16,19 +16,10 @@
   import NowPlaying from "./RendererProcess/components/Root/NowPlaying.svelte";
   import ContextMenu from "./RendererProcess/components/ContextMenu/ContextMenu.svelte";
   import DimMode from "./RendererProcess/components/Root/DimMode.svelte";
+  import { cleanUp } from "./RendererProcess/utilities";
 
   const routeLoaded = (event) => {
     // console.log('Event: ', event)
-    document
-      .querySelectorAll(".page")
-      .forEach((page) => page.addEventListener("scroll", () => cleanUp()));
-  };
-
-  const cleanUp = () => {
-    let contextMenu = document.querySelector(".contextMenu");
-    if (contextMenu) {
-      contextMenu.setAttribute("style", `height: 0px;`);
-    }
   };
 </script>
 
