@@ -4,6 +4,7 @@
   import { getFisrtAlbumArt } from "../../store/playerManager";
   import BlurImg from "../Widgets/BlurImg.svelte";
   import PlaylistCover from "../Widgets/PlaylistCover.svelte";
+  import PlaylistActionButtons from "./PlaylistActionButtons.svelte";
   import PlaylistCaption from "./PlaylistCaption.svelte";
 </script>
 
@@ -13,6 +14,7 @@
     <PlaylistCover img={getFisrtAlbumArt(playlist)} />
     <div class="details">
       <PlaylistCaption {name} length={playlist?.tracks?.length} fontSize={30} />
+      <PlaylistActionButtons />
     </div>
   </div>
 </div>
@@ -30,16 +32,10 @@
       z-index: 3;
       .details {
         padding: 20px;
-        /* h1 {
-          font-weight: 100;
-          font-size: 30px;
-        }
-
-        p {
-          font-size: 12px;
-          margin-top: 10px;
-          opacity: 0.6;
-        } */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-left: 20px;
       }
     }
   }

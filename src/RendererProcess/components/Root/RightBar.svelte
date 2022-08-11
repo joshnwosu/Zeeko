@@ -76,7 +76,7 @@
       cursor: default;
       position: relative;
       &:hover {
-        background-color: #ffffff10;
+        background-color: #222222;
         .tooltip {
           visibility: visible;
           opacity: 1;

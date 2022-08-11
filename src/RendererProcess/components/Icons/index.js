@@ -32,6 +32,8 @@ import MaximizeIcon from "./outline/Maximize.svelte";
 import CandleIcon from "./outline/Candle.svelte";
 import AddIcon from "./outline/Add.svelte";
 import WarningIcon from "./outline/Warning.svelte";
+import EditIcon from "./outline/Edit.svelte";
+import TrashIcon from "./outline/Trash.svelte";
 
 // bold icons import
 import HomeBoldIcon from "./bold/HomeBold.svelte";
@@ -89,6 +91,8 @@ export {
   CandleIcon,
   AddIcon,
   WarningIcon,
+  EditIcon,
+  TrashIcon,
 
   // bold icons
   HomeBoldIcon,
