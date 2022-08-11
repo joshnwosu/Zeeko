@@ -24,17 +24,20 @@
     toggleNowPlaying,
     toggleSidebar,
   } from "../../store/status";
-  import { handleToggleSidebar } from "../../store/statusManager";
+  import {
+    handleNavigation,
+    handleToggleSidebar,
+  } from "../../store/statusManager";
 
-  function handleNavigation() {
-    // checks if Now playing or Create playlist modal is visible
-    if ($toggleNowPlaying || $toggleCreatePlaylist) {
-      $toggleNowPlaying = false;
-      $toggleCreatePlaylist = false;
-    } else {
-      pop();
-    }
-  }
+  // function handleNavigation() {
+  //   // checks if Now playing or Create playlist modal is visible
+  //   if ($toggleNowPlaying || $toggleCreatePlaylist) {
+  //     $toggleNowPlaying = false;
+  //     $toggleCreatePlaylist = false;
+  //   } else {
+  //     pop();
+  //   }
+  // }
 </script>
 
 <div class="side-nav" class:toggle-sidenav={$toggleSidebar}>
@@ -55,13 +58,11 @@
           <span class="icon" on:click={handleNavigation}>
             <svelte:component this={ArrowLeftTwoIcon} />
           </span>
-          <!-- <span class="label"> Menu </span> -->
         </li>
         <li class="menu-li">
           <span class="icon" on:click={handleToggleSidebar}>
             <svelte:component this={MenuBoldIcon} />
           </span>
-          <!-- <span class="label"> Menu </span> -->
         </li>
         <div class="search-bar">
           <span class="icon">
@@ -109,18 +110,6 @@
             <span class="label"> Recent plays </span>
           </a>
         </li>
-        <!-- <li class:active-link-li={$location == "/now-playing"}>
-          <a
-            href={"/now-playing"}
-            use:link
-            use:active={{ className: "active-link", inactiveClassName: "" }}
-          >
-            <span class="icon">
-              <svelte:component this={NoteIcon} />
-            </span>
-            <span class="label"> Now playing </span>
-          </a>
-        </li> -->
         <li on:click={() => ($toggleNowPlaying = !$toggleNowPlaying)}>
           <span class="icon">
             <svelte:component this={NoteIcon} />

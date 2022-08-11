@@ -1,10 +1,17 @@
 <script>
   import { queuelistStore } from "../../store/player";
   import { toggleNowPlaying } from "../../store/status";
+  import { handleNavigation } from "../../store/statusManager";
+  import { ArrowLeftTwoIcon } from "../Icons";
   import TrackLists from "../Track/TrackLists.svelte";
 </script>
 
 <div class="now-playing" class:show-now-playing={$toggleNowPlaying}>
+  <li class="menu-li">
+    <span class="icon" on:click={handleNavigation}>
+      <svelte:component this={ArrowLeftTwoIcon} />
+    </span>
+  </li>
   <!-- {#if $toggleNowPlaying}
     <TrackLists tracks={$queuelistStore} />
   {/if} -->
