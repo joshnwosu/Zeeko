@@ -87,7 +87,7 @@
   .card {
     width: 200px;
     height: 180px;
-    background-color: #121212;
+    background-color: #ffffff10 !important;
     border-radius: 10px;
     padding: 20px;
     /* margin-right: 20px; */
@@ -108,8 +108,8 @@
       align-items: center;
       background-color: #ffffff20;
       :global(svg) {
-        width: 25px;
-        height: 25px;
+        width: 20px;
+        height: 20px;
         opacity: 0.7;
       }
     }

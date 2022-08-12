@@ -104,7 +104,7 @@
             <span class="label"> My music </span>
           </a>
         </li>
-        <li class:active-link-li={$location.includes("/folders")}>
+        <!-- <li class:active-link-li={$location.includes("/folders")}>
           <a
             href={"/folders"}
             use:link
@@ -118,7 +118,7 @@
             </span>
             <span class="label"> Folders </span>
           </a>
-        </li>
+        </li> -->
         <!-- <li class:active-link-li={$location == "/most-played"}>
           <a
             href={"/most-played"}

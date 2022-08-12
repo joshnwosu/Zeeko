@@ -44,7 +44,7 @@
       display: flex;
       flex-wrap: wrap;
       .tag {
-        background-color: #121212;
+        background-color: #ffffff10;
         padding: 10px 20px;
         border-radius: 20px;
         font-size: 12px;
