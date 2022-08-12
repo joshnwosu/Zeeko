@@ -17,6 +17,7 @@
     AddIcon,
     ArrowLeftTwoIcon,
     MusicNoteIcon,
+    FolderIcon,
   } from "../Icons";
   import { link, location, pop, querystring } from "svelte-spa-router";
   import active from "svelte-spa-router/active";
@@ -101,6 +102,21 @@
               <svelte:component this={MusicIcon} />
             </span>
             <span class="label"> My music </span>
+          </a>
+        </li>
+        <li class:active-link-li={$location.includes("/folders")}>
+          <a
+            href={"/folders"}
+            use:link
+            use:active={{
+              className: "active-link",
+              inactiveClassName: "",
+            }}
+          >
+            <span class="icon">
+              <svelte:component this={FolderIcon} />
+            </span>
+            <span class="label"> Folders </span>
           </a>
         </li>
         <!-- <li class:active-link-li={$location == "/most-played"}>
