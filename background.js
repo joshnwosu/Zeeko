@@ -68,6 +68,10 @@ const createWindow = () => {
   refreshTracks();
 };
 
+function isValidFileType(path) {
+  return path.match(/\.mp3|\.webm|\.m4a|\.ogg/gi);
+}
+
 // listen for file changes
 watcher = chokidar
   .watch(`${directories.musicDirectory}`, {
@@ -77,10 +81,12 @@ watcher = chokidar
     awaitWriteFinish: true,
   })
   .on("add", async (path) => {
-    console.log(`File ${path} has been added`);
-    const newTrack = await createParsedTrack(path);
-    window.webContents.send("newTrack", newTrack);
-    fileTracker.saveChanges();
+    if (isValidFileType(path)) {
+      console.log(`File ${path} has been added`);
+      const newTrack = await createParsedTrack(path);
+      window.webContents.send("newTrack", newTrack);
+      fileTracker.saveChanges();
+    }
   })
 
   .on("change", (path) => {
@@ -104,10 +110,6 @@ app.on("ready", () => {
 
 function watcherHandler() {
   console.log("Hello I am watcher.");
-}
-
-function isValidFileType(path) {
-  return path.match(/\.mp3|\.webm|\.m4a|\.ogg/gi);
 }
 
 ipcMain.on("titlebar", (event, arg) => {

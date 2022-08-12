@@ -362,7 +362,7 @@
 <style lang="scss">
   .shuffle-on,
   .repeat-on,
-  .in-favorite {
+  :global(.in-favorite) {
     :global(svg) {
       :global(path) {
         fill: #65e14d !important;
@@ -535,6 +535,7 @@
       position: relative;
       overflow: hidden;
       flex: 1;
+      /* border: 1px solid red; */
       &.left {
         align-items: center;
         padding: 0 10px;
@@ -547,8 +548,8 @@
       }
       &.middle {
         flex-direction: column;
-        justify-content: center;
-        flex: 2.5;
+        justify-content: flex-start;
+        flex: 2;
       }
       &.right {
         justify-content: flex-end;
@@ -607,11 +608,13 @@
 
     .middle {
       padding: 0 20px;
+      padding-top: 10px;
 
       .control-button {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        /* border: 1px solid green; */
         .control-button-inner {
           display: flex;
           align-items: center;

@@ -56,6 +56,10 @@
     position: absolute;
     overflow-y: auto;
     flex: 1;
+    &::-webkit-scrollbar-track-piece:start {
+      margin-top: 100px;
+    }
+
     &::-webkit-scrollbar-track-piece:end {
       margin-bottom: 100px;
     }

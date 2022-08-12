@@ -1,10 +1,12 @@
 <script>
   import { push } from "svelte-spa-router";
+  import { playlistStore } from "../../store/player";
   import { toggleDim } from "../../store/status";
   import { handleToggleDimMode } from "../../store/statusManager";
   import {
     CubeIcon,
     HeartIcon,
+    HeartBoldIcon,
     MoonIcon,
     SettingIcon,
     SunnyIcon,
@@ -14,8 +16,12 @@
 <nav class="right-nav">
   <ul class="top">
     <li on:click={() => push("/playlist-details/Favorites")}>
-      <span class="icon">
-        <svelte:component this={HeartIcon} />
+      <span class="icon" class:in-favorite={$playlistStore[0].tracks.length}>
+        {#if $playlistStore[0].tracks.length}
+          <svelte:component this={HeartBoldIcon} />
+        {:else}
+          <svelte:component this={HeartIcon} />
+        {/if}
       </span>
       <span class="tooltip">Favorites</span>
     </li>
@@ -47,9 +53,9 @@
 
 <style lang="scss">
   .right-nav {
-    /* background-color: #12121280; */
+    background-color: #12121280;
     /* background-image: linear-gradient(to bottom, #000000, #12121260, #12121280); */
-    background-color: #000000;
+    /* background-color: #000000; */
     width: 60px;
     position: fixed;
     top: 0;

@@ -42,7 +42,7 @@
     position: fixed;
     z-index: 99999999;
     background-color: transparent;
-    /* padding-right: 60px; */
+    padding-right: 60px;
     .left,
     .right {
       -webkit-app-region: no-drag;

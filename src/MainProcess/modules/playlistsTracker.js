@@ -20,6 +20,14 @@ class PlaylistsTracker {
     this.playlists = playlists;
     this.saveChanges();
   }
+  deleteFile(pathToTrack) {
+    // only works for favorites
+    const indexOfDeletedTrack = this.playlists[0].tracks.findIndex(
+      (track) => track.fileLocation == pathToTrack
+    );
+    this.playlists[0].tracks.splice(indexOfDeletedTrack, 1);
+    this.saveChanges();
+  }
   saveChanges() {
     fs.writeFile(
       directories.playlistsLocation,
