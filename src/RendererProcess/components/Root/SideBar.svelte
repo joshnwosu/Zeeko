@@ -283,10 +283,10 @@
       background-color: #ffffff10;
       width: 100%;
       height: 50px;
-      padding: 0px 50px 0px 60px;
+      padding: 0px 50px 0px 70px;
       border: none;
       color: #ffffff;
-      font-size: 16px;
+      font-size: 12px;
     }
     .icon {
       position: absolute;
