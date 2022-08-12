@@ -278,9 +278,15 @@
     margin: 0px 0px;
     overflow: hidden;
     position: relative;
+    &:hover {
+      input {
+        background-color: #ffffff10;
+      }
+    }
     input {
       background-color: rgba(0, 0, 0, 0.5);
       background-color: #ffffff10;
+      background-color: transparent;
       width: 100%;
       height: 50px;
       padding: 0px 50px 0px 70px;
