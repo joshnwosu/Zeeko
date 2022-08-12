@@ -39,6 +39,10 @@
   //     pop();
   //   }
   // }
+
+  function handleToggle() {
+    $toggleCreatePlaylist = !$toggleCreatePlaylist;
+  }
 </script>
 
 <div class="side-nav" class:toggle-sidenav={$toggleSidebar}>
@@ -99,7 +103,7 @@
             <span class="label"> My music </span>
           </a>
         </li>
-        <li class:active-link-li={$location == "/most-played"}>
+        <!-- <li class:active-link-li={$location == "/most-played"}>
           <a
             href={"/most-played"}
             use:link
@@ -122,7 +126,7 @@
             </span>
             <span class="label"> Recent plays </span>
           </a>
-        </li>
+        </li> -->
         <li on:click={() => ($toggleNowPlaying = !$toggleNowPlaying)}>
           <span class="icon">
             <svelte:component this={NoteIcon} />
@@ -144,25 +148,44 @@
             <span class="label"> Playlists </span>
           </a>
         </li>
-        <li
-          class="menu-li"
-          on:click={() => ($toggleCreatePlaylist = !$toggleCreatePlaylist)}
-        >
-          <span class="icon">
-            <svelte:component this={AddIcon} />
-          </span>
-          <!-- <span class="label"> Add playlist </span> -->
-          <!-- <span class="label">你好吗 我很好</span> -->
-        </li>
+        {#if $toggleSidebar}
+          <li class="menu-li" on:click={handleToggle}>
+            <span class="icon">
+              <svelte:component this={AddIcon} />
+            </span>
+          </li>
+        {:else}
+          <div class="add-playlist-wrapper">
+            <button class="add-playlist" on:click={handleToggle}>
+              你好吗 我很好
+            </button>
+          </div>
+        {/if}
       </ul>
     </nav>
   </div>
 </div>
 
 <style lang="scss">
+  .add-playlist-wrapper {
+    padding: 0 20px;
+    margin-top: 20px;
+    .add-playlist {
+      background-color: #ffffff10;
+      border-radius: 25px;
+      width: 100%;
+      height: 50px;
+      font-size: 12px;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
   .side-nav {
     background-color: #12121280;
-    width: 300px;
+    width: 280px;
     position: fixed;
     top: 0;
     left: 0;
@@ -235,7 +258,7 @@
     position: relative;
     input {
       background-color: rgba(0, 0, 0, 0.5);
-      background-color: #ffffff20;
+      background-color: #ffffff10;
       width: 100%;
       height: 50px;
       padding: 0px 50px 0px 60px;

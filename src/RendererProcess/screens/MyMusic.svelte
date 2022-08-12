@@ -56,7 +56,7 @@
     position: sticky;
     top: 100px;
     padding: 20px;
-    background-color: #00000020;
+    background-color: #000000;
     z-index: 2;
     backdrop-filter: blur(20px);
     nav {

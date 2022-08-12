@@ -96,7 +96,7 @@
   .router-container {
     overflow-y: auto;
     position: relative;
-    width: calc(100% - 360px);
+    width: calc(100% - 340px);
     height: 100%;
     bottom: 0;
     right: 60px;
@@ -112,7 +112,7 @@
   }
   @media (max-width: 1000px) {
     .router-container {
-      width: calc(100% - 50px);
+      width: calc(100% - 60px);
     }
   }
 </style>
