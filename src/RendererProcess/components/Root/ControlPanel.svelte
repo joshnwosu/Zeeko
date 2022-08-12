@@ -435,7 +435,7 @@
     margin: 0 20px;
   }
   .seek-bar {
-    height: 2px;
+    height: 3px;
     background-color: rgba(255, 255, 255, 0.1);
     position: relative;
     input {
@@ -549,7 +549,7 @@
       &.middle {
         flex-direction: column;
         justify-content: flex-start;
-        flex: 2;
+        flex: 2.5;
       }
       &.right {
         justify-content: flex-end;
@@ -608,7 +608,7 @@
 
     .middle {
       padding: 0 20px;
-      padding-top: 10px;
+      padding-top: 5px;
 
       .control-button {
         display: flex;
