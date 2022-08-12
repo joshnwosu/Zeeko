@@ -174,6 +174,7 @@
           <div class="add-playlist-wrapper">
             <button class="add-playlist" on:click={handleToggle}>
               你好吗 我很好
+              <!-- Add playlist -->
             </button>
           </div>
         {/if}
@@ -191,11 +192,16 @@
       border-radius: 25px;
       width: 100%;
       height: 50px;
-      font-size: 12px;
-      color: #ffffff;
+      font-size: 10px;
+      font-weight: 400;
+      color: #ffffff65;
       display: flex;
       justify-content: center;
       align-items: center;
+      text-transform: uppercase;
+      &:hover {
+        color: #ffffff;
+      }
     }
   }
 
