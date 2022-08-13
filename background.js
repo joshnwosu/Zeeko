@@ -1,4 +1,11 @@
-const { app, screen, BrowserWindow, ipcMain, dialog } = require("electron");
+const {
+  app,
+  screen,
+  BrowserWindow,
+  ipcMain,
+  dialog,
+  nativeImage,
+} = require("electron");
 const path = require("path");
 const fs = require("fs");
 const url = require("url");
@@ -37,7 +44,7 @@ const createWindow = () => {
     maxHeight: height,
     minWidth: 400,
     minHeight: 500,
-    // icon: __dirname + '/public/assets/images/icon.png',
+    icon: path.join(__dirname, "logo.png"),
     frame: false,
 
     webPreferences: {
@@ -63,6 +70,35 @@ const createWindow = () => {
   window.webContents.on("did-fail-load", () => {
     window.loadURL(path.join(__dirname, "public/index.html"));
   });
+
+  console.log("dir", __dirname);
+
+  window.setThumbarButtons([
+    {
+      tooltip: "Previous",
+      icon: "./button1.png",
+      click() {
+        console.log(true);
+        // win.webContents.send("mediaprevtrack");
+      },
+    },
+    {
+      tooltip: "Play / Pause",
+      icon: "./button1.png",
+      click() {
+        console.log(true);
+        // win.webContents.send("mediaplaypause");
+      },
+    },
+    {
+      tooltip: "Next",
+      icon: "./next.png",
+      click() {
+        console.log(true);
+        // win.webContents.send("medianexttrack");
+      },
+    },
+  ]);
 
   // playerReady();
   refreshTracks();
@@ -107,10 +143,6 @@ watcher = chokidar
 app.on("ready", () => {
   createWindow();
 });
-
-function watcherHandler() {
-  console.log("Hello I am watcher.");
-}
 
 ipcMain.on("titlebar", (event, arg) => {
   if (arg === "destroy") window.destroy();
