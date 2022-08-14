@@ -518,7 +518,7 @@
     bottom: 0;
     /* background-color: rgba(0, 0, 0, 0.6); */
     background-color: #00000090;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(100px);
     z-index: 999;
 
     display: flex;
