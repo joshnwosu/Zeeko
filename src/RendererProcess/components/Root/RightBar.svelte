@@ -17,11 +17,7 @@
   <ul class="top">
     <li on:click={() => push("/playlist-details/Favorites")}>
       <span class="icon">
-        {#if $playlistStore[0].tracks.length}
-          <svelte:component this={HeartBoldIcon} />
-        {:else}
-          <svelte:component this={HeartIcon} />
-        {/if}
+        <svelte:component this={HeartIcon} />
       </span>
       <span class="tooltip">Favorites</span>
     </li>
