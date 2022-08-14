@@ -44,7 +44,7 @@ const createWindow = () => {
     maxHeight: height,
     minWidth: 400,
     minHeight: 500,
-    icon: path.join(__dirname, "logo.png"),
+    // icon: path.join(__dirname, "logo.png"),
     frame: false,
 
     webPreferences: {

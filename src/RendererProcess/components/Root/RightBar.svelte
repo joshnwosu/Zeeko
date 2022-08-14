@@ -16,7 +16,7 @@
 <nav class="right-nav">
   <ul class="top">
     <li on:click={() => push("/playlist-details/Favorites")}>
-      <span class="icon" class:in-favorite={$playlistStore[0].tracks.length}>
+      <span class="icon">
         {#if $playlistStore[0].tracks.length}
           <svelte:component this={HeartBoldIcon} />
         {:else}
