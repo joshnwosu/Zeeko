@@ -38,17 +38,17 @@
     padding: 0;
     right: 0;
     top: 0;
+    padding-right: 60px;
     -webkit-app-region: drag;
     position: fixed;
     z-index: 99999999;
     background-color: transparent;
-    padding-right: 60px;
     .left,
     .right {
       -webkit-app-region: no-drag;
     }
-    .right {
-      background-color: transparent;
-    }
+    /* .right {
+      background-color: #000000;
+    } */
   }
 </style>

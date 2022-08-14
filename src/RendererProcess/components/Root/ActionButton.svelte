@@ -39,12 +39,16 @@
 
   .ios-style {
     display: none;
+    width: 80px;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+    padding: 0 5px;
     span {
       display: block;
-      width: 12px;
-      height: 12px;
+      width: 15px;
+      height: 15px;
       border-radius: 50%;
-      margin-left: 5px;
       cursor: default;
       &:hover {
         opacity: 0.5;
@@ -78,7 +82,7 @@
       width: 50px;
       height: 30px;
       &:hover:not(.close) {
-        background-color: #333333;
+        background-color: #444444;
       }
       &.close:hover {
         background-color: rgb(172, 15, 15);

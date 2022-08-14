@@ -492,6 +492,7 @@
         rgba(255, 255, 255, 0.1)
       );
     }
+
     :global(svg) {
       width: 20px;
       height: 20px;
@@ -516,8 +517,8 @@
     height: 100px;
     bottom: 0;
     /* background-color: rgba(0, 0, 0, 0.6); */
-    background-color: #12121260;
-    backdrop-filter: blur(100px);
+    background-color: #00000090;
+    backdrop-filter: blur(10px);
     z-index: 999;
 
     display: flex;
@@ -637,13 +638,17 @@
         justify-content: center;
         align-items: center;
         margin: 0 4px;
-        :global(svg) {
+        background-color: rgba(255, 255, 255, 0.1);
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.2);
+        }
+        /* :global(svg) {
           width: 50px !important;
           height: 50px !important;
           :global(path) {
             fill: #ffffff;
           }
-        }
+        } */
       }
 
       .track-bar {

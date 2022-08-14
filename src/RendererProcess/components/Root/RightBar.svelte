@@ -57,6 +57,7 @@
     /* background-image: linear-gradient(to bottom, #000000, #12121260, #12121280); */
     /* background-color: #000000; */
     width: 60px;
+    height: 100%;
     position: fixed;
     top: 0;
     right: 0;
