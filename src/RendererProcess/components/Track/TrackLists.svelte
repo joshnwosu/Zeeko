@@ -2,6 +2,7 @@
   export let tracks;
   import { push } from "svelte-spa-router";
   import {
+    loading,
     playbackManager,
     playlistStore,
     selectedSong,
@@ -9,6 +10,9 @@
   import {
     addSelectedTracksToPlaylist,
     deleteSelectedTrackFromPlaylist,
+    encodeTrackFile,
+    fetchDuration,
+    formatDuration,
     formatIndex,
     getSong,
     pauseSong,
@@ -107,6 +111,13 @@
           >
           <td class="genre"><p>{track.genre}</p></td>
           <td class="year" align="right"><p>{track.year || ""}</p></td>
+          <td class="duration" align="right">
+            {#await fetchDuration(encodeTrackFile(track))}
+              <p>--:--</p>
+            {:then duration}
+              <p>{formatDuration(duration)}</p>
+            {/await}
+          </td>
           <td
             class="favorite"
             class:in-favorite={getSong(
@@ -261,6 +272,10 @@
   .favorite {
     width: 50px;
   }
+
+  /* .duration {
+    width: 100px;
+  } */
 
   .check-box {
     width: 70px;

@@ -102,6 +102,29 @@ export function getFirstAlbumArt(arr) {
   return albumArt;
 }
 
+export function fetchDuration(path) {
+  return new Promise((resolve) => {
+    const audio = new Audio();
+    audio.src = path;
+    audio.addEventListener("loadedmetadata", () => {
+      // To keep a promise maintainable, only do 1
+      // asynchronous activity for each promise you make
+      resolve(audio.duration);
+    });
+  });
+}
+
+export function fetchTotalDuration(paths) {
+  // Create an array of promises and wait until all have completed
+  return (
+    Promise.all(paths.map((path) => fetchDuration(path)))
+      // Reduce the results back to a single value
+      .then((durations) =>
+        durations.reduce((acc, duration) => acc + duration, 0)
+      )
+  );
+}
+
 export function formatDuration(length) {
   let seconds = Math.floor(length % 60) || 0;
   let minutes = Math.floor(length / 60) || 0;

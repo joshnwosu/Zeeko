@@ -41,6 +41,7 @@
     "chokidar": "^3.5.3",
     "electron-is-dev": "^2.0.0",
     "electron-json-storage": "^4.5.0",
+    "get-audio-duration": "^3.1.0",
     "get-image-colors": "^4.0.1",
     "gsap": "^3.10.4",
     "music-metadata": "^7.12.4",

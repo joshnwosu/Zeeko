@@ -73,8 +73,6 @@ function createParsedTrack(fileLocation) {
 
       track.trackNumber = tags.trackNumber;
 
-      console.log("The tag: ", tags);
-
       fs.stat(track.fileLocation, (err, stats) => {
         track.dateAdded = stats.ctimeMs;
       });
