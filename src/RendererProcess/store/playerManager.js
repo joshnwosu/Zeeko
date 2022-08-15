@@ -510,7 +510,7 @@ export function generateGenreData() {
     storeGenres.unshift(genreInfo);
   });
   sortArrayOfObjects(storeGenres, "name");
-  console.log("Genre: ", storeGenres);
+  // console.log("Genre: ", storeGenres);
 }
 
 export function generateArtistsData() {
