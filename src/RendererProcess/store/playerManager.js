@@ -467,17 +467,17 @@ export function restoreTracks(payload) {
 
 export function restoreRecentlyPlayed(payload) {
   recentlyPlayedTracksStore.set(payload);
-  console.log("Recent played: ", payload);
+  // console.log("Recent played: ", payload);
 }
 
 export function restorePlaylists(payload) {
   playlistStore.set(payload);
-  console.log("Playlist: ", payload);
+  // console.log("Playlist: ", payload);
 }
 
 export function setPlayStats(payload) {
   playStatsStore.set(payload);
-  console.log("Play stats: ", payload);
+  // console.log("Play stats: ", payload);
 }
 
 export function generateGenreData() {
@@ -510,7 +510,7 @@ export function generateGenreData() {
     storeGenres.unshift(genreInfo);
   });
   sortArrayOfObjects(storeGenres, "name");
-  console.log("Genre: ", storeGenres);
+  // console.log("Genre: ", storeGenres);
 }
 
 export function generateArtistsData() {
@@ -557,7 +557,7 @@ export function generateArtistsData() {
   });
 
   sortArrayOfObjects(storeArtists, "name");
-  console.log("Artists:", storeArtists);
+  // console.log("Artists:", storeArtists);
 }
 
 export function generateAlbumsData() {
@@ -582,7 +582,7 @@ export function generateAlbumsData() {
     });
   });
   sortArrayOfObjects(storeAlbums, "name");
-  console.log("Albums:", storeAlbums);
+  // console.log("Albums:", storeAlbums);
 }
 
 export function generateFoldersData() {
@@ -605,5 +605,5 @@ export function generateFoldersData() {
     });
   });
   sortArrayOfObjects(storeFolders, "name");
-  console.log("Folders:", storeFolders);
+  // console.log("Folders:", storeFolders);
 }

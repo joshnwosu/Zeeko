@@ -24,7 +24,6 @@
     "/albums": Albums,
     "/genres": Genres,
   };
-  console.log("location: ", $location);
 </script>
 
 <main class="page" transition:fade>
