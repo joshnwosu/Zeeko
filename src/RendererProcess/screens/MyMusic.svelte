@@ -85,9 +85,10 @@
       align-items: center;
       height: 100%;
       flex: 1;
-      border-bottom: 1px solid #ffffff10;
+      border-bottom: 1px solid #ffffff20;
       span {
         display: inline-flex;
+        height: 100%;
         align-items: center;
         font-size: 14px;
         color: #ffffff65;

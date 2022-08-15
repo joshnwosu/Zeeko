@@ -56,9 +56,9 @@ function createParsedTrack(fileLocation) {
       track.artist = tags.artist || "Unknown Artist";
       track.extractedArtist = extractTitleAndArtist(track.fileName).artist;
 
-      track.album = tags.album || "Unknown Album";
+      track.album = tags.album ? tags.album.trim() : "Unknown Album";
 
-      track.genre = tags.genre || "Unknown Genre";
+      track.genre = tags.genre ? tags.genre.trim() : "Unknown Genre";
 
       track.year = tags.year;
 

@@ -489,7 +489,7 @@ export function generateGenreData() {
 
   genreNames.forEach((genre) => {
     const genreInfo = {
-      name: genre,
+      name: genre.trim(),
       picture: null,
       tracks: [],
       albums: [],
@@ -510,7 +510,7 @@ export function generateGenreData() {
     storeGenres.unshift(genreInfo);
   });
   sortArrayOfObjects(storeGenres, "name");
-  // console.log("Genre: ", storeGenres);
+  console.log("Genre: ", storeGenres);
 }
 
 export function generateArtistsData() {
@@ -539,7 +539,7 @@ export function generateArtistsData() {
 
     albumsFromCurrentArtist.forEach((album) => {
       const newAlbum = {
-        name: album,
+        name: album.trim(),
         artist: artist,
         tracks: tracksFromCurrentArtist.filter(
           (track) => track.album === album
