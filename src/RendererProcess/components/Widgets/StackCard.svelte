@@ -23,18 +23,18 @@
       transform-origin: 50% -50%;
 
       &:first-child {
-        transform: scale(0.7);
+        transform: scale(0.85);
         background-color: #222;
       }
 
       &:nth-child(2) {
-        transform: scale(0.8);
-        background-color: #333;
+        transform: scale(0.9);
+        background-color: #555;
       }
 
       &:nth-child(3) {
-        transform: scale(0.9);
-        background-color: #444;
+        transform: scale(0.95);
+        background-color: #999;
       }
     }
   }
