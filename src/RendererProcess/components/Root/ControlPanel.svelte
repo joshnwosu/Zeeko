@@ -59,8 +59,8 @@
     prevSong,
     repeatSong,
     shuffleSong,
-    stepbackward,
-    stepforward,
+    stepBackward,
+    stepForward,
     // addToSelectedTracks,
     togglePlaying,
     addSelectedTracksToPlaylist,
@@ -265,7 +265,7 @@
         <span class="icon previous-icon left-flare" on:click={prevSong}>
           <svelte:component this={PreviousBoldIcon} />
         </span>
-        <span class="icon backward-icon left-flare" on:click={stepbackward}>
+        <span class="icon backward-icon left-flare" on:click={stepBackward}>
           <svelte:component this={Backward10Icon} />
         </span>
         <div class="play-pause" on:click={togglePlaying}>
@@ -277,7 +277,7 @@
             {/if}
           </span>
         </div>
-        <span class="icon forward-icon right-flare" on:click={stepforward}>
+        <span class="icon forward-icon right-flare" on:click={stepForward}>
           <svelte:component this={Forward10Icon} />
         </span>
         <span class="icon next-icon right-flare" on:click={nextSong}>
@@ -638,6 +638,7 @@
         justify-content: center;
         align-items: center;
         margin: 0 4px;
+        margin-top: 10px;
         background-color: rgba(255, 255, 255, 0.1);
         &:hover {
           background-color: rgba(255, 255, 255, 0.2);

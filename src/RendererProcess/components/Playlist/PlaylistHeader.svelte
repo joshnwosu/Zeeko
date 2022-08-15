@@ -1,7 +1,7 @@
 <script>
   export let playlist;
   export let name;
-  import { getFisrtAlbumArt } from "../../store/playerManager";
+  import { getFirstAlbumArt } from "../../store/playerManager";
   import BlurImg from "../Widgets/BlurImg.svelte";
   import PlaylistCover from "../Widgets/PlaylistCover.svelte";
   import PlaylistActionButtons from "./PlaylistActionButtons.svelte";
@@ -9,9 +9,9 @@
 </script>
 
 <div class="header">
-  <BlurImg img={getFisrtAlbumArt(playlist)} />
+  <BlurImg img={getFirstAlbumArt(playlist)} />
   <div class="header-content">
-    <PlaylistCover img={getFisrtAlbumArt(playlist)} />
+    <PlaylistCover img={getFirstAlbumArt(playlist)} />
     <div class="details">
       <PlaylistCaption {name} length={playlist?.tracks?.length} fontSize={30} />
       <PlaylistActionButtons />

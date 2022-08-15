@@ -5,7 +5,7 @@
   import ScreenHeader from "../components/Root/ScreenHeader.svelte";
   import PlaylistCover from "../components/Widgets/PlaylistCover.svelte";
   import { playlistStore } from "../store/player";
-  import { getFisrtAlbumArt } from "../store/playerManager";
+  import { getFirstAlbumArt } from "../store/playerManager";
   import {
     gsap,
     ScrollTrigger,
@@ -74,7 +74,7 @@
       >
         <!-- transition:tweenMe -->
         <figure>
-          <PlaylistCover img={getFisrtAlbumArt(playlist)} />
+          <PlaylistCover img={getFirstAlbumArt(playlist)} />
           <figcaption>
             <PlaylistCaption
               name={playlist.name}

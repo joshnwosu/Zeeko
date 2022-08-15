@@ -96,7 +96,7 @@ function removeDuplicates(targetArray, prop) {
   });
 }
 
-export function getFisrtAlbumArt(arr) {
+export function getFirstAlbumArt(arr) {
   let albumArt;
   arr?.tracks?.some((track) => (albumArt = track.albumArt));
   return albumArt;
@@ -227,12 +227,12 @@ export function prevSong() {
   playTrack(index);
 }
 
-export function stepforward() {
+export function stepForward() {
   if (!audio.src) return;
   audio.currentTime += 10;
 }
 
-export function stepbackward() {
+export function stepBackward() {
   if (!audio.src) return;
   audio.currentTime -= 10;
 }
@@ -504,6 +504,7 @@ export function generateGenreData() {
         tracks: tracks.filter((track) => track.album === album),
       };
       genreInfo.albums.push(newAlbum);
+      // genreInfo.picture = getFirstAlbumArt(newAlbum);
     });
     genreInfo.albums = removeDuplicates(genreInfo.albums, "name");
     storeGenres.unshift(genreInfo);
