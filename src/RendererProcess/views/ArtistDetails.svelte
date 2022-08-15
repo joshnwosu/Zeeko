@@ -6,23 +6,28 @@
   import PlaylistHeader from "../components/Playlist/PlaylistHeader.svelte";
   import PlaylistView from "../components/Playlist/PlaylistView.svelte";
   import TrackLists from "../components/Track/TrackLists.svelte";
-  import { playlistStore } from "../store/player";
-  let playlist;
+  import { artistsStore } from "../store/player";
+  let artistData;
 
-  // $: (function getPlaylist(payload) {
-  //   if (params?.name) {
-  //     playlist = $playlistStore.filter(
-  //       (playlist) => playlist.name == payload
-  //     )[0];
-  //   }
-  // })(params?.name);
+  $: (function getPlaylist(payload) {
+    if (params?.name) {
+      artistData =
+        $artistsStore.filter((artist) => artist.name == payload)[0] || [];
+      console.log("Artist Data: ", artistData);
+    }
+  })(params?.name);
 </script>
 
 <main class="page" transition:fade>
   {#if params?.name}
-    <PlaylistHeader name={params.name} {playlist} />
-    <!-- <PlaylistView>
-      <TrackLists tracks={playlist?.tracks} />
-    </PlaylistView> -->
+    <h1>{params.name}</h1>
+
+    {#each artistData.tracks as item}
+      <div>{item.title}</div>
+    {/each}
+
+    {#each artistData.albums as item}
+      <div>{item.name}</div>
+    {/each}
   {/if}
 </main>

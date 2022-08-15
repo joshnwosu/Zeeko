@@ -9,9 +9,8 @@
 
   $: (function getPlaylist(payload) {
     if (params?.name) {
-      playlist = $playlistStore.filter(
-        (playlist) => playlist.name == payload
-      )[0];
+      playlist =
+        $playlistStore.filter((playlist) => playlist.name == payload)[0] || [];
     }
   })(params?.name);
 </script>

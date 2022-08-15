@@ -23,7 +23,9 @@
   .header {
     width: 100%;
     background-color: #121212;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 2;
     .header-content {
       width: 100%;
       display: flex;

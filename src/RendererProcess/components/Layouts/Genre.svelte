@@ -40,15 +40,15 @@
       flex-wrap: wrap;
 
       .card {
-        width: 200px;
+        width: 150px;
         border-radius: 5px;
         overflow: hidden;
         &:hover {
           background-color: #121212;
         }
         img {
-          width: 100%;
-          height: 160px;
+          width: 150px;
+          height: 130px;
           object-fit: cover;
           object-position: center;
         }
