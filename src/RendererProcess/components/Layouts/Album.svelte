@@ -7,7 +7,7 @@
 
 <div class="card-container">
   {#each data as album}
-    <div class="card" on:click={() => push(`#/artist-details/${album.artist}`)}>
+    <div class="card" on:click={() => push(`#/artist-details/${album.name}`)}>
       <img src={album?.tracks[0]?.albumArt || defaultCoverArt} alt="album" />
       <div class="content">
         <p class="name">{album.name}</p>
@@ -25,11 +25,11 @@
 
     .card {
       width: 200px;
-      background-color: #121212;
+      /* background-color: #121212; */
       border-radius: 5px;
       overflow: hidden;
       &:hover {
-        background-color: #333333;
+        background-color: #121212;
       }
       img {
         width: 100%;

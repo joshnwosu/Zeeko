@@ -23,17 +23,17 @@
       transform-origin: 50% -50%;
 
       &:first-child {
-        transform: scale(0.85);
+        transform: scale(0.7);
         background-color: #222;
       }
 
       &:nth-child(2) {
-        transform: scale(0.9);
+        transform: scale(0.8);
         background-color: #333;
       }
 
       &:nth-child(3) {
-        transform: scale(0.95);
+        transform: scale(0.9);
         background-color: #444;
       }
     }
