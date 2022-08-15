@@ -569,7 +569,7 @@ export function generateAlbumsData() {
 
   albumNames.forEach((album) => {
     const albumInfo = {
-      name: album,
+      name: album.trim(),
       artist: "",
       tracks: [],
     };

@@ -4,63 +4,79 @@
   import { UserIcon } from "../Icons";
 
   export let data;
-  $: sortAndGroupAlphabetically(data);
+  $: artists = sortAndGroupAlphabetically(data) || [];
 </script>
 
-<div class="card-container">
-  {#each data as artist}
-    <div class="card" on:click={() => push(`#/artist-details/${artist.name}`)}>
-      <div class="figure">
-        <svelte:component this={UserIcon} />
-      </div>
-      <div class="content">
-        <p class="name">{artist.name}</p>
-      </div>
+<div class="wrapper">
+  {#each artists as artist}
+    <div class="header">{artist.group}</div>
+    <div class="card-container">
+      {#each artist?.children as child}
+        <div
+          class="card"
+          on:click={() => push(`#/artist-details/${child.name}`)}
+        >
+          <div class="figure">
+            <svelte:component this={UserIcon} />
+          </div>
+          <div class="content">
+            <p class="name">{child.name}</p>
+          </div>
+        </div>
+      {/each}
     </div>
   {/each}
 </div>
 
 <style lang="scss">
-  .card-container {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+  .wrapper {
+    .header {
+      font-size: 14px;
+      background-color: #000000;
+      padding: 10px;
+    }
 
-    .card {
-      width: 200px;
-      overflow: hidden;
+    .card-container {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      &:hover {
-        .figure {
-          background-color: #333333;
-        }
-      }
+      gap: 20px;
+      flex-wrap: wrap;
 
-      .figure {
+      .card {
         width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        background-color: #121212;
+        overflow: hidden;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
-        :global(svg) {
-          width: 50px;
-          height: 50px;
-          opacity: 0.5;
+        &:hover {
+          .figure {
+            background-color: #333333;
+          }
         }
-      }
 
-      .content {
-        padding: 10px 10px;
-        P {
-          font-size: 12px;
-          line-height: 1.5;
-          color: #ffffff;
-          white-space: pre-wrap;
-          text-align: center;
+        .figure {
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          background-color: #121212;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          :global(svg) {
+            width: 50px;
+            height: 50px;
+            opacity: 0.5;
+          }
+        }
+
+        .content {
+          padding: 10px 10px;
+          P {
+            font-size: 12px;
+            line-height: 1.5;
+            color: #ffffff;
+            white-space: pre-wrap;
+            text-align: center;
+          }
         }
       }
     }

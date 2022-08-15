@@ -131,13 +131,24 @@ export function removeDuplicates(targetArray, prop) {
   });
 }
 
+// https://stackoverflow.com/questions/175739/how-can-i-check-if-a-string-is-a-valid-number
+export function isNumeric(str) {
+  if (typeof str != "string") return false; // we only process strings!
+  return (
+    !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+    !isNaN(parseFloat(str))
+  ); // ...and ensure strings of whitespace fail
+}
+
 // https://stackoverflow.com/questions/51009090/sort-and-group-objects-alphabetically-by-first-letter-javascript
 export function sortAndGroupAlphabetically(rawData) {
   let data = rawData
     // .sort((a, b) => a.name.localeCompare(b.name, "es", { sensitivity: "base" }))
     .reduce((r, e) => {
       // get first letter of name of current element
-      let group = e.name[0].toUpperCase();
+      let group = isNumeric(e.name[0].toUpperCase())
+        ? "#"
+        : e.name[0].toUpperCase();
       // if there is no property in accumulator with this letter create it
       if (!r[group]) r[group] = { group, children: [e] };
       // if there is push current element to children array for that letter
@@ -149,6 +160,7 @@ export function sortAndGroupAlphabetically(rawData) {
   // since data at this point is an object, to get array of values
   // we use Object.values method
   let result = Object.values(data);
-
   console.log(result);
+
+  return result;
 }
