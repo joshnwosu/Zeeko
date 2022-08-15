@@ -3,12 +3,15 @@
 
   export let data;
   import { defaultCoverArt, sortAndGroupAlphabetically } from "../../utilities";
+  import StickyHeader from "../Widgets/StickyHeader.svelte";
   $: albums = sortAndGroupAlphabetically(data) || [];
 </script>
 
 <div class="wrapper">
   {#each albums as album}
-    <div class="header">{album.group}</div>
+    <StickyHeader>
+      {album.group}
+    </StickyHeader>
     <div class="card-container">
       {#each album.children as child}
         <div
@@ -31,11 +34,7 @@
 
 <style lang="scss">
   .wrapper {
-    .header {
-      font-size: 14px;
-      background-color: #000000;
-      padding: 10px;
-    }
+    position: relative;
     .card-container {
       display: flex;
       gap: 20px;
@@ -43,7 +42,6 @@
 
       .card {
         width: 200px;
-        /* background-color: #121212; */
         border-radius: 5px;
         overflow: hidden;
         &:hover {

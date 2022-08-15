@@ -56,6 +56,10 @@
     background-color: #000000;
     z-index: 2;
     backdrop-filter: blur(20px);
+    height: 50px;
+
+    display: flex;
+    align-items: center;
     nav {
       span {
         font-size: 16px;

@@ -2,6 +2,7 @@
   import { push } from "svelte-spa-router";
   import { sortAndGroupAlphabetically } from "../../utilities";
   import { UserIcon } from "../Icons";
+  import StickyHeader from "../Widgets/StickyHeader.svelte";
 
   export let data;
   $: artists = sortAndGroupAlphabetically(data) || [];
@@ -9,7 +10,9 @@
 
 <div class="wrapper">
   {#each artists as artist}
-    <div class="header">{artist.group}</div>
+    <StickyHeader>
+      {artist.group}
+    </StickyHeader>
     <div class="card-container">
       {#each artist?.children as child}
         <div
@@ -30,12 +33,6 @@
 
 <style lang="scss">
   .wrapper {
-    .header {
-      font-size: 14px;
-      background-color: #000000;
-      padding: 10px;
-    }
-
     .card-container {
       display: flex;
       gap: 20px;
