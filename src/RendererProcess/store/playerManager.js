@@ -523,7 +523,7 @@ export function generateArtistsData() {
 
   artistNames.forEach((artist) => {
     const artistInfo = {
-      name: artist,
+      name: artist.trim(),
       picture: null,
       tracks: [],
       albums: [],

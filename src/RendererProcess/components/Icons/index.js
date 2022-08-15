@@ -36,6 +36,7 @@ import EditIcon from "./outline/Edit.svelte";
 import TrashIcon from "./outline/Trash.svelte";
 import MusicNoteIcon from "./outline/MusicNote.svelte";
 import GalleryIcon from "./outline/Gallery.svelte";
+import UserIcon from "./outline/User.svelte";
 
 // bold icons import
 import HomeBoldIcon from "./bold/HomeBold.svelte";
@@ -97,6 +98,7 @@ export {
   TrashIcon,
   MusicNoteIcon,
   GalleryIcon,
+  UserIcon,
 
   // bold icons
   HomeBoldIcon,

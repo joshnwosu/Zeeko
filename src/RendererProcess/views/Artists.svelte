@@ -1,80 +1,8 @@
-<div>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-  <h1>Artist View</h1>
-</div>
+<script>
+  import Artist from "../components/Layouts/Artist.svelte";
+  import { artistsStore } from "../store/player";
+
+  $: artists = $artistsStore;
+</script>
+
+<Artist data={artists} />

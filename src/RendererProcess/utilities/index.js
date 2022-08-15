@@ -130,3 +130,25 @@ export function removeDuplicates(targetArray, prop) {
     return arr.map((mapObj) => mapObj[prop]).indexOf(obj[prop]) === index;
   });
 }
+
+// https://stackoverflow.com/questions/51009090/sort-and-group-objects-alphabetically-by-first-letter-javascript
+export function sortAndGroupAlphabetically(rawData) {
+  let data = rawData
+    // .sort((a, b) => a.name.localeCompare(b.name, "es", { sensitivity: "base" }))
+    .reduce((r, e) => {
+      // get first letter of name of current element
+      let group = e.name[0].toUpperCase();
+      // if there is no property in accumulator with this letter create it
+      if (!r[group]) r[group] = { group, children: [e] };
+      // if there is push current element to children array for that letter
+      else r[group].children.push(e);
+      // return accumulator
+      return r;
+    }, {});
+
+  // since data at this point is an object, to get array of values
+  // we use Object.values method
+  let result = Object.values(data);
+
+  console.log(result);
+}
