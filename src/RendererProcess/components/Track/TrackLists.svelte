@@ -116,6 +116,8 @@
               <p>--:--</p>
             {:then duration}
               <p>{formatDuration(duration)}</p>
+            {:catch error}
+              <p>--:--</p>
             {/await}
           </td>
           <td
@@ -273,9 +275,9 @@
     width: 50px;
   }
 
-  /* .duration {
+  .duration {
     width: 100px;
-  } */
+  }
 
   .check-box {
     width: 70px;
