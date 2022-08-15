@@ -17,7 +17,10 @@
       {#each artist?.children as child}
         <div
           class="card"
-          on:click={() => push(`#/artist-details/${child.name}`)}
+          on:click={() => {
+            console.log({ name: child.name, others: child });
+            // push(`#/artist-details/${child.name}`);
+          }}
         >
           <div class="figure">
             <svelte:component this={UserIcon} />
