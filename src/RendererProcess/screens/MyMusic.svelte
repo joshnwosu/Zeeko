@@ -86,14 +86,15 @@
       align-items: center;
       height: 100%;
       flex: 1;
+      border-bottom: 1px solid #ffffff10;
       span {
         display: inline-flex;
         align-items: center;
-        font-size: 18px;
+        font-size: 14px;
         color: #ffffff65;
         background-color: transparent;
         border: none;
-        margin-right: 20px;
+        margin-right: 40px;
         text-transform: capitalize;
         font-weight: 400;
         border-top: 3px solid transparent;
