@@ -549,8 +549,9 @@
       }
       &.middle {
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: center;
         flex: 2.5;
+        /* border: 1px solid blue; */
       }
       &.right {
         justify-content: flex-end;
@@ -609,7 +610,7 @@
 
     .middle {
       padding: 0 20px;
-      padding-top: 5px;
+      /* padding-top: 5px; */
 
       .control-button {
         display: flex;
@@ -638,7 +639,7 @@
         justify-content: center;
         align-items: center;
         margin: 0 4px;
-        margin-top: 10px;
+        /* margin-top: 10px; */
         background-color: rgba(255, 255, 255, 0.1);
         &:hover {
           background-color: rgba(255, 255, 255, 0.2);
@@ -656,7 +657,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        height: 20px;
+        /* height: 30px; */
         margin-top: 5px;
         margin-left: 15px;
         margin-right: 15px;
