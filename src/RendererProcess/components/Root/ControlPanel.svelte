@@ -662,7 +662,7 @@
         margin-right: 15px;
 
         p {
-          font-size: 12px;
+          font-size: 10px;
           letter-spacing: 0.5px;
         }
 
