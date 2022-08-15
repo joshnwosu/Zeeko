@@ -24,6 +24,7 @@
     "/albums": Albums,
     "/genres": Genres,
   };
+  console.log("location: ", $location);
 </script>
 
 <main class="page" transition:fade>
@@ -32,10 +33,30 @@
   {/if}
   <div class="song-tab">
     <nav>
-      <span on:click={() => push(`${prefix}/`)}> Songs </span>
-      <span on:click={() => push(`${prefix}/artists`)}> Artists </span>
-      <span on:click={() => push(`${prefix}/albums`)}> Albums </span>
-      <span on:click={() => push(`${prefix}/genres`)}> Genres </span>
+      <span
+        on:click={() => push(`${prefix}/`)}
+        class:active={$location == `${prefix}/`}
+      >
+        Songs
+      </span>
+      <span
+        on:click={() => push(`${prefix}/artists`)}
+        class:active={$location == `${prefix}/artists`}
+      >
+        Artists
+      </span>
+      <span
+        on:click={() => push(`${prefix}/albums`)}
+        class:active={$location == `${prefix}/albums`}
+      >
+        Albums
+      </span>
+      <span
+        on:click={() => push(`${prefix}/genres`)}
+        class:active={$location == `${prefix}/genres`}
+      >
+        Genres
+      </span>
     </nav>
   </div>
   <div class="screen-view">
@@ -52,7 +73,7 @@
   .song-tab {
     position: sticky;
     top: 100px;
-    padding: 20px;
+    padding: 0 20px;
     background-color: #000000;
     z-index: 2;
     backdrop-filter: blur(20px);
@@ -61,14 +82,29 @@
     display: flex;
     align-items: center;
     nav {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      flex: 1;
       span {
-        font-size: 16px;
-        color: #ffffff;
+        display: inline-flex;
+        align-items: center;
+        font-size: 18px;
+        color: #ffffff65;
         background-color: transparent;
         border: none;
         margin-right: 20px;
         text-transform: capitalize;
         font-weight: 400;
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+        &.active {
+          border-bottom-color: #333333;
+          color: #ffffff;
+        }
+        &:hover {
+          color: #ffffff;
+        }
       }
     }
   }
