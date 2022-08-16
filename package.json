@@ -9,11 +9,13 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public --no-clear",
-    "electron": "wait-on http://localhost:8080 && electron .",
+    "electron-d": "wait-on http://localhost:8080 && electron .",
+    "electron": "electron .",
     "dist": "npm run build && electron-builder",
     "preelectron-pack": "yarn run build",
     "electron-pack": "electron-builder",
-    "electron-dev": "concurrently \"npm run dev\" \"npm run electron\"",
+    "electron-web-dev": "concurrently \"npm run dev\" \"electron-d\"",
+    "electron-dev": "concurrently \"npm run electron\"",
     "electron-start": "concurrently \"npm:svelte-dev\" \"electron-forge start\""
   },
   "devDependencies": {
