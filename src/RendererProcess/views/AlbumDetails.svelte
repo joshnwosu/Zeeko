@@ -1,0 +1,90 @@
+<script>
+  export let params;
+  import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
+  import { UserIcon } from "../components/Icons";
+  import PlaylistHeader from "../components/Playlist/PlaylistHeader.svelte";
+  import PlaylistView from "../components/Playlist/PlaylistView.svelte";
+  import TrackLists from "../components/Track/TrackLists.svelte";
+  import { albumsStore } from "../store/player";
+  import { defaultCoverArt } from "../utilities";
+  $: albumData =
+    $albumsStore.filter((album) => album.name == params.name)[0] || [];
+
+  $: console.log("Artist: ", artistData);
+</script>
+
+<main class="page" transition:fade>
+  {#if $albumsStore.length}
+    <div class="header">
+      <div class="figure">
+        <!-- <svelte:component this={UserIcon} /> -->
+      </div>
+      <div class="header-right">
+        <div class="text">
+          <h1>{params.name}</h1>
+          <p>Albums &#x2022; {albumData?.albums.length}</p>
+          <p>Tracks &#x2022; {albumData?.tracks.length}</p>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="title">Tracks</h1>
+    {#if albumData?.tracks}
+      <PlaylistView>
+        <TrackLists tracks={albumData?.tracks} />
+      </PlaylistView>
+    {/if}
+  {/if}
+</main>
+
+<style lang="scss">
+  .page {
+    h1.title {
+      font-size: 18px;
+      font-weight: 200;
+      color: #ffffff;
+      padding: 20px;
+      position: sticky;
+      top: 150px;
+      z-index: 2;
+      background-color: #000000;
+    }
+  }
+
+  .header {
+    height: 150px;
+    background-color: #000000;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 20px;
+    .figure {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #121212;
+
+      :global(svg) {
+        width: 50px;
+        height: 50px;
+        opacity: 0.5;
+      }
+    }
+
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .text {
+        p {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+</style>
