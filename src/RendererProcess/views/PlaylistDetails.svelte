@@ -5,14 +5,15 @@
   import PlaylistView from "../components/Playlist/PlaylistView.svelte";
   import TrackLists from "../components/Track/TrackLists.svelte";
   import { playlistStore } from "../store/player";
-  let playlist;
+  $: playlist =
+    $playlistStore.filter((playlist) => playlist.name == params?.name)[0] || [];
 
-  $: (function getPlaylist(payload) {
-    if (params?.name) {
-      playlist =
-        $playlistStore.filter((playlist) => playlist.name == payload)[0] || [];
-    }
-  })(params?.name);
+  // $: (function getPlaylist(payload) {
+  //   if (params?.name) {
+  //     playlist =
+  //       $playlistStore.filter((playlist) => playlist.name == payload)[0] || [];
+  //   }
+  // })(params?.name);
 </script>
 
 <main class="page" transition:fade>

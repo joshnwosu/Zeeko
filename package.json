@@ -9,13 +9,11 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public --no-clear",
-    "electron-d": "wait-on http://localhost:8080 && electron .",
-    "electron": "electron .",
+    "electron": "wait-on http://localhost:8080 && electron .",
     "dist": "npm run build && electron-builder",
     "preelectron-pack": "yarn run build",
     "electron-pack": "electron-builder",
-    "electron-web-dev": "concurrently \"npm run dev\" \"electron-d\"",
-    "electron-dev": "concurrently \"npm run electron\"",
+    "electron-dev": "concurrently \"npm run dev\" \"npm run electron\"",
     "electron-start": "concurrently \"npm:svelte-dev\" \"electron-forge start\""
   },
   "devDependencies": {
@@ -43,6 +41,7 @@
     "chokidar": "^3.5.3",
     "electron-is-dev": "^2.0.0",
     "electron-json-storage": "^4.5.0",
+    "get-audio-duration": "^3.1.0",
     "get-image-colors": "^4.0.1",
     "gsap": "^3.10.4",
     "music-metadata": "^7.12.4",

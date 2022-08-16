@@ -104,12 +104,12 @@ export function getFirstAlbumArt(arr) {
 
 export function fetchDuration(path) {
   return new Promise((resolve) => {
-    const audio = new Audio();
-    audio.src = path;
-    audio.addEventListener("loadedmetadata", () => {
+    const audioSrc = new Audio();
+    audioSrc.src = path;
+    audioSrc.addEventListener("loadedmetadata", () => {
       // To keep a promise maintainable, only do 1
       // asynchronous activity for each promise you make
-      resolve(audio.duration);
+      resolve(audioSrc.duration);
     });
   });
 }
