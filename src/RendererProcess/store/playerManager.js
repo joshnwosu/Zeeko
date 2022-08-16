@@ -96,9 +96,9 @@ function removeDuplicates(targetArray, prop) {
   });
 }
 
-export function getFirstAlbumArt(arr) {
+export function getFirstAlbumArt(tracks) {
   let albumArt;
-  arr?.tracks?.some((track) => (albumArt = track.albumArt));
+  tracks?.some((track) => (albumArt = track.albumArt));
   return albumArt;
 }
 

@@ -1,13 +1,15 @@
 <script>
   import { push } from "svelte-spa-router";
+  import { getFirstAlbumArt } from "../../store/playerManager";
   import { defaultCoverArt } from "../../utilities";
 
   export let data;
+  //   let img = getFirstAlbumArt(child?.tracks) || child?.tracks[0]?.albumArt
 </script>
 
 {#each data as child}
   <div class="card" on:click={() => push(`#/album-details/${child.name}`)}>
-    <img src={child?.tracks[0]?.albumArt || defaultCoverArt} alt="album" />
+    <img src={getFirstAlbumArt(child?.tracks) || defaultCoverArt} alt="album" />
     <div class="content">
       <p class="name">{child.name}</p>
       <p class="artist">{child.artist}</p>

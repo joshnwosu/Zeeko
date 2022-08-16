@@ -18,7 +18,6 @@
         <div
           class="card"
           on:click={() => {
-            console.log({ name: child.name, others: child });
             push(`#/artist-details/${child.name}`);
           }}
         >

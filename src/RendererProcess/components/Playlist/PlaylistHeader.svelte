@@ -9,9 +9,9 @@
 </script>
 
 <div class="header">
-  <BlurImg img={getFirstAlbumArt(playlist)} />
+  <BlurImg img={getFirstAlbumArt(playlist?.tracks)} />
   <div class="header-content">
-    <PlaylistCover img={getFirstAlbumArt(playlist)} />
+    <PlaylistCover img={getFirstAlbumArt(playlist?.tracks)} />
     <div class="details">
       <PlaylistCaption {name} length={playlist?.tracks?.length} fontSize={30} />
       <PlaylistActionButtons />

@@ -53,7 +53,7 @@
       position: sticky;
       top: 150px;
       z-index: 2;
-      background-color: #000000;
+      background-color: #121212;
     }
   }
   .container {

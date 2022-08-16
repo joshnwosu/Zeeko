@@ -4,6 +4,7 @@
   import PlaylistView from "../components/Playlist/PlaylistView.svelte";
   import TrackLists from "../components/Track/TrackLists.svelte";
   import { albumsStore } from "../store/player";
+  import { getFirstAlbumArt } from "../store/playerManager";
   import { defaultCoverArt } from "../utilities";
   $: albumData =
     $albumsStore.filter((album) => album.name == params.name)[0] || [];
@@ -14,7 +15,7 @@
     <div class="header">
       <div class="figure">
         <img
-          src={albumData?.tracks[0]?.albumArt || defaultCoverArt}
+          src={getFirstAlbumArt(albumData?.tracks) || defaultCoverArt}
           alt="album"
         />
       </div>
@@ -37,7 +38,7 @@
 <style lang="scss">
   .header {
     height: 150px;
-    background-color: #000000;
+    background-color: #121212;
     position: sticky;
     top: 0;
     z-index: 2;
