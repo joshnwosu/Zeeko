@@ -93,7 +93,7 @@
   }
 
   .header {
-    height: 200px;
+    height: 150px;
     background-color: #000000;
     position: sticky;
     top: 0;
