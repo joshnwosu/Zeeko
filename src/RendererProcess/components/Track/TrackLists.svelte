@@ -217,7 +217,7 @@
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 400;
           color: #e9e9e9;
           span {

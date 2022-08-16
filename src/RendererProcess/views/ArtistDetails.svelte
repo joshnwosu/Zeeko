@@ -53,7 +53,7 @@
       position: sticky;
       top: 150px;
       z-index: 2;
-      background-color: #121212;
+      background-color: #000000;
     }
   }
   .container {
@@ -72,7 +72,7 @@
 
   .header {
     height: 150px;
-    background-color: #000000;
+    background-color: #121212;
     position: sticky;
     top: 0;
     z-index: 2;
@@ -86,7 +86,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #121212;
+      background-color: #000000;
       border-radius: 50%;
 
       :global(svg) {

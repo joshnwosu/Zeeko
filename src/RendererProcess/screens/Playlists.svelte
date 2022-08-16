@@ -74,7 +74,7 @@
       >
         <!-- transition:tweenMe -->
         <figure>
-          <PlaylistCover img={getFirstAlbumArt(playlist)} />
+          <PlaylistCover img={getFirstAlbumArt(playlist?.tracks)} />
           <figcaption>
             <PlaylistCaption
               name={playlist.name}
