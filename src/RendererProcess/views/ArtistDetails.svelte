@@ -18,6 +18,7 @@
       <h1>{params.name}</h1>
     </div>
 
+    <h1 class="title">Albums</h1>
     <div class="container">
       <div class="flex-content">
         {#if artistData?.albums}
@@ -37,6 +38,7 @@
       </div>
     </div>
 
+    <h1 class="title">Tracks</h1>
     {#if artistData?.tracks}
       <TrackLists tracks={artistData?.tracks} />
     {/if}
@@ -44,6 +46,14 @@
 </main>
 
 <style lang="scss">
+  .page {
+    h1.title {
+      font-size: 18px;
+      font-weight: 200;
+      color: #ffffff;
+      padding: 10px;
+    }
+  }
   .container {
     width: 100%;
     display: flex;
@@ -84,8 +94,9 @@
 
   .header {
     height: 200px;
-    border: 1px solid red;
+    background-color: #000000;
     position: sticky;
     top: 0;
+    z-index: 2;
   }
 </style>
