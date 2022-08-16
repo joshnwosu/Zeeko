@@ -64,12 +64,17 @@
       font-weight: 200;
       color: #ffffff;
       padding: 20px;
+      position: sticky;
+      top: 150px;
+      z-index: 2;
+      background-color: #000000;
     }
   }
   .container {
     width: 100%;
     display: flex;
     overflow-x: auto;
+    padding: 0 20px;
     .flex-content {
       display: flex;
       overflow-x: auto;
