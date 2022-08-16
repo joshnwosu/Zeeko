@@ -1,34 +1,31 @@
 <script>
   export let params;
   import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
-  import { UserIcon } from "../components/Icons";
-  import PlaylistHeader from "../components/Playlist/PlaylistHeader.svelte";
   import PlaylistView from "../components/Playlist/PlaylistView.svelte";
   import TrackLists from "../components/Track/TrackLists.svelte";
   import { albumsStore } from "../store/player";
   import { defaultCoverArt } from "../utilities";
   $: albumData =
     $albumsStore.filter((album) => album.name == params.name)[0] || [];
-
-  $: console.log("Artist: ", artistData);
 </script>
 
 <main class="page" transition:fade>
   {#if $albumsStore.length}
     <div class="header">
       <div class="figure">
-        <!-- <svelte:component this={UserIcon} /> -->
+        <img
+          src={albumData?.tracks[0]?.albumArt || defaultCoverArt}
+          alt="album"
+        />
       </div>
       <div class="header-right">
         <div class="text">
           <h1>{params.name}</h1>
-          <p>Albums &#x2022; {albumData?.albums.length}</p>
           <p>Tracks &#x2022; {albumData?.tracks.length}</p>
         </div>
       </div>
     </div>
 
-    <h1 class="title">Tracks</h1>
     {#if albumData?.tracks}
       <PlaylistView>
         <TrackLists tracks={albumData?.tracks} />
@@ -38,19 +35,6 @@
 </main>
 
 <style lang="scss">
-  .page {
-    h1.title {
-      font-size: 18px;
-      font-weight: 200;
-      color: #ffffff;
-      padding: 20px;
-      position: sticky;
-      top: 150px;
-      z-index: 2;
-      background-color: #000000;
-    }
-  }
-
   .header {
     height: 150px;
     background-color: #000000;
@@ -68,11 +52,11 @@
       justify-content: center;
       align-items: center;
       background-color: #121212;
-
-      :global(svg) {
-        width: 50px;
-        height: 50px;
-        opacity: 0.5;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
       }
     }
 

@@ -2,15 +2,12 @@
   export let params;
   import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
   import { UserIcon } from "../components/Icons";
-  import PlaylistHeader from "../components/Playlist/PlaylistHeader.svelte";
   import PlaylistView from "../components/Playlist/PlaylistView.svelte";
   import TrackLists from "../components/Track/TrackLists.svelte";
+  import AlbumCard from "../components/Widgets/AlbumCard.svelte";
   import { artistsStore } from "../store/player";
-  import { defaultCoverArt } from "../utilities";
   $: artistData =
     $artistsStore.filter((artist) => artist.name == params.name)[0] || [];
-
-  $: console.log("Artist: ", artistData);
 </script>
 
 <main class="page" transition:fade>
@@ -32,18 +29,7 @@
     <div class="container">
       <div class="flex-content">
         {#if artistData?.albums}
-          {#each artistData?.albums as item}
-            <div class="card">
-              <img
-                src={item?.tracks[0]?.albumArt || defaultCoverArt}
-                alt="album"
-              />
-              <div class="content">
-                <p class="name">{item.name}</p>
-                <p class="artist">{item.artist}</p>
-              </div>
-            </div>
-          {/each}
+          <AlbumCard data={artistData?.albums} />
         {/if}
       </div>
     </div>
@@ -81,31 +67,6 @@
       flex-shrink: 0;
       gap: 10px;
       align-items: flex-start;
-      .card {
-        width: 200px;
-        border-radius: 5px;
-        overflow: hidden;
-        &:hover {
-          background-color: #121212;
-        }
-        img {
-          width: 100%;
-          height: 160px;
-          object-fit: cover;
-          object-position: center;
-        }
-
-        .content {
-          padding: 10px;
-          P {
-            font-size: 12px;
-            color: #ffffff;
-            &.artist {
-              color: #ffffff65;
-            }
-          }
-        }
-      }
     }
   }
 

@@ -104,7 +104,7 @@
           >
           <td class="album"
             ><p>
-              <span on:click={() => push(`#/artist-details/${track.album}`)}
+              <span on:click={() => push(`#/album-details/${track.album}`)}
                 >{track.album}</span
               >
             </p></td
