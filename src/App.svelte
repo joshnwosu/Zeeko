@@ -19,7 +19,8 @@
   import { cleanUp } from "./RendererProcess/utilities";
 
   const routeLoaded = (event) => {
-    document.querySelectorAll(".page").forEach((el) => (el.scrollTop = 0));
+    console.log("Eevnt: ", event);
+    // document.querySelectorAll(".page").forEach((el) => (el.scrollTop = 0));
   };
 </script>
 
@@ -94,15 +95,16 @@
     justify-content: flex-end;
   }
   .router-container {
-    overflow-y: auto;
+    /* overflow-y: auto; */
     position: relative;
     width: calc(100% - 340px);
-    height: 100%;
+    height: 100vh;
     bottom: 0;
     right: 60px;
     background-color: #000000;
     transition: 300ms ease;
     display: flex;
+    border: 5px solid green;
 
     &.toggle-sidebar {
       width: calc(100% - 120px);

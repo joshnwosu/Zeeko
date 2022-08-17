@@ -1,26 +1,15 @@
 <script>
-  let search = "";
   import {
-    ArrowLeftIcon,
-    ArrowRightIcon,
     SearchIcon,
     HomeIcon,
-    HeartIcon,
-    MusicFilterIcon,
     MusicIcon,
     MusicPlaylistIcon,
-    ClockIcon,
     NoteIcon,
-    HomeBoldIcon,
-    MusicBoldIcon,
     MenuBoldIcon,
     AddIcon,
     ArrowLeftTwoIcon,
-    MusicNoteIcon,
-    FolderIcon,
   } from "../Icons";
-  import { link, location, pop, querystring } from "svelte-spa-router";
-  import active from "svelte-spa-router/active";
+  import { location, push } from "svelte-spa-router";
   import {
     toggleCreatePlaylist,
     toggleNowPlaying,
@@ -30,16 +19,6 @@
     handleNavigation,
     handleToggleSidebar,
   } from "../../store/statusManager";
-
-  // function handleNavigation() {
-  //   // checks if Now playing or Create playlist modal is visible
-  //   if ($toggleNowPlaying || $toggleCreatePlaylist) {
-  //     $toggleNowPlaying = false;
-  //     $toggleCreatePlaylist = false;
-  //   } else {
-  //     pop();
-  //   }
-  // }
 
   function handleToggle() {
     $toggleCreatePlaylist = !$toggleCreatePlaylist;
@@ -70,79 +49,27 @@
             <svelte:component this={MenuBoldIcon} />
           </span>
         </li>
-        <div class="search-bar">
+        <li>
           <span class="icon">
             <svelte:component this={SearchIcon} />
           </span>
-          <input bind:value={search} placeholder="Search" />
-        </div>
-        <li class:active-link-li={$location == "/"}>
-          <a
-            href={"/"}
-            use:link
-            use:active={{ className: "active-link", inactiveClassName: "" }}
-          >
-            <span class="icon">
-              <svelte:component this={HomeIcon} />
-            </span>
-            <span class="label"> Discover </span>
-          </a>
+          <span class="label"> Search </span>
         </li>
-        <li class:active-link-li={$location.includes("/my-music/")}>
-          <a
-            href={"/my-music/"}
-            use:link
-            use:active={{
-              path: "/my-music/*",
-              className: "active-link",
-              inactiveClassName: "",
-            }}
-          >
-            <span class="icon">
-              <svelte:component this={MusicIcon} />
-            </span>
-            <span class="label"> My music </span>
-          </a>
+        <li class:active-link-li={$location == "/"} on:click={() => push("/")}>
+          <span class="icon">
+            <svelte:component this={HomeIcon} />
+          </span>
+          <span class="label"> Discover </span>
         </li>
-        <!-- <li class:active-link-li={$location.includes("/folders")}>
-          <a
-            href={"/folders"}
-            use:link
-            use:active={{
-              className: "active-link",
-              inactiveClassName: "",
-            }}
-          >
-            <span class="icon">
-              <svelte:component this={FolderIcon} />
-            </span>
-            <span class="label"> Folders </span>
-          </a>
-        </li> -->
-        <!-- <li class:active-link-li={$location == "/most-played"}>
-          <a
-            href={"/most-played"}
-            use:link
-            use:active={{ className: "active-link", inactiveClassName: "" }}
-          >
-            <span class="icon">
-              <svelte:component this={MusicNoteIcon} />
-            </span>
-            <span class="label"> Most played </span>
-          </a>
+        <li
+          class:active-link-li={$location.includes("/my-music/")}
+          on:click={() => push("/my-music/")}
+        >
+          <span class="icon">
+            <svelte:component this={MusicIcon} />
+          </span>
+          <span class="label"> My music </span>
         </li>
-        <li class:active-link-li={$location == "/recent-plays"}>
-          <a
-            href={"/recent-plays"}
-            use:link
-            use:active={{ className: "active-link", inactiveClassName: "" }}
-          >
-            <span class="icon">
-              <svelte:component this={ClockIcon} />
-            </span>
-            <span class="label"> Recent plays </span>
-          </a>
-        </li> -->
         <li on:click={() => ($toggleNowPlaying = !$toggleNowPlaying)}>
           <span class="icon">
             <svelte:component this={NoteIcon} />
@@ -152,17 +79,14 @@
 
         <div class="ul-head">Playlists</div>
 
-        <li class:active-link-li={$location == "/playlists"}>
-          <a
-            href={"/playlists"}
-            use:link
-            use:active={{ className: "active-link", inactiveClassName: "" }}
-          >
-            <span class="icon">
-              <svelte:component this={MusicPlaylistIcon} />
-            </span>
-            <span class="label"> Playlists </span>
-          </a>
+        <li
+          class:active-link-li={$location.includes("/playlist")}
+          on:click={() => push("/playlists")}
+        >
+          <span class="icon">
+            <svelte:component this={MusicPlaylistIcon} />
+          </span>
+          <span class="label"> Playlists </span>
         </li>
         {#if $toggleSidebar}
           <li class="menu-li" on:click={handleToggle}>
@@ -173,8 +97,8 @@
         {:else}
           <div class="add-playlist-wrapper">
             <button class="add-playlist" on:click={handleToggle}>
-              你好吗 我很好
-              <!-- Add playlist -->
+              <!-- 你好吗 我很好 -->
+              Add playlist
             </button>
           </div>
         {/if}
@@ -274,39 +198,6 @@
     }
   }
 
-  .search-bar {
-    margin: 0px 0px;
-    overflow: hidden;
-    position: relative;
-    &:hover {
-      input {
-        background-color: #ffffff10;
-      }
-    }
-    input {
-      background-color: rgba(0, 0, 0, 0.5);
-      background-color: #ffffff10;
-      background-color: transparent;
-      width: 100%;
-      height: 50px;
-      padding: 0px 50px 0px 70px;
-      border: none;
-      color: #ffffff;
-      font-size: 12px;
-    }
-    .icon {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 60px;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-    }
-  }
-
   .scroll-nav {
     overflow-y: auto;
     flex: 1;
@@ -355,40 +246,31 @@
             }
           }
         }
-        &.active-link-li::after {
-          content: "";
-          position: absolute;
-          width: 4px;
-          height: 30px;
-          background-color: #65e14d !important;
-          top: 50%;
-          right: 0;
-          transform: translate(-50%, -50%);
-          border-top-left-radius: 5px;
-          border-bottom-left-radius: 5px;
-        }
-        a {
-          font-size: 12px;
-          font-weight: 400;
-          display: flex;
-          align-items: center;
-          flex: 1;
-          cursor: default;
-
-          &.active-link {
-            .label {
-              color: #65e14d !important;
-            }
-            .icon {
-              :global(.svg-icon-bold) {
-                :global(path) {
-                  fill: #65e14d !important;
-                }
+        &.active-link-li {
+          &::after {
+            content: "";
+            position: absolute;
+            width: 4px;
+            height: 30px;
+            background-color: #65e14d !important;
+            top: 50%;
+            right: 0;
+            transform: translate(-50%, -50%);
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+          }
+          .label {
+            color: #65e14d !important;
+          }
+          .icon {
+            :global(.svg-icon-bold) {
+              :global(path) {
+                fill: #65e14d !important;
               }
-              :global(.svg-icon-outline) {
-                :global(path) {
-                  stroke: #65e14d !important;
-                }
+            }
+            :global(.svg-icon-outline) {
+              :global(path) {
+                stroke: #65e14d !important;
               }
             }
           }

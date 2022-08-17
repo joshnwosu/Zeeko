@@ -11,6 +11,7 @@
     <!-- <Slidy /> -->
     <LibraryStats />
     <GenreTags />
+    <div class="height" />
   </div>
 </main>
 
@@ -18,5 +19,11 @@
   .screen-view {
     width: 1100px;
     max-width: 100%;
+  }
+
+  .height {
+    width: 300px;
+    height: 1000px;
+    background-color: red;
   }
 </style>
