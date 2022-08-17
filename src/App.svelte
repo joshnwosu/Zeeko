@@ -19,7 +19,7 @@
   import { cleanUp } from "./RendererProcess/utilities";
 
   const routeLoaded = (event) => {
-    console.log("Eevnt: ", event);
+    // console.log("Eevnt: ", event);
     // document.querySelectorAll(".page").forEach((el) => (el.scrollTop = 0));
   };
 </script>

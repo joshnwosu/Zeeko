@@ -23,6 +23,7 @@
   function handleToggle() {
     $toggleCreatePlaylist = !$toggleCreatePlaylist;
   }
+  $: console.log("Link: ", $location);
 </script>
 
 <div class="side-nav" class:toggle-sidenav={$toggleSidebar}>
