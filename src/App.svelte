@@ -95,7 +95,6 @@
     justify-content: flex-end;
   }
   .router-container {
-    /* overflow-y: auto; */
     position: relative;
     width: calc(100% - 340px);
     height: 100vh;
@@ -104,7 +103,7 @@
     background-color: #000000;
     transition: 300ms ease;
     display: flex;
-    border: 5px solid green;
+    /* border: 5px solid green; */
 
     &.toggle-sidebar {
       width: calc(100% - 120px);
