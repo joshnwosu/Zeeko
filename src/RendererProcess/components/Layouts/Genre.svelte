@@ -14,10 +14,7 @@
     </StickyHeader>
     <div class="card-container">
       {#each genre.children as child}
-        <div
-          class="card"
-          on:click={() => push(`#/artist-details/${child.name}`)}
-        >
+        <div class="card">
           <img
             src={child?.tracks[0]?.albumArt || defaultCoverArt}
             alt="album"

@@ -268,7 +268,7 @@
   }
 
   .year {
-    width: 100px;
+    width: 50px;
   }
 
   .favorite {
@@ -276,7 +276,7 @@
   }
 
   .duration {
-    width: 100px;
+    width: 70px;
   }
 
   .check-box {

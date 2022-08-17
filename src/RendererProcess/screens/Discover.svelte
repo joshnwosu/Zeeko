@@ -17,5 +17,6 @@
 <style lang="scss">
   .screen-view {
     width: 1100px;
+    max-width: 100%;
   }
 </style>
