@@ -8,7 +8,6 @@
   .scroll-view {
     flex: 1;
     height: 100%;
-    border: 1px solid purple;
     overflow-y: auto;
 
     &::-webkit-scrollbar-track-piece:end {
