@@ -1,47 +1,11 @@
 <script>
   import { push } from "svelte-spa-router";
-  import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
   import PlaylistCaption from "../components/Playlist/PlaylistCaption.svelte";
   import ScreenHeader from "../components/Root/ScreenHeader.svelte";
   import PlaylistCover from "../components/Widgets/PlaylistCover.svelte";
   import { playlistStore } from "../store/player";
   import { getFirstAlbumArt } from "../store/playerManager";
-  import {
-    gsap,
-    ScrollTrigger,
-    Draggable,
-    MotionPathPlugin,
-    Flip,
-  } from "gsap/all";
   import { displayContextMenu } from "../utilities/contextMenu";
-
-  function tweenMe(node) {
-    let tl = gsap.timeline();
-    const duration = 1;
-
-    tl.from(node, {
-      duration,
-      opacity: 0,
-    }).from(
-      node,
-      {
-        duration,
-        xPercent: 20,
-        rotation: 9,
-        yPercent: 20,
-        ease: "bounce.out",
-      },
-      `-=${duration * 0.75}`
-    );
-
-    // return {
-    //   /* GSAP's duration is in seconds. Svelte's is in miliseconds */
-    //   duration: tl.totalDuration() * 1000,
-    //   tick: (t) => {
-    //     tl.progress(t);
-    //   },
-    // };
-  }
 
   const menuItems = [
     {
@@ -63,7 +27,7 @@
   ];
 </script>
 
-<main class="page" transition:fade>
+<main class="page">
   <ScreenHeader title="Playlists" />
   <div class="screen-view">
     {#each $playlistStore as playlist}

@@ -2,7 +2,7 @@
   export let params = {};
   // console.log(params); // just for removing the annoying warning
 
-  import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
+  // import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
   import Router, { link, location, querystring, push } from "svelte-spa-router";
   import active from "svelte-spa-router/active";
   import ScreenHeader from "../components/Root/ScreenHeader.svelte";
@@ -26,7 +26,7 @@
   };
 </script>
 
-<main class="page" transition:fade>
+<main class="page">
   {#if params}
     <ScreenHeader title="My music" />
   {/if}

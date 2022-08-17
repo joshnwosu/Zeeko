@@ -1,12 +1,11 @@
 <script>
-  import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
   import ScreenHeader from "../components/Root/ScreenHeader.svelte";
   import GenreTags from "../components/Widgets/GenreTags.svelte";
   import LibraryStats from "../components/Widgets/LibraryStats.svelte";
   import Slidy from "../components/Widgets/Slidy.svelte";
 </script>
 
-<main class="page" transition:fade>
+<main class="page">
   <ScreenHeader title="Discover" />
   <div class="screen-view">
     <!-- <Slidy /> -->

@@ -1,5 +1,4 @@
 <script>
-  import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
   import Appearance from "../components/Layouts/Appearance.svelte";
   import General from "../components/Layouts/General.svelte";
   import Shortcuts from "../components/Layouts/Shortcuts.svelte";
@@ -7,7 +6,7 @@
   import { Tabs, TabList, TabPanel, Tab } from "../components/Tab";
 </script>
 
-<main class="page" transition:fade>
+<main class="page">
   <ScreenHeader title="Settings" />
   <div class="screen-view">
     <Tabs>

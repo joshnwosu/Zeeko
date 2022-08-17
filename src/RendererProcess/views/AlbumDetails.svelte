@@ -1,6 +1,5 @@
 <script>
   export let params;
-  import { fade, fly, scale, slide, crossfade, draw } from "svelte/transition";
   import PlaylistView from "../components/Playlist/PlaylistView.svelte";
   import TrackLists from "../components/Track/TrackLists.svelte";
   import { albumsStore } from "../store/player";
@@ -10,7 +9,7 @@
     $albumsStore.filter((album) => album.name == params.name)[0] || [];
 </script>
 
-<main class="page" transition:fade>
+<main class="page">
   {#if $albumsStore.length}
     <div class="header">
       <div class="figure">

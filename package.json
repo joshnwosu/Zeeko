@@ -34,6 +34,7 @@
     "rollup-plugin-terser": "^7.0.0",
     "sass": "^1.53.0",
     "svelte": "^3.0.0",
+    "svelte-motion": "^0.11.2",
     "wait-on": "^6.0.1"
   },
   "dependencies": {
@@ -48,7 +49,6 @@
     "node-id3": "^0.2.3",
     "sirv-cli": "^2.0.0",
     "svelte-icons-pack": "^2.0.0",
-    "svelte-motion": "^0.11.2",
     "svelte-navigator": "^3.1.6",
     "svelte-preprocess": "^4.10.7",
     "svelte-router-spa": "^6.0.3",
