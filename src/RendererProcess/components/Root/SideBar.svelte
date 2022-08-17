@@ -23,7 +23,6 @@
   function handleToggle() {
     $toggleCreatePlaylist = !$toggleCreatePlaylist;
   }
-  $: console.log("Link: ", $location);
 </script>
 
 <div class="side-nav" class:toggle-sidenav={$toggleSidebar}>
@@ -63,7 +62,9 @@
           <span class="label"> Discover </span>
         </li>
         <li
-          class:active-link-li={$location.includes("/my-music/")}
+          class:active-link-li={$location.includes("/my-music/") ||
+            $location.includes("/artist-details/") ||
+            $location.includes("/album-details/")}
           on:click={() => push("/my-music/")}
         >
           <span class="icon">
