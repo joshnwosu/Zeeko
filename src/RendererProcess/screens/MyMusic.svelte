@@ -58,13 +58,14 @@
       </span>
     </nav>
   </div>
-  <div class="screen-view">
-    <Router {routes} {prefix} restoreScrollState={true} />
-  </div>
+
+  <Router {routes} {prefix} restoreScrollState="true" />
 </main>
 
 <style lang="scss">
   .page {
+    display: flex;
+    flex-direction: column;
     &::-webkit-scrollbar-track-piece:start {
       margin-top: 50px;
     }

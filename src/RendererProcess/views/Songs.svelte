@@ -1,7 +1,8 @@
 <script>
   import Track from "../components/Track/Track.svelte";
+  import ScrollView from "../components/Widgets/ScrollView.svelte";
 </script>
 
-<div>
+<ScrollView>
   <Track />
-</div>
+</ScrollView>

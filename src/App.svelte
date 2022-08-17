@@ -54,9 +54,10 @@
   :global(main.page) {
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: relative;
     overflow-y: auto;
     flex: 1;
+    /* border: 10px solid red; */
     &::-webkit-scrollbar-track-piece:start {
       margin-top: 100px;
     }
@@ -97,7 +98,7 @@
   .router-container {
     position: relative;
     width: calc(100% - 340px);
-    height: 100vh;
+    height: 100%;
     bottom: 0;
     right: 60px;
     background-color: #000000;

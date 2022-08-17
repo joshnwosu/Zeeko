@@ -8,7 +8,7 @@
     background-color: #000000;
     padding: 10px 0;
     position: sticky;
-    top: 150px;
+    top: 0;
     color: #ffffff65;
     z-index: 9;
   }
