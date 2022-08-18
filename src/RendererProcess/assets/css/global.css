@@ -27,15 +27,15 @@ body {
 
 ::-webkit-scrollbar {
   display: block;
-  width: 3px;
-  height: 3px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #8888;
+  background-color: #aaa;
   border-right: none;
   border-left: none;
   background-clip: content-box;
@@ -44,12 +44,10 @@ body {
 
 ::-webkit-scrollbar-track-piece:end {
   background: transparent;
-  /* margin-bottom: 100px; */
 }
 
 ::-webkit-scrollbar-track-piece:start {
   background: transparent;
-  /* margin-top: 100px; */
 }
 
 ::-webkit-scrollbar-thumb:hover {

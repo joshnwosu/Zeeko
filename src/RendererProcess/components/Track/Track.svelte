@@ -10,7 +10,7 @@
     );
   }
 
-  $: splicedTracks = $playerStore.splice(0, 50);
+  $: splicedTracks = $playerStore.splice(0, 12);
 </script>
 
 <div>
