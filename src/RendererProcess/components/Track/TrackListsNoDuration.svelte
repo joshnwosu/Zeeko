@@ -9,9 +9,9 @@
   import {
     addSelectedTracksToPlaylist,
     deleteSelectedTrackFromPlaylist,
-    encodeTrackFile,
-    fetchDuration,
-    formatDuration,
+    // encodeTrackFile,
+    // fetchDuration,
+    // formatDuration,
     formatIndex,
     getSong,
     pauseSong,
@@ -110,7 +110,7 @@
           >
           <td class="genre"><p>{track.genre}</p></td>
           <td class="year" align="right"><p>{track.year || ""}</p></td>
-          <td class="duration" align="right">
+          <!-- <td class="duration" align="right">
             {#await fetchDuration(encodeTrackFile(track))}
               <p>--:--</p>
             {:then duration}
@@ -118,7 +118,7 @@
             {:catch error}
               <p>--:--</p>
             {/await}
-          </td>
+          </td> -->
           <td
             class="favorite"
             class:in-favorite={getSong(
@@ -216,7 +216,7 @@
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          font-size: 13px;
+          font-size: 12px;
           font-weight: 400;
           color: #e9e9e9;
           span {
@@ -274,9 +274,9 @@
     width: 50px;
   }
 
-  .duration {
+  /* .duration {
     width: 70px;
-  }
+  } */
 
   .check-box {
     width: 70px;

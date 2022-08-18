@@ -1,14 +1,16 @@
 <script>
   import { playerStore } from "../../store/player";
-  import { toggleNowPlaying } from "../../store/status";
 
   import TrackLists from "./TrackLists.svelte";
+  import TrackListsNoDuration from "./TrackListsNoDuration.svelte";
 
   function sortByTitle() {
     return $playerStore.sort(
       (a, b) => a.title.localeCompare(b.title) || b.title - a.title
     );
   }
+
+  $: splicedTracks = $playerStore.splice(0, 50);
 </script>
 
 <div>
@@ -18,6 +20,8 @@
       (a, b) => a.title.localeCompare(b.title) || b.title - a.title
     )}
   /> -->
-  <svelte:component this={TrackLists} tracks={$playerStore} />
+  <!-- <svelte:component this={TrackLists} tracks={$playerStore} /> -->
+  <!-- <TrackLists tracks={$playerStore} /> -->
+  <TrackListsNoDuration tracks={splicedTracks} />
   <!-- {/if} -->
 </div>
