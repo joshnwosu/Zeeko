@@ -21,7 +21,8 @@
     )}
   /> -->
   <!-- <svelte:component this={TrackLists} tracks={$playerStore} /> -->
-  <!-- <TrackLists tracks={$playerStore} /> -->
-  <TrackListsNoDuration tracks={splicedTracks} />
+  <!-- <TrackLists tracks={splicedTracks} /> -->
+  <TrackLists tracks={$playerStore} />
+  <!-- <TrackListsNoDuration tracks={splicedTracks} /> -->
   <!-- {/if} -->
 </div>

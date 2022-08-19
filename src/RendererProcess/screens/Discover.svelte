@@ -12,10 +12,11 @@
   $: itemss = allItems.filter((i) => i.name.includes(filter));
   // $: console.log("Items: ", allItems);
 
-  $: items =
-    $playerStore.length == 2
-      ? $playerStore.filter((i) => i.fileLocation.includes(filter))
-      : itemss;
+  // $: items = $playerStore.length
+  //   ? $playerStore.filter((i) => i.fileLocation.includes(filter))
+  //   : itemss;
+
+  $: items = $playerStore.filter((i) => i.fileLocation.includes(filter));
 </script>
 
 <main class="page">
@@ -24,47 +25,32 @@
     <Slidy />
     <LibraryStats />
     <GenreTags />
-
-    
   </div> -->
-
-  <div class="row">
-    <div class="col">
-      <em>lazy loading</em>
-      <List {items} />
-    </div>
-  </div>
-  <!-- <div style="height: 100%; overflow-y: auto;">
-        {#each items as item}
-          <p>{item?.title || item?.name}</p>
-        {/each}
-      </div> -->
 </main>
 
+<!-- <div class="row">
+  <div class="col">
+    <em>lazy loading</em>
+    <List {items} />
+  </div>
+</div> -->
 <style lang="scss">
   /* .screen-view {
     width: 1100px;
     max-width: 100%;
   } */
 
-  /* :global(body) {
-    height: 100vh;
-    display: flex;
-    flex-flow: column;
-  } */
   .page {
     display: flex;
     flex-direction: column;
   }
-  .row {
+  /* .row {
     flex: 1;
     display: flex;
     justify-content: space-between;
     overflow: hidden;
-    /* border: 1px solid red; */
     height: 100%;
     padding-bottom: 100px;
-    /* background-color: red; */
   }
   .col {
     flex: 1;
@@ -75,5 +61,5 @@
   }
   .col :global(.List) {
     flex: 1;
-  }
+  } */
 </style>

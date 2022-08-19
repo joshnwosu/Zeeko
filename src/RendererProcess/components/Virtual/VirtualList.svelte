@@ -155,11 +155,11 @@
 <style>
   svelte-virtual-list-viewport {
     /* position: relative; */
-    overflow-y: scroll;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     display: block;
     /* scroll-behavior: smooth !important; */
-    background-color: #000000;
+    /* background-color: #000000; */
     /* color: #000000; */
   }
   svelte-virtual-list-contents,
