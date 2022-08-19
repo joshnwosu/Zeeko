@@ -3,7 +3,7 @@
 
   //   props
   export let items;
-  export let height = "400px";
+  export let height = "100%";
   export let itemHeight = undefined;
   // read-only, but visible to consumers via bind:start
   export let start = 0;
@@ -158,7 +158,6 @@
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     display: block;
-    background-color: #000000;
   }
   svelte-virtual-list-contents,
   svelte-virtual-list-row {

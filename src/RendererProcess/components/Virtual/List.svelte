@@ -8,13 +8,12 @@
   export let scrollToIndex = undefined;
 </script>
 
+<p>{start} - {end}</p>
 <div class="List">
   <VirtualList {items} bind:start bind:end bind:scrollToIndex let:item>
     <ListItem {item} />
   </VirtualList>
 </div>
-
-<p>{start} - {end}</p>
 
 <style>
   .List {

@@ -3,7 +3,7 @@
 </script>
 
 <div class="ListItem">
-  <p>{item.id}: {item.name}</p>
+  <p>{item.fileLocation}</p>
 </div>
 
 <style>
