@@ -51,7 +51,7 @@ const createWindow = () => {
       contextIsolation: true,
       nodeIntegration: true,
       enableRemoteModule: true,
-      // backgroundThrottling: false,
+      backgroundThrottling: false,
       webSecurity: false,
       webgl: false,
       webviewTag: true,

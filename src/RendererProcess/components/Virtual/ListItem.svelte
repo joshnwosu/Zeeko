@@ -3,7 +3,7 @@
 </script>
 
 <div class="ListItem">
-  <p>{item.fileLocation}</p>
+  <p>{item?.title || item?.name}</p>
 </div>
 
 <style>

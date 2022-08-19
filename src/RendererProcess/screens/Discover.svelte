@@ -8,11 +8,14 @@
   import { playerStore } from "../store/player";
 
   let filter = "";
-  // let allItems = loadItems();
-  // $: items = allItems.filter((i) => i.name.includes(filter));
+  let allItems = loadItems();
+  $: itemss = allItems.filter((i) => i.name.includes(filter));
   // $: console.log("Items: ", allItems);
 
-  $: items = $playerStore.filter((i) => i.fileLocation.includes(filter));
+  $: items =
+    $playerStore.length == 2
+      ? $playerStore.filter((i) => i.fileLocation.includes(filter))
+      : itemss;
 </script>
 
 <main class="page">
@@ -31,6 +34,11 @@
       <List {items} />
     </div>
   </div>
+  <!-- <div style="height: 100%; overflow-y: auto;">
+        {#each items as item}
+          <p>{item?.title || item?.name}</p>
+        {/each}
+      </div> -->
 </main>
 
 <style lang="scss">
@@ -39,11 +47,11 @@
     max-width: 100%;
   } */
 
-  :global(body) {
+  /* :global(body) {
     height: 100vh;
     display: flex;
     flex-flow: column;
-  }
+  } */
   .page {
     display: flex;
     flex-direction: column;
@@ -53,10 +61,10 @@
     display: flex;
     justify-content: space-between;
     overflow: hidden;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     height: 100%;
     padding-bottom: 100px;
-    background-color: red;
+    /* background-color: red; */
   }
   .col {
     flex: 1;

@@ -154,14 +154,19 @@
 
 <style>
   svelte-virtual-list-viewport {
-    position: relative;
-    overflow-y: auto;
+    /* position: relative; */
+    overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     display: block;
+    /* scroll-behavior: smooth !important; */
+    background-color: #000000;
+    /* color: #000000; */
   }
   svelte-virtual-list-contents,
   svelte-virtual-list-row {
     display: block;
+    /* background-color: #ffffff; */
+    /* color: #000000; */
   }
   svelte-virtual-list-row {
     overflow: hidden;
