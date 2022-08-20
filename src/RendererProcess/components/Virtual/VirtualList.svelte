@@ -146,7 +146,7 @@
   >
     {#each visible as row (row.index)}
       <svelte-virtual-list-row>
-        <slot item={row.data}>Missing template</slot>
+        <slot item={row.data} index={row.index}>Missing template</slot>
       </svelte-virtual-list-row>
     {/each}
   </svelte-virtual-list-contents>
@@ -159,7 +159,7 @@
     -webkit-overflow-scrolling: touch;
     display: block;
     /* scroll-behavior: smooth !important; */
-    /* background-color: #000000; */
+    background-color: #000000;
     /* color: #000000; */
   }
   svelte-virtual-list-contents,
@@ -167,6 +167,7 @@
     display: block;
     /* background-color: #ffffff; */
     /* color: #000000; */
+    background-color: #000000;
   }
   svelte-virtual-list-row {
     overflow: hidden;

@@ -19,32 +19,33 @@
   $: items = $playerStore.filter((i) => i.fileLocation.includes(filter));
 </script>
 
-<main class="page">
-  <!-- <ScreenHeader title="Discover" />
+<!-- <main class="page"> -->
+<!-- <ScreenHeader title="Discover" />
   <div class="screen-view">
     <Slidy />
     <LibraryStats />
     <GenreTags />
   </div> -->
-</main>
+<!-- </main> -->
 
-<!-- <div class="row">
+<div class="row">
   <div class="col">
     <em>lazy loading</em>
     <List {items} />
   </div>
-</div> -->
+</div>
+
 <style lang="scss">
   /* .screen-view {
     width: 1100px;
     max-width: 100%;
   } */
 
-  .page {
+  /* .page {
     display: flex;
     flex-direction: column;
-  }
-  /* .row {
+  } */
+  .row {
     flex: 1;
     display: flex;
     justify-content: space-between;
@@ -61,5 +62,5 @@
   }
   .col :global(.List) {
     flex: 1;
-  } */
+  }
 </style>

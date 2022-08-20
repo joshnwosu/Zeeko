@@ -11,10 +11,10 @@
   import {
     addSelectedTracksToPlaylist,
     deleteSelectedTrackFromPlaylist,
-    encodeTrackFile,
-    fetchDuration,
-    formatDuration,
-    formatIndex,
+    // encodeTrackFile,
+    // fetchDuration,
+    // formatDuration,
+    // formatIndex,
     getSong,
     pauseSong,
     playSong,
@@ -114,7 +114,7 @@
   >
   <td class="genre"><p>{track.genre}</p></td>
   <td class="year" align="right"><p>{track.year || ""}</p></td>
-  <td class="duration" align="right">
+  <!-- <td class="duration" align="right">
     {#await fetchDuration(encodeTrackFile(track))}
       <p>--:--</p>
     {:then duration}
@@ -122,7 +122,7 @@
     {:catch error}
       <p>--:--</p>
     {/await}
-  </td>
+  </td> -->
   <td
     class="favorite"
     class:in-favorite={getSong($playlistStore[0].tracks, track.fileLocation)}

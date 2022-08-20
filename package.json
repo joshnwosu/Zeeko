@@ -34,7 +34,6 @@
     "rollup-plugin-terser": "^7.0.0",
     "sass": "^1.53.0",
     "svelte": "^3.0.0",
-    "svelte-motion": "^0.11.2",
     "wait-on": "^6.0.1"
   },
   "dependencies": {
@@ -42,18 +41,10 @@
     "chokidar": "^3.5.3",
     "electron-is-dev": "^2.0.0",
     "electron-json-storage": "^4.5.0",
-    "get-audio-duration": "^3.1.0",
-    "get-image-colors": "^4.0.1",
-    "gsap": "^3.10.4",
-    "music-metadata": "^7.12.4",
     "node-id3": "^0.2.3",
     "sirv-cli": "^2.0.0",
     "svelte-icons-pack": "^2.0.0",
-    "svelte-navigator": "^3.1.6",
     "svelte-preprocess": "^4.10.7",
-    "svelte-router-spa": "^6.0.3",
-    "svelte-slidy": "^2.8.7",
-    "svelte-spa-router": "^3.2.0",
-    "wavesurfer.js": "^6.2.0"
+    "svelte-spa-router": "^3.2.0"
   }
 }

@@ -11,34 +11,38 @@
 </script>
 
 <p>{start} - {end}</p>
-<div class="List">
-  <VirtualList {items} bind:start bind:end bind:scrollToIndex let:item>
-    <!-- <ListItem {item} /> -->
+<!-- <div class="List"> -->
+<VirtualList {items} bind:start bind:end bind:scrollToIndex let:item>
+  <!-- <ListItem {item} /> -->
 
-    <table>
-      <tbody>
-        <TrackListItem track={item} tracks={items} />
-      </tbody>
-    </table>
-    <!-- <TrackListsNoDuration tracks={item} /> -->
-  </VirtualList>
-</div>
+  <table>
+    <tbody>
+      <TrackListItem track={item} tracks={items} />
+    </tbody>
+  </table>
+</VirtualList>
 
-<style>
-  .List {
+<!-- </div> -->
+<style lang="scss">
+  /* .List {
     position: relative;
     display: flex;
     flex-flow: column nowrap;
     overflow: auto;
     border: 1px solid;
-  }
+  } */
 
   table {
     width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
+    z-index: 99999;
   }
   tbody {
     white-space: nowrap;
+  }
+
+  :global(tr:nth-child(even)) {
+    background-color: #121212;
   }
 </style>
