@@ -8,7 +8,7 @@
   list-style: none;
   text-decoration: none;
   user-select: none;
-  transition: none !important;
+  /* transition: none !important; */
 }
 
 html,

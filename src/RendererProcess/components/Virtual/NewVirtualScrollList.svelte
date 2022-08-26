@@ -1,14 +1,18 @@
 <script>
   import { onMount, tick } from "svelte";
 
-  //   props
+  // props
   export let items;
+  export let width = "100%";
   export let height = "100%";
+  export let bgColor = "transparent";
   export let itemHeight = undefined;
+
   // read-only, but visible to consumers via bind:start
   export let start = 0;
   export let end = 0;
-  // load state
+
+  // local state
   let height_map = [];
   let rows;
   let viewport;
@@ -25,25 +29,16 @@
     return { index: i + start, data };
   });
 
+  // whenever `items` changes, invalidate the current heightmap
   $: if (mounted) refresh(items, viewport_height, itemHeight);
 
   async function refresh(items, viewport_height, itemHeight) {
-    const isStartOverflow = items.length < start;
-
-    // console.log({ items, viewport_height, itemHeight });
-
-    if (isStartOverflow) {
-      await scrollToIndex(items.length - 1, { behavior: "auto" });
-    }
-
     const { scrollTop } = viewport;
 
-    await tick(); // wait until the DOM is up todate
+    await tick(); // wait until the DOM is up to date
 
     let content_height = top - scrollTop;
     let i = start;
-
-    // console.log("c_h: ", content_height, top, scrollTop);
 
     while (content_height < viewport_height && i < items.length) {
       let row = rows[i - start];
@@ -61,10 +56,9 @@
 
     end = i;
 
-    // console.log("I: ", i);
-
     const remaining = items.length - end;
     average_height = (top + content_height) / end;
+
     bottom = remaining * average_height;
     height_map.length = items.length;
   }
@@ -109,66 +103,68 @@
     while (i < items.length) height_map[i++] = average_height;
     bottom = remaining * average_height;
 
+    // prevent jumping if we scrolled up into unknown territory
+    if (start < old_start) {
+      await tick();
+
+      let expected_height = 0;
+      let actual_height = 0;
+
+      for (let i = start; i < old_start; i += 1) {
+        if (rows[i - start]) {
+          expected_height += height_map[i];
+          actual_height += itemHeight || rows[i - start].offsetHeight;
+        }
+      }
+
+      const d = actual_height - expected_height;
+      viewport.scrollTo(0, scrollTop + d);
+    }
+
     // TODO if we overestimated the space these
     // rows would occupy we may need to add some
     // more. maybe we can just call handle_scroll again?
   }
 
-  export async function scrollToIndex(index, opts) {
-    const { scrollTop, scrollHeight } = viewport;
-    const itemsDelta = index - start;
-    const _itemHeight = itemHeight || average_height;
-    const distance = itemsDelta * _itemHeight;
-    opts = {
-      left: 0,
-      top: scrollTop + distance,
-      behavior: "smooth",
-      ...opts,
-    };
-    viewport.scrollTo(opts);
-  }
-
+  // trigger initial refresh
   onMount(() => {
-    rows = contents.getElementsByClassName("svelte-virtual-list-row");
+    rows = contents.getElementsByTagName("svelte-virtual-list-row");
     mounted = true;
   });
 </script>
 
-<div
-  class="svelte-virtual-list-viewport"
+<svelte-virtual-list-viewport
   bind:this={viewport}
   bind:offsetHeight={viewport_height}
   on:scroll={handle_scroll}
-  style="height: {height};"
+  style="height: {height}; width: {width}; background-color: {bgColor};"
 >
-  <div
-    class="svelte-virtual-list-contents"
+  <svelte-virtual-list-contents
     bind:this={contents}
     style="padding-top: {top}px; padding-bottom: {bottom}px;"
   >
     {#each visible as row (row.index)}
-      <div class="svelte-virtual-list-row">
-        <slot item={row.data} index={row.index}>Missing template</slot>
-      </div>
+      <svelte-virtual-list-row>
+        <slot item={row.data}>Missing template</slot>
+      </svelte-virtual-list-row>
     {/each}
-  </div>
-</div>
+  </svelte-virtual-list-contents>
+</svelte-virtual-list-viewport>
 
 <style>
-  .svelte-virtual-list-viewport {
+  svelte-virtual-list-viewport {
     position: relative;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    /* display: flex; */
-    /* flex: 1; */
-    /* flex-direction: column; */
-    /* background: #000000; */
-  }
-  .svelte-virtual-list-contents,
-  .svelte-virtual-list-row {
     display: block;
   }
-  .svelte-virtual-list-row {
+
+  svelte-virtual-list-contents,
+  svelte-virtual-list-row {
+    display: block;
+  }
+
+  svelte-virtual-list-row {
     overflow: hidden;
   }
 </style>

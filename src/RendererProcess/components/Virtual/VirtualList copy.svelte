@@ -129,46 +129,65 @@
   }
 
   onMount(() => {
-    rows = contents.getElementsByClassName("svelte-virtual-list-row");
+    rows = contents.getElementsByTagName("svelte-virtual-list-row");
     mounted = true;
   });
 </script>
 
-<div
-  class="svelte-virtual-list-viewport"
+<svelte-virtual-list-viewport
   bind:this={viewport}
   bind:offsetHeight={viewport_height}
   on:scroll={handle_scroll}
   style="height: {height};"
 >
-  <div
-    class="svelte-virtual-list-contents"
+  <svelte-virtual-list-contents
     bind:this={contents}
     style="padding-top: {top}px; padding-bottom: {bottom}px;"
   >
-    {#each visible as row (row.index)}
-      <div class="svelte-virtual-list-row">
-        <slot item={row.data} index={row.index}>Missing template</slot>
-      </div>
-    {/each}
-  </div>
-</div>
+    <table>
+      <tbody>
+        {#each visible as row, index (row.index)}
+          <svelte-virtual-list-row>
+            <slot item={row.data} {index}>Missing template</slot>
+          </svelte-virtual-list-row>
+        {/each}
+      </tbody>
+    </table>
+  </svelte-virtual-list-contents>
+</svelte-virtual-list-viewport>
 
 <style>
-  .svelte-virtual-list-viewport {
-    position: relative;
+  svelte-virtual-list-viewport {
+    /* position: relative; */
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    /* display: flex; */
-    /* flex: 1; */
-    /* flex-direction: column; */
-    /* background: #000000; */
-  }
-  .svelte-virtual-list-contents,
-  .svelte-virtual-list-row {
     display: block;
+    /* scroll-behavior: smooth !important; */
+    /* background-color: #000000; */
+    /* color: #000000; */
   }
-  .svelte-virtual-list-row {
+  svelte-virtual-list-contents,
+  svelte-virtual-list-row {
+    display: block;
+    /* background-color: #ffffff; */
+    /* color: #000000; */
+    /* background-color: #000000; */
+  }
+  svelte-virtual-list-row {
     overflow: hidden;
+  }
+
+  table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    z-index: 99999;
+  }
+  tbody {
+    white-space: nowrap;
+  }
+
+  :global(tr:nth-child(even)) {
+    background-color: #121212;
   }
 </style>

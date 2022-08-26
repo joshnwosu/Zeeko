@@ -3,64 +3,200 @@
   // import GenreTags from "../components/Widgets/GenreTags.svelte";
   // import Slidy from "../components/Widgets/Slidy.svelte";
   import ScreenHeader from "../components/Root/ScreenHeader.svelte";
-  import List from "../components/Virtual/List.svelte";
-  import { loadItems, loadMore } from "../components/Virtual/data";
+  import AnotherVirtualScrollList from "../components/Virtual/AnotherVirtualScrollList.svelte";
+  import NewVirtualScrollList from "../components/Virtual/NewVirtualScrollList.svelte";
   import { playerStore } from "../store/player";
+  import VirtualScrollList from "./VirtualScrollList.svelte";
 
   let filter = "";
-  let allItems = loadItems();
-  $: itemss = allItems.filter((i) => i.name.includes(filter));
-  // $: console.log("Items: ", allItems);
-
-  // $: items = $playerStore.length
-  //   ? $playerStore.filter((i) => i.fileLocation.includes(filter))
-  //   : itemss;
-
   $: items = $playerStore.filter((i) => i.fileLocation.includes(filter));
+
+  const things = [
+    // these can be any values you like
+    { name: "one", number: 1 },
+    { name: "two", number: 2 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "three", number: 3 },
+    { name: "last", number: 10000 },
+  ];
 </script>
 
-<!-- <main class="page"> -->
-<!-- <ScreenHeader title="Discover" />
-  <div class="screen-view">
-    <Slidy />
-    <LibraryStats />
-    <GenreTags />
-  </div> -->
-<!-- </main> -->
+<!-- <VirtualScrollList itemCount={1000} height={300} childHeight={30} {items} /> -->
 
-<div class="row">
-  <div class="col">
-    <em>lazy loading</em>
-    <List {items} />
+<!-- <NewVirtualScrollList height={"400px"} items={things} let:item>
+  <p style="height: 50px;">{item.name} {item.number}</p>
+</NewVirtualScrollList> -->
+
+<AnotherVirtualScrollList
+  width="100%"
+  height={600}
+  itemCount={things.length}
+  itemSize={100}
+>
+  <div slot="item" let:index let:style {style}>
+    <!-- Letter: {things[index]}, Row: #{index} -->
+    {things[index].name}
+    {things[index].number}
   </div>
-</div>
+</AnotherVirtualScrollList>
 
 <style lang="scss">
-  /* .screen-view {
-    width: 1100px;
-    max-width: 100%;
-  } */
-
-  /* .page {
-    display: flex;
-    flex-direction: column;
-  } */
-  .row {
-    flex: 1;
-    display: flex;
-    justify-content: space-between;
-    overflow: hidden;
-    height: 100%;
-    padding-bottom: 100px;
-  }
-  .col {
-    flex: 1;
-    min-height: 200px;
-    display: flex;
-    flex-flow: column nowrap;
-    margin: 0 0.2rem;
-  }
-  .col :global(.List) {
-    flex: 1;
-  }
 </style>

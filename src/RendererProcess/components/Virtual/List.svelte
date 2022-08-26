@@ -12,15 +12,15 @@
 
 <p>{start} - {end}</p>
 <!-- <div class="List"> -->
-<VirtualList {items} bind:start bind:end bind:scrollToIndex let:item>
+<!-- <table>
+  <tbody> -->
+<VirtualList {items} bind:start bind:end bind:scrollToIndex let:item let:index>
   <!-- <ListItem {item} /> -->
 
-  <table>
-    <tbody>
-      <TrackListItem track={item} tracks={items} />
-    </tbody>
-  </table>
+  <TrackListItem track={item} tracks={items} {index} />
 </VirtualList>
+<!-- </tbody>
+</table> -->
 
 <!-- </div> -->
 <style lang="scss">
@@ -31,18 +31,4 @@
     overflow: auto;
     border: 1px solid;
   } */
-
-  table {
-    width: 100%;
-    table-layout: fixed;
-    border-collapse: collapse;
-    z-index: 99999;
-  }
-  tbody {
-    white-space: nowrap;
-  }
-
-  :global(tr:nth-child(even)) {
-    background-color: #121212;
-  }
 </style>
