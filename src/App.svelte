@@ -44,6 +44,23 @@
 </div>
 
 <style lang="scss">
+  :global(.virtual-list-wrapper) {
+    /* hide scrollbar */
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+
+  :global(.virtual-list-wrapper::-webkit-scrollbar) {
+    /* hide scrollbar */
+    display: none !important;
+  }
+  :global(.v-scrollbar) {
+    z-index: 9999999999;
+    /* :global(.v-thumg) {
+      transition: 300ms ease-in-out;
+    } */
+  }
+
   #app {
     height: 100vh;
     display: flex;
@@ -84,9 +101,9 @@
       stroke: rgba(255, 255, 255, 1);
     }
   }
-  :global(.screen-view) {
+  /* :global(.screen-view) {
     padding: 0px 20px 100px 20px;
-  }
+  } */
   .main-view {
     position: relative;
     width: 100%;
