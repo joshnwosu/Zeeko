@@ -44,22 +44,17 @@
 </div>
 
 <style lang="scss">
-  :global(.virtual-list-wrapper) {
-    /* hide scrollbar */
+  /* :global(.virtual-list-wrapper) {
     -ms-overflow-style: none !important;
     scrollbar-width: none !important;
   }
-
   :global(.virtual-list-wrapper::-webkit-scrollbar) {
-    /* hide scrollbar */
     display: none !important;
-  }
-  :global(.v-scrollbar) {
+  } */
+
+  /* :global(.v-scrollbar) {
     z-index: 9999999999;
-    /* :global(.v-thumg) {
-      transition: 300ms ease-in-out;
-    } */
-  }
+  } */
 
   #app {
     height: 100vh;
@@ -75,9 +70,9 @@
     overflow-y: auto;
     flex: 1;
     /* border: 10px solid red; */
-    &::-webkit-scrollbar-track-piece:start {
+    /* &::-webkit-scrollbar-track-piece:start {
       margin-top: 100px;
-    }
+    } */
 
     &::-webkit-scrollbar-track-piece:end {
       margin-bottom: 100px;
@@ -119,7 +114,7 @@
     bottom: 0;
     right: 60px;
     background-color: #000000;
-    transition: 300ms ease;
+    /* transition: 300ms ease; */
     display: flex;
     /* border: 5px solid green; */
 
