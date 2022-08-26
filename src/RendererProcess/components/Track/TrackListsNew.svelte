@@ -65,6 +65,7 @@
     itemSize={50}
   >
     <div
+      on:contextmenu={displayContextMenu}
       on:dblclick={(e) => playThisTrack(e, index)}
       class:even={index % 2 == 0}
       class="track tr"
@@ -81,31 +82,28 @@
         {/if}
       </div>
       <div class="title col">
-        <div class="title-wrapper">
-          <p>{tracks[index].title}</p>
-          <div class="icon-wrapper">
-            {#if $selectedSong == tracks[index].fileLocation}
-              {#if $playbackManager.playing}
-                <button class="icon" on:click={pauseSong}
-                  ><svelte:component this={PauseIcon} /></button
-                >
-              {:else}
-                <button class="icon" on:click={playSong}
-                  ><svelte:component this={PlayIcon} /></button
-                >
-              {/if}
+        <p>{tracks[index].title}</p>
+        <div class="icon-wrapper">
+          {#if $selectedSong == tracks[index].fileLocation}
+            {#if $playbackManager.playing}
+              <button class="icon" on:click={pauseSong}
+                ><svelte:component this={PauseIcon} /></button
+              >
             {:else}
-              <button
-                class="icon"
-                on:click={() =>
-                  selectedTrack(tracks[index].fileLocation, tracks)}
+              <button class="icon" on:click={playSong}
                 ><svelte:component this={PlayIcon} /></button
               >
             {/if}
-            <button class="icon" on:click={() => console.log("Addy")}
-              ><svelte:component this={AddIcon} /></button
+          {:else}
+            <button
+              class="icon"
+              on:click={() => selectedTrack(tracks[index].fileLocation, tracks)}
+              ><svelte:component this={PlayIcon} /></button
             >
-          </div>
+          {/if}
+          <button class="icon" on:click={() => console.log("Addy")}
+            ><svelte:component this={AddIcon} /></button
+          >
         </div>
       </div>
       <div class="artist col"><p>{tracks[index].artist}</p></div>
@@ -165,19 +163,16 @@
     }
 
     &.title {
-      .title-wrapper {
+      align-items: center;
+      p {
+        color: #ffffff;
+        font-weight: 400;
+      }
+      .icon-wrapper {
+        margin-left: 20px;
+        flex: 1;
         display: flex;
         align-items: center;
-        p {
-          margin-right: 20px;
-          color: #ffffff;
-          font-weight: 400;
-        }
-        .icon-wrapper {
-          flex: 1 !important;
-          display: flex;
-          align-items: center;
-        }
       }
     }
 
