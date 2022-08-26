@@ -1,15 +1,8 @@
 <script>
   import { playerStore } from "../../store/player";
+  import TrackLists from "./TrackLists.svelte";
   import TrackListsNew from "./TrackListsNew.svelte";
 </script>
 
-<div class="track-wrapper">
-  <TrackListsNew tracks={$playerStore} />
-</div>
-
-<style>
-  .track-wrapper {
-    width: 100%;
-    flex: 1;
-  }
-</style>
+<TrackListsNew tracks={$playerStore} />
+<!-- <TrackLists tracks={$playerStore} /> -->

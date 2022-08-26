@@ -61,69 +61,75 @@
   }
 </script>
 
-<Svrollbar {viewport} {contents} />
-<AnotherVirtualScrollList
-  width="100%"
-  height={trackWrapperHeight}
-  itemCount={tracks.length}
-  itemSize={50}
-  overscanCount={50}
->
-  <div
-    on:dblclick={(e) => playThisTrack(e, index)}
-    class:even={index % 2 == 0}
-    class="track tr"
-    slot="item"
-    let:index
-    let:style
-    {style}
+<div class="track-wrapper">
+  <!-- <Svrollbar {viewport} {contents} /> -->
+  <AnotherVirtualScrollList
+    width="100%"
+    height={trackWrapperHeight}
+    itemCount={tracks.length}
+    itemSize={50}
+    overscanCount={tracks.length}
   >
-    <div class="index col">
-      {#if $selectedSong == tracks[index].fileLocation}
-        <PlayAnimation />
-      {:else}
-        <p>{formatIndex(index)}</p>
-      {/if}
-    </div>
-    <div class="title col"><p>{tracks[index].title}</p></div>
-    <div class="artist col"><p>{tracks[index].artist}</p></div>
-    <div class="album col"><p>{tracks[index].album}</p></div>
-    <div class="genre col"><p>{tracks[index].genre}</p></div>
-    <div class="year col"><p>{tracks[index].year || ""}</p></div>
-    {#if false}
-      <div class="duration col">
-        {#await fetchDuration(encodeTrackFile(tracks[index]))}
-          <p>--:--</p>
-        {:then duration}
-          <p>{formatDuration(duration)}</p>
-        {:catch error}
-          <p>--:--</p>
-        {/await}
-      </div>
-    {:else}
-      <div class="duration col" />
-    {/if}
-
     <div
-      class="favorite col"
-      class:in-favorite={getSong(
-        $playlistStore[0].tracks,
-        tracks[index].fileLocation
-      )}
+      on:dblclick={(e) => playThisTrack(e, index)}
+      class:even={index % 2 == 0}
+      class="track tr"
+      slot="item"
+      let:index
+      let:style
+      {style}
     >
-      <button class="icon" on:click={() => toggleFavorite(tracks[index])}>
-        {#if getSong($playlistStore[0].tracks, tracks[index].fileLocation)}
-          <svelte:component this={HeartBoldIcon} />
+      <div class="index col">
+        {#if $selectedSong == tracks[index].fileLocation}
+          <PlayAnimation />
         {:else}
-          <svelte:component this={HeartIcon} />
+          <p>{formatIndex(index)}</p>
         {/if}
-      </button>
+      </div>
+      <div class="title col"><p>{tracks[index].title}</p></div>
+      <div class="artist col"><p>{tracks[index].artist}</p></div>
+      <div class="album col"><p>{tracks[index].album}</p></div>
+      <div class="genre col"><p>{tracks[index].genre}</p></div>
+      <div class="year col"><p>{tracks[index].year || ""}</p></div>
+      {#if true}
+        <div class="duration col">
+          {#await fetchDuration(encodeTrackFile(tracks[index]))}
+            <p>--:--</p>
+          {:then duration}
+            <p>{formatDuration(duration)}</p>
+          {:catch error}
+            <p>--:--</p>
+          {/await}
+        </div>
+      {:else}
+        <div class="duration col" />
+      {/if}
+
+      <div
+        class="favorite col"
+        class:in-favorite={getSong(
+          $playlistStore[0].tracks,
+          tracks[index].fileLocation
+        )}
+      >
+        <button class="icon" on:click={() => toggleFavorite(tracks[index])}>
+          {#if getSong($playlistStore[0].tracks, tracks[index].fileLocation)}
+            <svelte:component this={HeartBoldIcon} />
+          {:else}
+            <svelte:component this={HeartIcon} />
+          {/if}
+        </button>
+      </div>
     </div>
-  </div>
-  <div slot="footer" class="footer" />
-</AnotherVirtualScrollList>
+    <div slot="footer" class="footer" />
+  </AnotherVirtualScrollList>
+</div>
 
 <style lang="scss">
+  .track-wrapper {
+    width: 100%;
+    flex: 1;
+  }
   .col {
     /* border: 1px solid red; */
     overflow: hidden;
@@ -170,7 +176,7 @@
   }
 
   .footer {
-    height: 200px;
+    height: 100px;
     background-color: transparent;
   }
 </style>
