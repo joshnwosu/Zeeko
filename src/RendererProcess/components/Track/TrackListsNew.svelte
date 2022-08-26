@@ -90,7 +90,7 @@
     <div class="album col"><p>{tracks[index].album}</p></div>
     <div class="genre col"><p>{tracks[index].genre}</p></div>
     <div class="year col"><p>{tracks[index].year || ""}</p></div>
-    {#if false}
+    {#if true}
       <div class="duration col">
         {#await fetchDuration(encodeTrackFile(tracks[index]))}
           <p>--:--</p>
@@ -125,7 +125,7 @@
 
 <style lang="scss">
   .col {
-    /* border: 1px solid red; */
+    border: 1px solid red;
     overflow: hidden;
     display: flex;
     p {
