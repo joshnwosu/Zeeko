@@ -67,7 +67,7 @@
   height={trackWrapperHeight}
   itemCount={tracks.length}
   itemSize={50}
-  overscanCount={0}
+  overscanCount={50}
 >
   <div
     on:dblclick={(e) => playThisTrack(e, index)}
@@ -90,15 +90,20 @@
     <div class="album col"><p>{tracks[index].album}</p></div>
     <div class="genre col"><p>{tracks[index].genre}</p></div>
     <div class="year col"><p>{tracks[index].year || ""}</p></div>
-    <div class="duration col" align="right">
-      {#await fetchDuration(encodeTrackFile(tracks[index]))}
-        <p>--:--</p>
-      {:then duration}
-        <p>{formatDuration(duration)}</p>
-      {:catch error}
-        <p>--:--</p>
-      {/await}
-    </div>
+    {#if false}
+      <div class="duration col">
+        {#await fetchDuration(encodeTrackFile(tracks[index]))}
+          <p>--:--</p>
+        {:then duration}
+          <p>{formatDuration(duration)}</p>
+        {:catch error}
+          <p>--:--</p>
+        {/await}
+      </div>
+    {:else}
+      <div class="duration col" />
+    {/if}
+
     <div
       class="favorite col"
       class:in-favorite={getSong(
@@ -120,9 +125,9 @@
 
 <style lang="scss">
   .col {
-    padding-right: 20px;
     /* border: 1px solid red; */
     overflow: hidden;
+    display: flex;
     p {
       width: 100%;
       text-overflow: ellipsis;
@@ -132,19 +137,27 @@
       font-weight: 400;
       color: #e9e9e9;
     }
+
+    &.year,
+    &.duration,
+    &.favorite {
+      justify-content: flex-end;
+    }
+
+    &.year,
+    &.duration {
+      p {
+        text-align: right;
+      }
+    }
   }
 
   .track {
     /* border: 1px solid red; */
     padding: 0 20px;
     display: grid;
-    grid-template-columns:
-      50px 1.5fr 1fr 1fr minmax(100px, 150px) minmax(20px, 70px) minmax(
-        20px,
-        70px
-      )
-      50px;
-    gap: 10px;
+    grid-template-columns: 50px 2fr 1fr 1fr minmax(100px, 150px) 50px 50px 50px;
+    gap: 20px;
     align-items: center;
     &.even {
       background-color: #121212;
