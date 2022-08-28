@@ -12,9 +12,9 @@
 <main class="page">
   {#if playlist?.name}
     <PlaylistHeader name={params.name} {playlist} />
-    <!-- <PlaylistView> -->
-    <!-- <TrackLists tracks={playlist?.tracks} /> -->
-    <TrackListsNew tracks={playlist?.tracks} />
-    <!-- </PlaylistView> -->
+    <PlaylistView>
+      <!-- <TrackLists tracks={playlist?.tracks} /> -->
+      <TrackListsNew tracks={playlist?.tracks} />
+    </PlaylistView>
   {/if}
 </main>
