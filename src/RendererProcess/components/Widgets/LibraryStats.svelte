@@ -81,13 +81,13 @@
     flex-wrap: nowrap;
     align-items: center;
     gap: 10px;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     /* border: 1px solid red; */
   }
   .card {
     width: 200px;
     height: 180px;
-    background-color: #ffffff10 !important;
+    /* background-color: #ffffff10 !important; */
     border-radius: 10px;
     padding: 20px;
     /* margin-right: 20px; */

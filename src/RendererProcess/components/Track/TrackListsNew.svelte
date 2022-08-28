@@ -68,7 +68,7 @@
     <div
       on:contextmenu={displayContextMenu}
       on:dblclick={(e) => playThisTrack(e, index)}
-      class:even={index % 2 == 0}
+      class:even={index % 2 !== 0}
       class="track tr"
       slot="item"
       let:index
@@ -135,6 +135,7 @@
   .track-wrapper {
     width: 100%;
     flex: 1;
+    padding: 0 20px;
   }
 
   .icon {

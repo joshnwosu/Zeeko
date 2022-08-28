@@ -1,4 +1,6 @@
 import path from "path";
+import { createdFilters } from "../components/Root/Equalizer/Equalizer";
+import { presets } from "../components/Root/Equalizer/equalizerPresets";
 import {
   genresStore,
   foldersStore,
@@ -13,6 +15,7 @@ import {
   selectedTracksStore,
   recentlyPlayedTracksStore,
   playStatsStore,
+  EqualizerManager,
 } from "./player";
 
 let audio;
@@ -28,6 +31,8 @@ let storeGenres;
 let storeFolders;
 let storeAlbums;
 let storeArtists;
+
+let equalizerStore;
 
 audioContext.subscribe((context) => {
   audio = context;
@@ -75,6 +80,10 @@ genresStore.subscribe((store) => {
 
 recentlyPlayedTracksStore.subscribe((store) => {
   recentlyPlayedTracks = store;
+});
+
+EqualizerManager.subscribe((store) => {
+  equalizerStore = store;
 });
 
 function sortArrayOfObjects(targetArray, param) {
@@ -634,5 +643,31 @@ export function generateFoldersData() {
 // Equalizer manager;
 
 export function updateBandFilter(data) {
-  console.log("Data: ", data);
+  // console.log("Data: ", data);
+  equalizerStore.bands[data.targetBandIndex].value = data.newValue;
+  createdFilters[data.targetBandIndex].gain.value = data.newValue;
+  EqualizerManager.update((store) => {
+    store.currentPreset = "Custom";
+    return store;
+  });
+  const customBandValues = equalizerStore.bands.map((band) => band.value);
+  presets[1].bandValues = [...customBandValues];
+}
+
+export function loadPreset(preset) {
+  EqualizerManager.update((store) => {
+    store.currentPreset = preset.name;
+    return store;
+  });
+  preset.bandValues.forEach((bandValue, index) => {
+    equalizerStore.bands[index].value = bandValue;
+    createdFilters[index].gain.value = bandValue;
+  });
+  // console.log("Preset: ", preset);
+}
+
+export function changeBandGains(payload) {
+  console.log("Updating bands");
+  equalizerStore.bands.map((band, index) => (band.value = payload[index]));
+  createdFilters.map((filter, index) => (filter.gain.value = payload[index]));
 }

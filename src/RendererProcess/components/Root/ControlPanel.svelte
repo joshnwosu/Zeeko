@@ -1,14 +1,13 @@
 <script>
+  import { onMount } from "svelte";
   import { defaultCoverArt } from "../../utilities";
-  // import path from "path";
-
-  // const path = require("path");
 
   let browserFile;
   let audio;
   let seekBarWidth;
   let volume = 0.5;
   let show = false;
+  let volumeBarWidth;
 
   import { push } from "svelte-spa-router";
   import isElectron from "../../../../isElectron";
@@ -70,6 +69,11 @@
   } from "../../store/playerManager";
   import Modal from "../Modal/Modal.svelte";
   import { handleToggleEqualizer } from "../../store/statusManager";
+  import { gainNode, setupEqualizer } from "./Equalizer/Equalizer";
+
+  onMount(() => {
+    setupEqualizer();
+  });
 
   $: if ($playerStore.length) $audioContext = audio;
 
@@ -157,15 +161,12 @@
   }
 
   function changeVolume(e) {
-    console.log(e.srcElement.value);
-    volume = `${Math.trunc(e.srcElement.value * 100)}%`;
-    audio.volume = e.srcElement.value;
-    // gainNode.gain.value = this.volume;
-    // this.setSettingValue({ property: "volume", newValue: this.volume });
+    volume = e.srcElement.value;
+    gainNode.gain.value = volume;
   }
 
-  function volumeBarWidth() {
-    return `${Math.trunc(volume * 100)}%`;
+  $: if (volume) {
+    volumeBarWidth = `${Math.trunc(volume * 100)}%`;
   }
 
   function goToPosition(e) {
@@ -188,7 +189,7 @@
   }
 </script>
 
-<audio bind:this={audio} />
+<audio bind:this={audio} id="audioTag" autoplay />
 
 <Modal {show}>
   <div class="modal-content">
@@ -348,7 +349,7 @@
             step="0.05"
             type="range"
           />
-          <div class="seek-progress" style="width: {volume}">
+          <div class="seek-progress" style="width: {volumeBarWidth}">
             <div class="seek-knob" />
           </div>
         </div>

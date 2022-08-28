@@ -98,9 +98,9 @@
       stroke: rgba(255, 255, 255, 1);
     }
   }
-  /* :global(.screen-view) {
+  :global(.screen-view) {
     padding: 0px 20px 100px 20px;
-  } */
+  }
   .main-view {
     position: relative;
     width: 100%;

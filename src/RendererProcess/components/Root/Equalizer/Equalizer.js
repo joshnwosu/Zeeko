@@ -1,8 +1,9 @@
 export let createdFilters = [];
 export let gainNode = null;
 export function setupEqualizer() {
-  const context = new window.AudioContext();
+  const context = new AudioContext();
   const mediaElement = document.querySelector("audio");
+  //   console.log("mediaElement: ", mediaElement);
   const source = context.createMediaElementSource(mediaElement);
 
   gainNode = new GainNode(context, { gain: 0.5 });
@@ -43,7 +44,7 @@ export function setupEqualizer() {
 
   source.connect(band1Filter);
   band1Filter.connect(band2Filter);
-  band2Filter.connect(band2Filter);
+  band2Filter.connect(band3Filter);
   band3Filter.connect(band4Filter);
   band4Filter.connect(gainNode);
   gainNode.connect(context.destination);
