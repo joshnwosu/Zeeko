@@ -47,14 +47,14 @@
     background-color: #00000080;
     z-index: 99;
     backdrop-filter: blur(20px);
-    transform: translateY(100%);
-    transition: 200ms ease-in-out;
+    transform: translateY(20%);
+    transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
     padding: 50px;
     opacity: 0;
     visibility: hidden;
     box-sizing: border-box;
     &.open {
-      transform: translateY(0);
+      transform: translateY(0%);
       opacity: 1;
       visibility: visible;
     }
@@ -67,7 +67,7 @@
     gap: 10px;
     button {
       border: none;
-      background-color: #ffffff05;
+      background-color: #ffffff20;
       color: #ffffff;
       border-radius: 20px;
       padding: 10px 20px;

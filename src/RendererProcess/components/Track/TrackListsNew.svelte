@@ -127,7 +127,7 @@
         </button>
       </div>
     </div>
-    <div slot="footer" class="footer" />
+    <!-- <div slot="footer" class="footer" /> -->
   </AnotherVirtualScrollList>
 </div>
 
@@ -210,8 +210,8 @@
     }
   }
 
-  .footer {
+  /* .footer {
     height: 100px;
     background-color: transparent;
-  }
+  } */
 </style>
