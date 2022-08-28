@@ -69,6 +69,7 @@
     encodeTrackFile,
   } from "../../store/playerManager";
   import Modal from "../Modal/Modal.svelte";
+  import { handleToggleEqualizer } from "../../store/statusManager";
 
   $: if ($playerStore.length) $audioContext = audio;
 
@@ -327,11 +328,14 @@
     </div>
   </div>
   <div class="wrapper right">
-    <span class="icon equalizer-icon left-flare" on:click={pickFolder}>
+    <span
+      class="icon equalizer-icon left-flare"
+      on:click={handleToggleEqualizer}
+    >
       <svelte:component this={CandleBoldIcon} />
     </span>
     <div class="volume-bar">
-      <span class="icon volum-icon left-flare">
+      <span class="icon volum-icon left-flare" on:click={pickFolder}>
         <svelte:component this={VolumeHighBoldIcon} />
       </span>
       <div class="seek-bar-wrap">

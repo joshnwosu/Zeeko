@@ -17,6 +17,7 @@
   import ContextMenu from "./RendererProcess/components/ContextMenu/ContextMenu.svelte";
   import DimMode from "./RendererProcess/components/Root/DimMode.svelte";
   import { cleanUp } from "./RendererProcess/utilities";
+  import Equalizer from "./RendererProcess/components/Root/Equalizer/Equalizer.svelte";
 
   const routeLoaded = (event) => {
     // console.log("Eevnt: ", event);
@@ -40,6 +41,7 @@
     </div>
     <ControlPanel />
     <RightBar />
+    <Equalizer />
   </section>
 </div>
 

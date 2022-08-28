@@ -630,3 +630,9 @@ export function generateFoldersData() {
   sortArrayOfObjects(storeFolders, "name");
   // console.log("Folders:", storeFolders);
 }
+
+// Equalizer manager;
+
+export function updateBandFilter(data) {
+  console.log("Data: ", data);
+}

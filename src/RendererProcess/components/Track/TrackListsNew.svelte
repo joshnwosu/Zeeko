@@ -63,6 +63,7 @@
     height={trackWrapperHeight}
     itemCount={tracks.length}
     itemSize={50}
+    overscanCount={20}
   >
     <div
       on:contextmenu={displayContextMenu}
