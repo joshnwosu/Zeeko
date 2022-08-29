@@ -161,8 +161,7 @@
 
   function updateSlider(event) {
     updateBandFilter(event.detail);
-    // console.log("Event:", event.detail, $EqualizerManager);
-    renderSliderGraph();
+    // renderSliderGraph();
   }
 
   function getInterpolationLine(type) {
