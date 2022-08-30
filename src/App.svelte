@@ -18,32 +18,42 @@
   import DimMode from "./RendererProcess/components/Root/DimMode.svelte";
   import { cleanUp } from "./RendererProcess/utilities";
   import Equalizer from "./RendererProcess/components/Root/Equalizer/Equalizer.svelte";
+  import ThemeProvider from "./RendererProcess/components/Root/ThemeProvider.svelte";
+  import { themeConfig } from "./RendererProcess/config/theme";
 
   const routeLoaded = (event) => {
     // console.log("Eevnt: ", event);
     // document.querySelectorAll(".page").forEach((el) => (el.scrollTop = 0));
   };
+
+  $: currentTheme = themeConfig[0].colors;
 </script>
 
-<DimMode />
-<div id="app" on:click={cleanUp} on:contextmenu={cleanUp} on:scroll={cleanUp}>
-  <ContextMenu />
-  <NowPlaying />
-  <CreatePlaylist />
-  <IpcListener />
-  <Bg />
-  <Frame />
-  <section class="main-view">
-    <SideBar />
+<ThemeProvider theme={currentTheme}>
+  <DimMode />
+  <div id="app" on:click={cleanUp} on:contextmenu={cleanUp} on:scroll={cleanUp}>
+    <ContextMenu />
+    <NowPlaying />
+    <CreatePlaylist />
+    <IpcListener />
+    <Bg />
+    <Frame />
+    <section class="main-view">
+      <SideBar />
 
-    <div class="router-container" class:toggle-sidebar={$toggleSidebar}>
-      <Router {routes} on:routeLoaded={routeLoaded} restoreScrollState={true} />
-    </div>
-    <ControlPanel />
-    <RightBar />
-    <Equalizer />
-  </section>
-</div>
+      <div class="router-container" class:toggle-sidebar={$toggleSidebar}>
+        <Router
+          {routes}
+          on:routeLoaded={routeLoaded}
+          restoreScrollState={true}
+        />
+      </div>
+      <ControlPanel />
+      <RightBar />
+      <Equalizer />
+    </section>
+  </div>
+</ThemeProvider>
 
 <style lang="scss">
   /* :global(.virtual-list-wrapper) {

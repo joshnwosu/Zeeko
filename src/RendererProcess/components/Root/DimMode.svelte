@@ -1,5 +1,11 @@
 <script>
   import { toggleDim } from "../../store/status";
+  import { getContext } from "svelte";
+  import { themeContextKey } from "./ThemeProvider.svelte";
+
+  const { theme } = getContext(themeContextKey);
+
+  console.log("getContext: ", $theme);
 </script>
 
 <div class="dim" class:show={$toggleDim} />
