@@ -116,7 +116,7 @@
     bottom: 0;
     right: 60px;
     background-color: #000000;
-    /* transition: 300ms ease; */
+    transition: 300ms ease;
     display: flex;
     /* border: 5px solid green; */
 

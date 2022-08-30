@@ -264,11 +264,7 @@
       filterName="Treble"
       on:newGainValues={(event) => changeBandGains(event.detail)}
     />
-    <svelte:component
-      this={TriangleSlider}
-      filterName="VBoost"
-      title="Boost Volume"
-    />
+    <svelte:component this={TriangleSlider} filterName="VBoost" />
   </div>
 </div>
 
@@ -279,24 +275,29 @@
     right: 60px;
     top: 0;
     bottom: 0;
-    background-color: #00000080;
+    background-image: linear-gradient(-90deg, #000000, #00000020);
     z-index: 99;
     backdrop-filter: blur(20px);
-    transform: translateY(20%);
+    transform: translateX(20%);
     transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
     padding: 50px;
     opacity: 0;
     visibility: hidden;
     box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
     &.open {
-      transform: translateY(0%);
+      transform: translateX(0%);
       opacity: 1;
       visibility: visible;
     }
   }
 
   .presets {
-    margin-top: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
@@ -316,7 +317,7 @@
   }
 
   .filter_sliders {
-    margin-top: 20px;
+    flex: 1;
     display: flex;
     gap: 10px;
     justify-content: space-evenly;
@@ -346,7 +347,6 @@
       height: 100%;
       fill: none;
       stroke-width: 1;
-      /* border: 1px solid red; */
       .line {
         stroke: #65e14d;
       }
@@ -360,8 +360,8 @@
   }
 
   .b_t {
-    margin-top: 20px;
     width: 100%;
+    height: 50px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-between;
