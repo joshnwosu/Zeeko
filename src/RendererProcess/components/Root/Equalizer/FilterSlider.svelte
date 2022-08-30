@@ -23,7 +23,7 @@
   }
 </script>
 
-<div class="base_slider" style="--background-color: {$currentAccentColor}">
+<div class="base_slider" style="--accent-color: {$currentAccentColor}">
   <input on:input={updateInput} value="0" min="-15" max="15" type="range" />
   <div class="base_slider_progress" style="height: {progressBarHeight};">
     <div class="knob" />
@@ -57,7 +57,7 @@
       bottom: 0px;
       left: 0px;
       height: 50%;
-      background: var(--background-color);
+      background: var(--accent-color);
       width: 100%;
       /* transition: height 200ms linear; */
       display: flex;

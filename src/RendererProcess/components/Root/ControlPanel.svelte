@@ -217,7 +217,7 @@
 <div
   class="control-panel"
   class:hide={$toggleNowPlaying}
-  style="--background-color: {$currentAccentColor}"
+  style="--accent-color: {$currentAccentColor}"
 >
   <div
     class="wrapper left"
@@ -375,7 +375,7 @@
   :global(.in-favorite) {
     :global(svg) {
       :global(path) {
-        fill: var(--background-color) !important;
+        fill: var(--accent-color) !important;
       }
     }
   }
@@ -458,7 +458,7 @@
       opacity: 0;
     }
     .seek-progress {
-      background-color: var(--background-color);
+      background-color: var(--accent-color);
       /* width: 50%; */
       height: 100%;
       border-radius: 5px;

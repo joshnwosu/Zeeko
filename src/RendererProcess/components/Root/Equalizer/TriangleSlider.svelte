@@ -53,7 +53,7 @@
   };
 </script>
 
-<div class="triangle_slider" style="--background-color: {$currentAccentColor}">
+<div class="triangle_slider" style="--accent-color: {$currentAccentColor}">
   <div class="slider_wrapper">
     <input on:input={updateInput} type="range" min="0" max="15" value="0" />
     {#if filterName === "VBoost"}
@@ -94,7 +94,7 @@
         content: "";
         display: block;
         padding-top: 86%;
-        background: var(--background-color);
+        background: var(--accent-color);
         filter: brightness(1.5);
         clip-path: polygon(100% 0, 50% 100%, 0 0);
       }
@@ -109,7 +109,7 @@
         content: "";
         display: block;
         padding-top: 86%;
-        background: var(--background-color);
+        background: var(--accent-color);
         clip-path: polygon(100% 0, 50% 100%, 0 0);
       }
     }

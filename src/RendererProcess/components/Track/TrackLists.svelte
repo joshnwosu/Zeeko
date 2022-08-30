@@ -18,6 +18,7 @@
     playSong,
     selectedTrack,
   } from "../../store/playerManager";
+  import { currentAccentColor } from "../../store/theme";
   import { displayContextMenu } from "../../utilities/contextMenu";
   import {
     AddIcon,
@@ -37,7 +38,7 @@
   }
 </script>
 
-<table>
+<table style="--accent-color: {$currentAccentColor}">
   <tbody>
     {#if tracks.length}
       {#each tracks as track, index}
@@ -145,7 +146,7 @@
   .in-favorite {
     :global(svg) {
       :global(path) {
-        fill: #65e14d !important;
+        fill: var(--accent-color) !important;
       }
     }
   }

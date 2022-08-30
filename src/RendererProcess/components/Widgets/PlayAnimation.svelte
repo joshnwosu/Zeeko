@@ -1,11 +1,13 @@
 <script>
   import { playbackManager } from "../../store/player";
+  import { currentAccentColor } from "../../store/theme";
 </script>
 
 <div
   class="loader-container"
   class:pauseAnim={!$playbackManager.playing}
   class:playAnim={$playbackManager.playing}
+  style="--acent-color: {$currentAccentColor}"
 >
   <div class="rectangle-1" />
   <div class="rectangle-2" />
@@ -28,7 +30,7 @@
     width: 2px;
     border-radius: 4px;
     animation: load 1.5s ease-in-out infinite;
-    background-color: #65e14d;
+    background-color: var(--accent-color);
   }
 
   .loader-container .rectangle-2 {

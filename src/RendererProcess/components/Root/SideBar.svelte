@@ -19,13 +19,18 @@
     handleNavigation,
     handleToggleSidebar,
   } from "../../store/statusManager";
+  import { currentAccentColor } from "../../store/theme";
 
   function handleToggle() {
     $toggleCreatePlaylist = !$toggleCreatePlaylist;
   }
 </script>
 
-<div class="side-nav" class:toggle-sidenav={$toggleSidebar}>
+<div
+  class="side-nav"
+  class:toggle-sidenav={$toggleSidebar}
+  style="--accent-color: {$currentAccentColor}"
+>
   <div>
     <div class="logo">
       <div class="logo-inner">
@@ -184,7 +189,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #65e14d;
+      background-color: var(--accent-color);
       margin-right: 5px;
       p {
         font-family: "Harlow Solid";
@@ -254,7 +259,7 @@
             position: absolute;
             width: 4px;
             height: 30px;
-            background-color: #65e14d !important;
+            background-color: var(--accent-color) !important;
             top: 50%;
             right: 0;
             transform: translate(-50%, -50%);
@@ -262,17 +267,17 @@
             border-bottom-left-radius: 5px;
           }
           .label {
-            color: #65e14d !important;
+            color: var(--accent-color) !important;
           }
           .icon {
             :global(.svg-icon-bold) {
               :global(path) {
-                fill: #65e14d !important;
+                fill: var(--accent-color) !important;
               }
             }
             :global(.svg-icon-outline) {
               :global(path) {
-                stroke: #65e14d !important;
+                stroke: var(--accent-color) !important;
               }
             }
           }

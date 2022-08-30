@@ -15,7 +15,6 @@ export function changeTheme(payload) {
 }
 
 export function changeAccentColor(index) {
-  console.log("Accent: ", index);
   localStorage.setItem("accentColor", JSON.stringify(index));
   currentAccentColor.set(accentColorsConfig[index]);
 }

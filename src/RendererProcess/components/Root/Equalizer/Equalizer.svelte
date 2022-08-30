@@ -225,7 +225,7 @@
 
 <div class="equalizer" class:open={$toggleEqualizer}>
   <h1>Equalizer</h1>
-  <div class="presets" style="--background-color: {$currentAccentColor}">
+  <div class="presets" style="--accent-color: {$currentAccentColor}">
     {#each $EqualizerManager.equalizerPresets as preset}
       <button
         class:active={$EqualizerManager.currentPreset == preset.name}
@@ -311,7 +311,7 @@
 
       &.active,
       &:hover {
-        background-color: var(--background-color);
+        background-color: var(--accent-color);
         color: #000000;
       }
     }
