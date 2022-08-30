@@ -8,7 +8,6 @@
   let progressBarHeight;
 
   function updateInput(e) {
-    // console.log(e.srcElement.value);
     newFilterValue = parseInt(e.srcElement.value);
     dispatch("rangeUpdated", {
       targetBandIndex: bandIndex,

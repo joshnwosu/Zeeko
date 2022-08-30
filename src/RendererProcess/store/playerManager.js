@@ -667,7 +667,10 @@ export function loadPreset(preset) {
 }
 
 export function changeBandGains(payload) {
-  console.log("Updating bands");
-  equalizerStore.bands.map((band, index) => (band.value = payload[index]));
+  // console.log("Updating bands", payload);
+  EqualizerManager.update((store) => {
+    store.bands.map((band, index) => (band.value = payload[index]));
+    return store;
+  });
   createdFilters.map((filter, index) => (filter.gain.value = payload[index]));
 }

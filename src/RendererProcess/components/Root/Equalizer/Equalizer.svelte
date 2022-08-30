@@ -8,6 +8,7 @@
     changeBandGains,
   } from "../../../store/playerManager";
   import { onMount } from "svelte";
+  import TriangleSlider from "./TriangleSlider.svelte";
 
   // String formatter
   if (!String.prototype.format) {
@@ -251,6 +252,24 @@
       </div>
     {/each}
   </div>
+
+  <div class="b_t">
+    <svelte:component
+      this={TriangleSlider}
+      filterName="Bass"
+      on:newGainValues={(event) => changeBandGains(event.detail)}
+    />
+    <svelte:component
+      this={TriangleSlider}
+      filterName="Treble"
+      on:newGainValues={(event) => changeBandGains(event.detail)}
+    />
+    <svelte:component
+      this={TriangleSlider}
+      filterName="VBoost"
+      title="Boost Volume"
+    />
+  </div>
 </div>
 
 <style lang="scss">
@@ -338,5 +357,15 @@
         opacity: 0.35;
       }
     }
+  }
+
+  .b_t {
+    margin-top: 20px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0px;
   }
 </style>
