@@ -275,9 +275,9 @@
     width: 50px;
   }
 
-  .duration {
+  /* .duration {
     width: 70px;
-  }
+  } */
 
   .check-box {
     width: 70px;
