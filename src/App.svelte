@@ -19,17 +19,15 @@
   import { cleanUp } from "./RendererProcess/utilities";
   import Equalizer from "./RendererProcess/components/Root/Equalizer/Equalizer.svelte";
   import ThemeProvider from "./RendererProcess/components/Root/ThemeProvider.svelte";
-  import { themeConfig } from "./RendererProcess/config/theme";
+  import { currentTheme } from "./RendererProcess/store/theme";
 
   const routeLoaded = (event) => {
     // console.log("Eevnt: ", event);
     // document.querySelectorAll(".page").forEach((el) => (el.scrollTop = 0));
   };
-
-  $: currentTheme = themeConfig[0].colors;
 </script>
 
-<ThemeProvider theme={currentTheme}>
+<ThemeProvider theme={$currentTheme}>
   <DimMode />
   <div id="app" on:click={cleanUp} on:contextmenu={cleanUp} on:scroll={cleanUp}>
     <ContextMenu />

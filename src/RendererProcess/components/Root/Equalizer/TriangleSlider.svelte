@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import { currentAccentColor } from "../../../store/theme";
   import { gainNode } from "./Equalizer";
   const dispatch = createEventDispatcher();
   export let filterName;
@@ -52,13 +53,13 @@
   };
 </script>
 
-<div class="triangle_slider">
+<div class="triangle_slider" style="--background-color: {$currentAccentColor}">
   <div class="slider_wrapper">
     <input on:input={updateInput} type="range" min="0" max="15" value="0" />
     {#if filterName === "VBoost"}
       <div class="slider_progress" style="height: {barHeightForVolumeBoost}" />
     {:else}
-      <div class="slider_progress" style="height: {barHeight}" />
+      <div class="slider_progress" style="height: {barHeight};" />
     {/if}
   </div>
   <p>
@@ -93,7 +94,7 @@
         content: "";
         display: block;
         padding-top: 86%;
-        background: #65e14d;
+        background: var(--background-color);
         filter: brightness(1.5);
         clip-path: polygon(100% 0, 50% 100%, 0 0);
       }
@@ -108,7 +109,7 @@
         content: "";
         display: block;
         padding-top: 86%;
-        background: #65e14d;
+        background: var(--background-color);
         clip-path: polygon(100% 0, 50% 100%, 0 0);
       }
     }

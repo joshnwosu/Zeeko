@@ -5,7 +5,7 @@
 
   const { theme } = getContext(themeContextKey);
 
-  console.log("getContext: ", $theme);
+  $: console.log("getContext: ", $theme);
 </script>
 
 <div class="dim" class:show={$toggleDim} />

@@ -9,6 +9,7 @@
   } from "../../../store/playerManager";
   import { onMount } from "svelte";
   import TriangleSlider from "./TriangleSlider.svelte";
+  import { currentAccentColor } from "../../../store/theme";
 
   // String formatter
   if (!String.prototype.format) {
@@ -224,12 +225,11 @@
 
 <div class="equalizer" class:open={$toggleEqualizer}>
   <h1>Equalizer</h1>
-  <div class="presets">
+  <div class="presets" style="--background-color: {$currentAccentColor}">
     {#each $EqualizerManager.equalizerPresets as preset}
       <button
-        on:click={() => loadPreset(preset)}
         class:active={$EqualizerManager.currentPreset == preset.name}
-        >{preset.name}</button
+        on:click={() => loadPreset(preset)}>{preset.name}</button
       >
     {/each}
   </div>
@@ -308,9 +308,10 @@
       border-radius: 20px;
       padding: 10px 20px;
       font-size: 12px;
+
       &.active,
       &:hover {
-        background-color: #65e14d;
+        background-color: var(--background-color);
         color: #000000;
       }
     }

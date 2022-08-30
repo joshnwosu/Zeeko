@@ -70,6 +70,7 @@
   import Modal from "../Modal/Modal.svelte";
   import { handleToggleEqualizer } from "../../store/statusManager";
   import { gainNode, setupEqualizer } from "./Equalizer/Equalizer";
+  import { currentAccentColor } from "../../store/theme";
 
   onMount(() => {
     setupEqualizer();
@@ -213,7 +214,11 @@
   </div>
 </Modal>
 
-<div class="control-panel" class:hide={$toggleNowPlaying}>
+<div
+  class="control-panel"
+  class:hide={$toggleNowPlaying}
+  style="--background-color: {$currentAccentColor}"
+>
   <div
     class="wrapper left"
     on:click={() => ($toggleNowPlaying = !$toggleNowPlaying)}
@@ -370,7 +375,7 @@
   :global(.in-favorite) {
     :global(svg) {
       :global(path) {
-        fill: #65e14d !important;
+        fill: var(--background-color) !important;
       }
     }
   }
@@ -453,7 +458,7 @@
       opacity: 0;
     }
     .seek-progress {
-      background-color: #65e14d;
+      background-color: var(--background-color);
       /* width: 50%; */
       height: 100%;
       border-radius: 5px;

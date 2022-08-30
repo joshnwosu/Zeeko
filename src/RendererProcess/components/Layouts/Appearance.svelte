@@ -4,6 +4,7 @@
     themesConfig,
     windowStyleConfig,
   } from "../../config/appearance";
+  import { changeAccentColor, changeTheme } from "../../store/themeManager";
   import Switch from "../Addon/Switch.svelte";
   let checked1 = false;
 </script>
@@ -12,8 +13,12 @@
   <div class="section accent-color-section">
     <h1>Choose your accent color</h1>
     <div class="accent-color">
-      {#each accentColorsConfig as color}
-        <span style="background-color: {color}" class="color" />
+      {#each accentColorsConfig as color, index}
+        <span
+          style="background-color: {color}"
+          class="color"
+          on:click={() => changeAccentColor(index)}
+        />
       {/each}
     </div>
   </div>
@@ -22,7 +27,7 @@
     <h1>Choose your theme</h1>
     <div class="flex theme-wrapper">
       {#each themesConfig as theme}
-        <div class="flex-item theme">
+        <div class="flex-item theme" on:click={() => changeTheme(theme.name)}>
           <div class="box" />
           <p>{theme.name}</p>
         </div>

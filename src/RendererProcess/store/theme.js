@@ -1,8 +1,11 @@
 import { writable } from "svelte/store";
+import { accentColorsConfig } from "../config/appearance";
 import { themeConfig } from "../config/theme";
 
-const defaults = themeConfig[0].colors;
+let themeStore = writable(null);
+let currentTheme = writable(themeConfig["amoled"]);
+let currentAccentColor = writable(
+  accentColorsConfig[JSON.parse(localStorage.getItem("accentColor")) || 0]
+);
 
-let themeStore = writable(defaults);
-
-export { themeStore };
+export { themeStore, currentTheme, currentAccentColor };
