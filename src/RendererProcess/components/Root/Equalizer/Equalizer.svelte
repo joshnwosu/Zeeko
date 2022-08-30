@@ -349,12 +349,12 @@
       fill: none;
       stroke-width: 1;
       .line {
-        stroke: #65e14d;
+        stroke: var(--accent-color);
       }
       .line-shadow {
         z-index: 3;
         stroke-width: 2;
-        stroke: red;
+        stroke: var(--accent-color);
         opacity: 0.35;
       }
     }

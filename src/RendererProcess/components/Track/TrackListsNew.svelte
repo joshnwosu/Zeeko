@@ -26,6 +26,7 @@
   import AnotherVirtualScrollList from "../Virtual/AnotherVirtualScrollList.svelte";
   import PlayAnimation from "../Widgets/PlayAnimation.svelte";
   import { onMount } from "svelte";
+  import { currentAccentColor } from "../../store/theme";
 
   let viewport;
   let contents;
@@ -57,7 +58,7 @@
   }
 </script>
 
-<div class="track-wrapper">
+<div class="track-wrapper" style="--accent-color: {$currentAccentColor}">
   <AnotherVirtualScrollList
     width="100%"
     height={trackWrapperHeight}
