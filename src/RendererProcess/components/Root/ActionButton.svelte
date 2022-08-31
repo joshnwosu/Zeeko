@@ -42,6 +42,7 @@
     justify-content: space-between;
     align-items: center;
     max-width: 100%;
+    margin-right: 10px;
   }
 
   .window-action-button {
