@@ -1,6 +1,6 @@
-import { accentColorsConfig } from "../config/appearance";
+import { accentColorsConfig, windowStyleConfig } from "../config/appearance";
 import { themeConfig } from "../config/theme";
-import { currentAccentColor, currentTheme } from "./theme";
+import { currentAccentColor, currentTheme, currentWindowStyle } from "./theme";
 
 export function changeTheme(payload) {
   if (payload == "nightfall") {
@@ -17,4 +17,9 @@ export function changeTheme(payload) {
 export function changeAccentColor(index) {
   localStorage.setItem("accentColor", JSON.stringify(index));
   currentAccentColor.set(accentColorsConfig[index]);
+}
+
+export function changeWindowStyle(payload) {
+  localStorage.setItem("windowStyle", JSON.stringify(payload));
+  currentWindowStyle.set(windowStyleConfig[payload]);
 }

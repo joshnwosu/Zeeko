@@ -7,6 +7,10 @@ let currentTheme = writable(themeConfig["amoled"]);
 let currentAccentColor = writable(
   accentColorsConfig[JSON.parse(localStorage.getItem("accentColor")) || 0]
 );
-let currentWindowStyle = writable(windowStyleConfig["windows"]);
+let currentWindowStyle = writable(
+  windowStyleConfig[
+    JSON.parse(localStorage.getItem("windowStyle")) || "windows"
+  ]
+);
 
 export { themeStore, currentTheme, currentAccentColor, currentWindowStyle };
