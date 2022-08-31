@@ -4,6 +4,7 @@
     themesConfig,
     windowStyleConfig,
   } from "../../config/appearance";
+  import { currentAccentColor } from "../../store/theme";
   import {
     changeAccentColor,
     changeTheme,
@@ -13,16 +14,20 @@
   let checked1 = false;
 </script>
 
-<div class="appearance">
+<div class="appearance" style="--accent-color: {$currentAccentColor}">
   <div class="section accent-color-section">
     <h1>Choose your accent color</h1>
-    <div class="accent-color">
+    <div class="accent-colors">
       {#each accentColorsConfig as color, index}
-        <span
-          style="background-color: {color}"
-          class="color"
-          on:click={() => changeAccentColor(index)}
-        />
+        <div class="accent-color">
+          <span class="ring" class:active={$currentAccentColor == color}>
+            <span
+              style="background-color: {color}"
+              class="color"
+              on:click={() => changeAccentColor(index)}
+            />
+          </span>
+        </div>
       {/each}
     </div>
   </div>
@@ -103,17 +108,39 @@
     }
 
     .accent-color-section {
-      .accent-color {
+      .accent-colors {
         display: flex;
         align-items: center;
+
+        .accent-color {
+          border-radius: 50%;
+          position: relative;
+          margin-right: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: nowrap;
+        }
+
+        .ring {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 50px;
+          height: 50px;
+          border: 3px solid transparent;
+          border-radius: 50%;
+          &.active {
+            border-color: var(--accent-color);
+          }
+        }
         .color {
-          width: 30px;
-          height: 30px;
+          width: 35px;
+          height: 35px;
           border-radius: 50%;
           display: flex;
           justify-content: center;
           align-items: center;
-          margin-right: 10px;
         }
       }
     }
