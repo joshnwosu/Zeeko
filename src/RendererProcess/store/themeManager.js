@@ -19,7 +19,7 @@ export function changeAccentColor(index) {
   currentAccentColor.set(accentColorsConfig[index]);
 }
 
-export function changeWindowStyle(payload) {
-  localStorage.setItem("windowStyle", JSON.stringify(payload));
-  currentWindowStyle.set(windowStyleConfig[payload]);
+export function changeWindowStyle(index) {
+  localStorage.setItem("windowStyle", JSON.stringify(index));
+  currentWindowStyle.set(windowStyleConfig[index]);
 }

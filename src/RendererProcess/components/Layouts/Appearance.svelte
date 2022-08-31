@@ -4,7 +4,11 @@
     themesConfig,
     windowStyleConfig,
   } from "../../config/appearance";
-  import { changeAccentColor, changeTheme } from "../../store/themeManager";
+  import {
+    changeAccentColor,
+    changeTheme,
+    changeWindowStyle,
+  } from "../../store/themeManager";
   import Switch from "../Addon/Switch.svelte";
   let checked1 = false;
 </script>
@@ -38,8 +42,11 @@
   <div class="section window-style-section">
     <h1>Choose window style</h1>
     <div class="flex window-style-wrapper">
-      {#each windowStyleConfig as style}
-        <div class="flex-item window-style">
+      {#each windowStyleConfig as style, index}
+        <div
+          class="flex-item window-style"
+          on:click={() => changeWindowStyle(index)}
+        >
           <div class="box" />
           <p>{style.name}</p>
         </div>

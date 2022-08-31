@@ -3,26 +3,31 @@
   import closeWindowIcon from "svelte-icons-pack/vsc/VscChromeClose";
   import maximizeWindowIcon from "svelte-icons-pack/vsc/VscChromeRestore";
   import minimizeWindowIcon from "svelte-icons-pack/vsc/VscChromeMinimize";
+  import { currentWindowStyle } from "../../store/theme";
+
+  $: console.log($currentWindowStyle);
 </script>
 
 <div class="action-wrapper">
-  <div class="window-action-button ios-style">
-    <span on:click={() => window?.api?.titlebar("closeWindow")} />
-    <span on:click={() => window?.api?.titlebar("minimize")} />
-    <span on:click={() => window?.api?.titlebar("maximize")} />
-  </div>
-
-  <div class="window-action-button windows-style">
-    <span on:click={() => window?.api?.titlebar("minimize")}>
-      <Icon src={minimizeWindowIcon} size={16} />
-    </span>
-    <span on:click={() => window?.api?.titlebar("maximize")}>
-      <Icon src={maximizeWindowIcon} size={16} />
-    </span>
-    <span class="close" on:click={() => window?.api?.titlebar("closeWindow")}>
-      <Icon src={closeWindowIcon} size={16} />
-    </span>
-  </div>
+  {#if $currentWindowStyle.name == "Windows"}
+    <div class="window-action-button windows-style">
+      <span on:click={() => window?.api?.titlebar("minimize")}>
+        <Icon src={minimizeWindowIcon} size={16} />
+      </span>
+      <span on:click={() => window?.api?.titlebar("maximize")}>
+        <Icon src={maximizeWindowIcon} size={16} />
+      </span>
+      <span class="close" on:click={() => window?.api?.titlebar("closeWindow")}>
+        <Icon src={closeWindowIcon} size={16} />
+      </span>
+    </div>
+  {:else if $currentWindowStyle.name == "MacOS"}
+    <div class="window-action-button ios-style">
+      <span on:click={() => window?.api?.titlebar("closeWindow")} />
+      <span on:click={() => window?.api?.titlebar("minimize")} />
+      <span on:click={() => window?.api?.titlebar("maximize")} />
+    </div>
+  {/if}
 </div>
 
 <style lang="scss">
@@ -38,7 +43,7 @@
   }
 
   .ios-style {
-    display: none;
+    /* display: none; */
     width: 80px;
     align-items: center;
     justify-content: space-between;

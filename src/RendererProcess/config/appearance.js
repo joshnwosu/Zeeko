@@ -31,15 +31,17 @@ export const themesConfig = [
   },
 ];
 
-export const windowStyleConfig = {
-  windows: {
+export const windowStyleConfig = [
+  {
+    name: "Windows",
     image: null,
   },
-  macOs: {
+  {
     name: "MacOS",
     image: null,
   },
-  "Linux (Ubuntu)": {
+  {
+    name: "Linux (Ubuntu)",
     image: null,
   },
-};
+];
