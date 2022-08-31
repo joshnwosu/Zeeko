@@ -1,5 +1,6 @@
 <script>
   import { getContext } from "svelte";
+  import { currentAccentColor } from "../../store/theme";
   import { TABS } from "./Tabs.svelte";
 
   const tab = {};
@@ -8,7 +9,11 @@
   registerTab(tab);
 </script>
 
-<button class:selected={$selectedTab === tab} on:click={() => selectTab(tab)}>
+<button
+  style="--accent-color: {$currentAccentColor}"
+  class:selected={$selectedTab === tab}
+  on:click={() => selectTab(tab)}
+>
   <slot />
 </button>
 
@@ -27,7 +32,7 @@
   }
 
   .selected {
-    border-bottom: 3px solid #65e14d;
+    border-bottom: 3px solid var(--accent-color);
     color: #ffffff;
   }
 </style>
