@@ -65,6 +65,7 @@
     position: sticky;
     top: 100px;
     background-color: #000000;
+    z-index: 2;
   }
 
   .tab-panel {

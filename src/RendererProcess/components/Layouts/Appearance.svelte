@@ -117,6 +117,7 @@
           justify-content: center;
           align-items: center;
           flex-wrap: nowrap;
+          z-index: 0;
         }
 
         .ring {
