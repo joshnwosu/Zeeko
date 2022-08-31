@@ -5,7 +5,7 @@
   import minimizeWindowIcon from "svelte-icons-pack/vsc/VscChromeMinimize";
   import { currentWindowStyle } from "../../store/theme";
 
-  $: console.log($currentWindowStyle);
+  // $: console.log($currentWindowStyle);
 </script>
 
 <div class="action-wrapper">
@@ -27,6 +27,12 @@
       <span on:click={() => window?.api?.titlebar("minimize")} />
       <span on:click={() => window?.api?.titlebar("maximize")} />
     </div>
+  {:else if $currentWindowStyle.name == "Linux (Ubuntu)"}
+    <div class="window-action-button linux-style">
+      <span on:click={() => window?.api?.titlebar("closeWindow")} />
+      <span on:click={() => window?.api?.titlebar("minimize")} />
+      <span on:click={() => window?.api?.titlebar("maximize")} />
+    </div>
   {/if}
 </div>
 
@@ -43,7 +49,6 @@
   }
 
   .ios-style {
-    /* display: none; */
     width: 80px;
     align-items: center;
     justify-content: space-between;
@@ -68,6 +73,25 @@
 
       &:nth-child(3) {
         background-color: #65e14d;
+      }
+    }
+  }
+
+  .linux-style {
+    width: 80px;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+    padding: 0 5px;
+    span {
+      background-color: brown;
+      display: block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      cursor: default;
+      &:hover {
+        opacity: 0.5;
       }
     }
   }
