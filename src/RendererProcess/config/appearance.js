@@ -14,19 +14,15 @@ export const accentColorsConfig = [
 
 export const themesConfig = [
   {
-    name: "nightfall",
+    name: "Dark",
     image: null,
   },
   {
-    name: "sunrise",
+    name: "Light",
     image: null,
   },
   {
-    name: "transparency",
-    image: null,
-  },
-  {
-    name: "amoled",
+    name: "Amoled",
     image: null,
   },
 ];

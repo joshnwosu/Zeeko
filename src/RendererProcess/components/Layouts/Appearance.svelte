@@ -12,6 +12,7 @@
   } from "../../store/themeManager";
   import Switch from "../Addon/Switch.svelte";
   let checked1 = false;
+  let isTransparent = false;
 </script>
 
 <div class="appearance" style="--accent-color: {$currentAccentColor}">
@@ -63,6 +64,17 @@
         toggle={(e) => (checked1 = e.target.checked)}
       />
       <span class="label">{checked1 ? "On" : "Off"}</span>
+    </div>
+  </div>
+
+  <div class="section system-section">
+    <p>Transparency</p>
+    <div class="system-wrapper">
+      <Switch
+        checked={isTransparent}
+        toggle={(e) => (isTransparent = e.target.checked)}
+      />
+      <span class="label">{isTransparent ? "On" : "Off"}</span>
     </div>
   </div>
 </div>
