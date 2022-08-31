@@ -56,8 +56,8 @@
     padding: 0 5px;
     span {
       display: block;
-      width: 15px;
-      height: 15px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       cursor: default;
       &:hover {
