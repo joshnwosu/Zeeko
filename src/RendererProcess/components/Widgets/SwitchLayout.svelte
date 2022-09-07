@@ -23,7 +23,6 @@
     align-items: center;
     justify-content: space-between;
     padding: 15px 20px;
-    border-top: 1px solid #222222;
 
     .system-description {
       font-size: 12px;

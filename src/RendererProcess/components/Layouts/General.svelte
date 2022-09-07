@@ -1,7 +1,11 @@
 <script>
   import isElectron from "../../../../isElectron";
+  import { handleToggleEqualizer } from "../../store/statusManager";
 
   import Switch from "../Addon/Switch.svelte";
+  import SeperatorLayout from "../Widgets/SeperatorLayout.svelte";
+  import StyleLayout from "../Widgets/StyleLayout.svelte";
+  import SwitchLayout from "../Widgets/SwitchLayout.svelte";
   let checked1 = false;
   let checked2 = false;
 
@@ -28,45 +32,44 @@
     <p on:click={pickFolder}>Choose where we look for music</p>
   </div>
 
+  <div class="music-select">
+    <h1>Equalizer</h1>
+    <p on:click={handleToggleEqualizer}>Open equalizer</p>
+  </div>
+
   <!-- <h2>First panel</h2>
   <p>{checked1} {checked2}</p>
   <Switch checked={checked1} toggle={(e) => (checked1 = e.target.checked)} />
   <Switch checked={checked2} toggle={(e) => (checked2 = e.target.checked)} /> -->
 
-  <div class="style">
-    <div class="style-title">Style</div>
-    <div class="style-content">
-      <div class="system-wrapper">
-        <div>
-          <div class="system-label">Transparency</div>
-          <p class="system-description">
-            When transparency is turned off, background album art will be
-            invisible.
-          </p>
-        </div>
-        <div class="system-switch">
+  <StyleLayout>
+    <div slot="style-title">Display artist art</div>
+    <div slot="style-content">
+      <SwitchLayout value={checked1}>
+        <div slot="title">Background art</div>
+        <div slot="description">Set now playing artist art as background.</div>
+        <div slot="switch">
           <Switch
             checked={checked1}
             toggle={(e) => (checked1 = e.target.checked)}
           />
-          <span class="system-toggle-label">{checked1 ? "On" : "Off"}</span>
         </div>
-      </div>
-      <div class="system-wrapper">
-        <div>
-          <div class="system-label">Animation</div>
-          <p class="system-description">Set transition for cool effect.</p>
+      </SwitchLayout>
+      <SeperatorLayout />
+      <SwitchLayout value={checked2}>
+        <div slot="title">Transparency</div>
+        <div slot="description">
+          When transparency is turned off, background art will be invisible.
         </div>
-        <div class="system-switch">
+        <div slot="switch">
           <Switch
             checked={checked2}
             toggle={(e) => (checked2 = e.target.checked)}
           />
-          <span class="system-toggle-label">{checked2 ? "On" : "Off"}</span>
         </div>
-      </div>
+      </SwitchLayout>
     </div>
-  </div>
+  </StyleLayout>
 </div>
 
 <style lang="scss">

@@ -12,11 +12,13 @@
   } from "../../store/themeManager";
   import Switch from "../Addon/Switch.svelte";
   import AccentColorLayout from "../Widgets/AccentColorLayout.svelte";
+  import SeperatorLayout from "../Widgets/SeperatorLayout.svelte";
   import StyleLayout from "../Widgets/StyleLayout.svelte";
   import SwitchLayout from "../Widgets/SwitchLayout.svelte";
   import ThemeLayout from "../Widgets/ThemeLayout.svelte";
   let isAnimate = false;
   let isTransparent = false;
+  let systemStyle = false;
 </script>
 
 <div class="appearance" style="--accent-color: {$currentAccentColor}">
@@ -25,7 +27,11 @@
     <div slot="style-content">
       <ThemeLayout data={themesConfig} changeValue={changeTheme} />
 
+      <SeperatorLayout />
+
       <AccentColorLayout {changeAccentColor} {accentColorsConfig} />
+
+      <SeperatorLayout />
 
       <SwitchLayout value={isTransparent}>
         <div slot="title">Transparency</div>
@@ -40,6 +46,8 @@
           />
         </div>
       </SwitchLayout>
+
+      <SeperatorLayout />
 
       <SwitchLayout value={isAnimate}>
         <div slot="title">Animation</div>
@@ -58,6 +66,17 @@
     <div slot="style-title">Window style</div>
     <div slot="style-content">
       <ThemeLayout data={windowStyleConfig} changeValue={changeWindowStyle} />
+      <SeperatorLayout />
+      <SwitchLayout value={systemStyle}>
+        <div slot="title">Default style</div>
+        <div slot="description">Use default system style.</div>
+        <div slot="switch">
+          <Switch
+            checked={systemStyle}
+            toggle={(e) => (systemStyle = e.target.checked)}
+          />
+        </div>
+      </SwitchLayout>
     </div>
   </StyleLayout>
 </div>
