@@ -11,25 +11,21 @@
     changeWindowStyle,
   } from "../../store/themeManager";
   import Switch from "../Addon/Switch.svelte";
-  import AccentColor from "../Widgets/AccentColor.svelte";
+  import AccentColorLayout from "../Widgets/AccentColorLayout.svelte";
+  import StyleLayout from "../Widgets/StyleLayout.svelte";
   import SwitchLayout from "../Widgets/SwitchLayout.svelte";
+  import ThemeLayout from "../Widgets/ThemeLayout.svelte";
   let isAnimate = false;
   let isTransparent = false;
 </script>
 
 <div class="appearance" style="--accent-color: {$currentAccentColor}">
-  <div class="style">
-    <div class="style-title">Style</div>
-    <div class="style-content">
-      <div class="theme">
-        {#each themesConfig as theme}
-          <div class="theme-color" on:click={() => changeTheme(theme.name)}>
-            <div class="theme-img theme-{theme.name}" />
-            <p>{theme.name}</p>
-          </div>
-        {/each}
-      </div>
-      <AccentColor {changeAccentColor} {accentColorsConfig} />
+  <StyleLayout>
+    <div slot="style-title">Style</div>
+    <div slot="style-content">
+      <ThemeLayout data={themesConfig} changeValue={changeTheme} />
+
+      <AccentColorLayout {changeAccentColor} {accentColorsConfig} />
 
       <SwitchLayout value={isTransparent}>
         <div slot="title">Transparency</div>
@@ -56,72 +52,12 @@
         </div>
       </SwitchLayout>
     </div>
-  </div>
+  </StyleLayout>
 
-  <div class="style">
-    <div class="style-title">Window style</div>
-    <div class="style-content">
-      <div class="theme">
-        {#each windowStyleConfig as style, index}
-          <div class="theme-color" on:click={() => changeWindowStyle(index)}>
-            <div class="theme-img theme-dark" />
-            <p>{style.name}</p>
-          </div>
-        {/each}
-      </div>
+  <StyleLayout>
+    <div slot="style-title">Window style</div>
+    <div slot="style-content">
+      <ThemeLayout data={windowStyleConfig} changeValue={changeWindowStyle} />
     </div>
-  </div>
+  </StyleLayout>
 </div>
-
-<style lang="scss">
-  .style {
-    margin-bottom: 20px;
-    .style-title {
-      font-size: 16px;
-      font-weight: 400;
-      padding: 10px;
-    }
-    .style-content {
-      border: 1px solid #222222;
-      background-color: #121212;
-      border-radius: 10px;
-    }
-  }
-
-  .theme {
-    display: flex;
-    /* border: 1px solid red; */
-    gap: 20px;
-    justify-content: space-between;
-    padding: 20px;
-    .theme-color {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      .theme-img {
-        width: 100%;
-        height: 130px;
-        background-color: #33333350;
-        border-radius: 10px;
-        border-top: 1px solid #222222;
-        &.theme-Dark {
-          background-color: #222222;
-        }
-        &.theme-Light {
-          background-color: #eeeeee;
-        }
-        &.theme-Amoled {
-          background-color: #000000;
-        }
-      }
-
-      p {
-        font-size: 14px;
-        font-weight: 400;
-        margin-top: 10px;
-      }
-    }
-  }
-</style>
