@@ -11,7 +11,9 @@
     changeWindowStyle,
   } from "../../store/themeManager";
   import Switch from "../Addon/Switch.svelte";
-  let checked1 = false;
+  import AccentColor from "../Widgets/AccentColor.svelte";
+  import SwitchLayout from "../Widgets/SwitchLayout.svelte";
+  let isAnimate = false;
   let isTransparent = false;
 </script>
 
@@ -27,28 +29,32 @@
           </div>
         {/each}
       </div>
-      <div class="color">
-        <div class="color-label">Accents</div>
-        <div class="accent-colors">
-          {#each accentColorsConfig as color, index}
-            <div class="accent-color" on:click={() => changeAccentColor(index)}>
-              <span class="ring" class:active={$currentAccentColor == color} />
-              <span style="background-color: {color}" class="shade" />
-            </div>
-          {/each}
+      <AccentColor {changeAccentColor} {accentColorsConfig} />
+
+      <SwitchLayout value={isTransparent}>
+        <div slot="title">Transparency</div>
+        <div slot="description">
+          When transparency is turned off, background album art will be
+          invisible.
         </div>
-      </div>
-      <div class="system-wrapper">
-        <div class="system-label">Transparency</div>
-        <div class="system-switch">
+        <div slot="switch">
           <Switch
             checked={isTransparent}
             toggle={(e) => (isTransparent = e.target.checked)}
           />
-          <span class="system-toggle-label">{isTransparent ? "On" : "Off"}</span
-          >
         </div>
-      </div>
+      </SwitchLayout>
+
+      <SwitchLayout value={isAnimate}>
+        <div slot="title">Animation</div>
+        <div slot="description">Set transition for cool effect.</div>
+        <div slot="switch">
+          <Switch
+            checked={isAnimate}
+            toggle={(e) => (isAnimate = e.target.checked)}
+          />
+        </div>
+      </SwitchLayout>
     </div>
   </div>
 
@@ -68,9 +74,6 @@
 </div>
 
 <style lang="scss">
-  .appearance {
-    width: 700px;
-  }
   .style {
     margin-bottom: 20px;
     .style-title {
@@ -118,79 +121,6 @@
         font-size: 14px;
         font-weight: 400;
         margin-top: 10px;
-      }
-    }
-  }
-
-  .color {
-    border: 1px solid #12121250;
-    padding: 20px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    .color-label {
-      font-size: 16px;
-      font-weight: 400;
-    }
-    .accent-colors {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      .accent-color {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        position: relative;
-        /* margin-right: 10px; */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: nowrap;
-        z-index: 0;
-      }
-
-      .ring {
-        width: 50px;
-        height: 50px;
-        border: 3px solid transparent;
-        border-radius: 50%;
-        transition: all 200ms linear;
-        position: absolute;
-        transform: scale(0);
-        &.active {
-          border-color: var(--accent-color);
-          transform: scale(1);
-        }
-      }
-      .shade {
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-  }
-
-  .system-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 20px;
-    border-top: 1px solid #222222;
-    .system-switch {
-      display: flex;
-      align-items: center;
-      .system-toggle-label {
-        display: block;
-        width: 30px;
-        font-size: 12px;
-        font-weight: 400;
-        text-transform: uppercase;
-        text-align: right;
       }
     }
   }

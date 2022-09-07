@@ -121,22 +121,6 @@
     };
   }
 
-  const pickFolder = () => {
-    if (isElectron()) {
-      window?.api?.media("addScanFolder");
-    } else {
-      console.log("Opening Browser Dialog...");
-      // browserFile.click();
-      getDir();
-    }
-  };
-
-  async function getDir() {
-    const dirHandle = await window?.showDirectoryPicker();
-    // run code for dirHandle
-    console.log("Browser Dir HERE: ", dirHandle);
-  }
-
   function toggleFavorite() {
     if (!audio.src) return;
     if (
@@ -341,7 +325,7 @@
       <svelte:component this={CandleBoldIcon} />
     </span>
     <div class="volume-bar">
-      <span class="icon volum-icon left-flare" on:click={pickFolder}>
+      <span class="icon volum-icon left-flare">
         <svelte:component this={VolumeHighBoldIcon} />
       </span>
       <div class="seek-bar-wrap">
