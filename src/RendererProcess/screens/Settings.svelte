@@ -12,8 +12,8 @@
     <Tabs>
       <TabList>
         <div class="tab-list">
-          <Tab>General</Tab>
           <Tab>Appearance</Tab>
+          <Tab>General</Tab>
           <Tab>Shortcuts</Tab>
           <Tab>Notifications</Tab>
           <Tab>Updates</Tab>
@@ -23,13 +23,13 @@
 
       <TabPanel>
         <div class="tab-panel">
-          <General />
+          <Appearance />
         </div>
       </TabPanel>
 
       <TabPanel>
         <div class="tab-panel">
-          <Appearance />
+          <General />
         </div>
       </TabPanel>
 

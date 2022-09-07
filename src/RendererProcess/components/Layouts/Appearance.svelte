@@ -16,159 +16,181 @@
 </script>
 
 <div class="appearance" style="--accent-color: {$currentAccentColor}">
-  <div class="section accent-color-section">
-    <h1>Choose your accent color</h1>
-    <div class="accent-colors">
-      {#each accentColorsConfig as color, index}
-        <div class="accent-color" on:click={() => changeAccentColor(index)}>
-          <span class="ring" class:active={$currentAccentColor == color} />
-          <span style="background-color: {color}" class="color" />
+  <div class="style">
+    <div class="style-title">Style</div>
+    <div class="style-content">
+      <div class="theme">
+        {#each themesConfig as theme}
+          <div class="theme-color" on:click={() => changeTheme(theme.name)}>
+            <div class="theme-img theme-{theme.name}" />
+            <p>{theme.name}</p>
+          </div>
+        {/each}
+      </div>
+      <div class="color">
+        <div class="color-label">Accents</div>
+        <div class="accent-colors">
+          {#each accentColorsConfig as color, index}
+            <div class="accent-color" on:click={() => changeAccentColor(index)}>
+              <span class="ring" class:active={$currentAccentColor == color} />
+              <span style="background-color: {color}" class="shade" />
+            </div>
+          {/each}
         </div>
-      {/each}
-    </div>
-  </div>
-
-  <div class="section theme-section">
-    <h1>Choose your theme</h1>
-    <div class="flex theme-wrapper">
-      {#each themesConfig as theme}
-        <div class="flex-item theme" on:click={() => changeTheme(theme.name)}>
-          <div class="box" />
-          <p>{theme.name}</p>
+      </div>
+      <div class="system-wrapper">
+        <div class="system-label">Transparency</div>
+        <div class="system-switch">
+          <Switch
+            checked={isTransparent}
+            toggle={(e) => (isTransparent = e.target.checked)}
+          />
+          <span class="system-toggle-label">{isTransparent ? "On" : "Off"}</span
+          >
         </div>
-      {/each}
+      </div>
     </div>
   </div>
 
-  <div class="section window-style-section">
-    <h1>Choose window style</h1>
-    <div class="flex window-style-wrapper">
-      {#each windowStyleConfig as style, index}
-        <div
-          class="flex-item window-style"
-          on:click={() => changeWindowStyle(index)}
-        >
-          <div class="box" />
-          <p>{style.name}</p>
-        </div>
-      {/each}
-    </div>
-  </div>
-
-  <div class="section system-section">
-    <p>Use system preference</p>
-    <!-- <h1>Use system preference</h1> -->
-    <div class="system-wrapper">
-      <Switch
-        checked={checked1}
-        toggle={(e) => (checked1 = e.target.checked)}
-      />
-      <span class="label">{checked1 ? "On" : "Off"}</span>
-    </div>
-  </div>
-
-  <div class="section system-section">
-    <p>Transparency</p>
-    <div class="system-wrapper">
-      <Switch
-        checked={isTransparent}
-        toggle={(e) => (isTransparent = e.target.checked)}
-      />
-      <span class="label">{isTransparent ? "On" : "Off"}</span>
+  <div class="style">
+    <div class="style-title">Window style</div>
+    <div class="style-content">
+      <div class="theme">
+        {#each windowStyleConfig as style, index}
+          <div class="theme-color" on:click={() => changeWindowStyle(index)}>
+            <div class="theme-img theme-dark" />
+            <p>{style.name}</p>
+          </div>
+        {/each}
+      </div>
     </div>
   </div>
 </div>
 
 <style lang="scss">
   .appearance {
-    width: 900px;
-    .section {
-      padding: 10px 0;
-      margin-bottom: 10px;
-      h1 {
-        font-weight: 400;
-        font-size: 18px;
-        margin-bottom: 10px;
-      }
-
-      .flex {
-        display: flex;
-        .flex-item {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          margin-right: 10px;
-          .box {
-            width: 180px;
-            height: 120px;
-            background-color: #121212;
-            border-radius: 10px;
-            box-shadow: 0px 2px 2px 0 rgba(0, 0, 0, 0.1);
-          }
-
-          p {
-            margin-top: 10px;
-            font-size: 14px;
-          }
-        }
-      }
+    width: 700px;
+  }
+  .style {
+    margin-bottom: 20px;
+    .style-title {
+      font-size: 16px;
+      font-weight: 400;
+      padding: 10px;
     }
+    .style-content {
+      border: 1px solid #222222;
+      background-color: #121212;
+      border-radius: 10px;
+    }
+  }
 
-    .accent-color-section {
-      .accent-colors {
-        display: flex;
-        align-items: center;
+  .theme {
+    display: flex;
+    /* border: 1px solid red; */
+    gap: 20px;
+    justify-content: space-between;
+    padding: 20px;
+    .theme-color {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
-        .accent-color {
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          position: relative;
-          margin-right: 10px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-wrap: nowrap;
-          z-index: 0;
+      .theme-img {
+        width: 100%;
+        height: 130px;
+        background-color: #33333350;
+        border-radius: 10px;
+        border-top: 1px solid #222222;
+        &.theme-Dark {
+          background-color: #222222;
         }
-
-        .ring {
-          width: 50px;
-          height: 50px;
-          border: 3px solid transparent;
-          border-radius: 50%;
-          transition: all 200ms linear;
-          position: absolute;
-          transform: scale(0);
-          &.active {
-            border-color: var(--accent-color);
-            transform: scale(1);
-          }
+        &.theme-Light {
+          background-color: #eeeeee;
         }
-        .color {
-          width: 35px;
-          height: 35px;
-          border-radius: 50%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+        &.theme-Amoled {
+          background-color: #000000;
         }
       }
-    }
 
-    .system-section {
       p {
-        font-size: 16px;
-        font-weight: 300;
-      }
-      .system-wrapper {
-        display: flex;
-        align-items: center;
+        font-size: 14px;
+        font-weight: 400;
         margin-top: 10px;
-        .label {
-          font-size: 12px;
-          margin-left: 10px;
+      }
+    }
+  }
+
+  .color {
+    border: 1px solid #12121250;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .color-label {
+      font-size: 16px;
+      font-weight: 400;
+    }
+    .accent-colors {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .accent-color {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        position: relative;
+        /* margin-right: 10px; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        z-index: 0;
+      }
+
+      .ring {
+        width: 50px;
+        height: 50px;
+        border: 3px solid transparent;
+        border-radius: 50%;
+        transition: all 200ms linear;
+        position: absolute;
+        transform: scale(0);
+        &.active {
+          border-color: var(--accent-color);
+          transform: scale(1);
         }
+      }
+      .shade {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  .system-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    border-top: 1px solid #222222;
+    .system-switch {
+      display: flex;
+      align-items: center;
+      .system-toggle-label {
+        display: block;
+        width: 30px;
+        font-size: 12px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: right;
       }
     }
   }
