@@ -15,7 +15,7 @@
     .style-title {
       font-size: 16px;
       font-weight: 400;
-      padding: 10px;
+      padding: 10px 0;
     }
     .style-wrapper {
       background-color: #222222;
