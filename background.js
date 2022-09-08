@@ -26,6 +26,8 @@ process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
 
 let watcher = null;
 let window = null;
+let isPlaying = true;
+let checkPlayStatus;
 
 if (isDev) {
   require("electron-reload")(__dirname, {
@@ -73,29 +75,56 @@ const createWindow = () => {
 
   console.log("dir", __dirname);
 
+  function sendMediaControl(arg) {
+    window.webContents.send("mediaControl", arg);
+  }
+
+  checkPlayStatus = () => {
+    window.setThumbarButtons([
+      {
+        tooltip: "Previous",
+        icon: "./previous.png",
+        click() {
+          sendMediaControl("prev");
+        },
+      },
+      {
+        tooltip: !isPlaying ? "Play" : "Pause",
+        icon: !isPlaying ? "./play.png" : "./pause.png",
+        click() {
+          sendMediaControl("play" || "pause");
+        },
+      },
+      {
+        tooltip: "Next",
+        icon: "./next.png",
+        click() {
+          sendMediaControl("next");
+        },
+      },
+    ]);
+  };
+
   window.setThumbarButtons([
     {
       tooltip: "Previous",
-      icon: "./button1.png",
+      icon: "./previous.png",
       click() {
-        console.log(true);
-        // win.webContents.send("mediaprevtrack");
+        sendMediaControl("prev");
       },
     },
     {
-      tooltip: "Play / Pause",
-      icon: "./button1.png",
+      tooltip: !isPlaying ? "Play" : "Pause",
+      icon: !isPlaying ? "./play.png" : "./pause.png",
       click() {
-        console.log(true);
-        // win.webContents.send("mediaplaypause");
+        sendMediaControl("play" || "pause");
       },
     },
     {
       tooltip: "Next",
       icon: "./next.png",
       click() {
-        console.log(true);
-        // win.webContents.send("medianexttrack");
+        sendMediaControl("next");
       },
     },
   ]);
@@ -142,6 +171,14 @@ watcher = chokidar
 
 app.on("ready", () => {
   createWindow();
+});
+
+ipcMain.on("isPlaying", (event, arg) => {
+  // console.log("Arg: ", isPlaying);
+  if (arg) isPlaying = true;
+  else isPlaying = false;
+
+  checkPlayStatus();
 });
 
 ipcMain.on("titlebar", (event, arg) => {

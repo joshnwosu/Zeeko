@@ -186,6 +186,8 @@ export function playTrack(index) {
     selectedSong.set(
       queuelist[index >= queuelist.length ? 0 : index].fileLocation
     );
+
+    window?.api?.isPlaying(true);
   }
 }
 
@@ -194,8 +196,10 @@ export function togglePlaying() {
 
   if (audio.paused) {
     audio.play();
+    window?.api?.isPlaying(true);
   } else {
     audio.pause();
+    window?.api?.isPlaying(false);
   }
 }
 

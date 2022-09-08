@@ -7,10 +7,13 @@
     generateArtistsData,
     generateFoldersData,
     generateGenreData,
+    nextSong,
+    prevSong,
     restorePlaylists,
     restoreRecentlyPlayed,
     restoreTracks,
     setPlayStats,
+    togglePlaying,
     updateTrack,
   } from "../../store/playerManager";
 
@@ -47,6 +50,17 @@
       generateArtistsData();
       generateAlbumsData();
       generateFoldersData();
+    });
+    window?.api?.["mediaControl"]((e, action) => {
+      if (action == "play" || action == "pause") {
+        togglePlaying();
+      }
+      if (action == "next") {
+        nextSong();
+      }
+      if (action == "prev") {
+        prevSong();
+      }
     });
 
     // window?.api?.init?.newTrack();

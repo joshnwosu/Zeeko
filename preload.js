@@ -19,6 +19,10 @@ contextBridge.exposeInMainWorld("api", {
   playingTrack: (action) => {
     ipcRenderer.send("playingTrack", action);
   },
+  isPlaying: (action) => {
+    ipcRenderer.send("isPlaying", action);
+    // console.log("Hello: ", action);
+  },
 
   // Bridge from main to renderer
   processedFiles: (action) => {
@@ -45,5 +49,8 @@ contextBridge.exposeInMainWorld("api", {
   parsingDone: (action) => {
     ipcRenderer.on("parsingDone", action);
     // console.log("Parsing done: ", action);
+  },
+  mediaControl: (action) => {
+    ipcRenderer.on("mediaControl", action);
   },
 });

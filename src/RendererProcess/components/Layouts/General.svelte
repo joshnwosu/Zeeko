@@ -3,7 +3,6 @@
   import { handleToggleEqualizer } from "../../store/statusManager";
 
   import Switch from "../Addon/Switch.svelte";
-  import SeperatorLayout from "../Widgets/SeperatorLayout.svelte";
   import StyleLayout from "../Widgets/StyleLayout.svelte";
   import SwitchLayout from "../Widgets/SwitchLayout.svelte";
   let checked1 = false;
@@ -55,7 +54,6 @@
           />
         </div>
       </SwitchLayout>
-      <SeperatorLayout />
       <SwitchLayout value={checked2}>
         <div slot="title">Transparency</div>
         <div slot="description">
