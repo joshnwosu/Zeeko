@@ -48,7 +48,7 @@
     queuelistStore,
     playlistStore,
   } from "../../store/player";
-  import { toggleNowPlaying } from "../../store/status";
+  import { toggleEqualizer, toggleNowPlaying } from "../../store/status";
   import {
     formatDuration,
     getSong,
@@ -71,6 +71,7 @@
   import { handleToggleEqualizer } from "../../store/statusManager";
   import { gainNode, setupEqualizer } from "./Equalizer/Equalizer";
   import { currentAccentColor } from "../../store/theme";
+  import { clickOutside } from "../../utilities";
 
   onMount(() => {
     setupEqualizer();
@@ -320,7 +321,9 @@
   <div class="wrapper right">
     <span
       class="icon equalizer-icon left-flare"
+      use:clickOutside
       on:click={handleToggleEqualizer}
+      on:click_outside={() => toggleEqualizer.set(false)}
     >
       <svelte:component this={CandleBoldIcon} />
     </span>
