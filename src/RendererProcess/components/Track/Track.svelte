@@ -5,8 +5,13 @@
   import TrackListTag from "./TrackListTag.svelte";
 
   $: spliced = $playerStore.slice(0, 50);
+  const tag = true;
 </script>
 
-<!-- <TrackListsNew tracks={$playerStore} /> -->
-<TrackListTag tracks={$playerStore} />
-<!-- <TrackLists tracks={spliced} /> -->
+{#if tag}
+  <TrackListTag tracks={$playerStore} />
+{:else}
+  <TrackListsNew tracks={$playerStore} />
+{/if}
+
+<!-- <TrackLists tracks={$playerStore} /> -->

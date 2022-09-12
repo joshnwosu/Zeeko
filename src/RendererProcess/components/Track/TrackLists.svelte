@@ -63,7 +63,7 @@
           </td>
           <td class="index">
             {#if $selectedSong == track.fileLocation}
-              <PlayAnimation />
+              <!-- <PlayAnimation /> -->
             {:else}
               <p>{formatIndex(index)}</p>
             {/if}
