@@ -53,7 +53,7 @@
       }}
       on:contextmenu={displayContextMenu}
     >
-      <div class:track-playing={$selectedSong == track.fileLocation} />
+      <div class="track-bg" />
       <div class="track-tag-wrapper">
         <span class="track-title">
           <p>{track.title}</p>
@@ -113,7 +113,16 @@
     border-radius: 20px;
     overflow: hidden;
 
+    &:hover {
+      .track-bg {
+        opacity: 0.2;
+      }
+    }
+
     &.playing-track {
+      .track-bg {
+        opacity: 0.5;
+      }
       .track-tag-wrapper {
         .track-icon {
           &.track-heart-icon,
@@ -124,9 +133,9 @@
       }
     }
 
-    .track-playing {
+    .track-bg {
       background-color: var(--accent-color);
-      opacity: 0.5;
+      opacity: 0;
       position: absolute;
       width: 100%;
       height: 100%;
