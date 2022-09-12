@@ -13,6 +13,8 @@
     restoreRecentlyPlayed,
     restoreTracks,
     setPlayStats,
+    stepBackward,
+    stepForward,
     togglePlaying,
     updateTrack,
   } from "../../store/playerManager";
@@ -60,6 +62,12 @@
       }
       if (action == "prev") {
         prevSong();
+      }
+      if (action == "backward") {
+        stepBackward();
+      }
+      if (action == "forward") {
+        stepForward();
       }
     });
 

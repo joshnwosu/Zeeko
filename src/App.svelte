@@ -1,6 +1,6 @@
 <script>
   import "./RendererProcess/assets/css/global.css";
-  import Router, { location } from "svelte-spa-router";
+  import Router, { location, push } from "svelte-spa-router";
   import { routes } from "./RendererProcess/router";
   import {
     toggleContextMenu,
@@ -25,6 +25,8 @@
     // console.log("Eevnt: ", event);
     // document.querySelectorAll(".page").forEach((el) => (el.scrollTop = 0));
   };
+
+  push("/my-music/");
 </script>
 
 <ThemeProvider theme={$currentTheme}>

@@ -89,10 +89,24 @@ const createWindow = () => {
         },
       },
       {
+        tooltip: "Backward",
+        icon: "./stepbackward.png",
+        click() {
+          sendMediaControl("backward");
+        },
+      },
+      {
         tooltip: !isPlaying ? "Play" : "Pause",
         icon: !isPlaying ? "./play.png" : "./pause.png",
         click() {
           sendMediaControl("play" || "pause");
+        },
+      },
+      {
+        tooltip: "Forward",
+        icon: "./stepforward.png",
+        click() {
+          sendMediaControl("forward");
         },
       },
       {
@@ -114,10 +128,24 @@ const createWindow = () => {
       },
     },
     {
+      tooltip: "Backward",
+      icon: "./stepbackward.png",
+      click() {
+        sendMediaControl("backward");
+      },
+    },
+    {
       tooltip: !isPlaying ? "Play" : "Pause",
       icon: !isPlaying ? "./play.png" : "./pause.png",
       click() {
         sendMediaControl("play" || "pause");
+      },
+    },
+    {
+      tooltip: "Forward",
+      icon: "./stepforward.png",
+      click() {
+        sendMediaControl("forward");
       },
     },
     {
