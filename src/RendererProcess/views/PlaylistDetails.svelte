@@ -4,6 +4,7 @@
   import PlaylistView from "../components/Playlist/PlaylistView.svelte";
   import TrackLists from "../components/Track/TrackLists.svelte";
   import TrackListsNew from "../components/Track/TrackListsNew.svelte";
+  import TrackListTag from "../components/Track/TrackListTag.svelte";
   import { playlistStore } from "../store/player";
   $: playlist =
     $playlistStore.filter((playlist) => playlist.name == params?.name)[0] || [];
@@ -13,8 +14,9 @@
   {#if playlist?.name}
     <PlaylistHeader name={params.name} {playlist} />
     <PlaylistView>
-      <TrackLists tracks={playlist?.tracks} />
+      <!-- <TrackLists tracks={playlist?.tracks} /> -->
       <!-- <TrackListsNew tracks={playlist?.tracks} /> -->
+      <TrackListTag tracks={playlist?.tracks} />
     </PlaylistView>
   {/if}
 </main>

@@ -27,7 +27,6 @@
     PauseIcon,
     PlayIcon,
   } from "../Icons";
-  import PlayAnimation from "../Widgets/PlayAnimation.svelte";
 
   function toggleFavorite(track) {
     if (getSong($playlistStore[0].tracks, track.fileLocation)) {
@@ -55,33 +54,48 @@
       on:contextmenu={displayContextMenu}
     >
       <div class:track-playing={$selectedSong == track.fileLocation} />
-      {#if $selectedSong == track.fileLocation}
-        <span class="track-animation">
-          <PlayAnimation />
+      <div class="track-tag-wrapper">
+        <span class="track-title">
+          <p>{track.title}</p>
+          <span>&#x2022;</span>
+          <p>{track.artist}</p>
         </span>
-      {/if}
-
-      <span class="track-title"> <p>{track.title}</p></span>
-
-      <span class="track-play-pause-icon">
-        {#if $selectedSong == track.fileLocation}
-          {#if $playbackManager.playing}
-            <button class="icon" on:click={pauseSong}
-              ><svelte:component this={PauseIcon} /></button
-            >
+        <span class="track-play-pause-icon track-icon">
+          {#if $selectedSong == track.fileLocation}
+            {#if $playbackManager.playing}
+              <button class="icon" on:click={pauseSong}
+                ><svelte:component this={PauseIcon} /></button
+              >
+            {:else}
+              <button class="icon" on:click={playSong}
+                ><svelte:component this={PlayIcon} /></button
+              >
+            {/if}
           {:else}
-            <button class="icon" on:click={playSong}
+            <button
+              class="icon"
+              on:click={() => selectedTrack(track.fileLocation, tracks)}
               ><svelte:component this={PlayIcon} /></button
             >
           {/if}
-        {:else}
-          <button
-            class="icon"
-            on:click={() => selectedTrack(track.fileLocation, tracks)}
-            ><svelte:component this={PlayIcon} /></button
-          >
-        {/if}
-      </span>
+        </span>
+
+        <span
+          class="track-heart-icon track-icon"
+          class:in-favorite={getSong(
+            $playlistStore[0].tracks,
+            track.fileLocation
+          )}
+        >
+          <button class="icon" on:click={() => toggleFavorite(track)}>
+            {#if getSong($playlistStore[0].tracks, track.fileLocation)}
+              <svelte:component this={HeartBoldIcon} />
+            {:else}
+              <svelte:component this={HeartIcon} />
+            {/if}
+          </button>
+        </span>
+      </div>
     </div>
   {/each}
 </div>
@@ -95,14 +109,19 @@
   }
   .track-tag {
     position: relative;
-    display: inline-flex;
     background-color: #121212;
-    padding: 5px 10px 5px 20px;
     border-radius: 20px;
     overflow: hidden;
-    max-width: 200px;
-    &:hover:not(.playing-track) {
-      background-color: var(--accent-color);
+
+    &.playing-track {
+      .track-tag-wrapper {
+        .track-icon {
+          &.track-heart-icon,
+          &.track-play-pause-icon {
+            display: flex !important;
+          }
+        }
+      }
     }
 
     .track-playing {
@@ -118,15 +137,20 @@
       pointer-events: none;
       display: flex;
       align-items: center;
+      z-index: 1;
+    }
+
+    .track-tag-wrapper {
+      display: flex;
+      position: relative;
+      padding: 0px 20px;
+      height: 40px;
+      align-items: center;
+      z-index: 2;
     }
 
     span {
       display: flex;
-    }
-
-    .track-animation {
-      margin-right: 20px;
-      align-items: center;
     }
 
     .track-title {
@@ -135,6 +159,7 @@
       overflow: hidden;
       align-items: center;
       p {
+        max-width: 200px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -142,22 +167,39 @@
         font-weight: 400;
         color: #e9e9e9;
       }
+      span {
+        display: block;
+        font-size: 30px;
+        margin: 0 10px;
+        opacity: 0.5;
+      }
     }
 
-    .track-play-pause-icon {
-      margin-left: 20px;
+    .track-icon {
+      margin-left: 10px;
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      background-color: #33333350;
+      background-color: #12121220;
       display: flex;
       justify-content: center;
       align-items: center;
+      &:hover {
+        background-color: #12121250;
+      }
       .icon {
         width: 25px;
         height: 25px;
-        /* border: 1px solid red; */
         margin-top: 5px;
+      }
+
+      &.track-play-pause-icon {
+        margin-left: 30px;
+      }
+
+      &.track-heart-icon,
+      &.track-play-pause-icon {
+        display: none;
       }
     }
   }
