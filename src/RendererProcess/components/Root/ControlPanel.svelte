@@ -321,9 +321,7 @@
   <div class="wrapper right">
     <span
       class="icon equalizer-icon left-flare"
-      use:clickOutside
       on:click={handleToggleEqualizer}
-      on:click_outside={() => toggleEqualizer.set(false)}
     >
       <svelte:component this={CandleBoldIcon} />
     </span>

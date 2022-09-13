@@ -7,18 +7,27 @@
     loadPreset,
     changeBandGains,
   } from "../../../store/playerManager";
-  import { onMount } from "svelte";
   import TriangleSlider from "./TriangleSlider.svelte";
   import { currentAccentColor } from "../../../store/theme";
+  import { clickOutside } from "../../../utilities";
 
   function updateSlider(event) {
     updateBandFilter(event.detail);
-    // renderSliderGraph();
   }
 </script>
 
-<div class="equalizer" class:open={$toggleEqualizer}>
-  <h1>Equalizer</h1>
+<div
+  class="equalizer"
+  class:open={$toggleEqualizer}
+  use:clickOutside
+  on:click_outside={() => toggleEqualizer.set(false)}
+>
+  <div class="equalizer-header">
+    <h1>Equalizer</h1>
+    <div class="close" on:click={() => toggleEqualizer.set(false)}>
+      <p>&times;</p>
+    </div>
+  </div>
   <div class="presets" style="--accent-color: {$currentAccentColor}">
     {#each $EqualizerManager.equalizerPresets as preset}
       <button
@@ -84,6 +93,33 @@
       transform: translateX(0%);
       opacity: 1;
       visibility: visible;
+    }
+  }
+
+  .equalizer-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .close {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+
+      border-radius: 50%;
+      &:hover {
+        background-color: #121212;
+      }
+
+      p {
+        color: #ffffff;
+        font-size: 30px;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
     }
   }
 

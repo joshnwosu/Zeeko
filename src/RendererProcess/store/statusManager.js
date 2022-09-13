@@ -38,6 +38,5 @@ export function handleNavigation() {
 }
 
 export function handleToggleEqualizer() {
-  let equalizer = !equalizerStore;
-  toggleEqualizer.set(equalizer);
+  toggleEqualizer.set(!equalizerStore);
 }
