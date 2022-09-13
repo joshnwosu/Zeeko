@@ -106,8 +106,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 50px;
-      height: 50px;
+      width: 30px;
+      height: 30px;
 
       border-radius: 50%;
       &:hover {
@@ -116,7 +116,7 @@
 
       p {
         color: #ffffff;
-        font-size: 30px;
+        font-size: 20px;
         font-weight: 600;
         margin-bottom: 5px;
       }
