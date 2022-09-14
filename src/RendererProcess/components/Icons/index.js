@@ -38,6 +38,7 @@ import MusicNoteIcon from "./outline/MusicNote.svelte";
 import GalleryIcon from "./outline/Gallery.svelte";
 import UserIcon from "./outline/User.svelte";
 import ChartIcon from "./outline/Chart.svelte";
+import CoffeeIcon from "./outline/Coffee.svelte";
 
 // bold icons import
 import HomeBoldIcon from "./bold/HomeBold.svelte";
@@ -101,6 +102,7 @@ export {
   GalleryIcon,
   UserIcon,
   ChartIcon,
+  CoffeeIcon,
 
   // bold icons
   HomeBoldIcon,

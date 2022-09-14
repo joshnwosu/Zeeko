@@ -10,23 +10,30 @@
     MoonIcon,
     SettingIcon,
     SunnyIcon,
+    CoffeeIcon,
   } from "../Icons";
 </script>
 
 <nav class="right-nav">
   <ul class="top">
+    <li>
+      <span class="icon">
+        <svelte:component this={CoffeeIcon} />
+      </span>
+      <span class="tooltip">Buy Me A Coffee 🥤😊</span>
+    </li>
     <li on:click={() => push("/playlist-details/Favorites")}>
       <span class="icon">
         <svelte:component this={HeartIcon} />
       </span>
       <span class="tooltip">Favorites</span>
     </li>
-    <li>
+    <!-- <li>
       <span class="icon">
         <svelte:component this={CubeIcon} />
       </span>
       <span class="tooltip">Zen mode</span>
-    </li>
+    </li> -->
   </ul>
 
   <ul class="bottom">
