@@ -3,6 +3,7 @@
   import closeWindowIcon from "svelte-icons-pack/vsc/VscChromeClose";
   import maximizeWindowIcon from "svelte-icons-pack/vsc/VscChromeRestore";
   import minimizeWindowIcon from "svelte-icons-pack/vsc/VscChromeMinimize";
+  import restoreWindowIcon from "svelte-icons-pack/vsc/VscChromeMaximize";
   import { currentWindowStyle } from "../../store/theme";
 
   // $: console.log($currentWindowStyle);
@@ -29,9 +30,15 @@
     </div>
   {:else if $currentWindowStyle.name == "Linux (Ubuntu)"}
     <div class="window-action-button linux-style">
-      <span on:click={() => window?.api?.titlebar("closeWindow")} />
-      <span on:click={() => window?.api?.titlebar("minimize")} />
-      <span on:click={() => window?.api?.titlebar("maximize")} />
+      <span on:click={() => window?.api?.titlebar("closeWindow")}>
+        <Icon src={minimizeWindowIcon} size={12} />
+      </span>
+      <span on:click={() => window?.api?.titlebar("minimize")}>
+        <Icon src={restoreWindowIcon} size={12} /></span
+      >
+      <span on:click={() => window?.api?.titlebar("maximize")}>
+        <Icon src={closeWindowIcon} size={12} />
+      </span>
     </div>
   {/if}
 </div>
@@ -79,18 +86,22 @@
   }
 
   .linux-style {
-    width: 80px;
+    width: 100px;
     align-items: center;
     justify-content: space-between;
     height: 30px;
     padding: 0 5px;
     span {
-      background-color: brown;
+      background-color: #444444;
       display: block;
-      width: 12px;
-      height: 12px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       cursor: default;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
       &:hover {
         opacity: 0.5;
       }
