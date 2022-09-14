@@ -1,4 +1,5 @@
 <script>
+  export let name;
   import { AddIcon, EditIcon, PlayIcon, TrashIcon } from "../Icons";
 </script>
 
@@ -11,14 +12,17 @@
     <svelte:component this={AddIcon} />
     <p>Add to</p>
   </button>
-  <button>
-    <svelte:component this={EditIcon} />
-    <p>Rename</p>
-  </button>
-  <button>
-    <svelte:component this={TrashIcon} />
-    <p>Delete</p>
-  </button>
+  {#if name != "Favorites"}
+    <button>
+      <svelte:component this={EditIcon} />
+      <p>Rename</p>
+    </button>
+    <button>
+      <svelte:component this={TrashIcon} />
+      <p>Delete</p>
+    </button>
+  {/if}
+
   <!--  -->
 </div>
 

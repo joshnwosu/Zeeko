@@ -14,7 +14,7 @@
     <PlaylistCover img={getFirstAlbumArt(playlist?.tracks)} />
     <div class="details">
       <PlaylistCaption {name} length={playlist?.tracks?.length} fontSize={30} />
-      <PlaylistActionButtons />
+      <PlaylistActionButtons {name} />
     </div>
   </div>
 </div>

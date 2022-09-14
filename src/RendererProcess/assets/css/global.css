@@ -28,19 +28,20 @@ body {
 
 ::-webkit-scrollbar {
   display: block;
-  width: 5px;
-  height: 5px;
+  width: 15px;
+  height: 15px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #aaa;
+  background-color: #444444;
   border-right: none;
   border-left: none;
   background-clip: content-box;
   -webkit-background-clip: content-box;
+  border: 2px solid transparent;
 }
 
 ::-webkit-scrollbar-track-piece:end {
@@ -52,8 +53,9 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-clip: border-box;
-  -webkit-background-clip: border-box;
+  /* background-clip: border-box;
+  -webkit-background-clip: border-box; */
+  background-color: #777777;
 }
 
 button {

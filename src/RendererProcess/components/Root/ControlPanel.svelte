@@ -39,6 +39,7 @@
     Forward10Icon,
     Backward10Icon,
     WarningIcon,
+    ChartIcon,
   } from "../../components/Icons";
   import {
     playerStore,
@@ -349,7 +350,7 @@
       class="icon expand-icon right-flare"
       on:click={() => window?.api?.titlebar("fullscreen")}
     >
-      <svelte:component this={MaximizeIcon} />
+      <svelte:component this={ChartIcon} />
     </span>
   </div>
 </div>
