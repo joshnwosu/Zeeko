@@ -41,7 +41,7 @@
       flex-wrap: wrap;
 
       .card {
-        width: 200px;
+        width: 150px;
         overflow: hidden;
         display: flex;
         flex-direction: column;
@@ -53,8 +53,8 @@
         }
 
         .figure {
-          width: 200px;
-          height: 200px;
+          width: 150px;
+          height: 150px;
           border-radius: 50%;
           background-color: #121212;
           display: flex;

@@ -19,7 +19,7 @@
 
 <style lang="scss">
   .card {
-    width: 200px;
+    width: 150px;
     border-radius: 5px;
     overflow: hidden;
     /* &:hover {
@@ -27,7 +27,7 @@
         } */
     img {
       width: 100%;
-      height: 160px;
+      height: 120px;
       object-fit: cover;
       object-position: center;
     }

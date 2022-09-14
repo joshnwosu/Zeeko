@@ -3,6 +3,7 @@
   import { UserIcon } from "../components/Icons";
   import PlaylistView from "../components/Playlist/PlaylistView.svelte";
   import TrackLists from "../components/Track/TrackLists.svelte";
+  import TrackListTag from "../components/Track/TrackListTag.svelte";
   import AlbumCard from "../components/Widgets/AlbumCard.svelte";
   import { artistsStore } from "../store/player";
   $: artistData =
@@ -36,7 +37,8 @@
     <h1 class="title">Tracks</h1>
     {#if artistData?.tracks}
       <PlaylistView>
-        <TrackLists tracks={artistData?.tracks} />
+        <!-- <TrackLists tracks={artistData?.tracks} /> -->
+        <TrackListTag tracks={artistData?.tracks} />
       </PlaylistView>
     {/if}
   {/if}
@@ -51,7 +53,7 @@
       padding: 20px;
       position: sticky;
       top: 150px;
-      z-index: 2;
+      z-index: 99;
       background-color: #000000;
     }
   }
@@ -74,7 +76,7 @@
     background-color: #121212;
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 99;
     display: flex;
     align-items: center;
     gap: 20px;

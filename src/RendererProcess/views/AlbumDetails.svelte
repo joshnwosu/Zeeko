@@ -2,6 +2,7 @@
   export let params;
   import PlaylistView from "../components/Playlist/PlaylistView.svelte";
   import TrackLists from "../components/Track/TrackLists.svelte";
+  import TrackListTag from "../components/Track/TrackListTag.svelte";
   import { albumsStore } from "../store/player";
   import { getFirstAlbumArt } from "../store/playerManager";
   import { defaultCoverArt } from "../utilities";
@@ -28,7 +29,8 @@
 
     {#if albumData?.tracks}
       <PlaylistView>
-        <TrackLists tracks={albumData?.tracks} />
+        <!-- <TrackLists tracks={albumData?.tracks} /> -->
+        <TrackListTag tracks={albumData?.tracks} />
       </PlaylistView>
     {/if}
   {/if}
@@ -40,7 +42,7 @@
     background-color: #121212;
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 99;
     display: flex;
     align-items: center;
     gap: 20px;

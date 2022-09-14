@@ -7,6 +7,9 @@
   import SwitchLayout from "../Widgets/SwitchLayout.svelte";
   let checked1 = false;
   let checked2 = false;
+  let checked3 = false;
+  let checked4 = false;
+  let checked5 = false;
 
   const pickFolder = () => {
     if (isElectron()) {
@@ -36,11 +39,6 @@
     <p on:click={handleToggleEqualizer}>Open equalizer</p>
   </div>
 
-  <!-- <h2>First panel</h2>
-  <p>{checked1} {checked2}</p>
-  <Switch checked={checked1} toggle={(e) => (checked1 = e.target.checked)} />
-  <Switch checked={checked2} toggle={(e) => (checked2 = e.target.checked)} /> -->
-
   <StyleLayout>
     <div slot="style-title">Display artist art</div>
     <div slot="style-content">
@@ -63,6 +61,44 @@
           <Switch
             checked={checked2}
             toggle={(e) => (checked2 = e.target.checked)}
+          />
+        </div>
+      </SwitchLayout>
+    </div>
+  </StyleLayout>
+
+  <StyleLayout>
+    <div slot="style-title">Track</div>
+    <div slot="style-content">
+      <SwitchLayout value={checked3}>
+        <div slot="title">Numbering</div>
+        <div slot="description">Display track index number</div>
+        <div slot="switch">
+          <Switch
+            checked={checked3}
+            toggle={(e) => (checked3 = e.target.checked)}
+          />
+        </div>
+      </SwitchLayout>
+      <SwitchLayout value={checked4}>
+        <div slot="title">Artist name</div>
+        <div slot="description">
+          Turn on to show artist name along side song title
+        </div>
+        <div slot="switch">
+          <Switch
+            checked={checked4}
+            toggle={(e) => (checked4 = e.target.checked)}
+          />
+        </div>
+      </SwitchLayout>
+      <SwitchLayout value={checked5}>
+        <div slot="title">Current track</div>
+        <div slot="description">Scroll to current playing track</div>
+        <div slot="switch">
+          <Switch
+            checked={checked5}
+            toggle={(e) => (checked5 = e.target.checked)}
           />
         </div>
       </SwitchLayout>
