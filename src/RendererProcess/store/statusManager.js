@@ -4,17 +4,20 @@ import {
   toggleSidebar,
   toggleNowPlaying,
   toggleEqualizer,
+  toggleTransparency,
 } from "./status";
 
 let dimStore;
 let sidebarStore;
 let nowPlayingStore;
 let equalizerStore;
+let transparencyStore;
 
 toggleDim.subscribe((d) => (dimStore = d));
 toggleSidebar.subscribe((s) => (sidebarStore = s));
 toggleNowPlaying.subscribe((n) => (nowPlayingStore = n));
 toggleEqualizer.subscribe((e) => (equalizerStore = e));
+toggleTransparency.subscribe((e) => (transparencyStore = e));
 
 export function handleToggleSidebar() {
   let sidebar = !sidebarStore;
@@ -39,4 +42,9 @@ export function handleNavigation() {
 
 export function handleToggleEqualizer() {
   toggleEqualizer.set(!equalizerStore);
+}
+
+export function handleToggleTransparency(payload) {
+  toggleTransparency.set(payload);
+  localStorage.setItem("Transparency", JSON.stringify(payload));
 }

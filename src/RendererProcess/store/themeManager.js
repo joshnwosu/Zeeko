@@ -1,17 +1,22 @@
-import { accentColorsConfig, windowStyleConfig } from "../config/appearance";
-import { themeConfig } from "../config/theme";
+import {
+  accentColorsConfig,
+  themesConfig,
+  windowStyleConfig,
+} from "../config/appearance";
 import { currentAccentColor, currentTheme, currentWindowStyle } from "./theme";
 
-export function changeTheme(payload) {
-  if (payload == "nightfall") {
-    currentTheme.set(themeConfig["nightfall"]);
-  } else if (payload === "sunrise") {
-    currentTheme.set(themeConfig["sunrise"]);
-  } else if (payload == "amoled") {
-    currentTheme.set(themeConfig["amoled"]);
-  } else {
-    currentTheme.set(themeConfig["nightfall"]);
-  }
+export function changeTheme(index) {
+  localStorage.setItem("theme", JSON.stringify(index));
+  currentTheme.set(themesConfig[index]);
+  // if (payload == "nightfall") {
+
+  // } else if (payload === "sunrise") {
+  //   currentTheme.set(themesConfig["sunrise"]);
+  // } else if (payload == "amoled") {
+  //   currentTheme.set(themesConfig["amoled"]);
+  // } else {
+  //   currentTheme.set(themesConfig["nightfall"]);
+  // }
 }
 
 export function changeAccentColor(index) {

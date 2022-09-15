@@ -1,7 +1,7 @@
 <script>
   import { push } from "svelte-spa-router";
   import { playlistStore } from "../../store/player";
-  import { toggleDim } from "../../store/status";
+  import { toggleDim, toggleTransparency } from "../../store/status";
   import { handleToggleDimMode } from "../../store/statusManager";
   import {
     CubeIcon,
@@ -14,7 +14,10 @@
   } from "../Icons";
 </script>
 
-<nav class="right-nav">
+<nav
+  class="right-nav"
+  style="background-color: {$toggleTransparency ? '#12121280' : '#121212'} ;"
+>
   <ul class="top">
     <li>
       <span class="icon">
@@ -57,8 +60,6 @@
 <style lang="scss">
   .right-nav {
     background-color: #12121280;
-    /* background-image: linear-gradient(to bottom, #000000, #12121260, #12121280); */
-    /* background-color: #000000; */
     width: 60px;
     height: 100%;
     position: fixed;

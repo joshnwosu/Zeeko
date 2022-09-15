@@ -14,6 +14,7 @@
     toggleCreatePlaylist,
     toggleNowPlaying,
     toggleSidebar,
+    toggleTransparency,
   } from "../../store/status";
   import {
     handleNavigation,
@@ -29,7 +30,9 @@
 <div
   class="side-nav"
   class:toggle-sidenav={$toggleSidebar}
-  style="--accent-color: {$currentAccentColor}"
+  style="--accent-color: {$currentAccentColor}; background-color: {$toggleTransparency
+    ? '#12121280'
+    : '#121212'};"
 >
   <div>
     <div class="logo">
@@ -147,7 +150,7 @@
     padding-bottom: 100px;
     display: flex;
     flex-direction: column;
-    transition: all 300ms ease-in-out;
+    transition: width 300ms ease-in-out;
     &.toggle-sidenav {
       nav {
         ul {

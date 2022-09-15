@@ -4,7 +4,13 @@
     themesConfig,
     windowStyleConfig,
   } from "../../config/appearance";
-  import { currentAccentColor } from "../../store/theme";
+  import { toggleTransparency } from "../../store/status";
+  import { handleToggleTransparency } from "../../store/statusManager";
+  import {
+    currentAccentColor,
+    currentTheme,
+    currentWindowStyle,
+  } from "../../store/theme";
   import {
     changeAccentColor,
     changeTheme,
@@ -15,20 +21,22 @@
   import StyleLayout from "../Widgets/StyleLayout.svelte";
   import SwitchLayout from "../Widgets/SwitchLayout.svelte";
   import ThemeLayout from "../Widgets/ThemeLayout.svelte";
-  let isAnimate = false;
-  let isTransparent = false;
-  let systemStyle = false;
+  $: systemStyle = false;
 </script>
 
 <div class="appearance" style="--accent-color: {$currentAccentColor}">
   <StyleLayout>
-    <div slot="style-title">Style</div>
+    <div slot="style-title">Theme</div>
     <div slot="style-content">
-      <ThemeLayout data={themesConfig} changeValue={changeTheme} />
+      <ThemeLayout
+        data={themesConfig}
+        selected={$currentTheme.name}
+        changeValue={changeTheme}
+      />
 
       <AccentColorLayout {changeAccentColor} {accentColorsConfig} />
 
-      <SwitchLayout value={isTransparent}>
+      <SwitchLayout value={$toggleTransparency}>
         <div slot="title">Transparency</div>
         <div slot="description">
           When transparency is turned off, background album art will be
@@ -36,19 +44,10 @@
         </div>
         <div slot="switch">
           <Switch
-            checked={isTransparent}
-            toggle={(e) => (isTransparent = e.target.checked)}
-          />
-        </div>
-      </SwitchLayout>
-
-      <SwitchLayout value={isAnimate}>
-        <div slot="title">Animation</div>
-        <div slot="description">Set transition for cool effect.</div>
-        <div slot="switch">
-          <Switch
-            checked={isAnimate}
-            toggle={(e) => (isAnimate = e.target.checked)}
+            checked={$toggleTransparency}
+            toggle={(e) => {
+              handleToggleTransparency(e.target.checked);
+            }}
           />
         </div>
       </SwitchLayout>
@@ -58,7 +57,11 @@
   <StyleLayout>
     <div slot="style-title">Window style</div>
     <div slot="style-content">
-      <ThemeLayout data={windowStyleConfig} changeValue={changeWindowStyle} />
+      <ThemeLayout
+        data={windowStyleConfig}
+        selected={$currentWindowStyle.name}
+        changeValue={changeWindowStyle}
+      />
       <SwitchLayout value={systemStyle}>
         <div slot="title">Default style</div>
         <div slot="description">Use default system style.</div>

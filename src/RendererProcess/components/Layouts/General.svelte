@@ -10,6 +10,7 @@
   let checked3 = false;
   let checked4 = false;
   let checked5 = false;
+  let checked6 = false;
 
   const pickFolder = () => {
     if (isElectron()) {
@@ -39,7 +40,7 @@
     <p on:click={handleToggleEqualizer}>Open equalizer</p>
   </div>
 
-  <StyleLayout>
+  <!-- <StyleLayout>
     <div slot="style-title">Display artist art</div>
     <div slot="style-content">
       <SwitchLayout value={checked1}>
@@ -65,13 +66,31 @@
         </div>
       </SwitchLayout>
     </div>
+  </StyleLayout> -->
+
+  <StyleLayout>
+    <div slot="style-title">Queue</div>
+    <div slot="style-content">
+      <SwitchLayout value={checked5}>
+        <div slot="title">Current playing track</div>
+        <div slot="description">
+          Automatically scroll to current playing track index
+        </div>
+        <div slot="switch">
+          <Switch
+            checked={checked5}
+            toggle={(e) => (checked5 = e.target.checked)}
+          />
+        </div>
+      </SwitchLayout>
+    </div>
   </StyleLayout>
 
   <StyleLayout>
-    <div slot="style-title">Track</div>
+    <div slot="style-title">Track configuration</div>
     <div slot="style-content">
       <SwitchLayout value={checked3}>
-        <div slot="title">Numbering</div>
+        <div slot="title">Track index</div>
         <div slot="description">Display track index number</div>
         <div slot="switch">
           <Switch
@@ -92,13 +111,15 @@
           />
         </div>
       </SwitchLayout>
-      <SwitchLayout value={checked5}>
-        <div slot="title">Current track</div>
-        <div slot="description">Scroll to current playing track</div>
+      <SwitchLayout value={checked6}>
+        <div slot="title">Album name</div>
+        <div slot="description">
+          Turn on to show album name along side song title
+        </div>
         <div slot="switch">
           <Switch
-            checked={checked5}
-            toggle={(e) => (checked5 = e.target.checked)}
+            checked={checked6}
+            toggle={(e) => (checked6 = e.target.checked)}
           />
         </div>
       </SwitchLayout>

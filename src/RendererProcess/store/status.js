@@ -8,6 +8,9 @@ let toggleNowPlaying = writable(false);
 let toggleCreatePlaylist = writable(false);
 let toggleContextMenu = writable(false);
 let toggleEqualizer = writable(false);
+let toggleTransparency = writable(
+  JSON.parse(localStorage.getItem("Transparency")) || false
+);
 
 export {
   toggleSidebar,
@@ -16,4 +19,5 @@ export {
   toggleCreatePlaylist,
   toggleContextMenu,
   toggleEqualizer,
+  toggleTransparency,
 };
