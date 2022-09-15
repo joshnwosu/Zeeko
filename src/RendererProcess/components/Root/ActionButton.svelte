@@ -30,13 +30,13 @@
     </div>
   {:else if $currentWindowStyle.name == "Linux (Ubuntu)"}
     <div class="window-action-button linux-style">
-      <span on:click={() => window?.api?.titlebar("closeWindow")}>
+      <span on:click={() => window?.api?.titlebar("minimize")}>
         <Icon src={minimizeWindowIcon} size={12} />
       </span>
-      <span on:click={() => window?.api?.titlebar("minimize")}>
+      <span on:click={() => window?.api?.titlebar("maximize")}>
         <Icon src={restoreWindowIcon} size={12} /></span
       >
-      <span on:click={() => window?.api?.titlebar("maximize")}>
+      <span on:click={() => window?.api?.titlebar("closeWindow")}>
         <Icon src={closeWindowIcon} size={12} />
       </span>
     </div>
