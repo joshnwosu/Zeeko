@@ -4,8 +4,16 @@
     themesConfig,
     windowStyleConfig,
   } from "../../config/appearance";
-  import { toggleTransparency } from "../../store/status";
-  import { handleToggleTransparency } from "../../store/statusManager";
+  import {
+    toggleDim,
+    toggleTransparency,
+    toggleWindowSystemStyle,
+  } from "../../store/status";
+  import {
+    handleToggleDimMode,
+    handleToggleTransparency,
+    handleToggleWindowSystemStyle,
+  } from "../../store/statusManager";
   import {
     currentAccentColor,
     currentTheme,
@@ -51,6 +59,18 @@
           />
         </div>
       </SwitchLayout>
+      <SwitchLayout value={$toggleDim}>
+        <div slot="title">Dim mode</div>
+        <div slot="description">Low light mode. Reduce player brightness</div>
+        <div slot="switch">
+          <Switch
+            checked={$toggleDim}
+            toggle={(e) => {
+              handleToggleDimMode(e.target.checked);
+            }}
+          />
+        </div>
+      </SwitchLayout>
     </div>
   </StyleLayout>
 
@@ -62,13 +82,15 @@
         selected={$currentWindowStyle.name}
         changeValue={changeWindowStyle}
       />
-      <SwitchLayout value={systemStyle}>
-        <div slot="title">Default style</div>
-        <div slot="description">Use default system style.</div>
+      <SwitchLayout value={$toggleWindowSystemStyle}>
+        <div slot="title">Use sytem style</div>
+        <div slot="description">Turn on to automatically use system style.</div>
         <div slot="switch">
           <Switch
-            checked={systemStyle}
-            toggle={(e) => (systemStyle = e.target.checked)}
+            checked={$toggleWindowSystemStyle}
+            toggle={(e) => {
+              handleToggleWindowSystemStyle(e.target.checked);
+            }}
           />
         </div>
       </SwitchLayout>

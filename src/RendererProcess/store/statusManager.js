@@ -5,6 +5,7 @@ import {
   toggleNowPlaying,
   toggleEqualizer,
   toggleTransparency,
+  toggleWindowSystemStyle,
 } from "./status";
 
 let dimStore;
@@ -25,10 +26,9 @@ export function handleToggleSidebar() {
   toggleSidebar.set(sidebar);
 }
 
-export function handleToggleDimMode() {
-  let dim = !dimStore;
-  localStorage.setItem("DimMode", JSON.stringify(dim));
-  toggleDim.set(dim);
+export function handleToggleDimMode(payload) {
+  localStorage.setItem("DimMode", JSON.stringify(payload));
+  toggleDim.set(payload);
 }
 
 export function handleNavigation() {
@@ -47,4 +47,9 @@ export function handleToggleEqualizer() {
 export function handleToggleTransparency(payload) {
   toggleTransparency.set(payload);
   localStorage.setItem("Transparency", JSON.stringify(payload));
+}
+
+export function handleToggleWindowSystemStyle(payload) {
+  toggleWindowSystemStyle.set(payload);
+  localStorage.setItem("WindowSystemStyle", JSON.stringify(payload));
 }

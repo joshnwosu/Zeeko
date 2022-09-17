@@ -11,7 +11,9 @@ let toggleEqualizer = writable(false);
 let toggleTransparency = writable(
   JSON.parse(localStorage.getItem("Transparency")) || false
 );
-
+let toggleWindowSystemStyle = writable(
+  JSON.parse(localStorage.getItem("WindowSystemStyle")) || false
+);
 export {
   toggleSidebar,
   toggleDim,
@@ -20,4 +22,5 @@ export {
   toggleContextMenu,
   toggleEqualizer,
   toggleTransparency,
+  toggleWindowSystemStyle,
 };

@@ -2,6 +2,7 @@
   export let data;
   export let changeValue;
   export let selected;
+  import ThemeVisual from "../Addon/ThemeVisual.svelte";
 </script>
 
 <div class="theme">
@@ -10,7 +11,9 @@
       <div
         class="theme-img theme-{theme.name}"
         class:active={selected == theme.name}
-      />
+      >
+        <ThemeVisual {theme} />
+      </div>
       <p>{theme.name}</p>
     </div>
   {/each}
@@ -34,6 +37,9 @@
         background-color: #33333350;
         border-radius: 10px;
         border-top: 1px solid #222222;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         &.active {
           border: 4px solid var(--accent-color);
         }

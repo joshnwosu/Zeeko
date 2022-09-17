@@ -1,55 +1,44 @@
 <script>
+  export let theme;
+
   import Icon from "svelte-icons-pack/Icon.svelte";
   import closeWindowIcon from "svelte-icons-pack/vsc/VscChromeClose";
   import maximizeWindowIcon from "svelte-icons-pack/vsc/VscChromeRestore";
   import minimizeWindowIcon from "svelte-icons-pack/vsc/VscChromeMinimize";
   import restoreWindowIcon from "svelte-icons-pack/vsc/VscChromeMaximize";
-  import { currentWindowStyle } from "../../store/theme";
 </script>
 
-<div class="action-wrapper">
-  {#if $currentWindowStyle.name == "Windows"}
-    <div class="window-action-button windows-style">
-      <span on:click={() => window?.api?.titlebar("minimize")}>
-        <Icon src={minimizeWindowIcon} size={16} />
-      </span>
-      <span on:click={() => window?.api?.titlebar("maximize")}>
-        <Icon src={maximizeWindowIcon} size={16} />
-      </span>
-      <span class="close" on:click={() => window?.api?.titlebar("closeWindow")}>
-        <Icon src={closeWindowIcon} size={16} />
-      </span>
-    </div>
-  {:else if $currentWindowStyle.name == "MacOS"}
-    <div class="window-action-button ios-style">
-      <span on:click={() => window?.api?.titlebar("closeWindow")} />
-      <span on:click={() => window?.api?.titlebar("minimize")} />
-      <span on:click={() => window?.api?.titlebar("maximize")} />
-    </div>
-  {:else if $currentWindowStyle.name == "Linux (Ubuntu)"}
-    <div class="window-action-button linux-style">
-      <span on:click={() => window?.api?.titlebar("minimize")}>
-        <Icon src={minimizeWindowIcon} size={12} />
-      </span>
-      <span on:click={() => window?.api?.titlebar("maximize")}>
-        <Icon src={restoreWindowIcon} size={12} /></span
-      >
-      <span on:click={() => window?.api?.titlebar("closeWindow")}>
-        <Icon src={closeWindowIcon} size={12} />
-      </span>
-    </div>
-  {/if}
-</div>
+{#if theme.name == "Windows"}
+  <div class="window-action-button windows-style">
+    <span>
+      <Icon src={minimizeWindowIcon} size={16} />
+    </span>
+    <span>
+      <Icon src={maximizeWindowIcon} size={16} />
+    </span>
+    <span class="close">
+      <Icon src={closeWindowIcon} size={16} />
+    </span>
+  </div>
+{:else if theme.name == "MacOS"}
+  <div class="window-action-button ios-style">
+    <span />
+    <span />
+    <span />
+  </div>
+{:else if theme.name == "Linux (Ubuntu)"}
+  <div class="window-action-button linux-style">
+    <span>
+      <Icon src={minimizeWindowIcon} size={12} />
+    </span>
+    <span> <Icon src={restoreWindowIcon} size={12} /></span>
+    <span>
+      <Icon src={closeWindowIcon} size={12} />
+    </span>
+  </div>
+{/if}
 
 <style lang="scss">
-  .action-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 100%;
-    margin-right: 10px;
-  }
-
   .window-action-button {
     display: flex;
   }

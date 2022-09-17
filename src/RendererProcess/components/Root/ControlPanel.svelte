@@ -49,7 +49,11 @@
     queuelistStore,
     playlistStore,
   } from "../../store/player";
-  import { toggleEqualizer, toggleNowPlaying } from "../../store/status";
+  import {
+    toggleEqualizer,
+    toggleNowPlaying,
+    toggleTransparency,
+  } from "../../store/status";
   import {
     formatDuration,
     getSong,
@@ -203,7 +207,9 @@
 <div
   class="control-panel"
   class:hide={$toggleNowPlaying}
-  style="--accent-color: {$currentAccentColor}"
+  style="--accent-color: {$currentAccentColor}; background-color: {$toggleTransparency
+    ? '#00000080'
+    : '#000000'}"
 >
   <div
     class="wrapper left"
@@ -512,8 +518,7 @@
     left: 0;
     height: 100px;
     bottom: 0;
-    /* background-color: rgba(0, 0, 0, 0.6); */
-    background-color: #00000090;
+    background-color: #00000080;
     backdrop-filter: blur(100px);
     z-index: 999;
 
