@@ -39,6 +39,7 @@ import GalleryIcon from "./outline/Gallery.svelte";
 import UserIcon from "./outline/User.svelte";
 import ChartIcon from "./outline/Chart.svelte";
 import CoffeeIcon from "./outline/Coffee.svelte";
+import ArrowDownIcon from "./outline/ArrowDown.svelte";
 
 // bold icons import
 import HomeBoldIcon from "./bold/HomeBold.svelte";
@@ -103,6 +104,7 @@ export {
   UserIcon,
   ChartIcon,
   CoffeeIcon,
+  ArrowDownIcon,
 
   // bold icons
   HomeBoldIcon,

@@ -79,6 +79,7 @@
   import { gainNode, setupEqualizer } from "./Equalizer/Equalizer";
   import { currentAccentColor } from "../../store/theme";
   import { clickOutside } from "../../utilities";
+  import TrackBar from "../Widgets/TrackBar.svelte";
 
   onMount(() => {
     setupEqualizer();
@@ -95,7 +96,6 @@
     audio.onloadeddata = () => {
       audio.play();
       $playbackManager.nowPlaying = getSong($queuelistStore, $selectedSong);
-      // checkIfInFavorite();
     };
 
     audio.oncanplay = () => {
@@ -145,13 +145,13 @@
   //   }
   // }
 
-  function seek(e) {
-    if (audio.src) {
-      let seekPercent = parseInt(e.srcElement.value);
-      seekBarWidth = `${seekPercent}%`;
-      audio.currentTime = (seekPercent * audio.duration) / 100;
-    }
-  }
+  // function seek(e) {
+  //   if (audio.src) {
+  //     let seekPercent = parseInt(e.srcElement.value);
+  //     seekBarWidth = `${seekPercent}%`;
+  //     audio.currentTime = (seekPercent * audio.duration) / 100;
+  //   }
+  // }
 
   function changeVolume(e) {
     volume = e.srcElement.value;
@@ -162,19 +162,19 @@
     volumeBarWidth = `${Math.trunc(volume * 100)}%`;
   }
 
-  function goToPosition(e) {
-    if (audio.src) {
-      const seekBar = document.querySelector(".seek-bar");
-      const seekProgress = document.querySelector(".seek-progress");
-      const length = e.clientX - seekBar.getBoundingClientRect().x;
-      const percentageSeek = Math.ceil(
-        (length / window.getComputedStyle(seekBar).width.replace("px", "")) *
-          100
-      );
-      seekProgress.style.width = `${percentageSeek}%`;
-      audio.currentTime = (percentageSeek * audio.duration) / 100;
-    }
-  }
+  // function goToPosition(e) {
+  //   if (audio.src) {
+  //     const seekBar = document.querySelector(".seek-bar");
+  //     const seekProgress = document.querySelector(".seek-progress");
+  //     const length = e.clientX - seekBar.getBoundingClientRect().x;
+  //     const percentageSeek = Math.ceil(
+  //       (length / window.getComputedStyle(seekBar).width.replace("px", "")) *
+  //         100
+  //     );
+  //     seekProgress.style.width = `${percentageSeek}%`;
+  //     audio.currentTime = (percentageSeek * audio.duration) / 100;
+  //   }
+  // }
 
   function onClose() {
     show = false;
@@ -309,23 +309,7 @@
         </span>
       </div>
     </div>
-    <div class="track-bar">
-      <span class="">
-        <p>{formatDuration($playbackManager.currentTime) || "00:00"}</p>
-      </span>
-      <div class="seek-bar-wrap" on:click={goToPosition}>
-        <div class="seek-bar">
-          <input on:input={seek} type="range" value="0" min="0" max="100" />
-          <div class="seek-progress" style="width: {seekBarWidth}">
-            <div class="seek-knob" />
-          </div>
-        </div>
-      </div>
-
-      <span class="">
-        <p>{formatDuration($playbackManager.duration) || "00:00"}</p>
-      </span>
-    </div>
+    <TrackBar name="control-panel" />
   </div>
   <div class="wrapper right">
     <span
@@ -613,19 +597,14 @@
 
     .middle {
       padding: 0 20px;
-      /* padding-top: 5px; */
 
       .control-button {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        /* border: 1px solid green; */
         .control-button-inner {
           display: flex;
           align-items: center;
-          /* &:not(.main-control) {
-            opacity: 0;
-          } */
           &.main-control {
             :global(svg) {
               width: 25px;
@@ -642,36 +621,9 @@
         justify-content: center;
         align-items: center;
         margin: 0 4px;
-        /* margin-top: 10px; */
         background-color: rgba(255, 255, 255, 0.1);
         &:hover {
           background-color: rgba(255, 255, 255, 0.2);
-        }
-        /* :global(svg) {
-          width: 50px !important;
-          height: 50px !important;
-          :global(path) {
-            fill: #ffffff;
-          }
-        } */
-      }
-
-      .track-bar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        /* height: 30px; */
-        margin-top: 5px;
-        margin-left: 15px;
-        margin-right: 15px;
-
-        p {
-          font-size: 10px;
-          letter-spacing: 0.5px;
-        }
-
-        .seek-bar {
-          flex: 1;
         }
       }
     }
@@ -687,7 +639,6 @@
           flex: 1;
           margin: 0;
           margin-left: 9px;
-          /* border: 1px solid red; */
         }
         .seek-bar {
           width: 120px;

@@ -27,6 +27,8 @@ export function handleToggleSidebar() {
   let sidebar = !sidebarStore;
   localStorage.setItem("Sidebar", JSON.stringify(sidebar));
   toggleSidebar.set(sidebar);
+  toggleControlStyle.set(false);
+  localStorage.setItem("ControlStyle", JSON.stringify(false));
 }
 
 export function handleToggleDimMode(payload) {
@@ -75,4 +77,6 @@ export function handleToggleWindowSystemStyle(payload) {
 export function handleToggleControlStyle(payload) {
   toggleControlStyle.set(payload);
   localStorage.setItem("ControlStyle", JSON.stringify(payload));
+  toggleSidebar.set(false);
+  localStorage.setItem("Sidebar", JSON.stringify(false));
 }

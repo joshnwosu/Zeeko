@@ -10,9 +10,11 @@
     togglePlaying,
   } from "../../store/playerManager";
   import { toggleControlStyle } from "../../store/status";
+  import { handleToggleControlStyle } from "../../store/statusManager";
   import { currentAccentColor } from "../../store/theme";
   import { defaultCoverArt } from "../../utilities";
   import {
+    ArrowDownIcon,
     HeartBoldIcon,
     HeartIcon,
     NextBoldIcon,
@@ -23,6 +25,7 @@
     RepeatOneBoldIcon,
     ShuffleBoldIcon,
   } from "../Icons";
+  import TrackBar from "../Widgets/TrackBar.svelte";
 </script>
 
 <div
@@ -30,6 +33,9 @@
   class:hide={!$toggleControlStyle}
   style="--accent-color: {$currentAccentColor};"
 >
+  <div class="collapse" on:click={() => handleToggleControlStyle(false)}>
+    <svelte:component this={ArrowDownIcon} />
+  </div>
   <div class="meta">
     <img
       src={$playbackManager?.nowPlaying?.albumArt || defaultCoverArt}
@@ -40,28 +46,35 @@
         $playbackManager?.nowPlaying?.defaultTitle ||
         "Click to play"}
     </h1>
-    <p>
-      {$playbackManager?.nowPlaying?.artist ||
-        $playbackManager?.nowPlaying?.defaultArtist ||
-        "Select a song to play"}
-    </p>
+    <div class="artist">
+      <p>
+        {$playbackManager?.nowPlaying?.artist ||
+          $playbackManager?.nowPlaying?.defaultArtist ||
+          "Select a song to play"}
+      </p>
+
+      <span
+        class="icon heart-icon left-flare"
+        class:in-favorite={getSong(
+          $playlistStore[0].tracks,
+          $playbackManager?.nowPlaying?.fileLocation
+        )}
+        on:click={toggleFavorite}
+      >
+        {#if getSong($playlistStore[0].tracks, $playbackManager?.nowPlaying?.fileLocation)}
+          <svelte:component this={HeartBoldIcon} />
+        {:else}
+          <svelte:component this={HeartIcon} />
+        {/if}
+      </span>
+    </div>
+  </div>
+
+  <div class="track-progress">
+    <TrackBar name="mini-control-panel" />
   </div>
 
   <div class="control-btn">
-    <span
-      class="icon heart-icon left-flare"
-      class:in-favorite={getSong(
-        $playlistStore[0].tracks,
-        $playbackManager?.nowPlaying?.fileLocation
-      )}
-      on:click={toggleFavorite}
-    >
-      {#if getSong($playlistStore[0].tracks, $playbackManager?.nowPlaying?.fileLocation)}
-        <svelte:component this={HeartBoldIcon} />
-      {:else}
-        <svelte:component this={HeartIcon} />
-      {/if}
-    </span>
     <span
       class="icon repeat-icon right-flare"
       class:repeat-on={$playbackManager?.repeat == 1 ||
@@ -102,6 +115,29 @@
 </div>
 
 <style lang="scss">
+  .track-progress {
+    /* padding: 0 20px; */
+    margin: 20px 0;
+  }
+  .collapse {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff20;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    border-radius: 50%;
+    transform: scale(0.5);
+    opacity: 0;
+    transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    :global(svg) {
+      width: 15px;
+      height: 15px;
+    }
+  }
   .mini-control {
     width: 280px;
     min-height: 100px;
@@ -112,6 +148,12 @@
     transform: translateY(0px);
     transition: 300ms ease-in-out;
     z-index: 999;
+    &:hover {
+      .collapse {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
     &.hide {
       transform: translateY(300px);
     }
@@ -122,7 +164,6 @@
       align-items: center;
       flex-direction: column;
       overflow: hidden;
-      margin-top: 20px;
       img {
         width: 100px;
         height: 100px;
@@ -136,16 +177,27 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        text-align: center;
-        width: 80%;
-        margin-top: 10px;
+
+        /* border: 1px solid red; */
       }
 
       h1 {
+        width: 80%;
         font-size: 16px;
+        text-align: center;
+        margin-top: 10px;
       }
       p {
         font-size: 12px;
+        text-align: left;
+        margin-right: 10px;
+      }
+      .artist {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 20px;
       }
     }
 
@@ -156,27 +208,27 @@
       margin-top: 20px;
       background-color: #12121250;
       padding: 30px 20px;
+    }
 
-      .icon {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        cursor: default;
+    .icon {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      cursor: default;
 
-        :global(svg) {
-          width: 20px;
-          height: 20px;
-        }
-        &:hover:not(.play-pause-icon) {
-          :global(svg.svg-icon-bold) {
-            :global(path) {
-              fill: #ffffff;
-            }
+      :global(svg) {
+        width: 20px;
+        height: 20px;
+      }
+      &:hover:not(.play-pause-icon) {
+        :global(svg.svg-icon-bold) {
+          :global(path) {
+            fill: #ffffff;
           }
-          :global(svg.svg-icon-outline) {
-            :global(path) {
-              stroke: #ffffff;
-            }
+        }
+        :global(svg.svg-icon-outline) {
+          :global(path) {
+            stroke: #ffffff;
           }
         }
       }
