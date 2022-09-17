@@ -49,8 +49,8 @@
           restoreScrollState={true}
         />
       </div>
-      <ControlPanel />
       <MiniControlPanel />
+      <ControlPanel />
       <RightBar />
       <Equalizer />
     </section>

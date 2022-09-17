@@ -322,6 +322,17 @@ export function repeatSong() {
   }
 }
 
+export function toggleFavorite() {
+  if (!audio.src) return;
+  if (getSong(playlists[0].tracks, status?.nowPlaying.fileLocation)) {
+    // console.log("Track removed from favorite");
+    deleteSelectedTrackFromPlaylist(status.nowPlaying.fileLocation);
+  } else {
+    // console.log("Track added to favorite");
+    addSelectedTracksToPlaylist(status.nowPlaying);
+  }
+}
+
 export function playNextTrack() {
   let index = getSongIndex(queuelist, currentTrack);
   if (status.shuffle) {

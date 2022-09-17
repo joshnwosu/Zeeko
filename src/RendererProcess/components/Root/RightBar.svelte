@@ -22,7 +22,7 @@
   class="right-nav"
   style="background-color: {$toggleTransparency
     ? '#12121280'
-    : '#121212'} ; padding-bottom: {$toggleControlStyle ? '20px' : '100px'}"
+    : '#121212'} ; padding-bottom: {$toggleControlStyle ? '0px' : '100px'}"
 >
   <ul class="top">
     <li>
@@ -75,8 +75,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 20px 0;
-    /* padding-top: 40px; */
+    /* padding: 20px 0; */
+    padding-top: 20px;
     /* padding-bottom: 100px; */
     z-index: 99;
     transition: 300ms ease-in-out;

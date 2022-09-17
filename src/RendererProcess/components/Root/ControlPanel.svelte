@@ -72,6 +72,7 @@
     deleteSelectedTrackFromPlaylist,
     // checkIfInFavorite,
     encodeTrackFile,
+    toggleFavorite,
   } from "../../store/playerManager";
   import Modal from "../Modal/Modal.svelte";
   import { handleToggleEqualizer } from "../../store/statusManager";
@@ -128,21 +129,21 @@
     };
   }
 
-  function toggleFavorite() {
-    if (!audio.src) return;
-    if (
-      getSong(
-        $playlistStore[0].tracks,
-        $playbackManager?.nowPlaying.fileLocation
-      )
-    ) {
-      console.log("Track removed from favorite");
-      deleteSelectedTrackFromPlaylist($playbackManager.nowPlaying.fileLocation);
-    } else {
-      console.log("Track added to favorite");
-      addSelectedTracksToPlaylist($playbackManager.nowPlaying);
-    }
-  }
+  // function toggleFavorite() {
+  //   if (!audio.src) return;
+  //   if (
+  //     getSong(
+  //       $playlistStore[0].tracks,
+  //       $playbackManager?.nowPlaying.fileLocation
+  //     )
+  //   ) {
+  //     console.log("Track removed from favorite");
+  //     deleteSelectedTrackFromPlaylist($playbackManager.nowPlaying.fileLocation);
+  //   } else {
+  //     console.log("Track added to favorite");
+  //     addSelectedTracksToPlaylist($playbackManager.nowPlaying);
+  //   }
+  // }
 
   function seek(e) {
     if (audio.src) {
@@ -363,8 +364,8 @@
 </div>
 
 <style lang="scss">
-  .shuffle-on,
-  .repeat-on,
+  :global(.shuffle-on),
+  :global(.repeat-on),
   :global(.in-favorite) {
     :global(svg) {
       :global(path) {
