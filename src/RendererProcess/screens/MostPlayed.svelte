@@ -1,10 +1,11 @@
 <script>
   import ScreenHeader from "../components/Root/ScreenHeader.svelte";
+  import ScreenView from "../components/Root/ScreenView.svelte";
 </script>
 
 <main class="page">
   <ScreenHeader title="Most played" />
-  <div class="screen-view">
+  <ScreenView>
     <!-- <p>Recent plays</p> -->
-  </div>
+  </ScreenView>
 </main>

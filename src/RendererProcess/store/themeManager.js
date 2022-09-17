@@ -3,6 +3,7 @@ import {
   themesConfig,
   windowStyleConfig,
 } from "../config/appearance";
+import { toggleWindowSystemStyle } from "./status";
 import { currentAccentColor, currentTheme, currentWindowStyle } from "./theme";
 
 export function changeTheme(index) {
@@ -18,4 +19,7 @@ export function changeAccentColor(index) {
 export function changeWindowStyle(index) {
   localStorage.setItem("windowStyle", JSON.stringify(index));
   currentWindowStyle.set(windowStyleConfig[index]);
+
+  toggleWindowSystemStyle.set(false);
+  localStorage.setItem("WindowSystemStyle", JSON.stringify(false));
 }

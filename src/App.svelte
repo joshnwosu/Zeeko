@@ -20,6 +20,7 @@
   import Equalizer from "./RendererProcess/components/Root/Equalizer/Equalizer.svelte";
   import ThemeProvider from "./RendererProcess/components/Root/ThemeProvider.svelte";
   import { currentTheme } from "./RendererProcess/store/theme";
+  import MiniControlPanel from "./RendererProcess/components/Root/MiniControlPanel.svelte";
 
   const routeLoaded = (event) => {
     // console.log("Eevnt: ", event);
@@ -49,6 +50,7 @@
         />
       </div>
       <ControlPanel />
+      <MiniControlPanel />
       <RightBar />
       <Equalizer />
     </section>
@@ -107,9 +109,6 @@
       fill: none !important;
       stroke: rgba(255, 255, 255, 1);
     }
-  }
-  :global(.screen-view) {
-    padding: 0px 20px 100px 20px;
   }
   .main-view {
     position: relative;

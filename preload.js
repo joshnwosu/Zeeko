@@ -5,6 +5,7 @@ contextBridge.exposeInMainWorld("api", {
   node: () => process.versions.node,
   chrome: () => process.versions.chrome,
   electron: () => process.versions.electron,
+  platform: () => process.platform,
 
   // Bridge from renderer to main
   titlebar: (action) => {

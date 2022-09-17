@@ -1,10 +1,11 @@
 <script>
   import ScreenHeader from "../components/Root/ScreenHeader.svelte";
+  import ScreenView from "../components/Root/ScreenView.svelte";
 </script>
 
 <main class="page">
   <ScreenHeader title="Folders" />
-  <div class="screen-view">
+  <ScreenView>
     <!-- <p>Folders</p> -->
-  </div>
+  </ScreenView>
 </main>

@@ -50,6 +50,7 @@
     playlistStore,
   } from "../../store/player";
   import {
+    toggleControlStyle,
     toggleEqualizer,
     toggleNowPlaying,
     toggleTransparency,
@@ -206,7 +207,7 @@
 
 <div
   class="control-panel"
-  class:hide={$toggleNowPlaying}
+  class:hide={$toggleNowPlaying || $toggleControlStyle}
   style="--accent-color: {$currentAccentColor}; background-color: {$toggleTransparency
     ? '#00000080'
     : '#000000'}"

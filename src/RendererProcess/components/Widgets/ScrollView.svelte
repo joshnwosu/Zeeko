@@ -1,4 +1,11 @@
-<div class="scroll-view">
+<script>
+  import { toggleControlStyle } from "../../store/status";
+</script>
+
+<div
+  class="scroll-view"
+  style="padding-bottom: {$toggleControlStyle ? '0px' : '100px'}"
+>
   <slot />
   <!-- <div style="width: 100%;height: 100px;background-color: red;"/> -->
 </div>

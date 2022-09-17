@@ -5,11 +5,13 @@
     windowStyleConfig,
   } from "../../config/appearance";
   import {
+    toggleControlStyle,
     toggleDim,
     toggleTransparency,
     toggleWindowSystemStyle,
   } from "../../store/status";
   import {
+    handleToggleControlStyle,
     handleToggleDimMode,
     handleToggleTransparency,
     handleToggleWindowSystemStyle,
@@ -59,6 +61,7 @@
           />
         </div>
       </SwitchLayout>
+
       <SwitchLayout value={$toggleDim}>
         <div slot="title">Dim mode</div>
         <div slot="description">Low light mode. Reduce player brightness</div>
@@ -67,6 +70,18 @@
             checked={$toggleDim}
             toggle={(e) => {
               handleToggleDimMode(e.target.checked);
+            }}
+          />
+        </div>
+      </SwitchLayout>
+      <SwitchLayout value={$toggleControlStyle}>
+        <div slot="title">Mini control</div>
+        <div slot="description">Turn on to switch to mini control player</div>
+        <div slot="switch">
+          <Switch
+            checked={$toggleControlStyle}
+            toggle={(e) => {
+              handleToggleControlStyle(e.target.checked);
             }}
           />
         </div>

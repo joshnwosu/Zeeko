@@ -1,4 +1,5 @@
 import { pop } from "svelte-spa-router";
+import { windowStyleConfig } from "../config/appearance";
 import {
   toggleDim,
   toggleSidebar,
@@ -6,7 +7,9 @@ import {
   toggleEqualizer,
   toggleTransparency,
   toggleWindowSystemStyle,
+  toggleControlStyle,
 } from "./status";
+import { currentWindowStyle } from "./theme";
 
 let dimStore;
 let sidebarStore;
@@ -52,4 +55,24 @@ export function handleToggleTransparency(payload) {
 export function handleToggleWindowSystemStyle(payload) {
   toggleWindowSystemStyle.set(payload);
   localStorage.setItem("WindowSystemStyle", JSON.stringify(payload));
+  // console.log("Platform:", window?.api?.platform());
+
+  let platform = window?.api?.platform();
+
+  if (platform == "win32") {
+    localStorage.setItem("windowStyle", JSON.stringify(0));
+    currentWindowStyle.set(windowStyleConfig[0]);
+  } else if (platform == "darwin") {
+    localStorage.setItem("windowStyle", JSON.stringify(1));
+    currentWindowStyle.set(windowStyleConfig[1]);
+  } else if (platform == "linux") {
+    localStorage.setItem("windowStyle", JSON.stringify(2));
+    currentWindowStyle.set(windowStyleConfig[2]);
+  }
+  // console.log("blaka");
+}
+
+export function handleToggleControlStyle(payload) {
+  toggleControlStyle.set(payload);
+  localStorage.setItem("ControlStyle", JSON.stringify(payload));
 }

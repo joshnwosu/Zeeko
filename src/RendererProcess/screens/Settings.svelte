@@ -3,12 +3,13 @@
   import General from "../components/Layouts/General.svelte";
   import Shortcuts from "../components/Layouts/Shortcuts.svelte";
   import ScreenHeader from "../components/Root/ScreenHeader.svelte";
+  import ScreenView from "../components/Root/ScreenView.svelte";
   import { Tabs, TabList, TabPanel, Tab } from "../components/Tab";
 </script>
 
 <main class="page">
   <ScreenHeader title="Settings" />
-  <div class="screen-view">
+  <ScreenView>
     <Tabs>
       <TabList>
         <div class="tab-list">
@@ -51,7 +52,7 @@
         <h2>Sixth panel</h2>
       </TabPanel>
     </Tabs>
-  </div>
+  </ScreenView>
 </main>
 
 <style lang="scss">
@@ -71,6 +72,6 @@
   .tab-panel {
     width: 700px;
     padding-top: 20px;
-    padding-bottom: 100px;
+    /* padding-bottom: 100px; */
   }
 </style>
