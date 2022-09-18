@@ -75,7 +75,6 @@
     encodeTrackFile,
     toggleFavorite,
   } from "../../store/playerManager";
-  import Modal from "../Modal/Modal.svelte";
   import {
     handleToggleControlStyle,
     handleToggleEqualizer,
@@ -83,7 +82,6 @@
   } from "../../store/statusManager";
   import { gainNode, setupEqualizer } from "./Equalizer/Equalizer";
   import { currentAccentColor } from "../../store/theme";
-  import { clickOutside } from "../../utilities";
   import TrackBar from "../Widgets/TrackBar.svelte";
 
   onMount(() => {
@@ -129,35 +127,10 @@
     };
 
     audio.onerror = () => {
-      // show = true;
       handleToggleModal("file-error");
       $playbackManager.playing = false;
     };
   }
-
-  // function toggleFavorite() {
-  //   if (!audio.src) return;
-  //   if (
-  //     getSong(
-  //       $playlistStore[0].tracks,
-  //       $playbackManager?.nowPlaying.fileLocation
-  //     )
-  //   ) {
-  //     console.log("Track removed from favorite");
-  //     deleteSelectedTrackFromPlaylist($playbackManager.nowPlaying.fileLocation);
-  //   } else {
-  //     console.log("Track added to favorite");
-  //     addSelectedTracksToPlaylist($playbackManager.nowPlaying);
-  //   }
-  // }
-
-  // function seek(e) {
-  //   if (audio.src) {
-  //     let seekPercent = parseInt(e.srcElement.value);
-  //     seekBarWidth = `${seekPercent}%`;
-  //     audio.currentTime = (seekPercent * audio.duration) / 100;
-  //   }
-  // }
 
   function changeVolume(e) {
     volume = e.srcElement.value;
@@ -167,50 +140,9 @@
   $: if (volume) {
     volumeBarWidth = `${Math.trunc(volume * 100)}%`;
   }
-
-  // function goToPosition(e) {
-  //   if (audio.src) {
-  //     const seekBar = document.querySelector(".seek-bar");
-  //     const seekProgress = document.querySelector(".seek-progress");
-  //     const length = e.clientX - seekBar.getBoundingClientRect().x;
-  //     const percentageSeek = Math.ceil(
-  //       (length / window.getComputedStyle(seekBar).width.replace("px", "")) *
-  //         100
-  //     );
-  //     seekProgress.style.width = `${percentageSeek}%`;
-  //     audio.currentTime = (percentageSeek * audio.duration) / 100;
-  //   }
-  // }
-
-  function onClose() {
-    show = false;
-    nextSong();
-  }
 </script>
 
 <audio bind:this={audio} id="audioTag" autoplay />
-
-<!-- <Modal {show}>
-  <div class="modal-content">
-    <div class="modal-content-header">
-      <svelte:component this={WarningIcon} />
-      <h2>File error</h2>
-    </div>
-
-    <p>
-      Can't play. An error occured trying to play the file. Close to skip to
-      next track.
-    </p>
-
-    <p class="file-location">
-      File Location:
-      <span>{$selectedSong}</span>
-    </p>
-    <div class="modal-button-wrapper">
-      <button on:click={onClose}>Close</button>
-    </div>
-  </div>
-</Modal> -->
 
 <div
   class="control-panel"

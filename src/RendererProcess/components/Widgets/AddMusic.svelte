@@ -22,6 +22,10 @@
     console.log("Browser Dir HERE: ", dirHandle);
   }
 
+  const removeFromScannedFolders = (folder) => {
+    console.log(folder);
+  };
+
   $: console.log("Settings store: ", $settingsStore);
 </script>
 
@@ -39,6 +43,7 @@
     </button>
     <div class="add-music-list">
       <p>Folders you've added</p>
+      <p>Right now, we're watching these folders:</p>
       <div class="lists">
         {#each $settingsStore.foldersToScan as folder, index}
           <div class="list">
@@ -46,8 +51,11 @@
               <h2>{folder.replace(/(.*)[\/\\]/, "")}</h2>
               <p>{folder}</p>
             </div>
-            <span class="list-remove">
-              <TrashIcon />
+            <span
+              class="list-remove"
+              on:click={() => removeFromScannedFolders(folder)}
+            >
+              <svelte:component this={TrashIcon} />
             </span>
           </div>
         {/each}
