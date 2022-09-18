@@ -1,5 +1,6 @@
 <script>
   import isElectron from "../../../../isElectron";
+  import { settingsStore } from "../../store/player";
   import { toggleModal } from "../../store/status";
   import { handleToggleModal } from "../../store/statusManager";
   import { AddIcon, TrashIcon } from "../Icons";
@@ -21,10 +22,7 @@
     console.log("Browser Dir HERE: ", dirHandle);
   }
 
-  const lists = [
-    { name: "Music", path: `C:\Users\DELL\Music` },
-    { name: "audio", path: `C:\Users\DELL\Music\audio` },
-  ];
+  $: console.log("Settings store: ", $settingsStore);
 </script>
 
 <div class="add-music">
@@ -42,11 +40,11 @@
     <div class="add-music-list">
       <p>Folders you've added</p>
       <div class="lists">
-        {#each lists as list, index}
+        {#each $settingsStore.foldersToScan as folder, index}
           <div class="list">
             <div class="list-header">
-              <h2>{list.name}</h2>
-              <p>{list.path}</p>
+              <h2>{folder.replace(/(.*)[\/\\]/, "")}</h2>
+              <p>{folder}</p>
             </div>
             <span class="list-remove">
               <TrashIcon />

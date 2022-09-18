@@ -21,6 +21,7 @@ const {
   playlistTracker,
 } = require("./src/MainProcess/modules/playlistsTracker");
 const { playbackStats } = require("./src/MainProcess/modules/playbackStats");
+const { settings } = require("./src/MainProcess/modules/settings");
 
 process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
 
@@ -227,17 +228,29 @@ ipcMain.on("media", async (event, payload) => {
     dialog
       .showOpenDialog(window, { properties: ["openDirectory"] })
       .then((data) => {
-        console.log(data.filePaths[0]);
+        if (!data.canceled) {
+          settings.addFolderToScan(data.filePaths[0]);
+          window.webContents.send("userSettings", settings.getSttings);
+          if (fileTracker.getTracks.length) {
+            refreshTracks();
+            // window.webContents.send
+          }
+        }
       })
       .catch((err) => console.log("Error: ", err));
+  }
+  if (payload === "removeFromScannedFolders") {
+    console.log("Remove");
   }
   if (payload === "getTracks") {
     playerReady();
   }
-
   if (payload === "initializePlayer") {
     // playerReady();
     refreshTracks();
+  }
+  if (payload === "initializeSettings") {
+    window.webContents.send("userSettings", settings.getSttings);
   }
 });
 

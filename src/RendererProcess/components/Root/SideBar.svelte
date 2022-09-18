@@ -66,12 +66,12 @@
           </span>
           <span class="label"> Search </span>
         </li>
-        <!-- <li class:active-link-li={$location == "/"} on:click={() => push("/")}>
+        <li class:active-link-li={$location == "/"} on:click={() => push("/")}>
           <span class="icon">
             <svelte:component this={HomeIcon} />
           </span>
           <span class="label"> Discover </span>
-        </li> -->
+        </li>
         <li
           class:active-link-li={$location.includes("/my-music/") ||
             $location.includes("/artist-details/") ||

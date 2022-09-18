@@ -35,6 +35,9 @@ contextBridge.exposeInMainWorld("api", {
   userPlaylists: (action) => {
     ipcRenderer.on("userPlaylists", action);
   },
+  userSettings: (action) => {
+    ipcRenderer.on("userSettings", action);
+  },
   updateTrack: (action) => {
     ipcRenderer.on("updateTrack", action);
   },

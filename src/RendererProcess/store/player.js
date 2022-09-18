@@ -15,6 +15,9 @@ let playlistStore = writable([
     tracks: [],
   },
 ]);
+let settingsStore = writable({
+  scannedFolders: [],
+});
 let queuelistStore = writable([]);
 let selectedTracksStore = writable([]);
 let recentlyPlayedTracksStore = writable([]);
@@ -76,6 +79,7 @@ export {
   playbackManager,
   audioContext,
   playlistStore,
+  settingsStore,
   queuelistStore,
   selectedTracksStore,
   recentlyPlayedTracksStore,

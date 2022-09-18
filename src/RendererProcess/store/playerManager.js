@@ -16,12 +16,14 @@ import {
   recentlyPlayedTracksStore,
   playStatsStore,
   EqualizerManager,
+  settingsStore,
 } from "./player";
 
 let audio;
 let player;
 let queuelist;
 let playlists;
+let settings;
 let status;
 let currentTrack;
 let selectedTracks;
@@ -48,6 +50,10 @@ queuelistStore.subscribe((tracks) => {
 
 playlistStore.subscribe((tracks) => {
   playlists = tracks;
+});
+
+settingsStore.subscribe((payload) => {
+  settings = payload;
 });
 
 selectedTracksStore.subscribe((tracks) => {
@@ -520,6 +526,17 @@ export function restoreRecentlyPlayed(payload) {
 export function restorePlaylists(payload) {
   playlistStore.set(payload);
   // console.log("Playlist: ", payload);
+}
+
+export function restoreSettings(payload) {
+  settingsStore.set(payload);
+}
+
+export function setScannedFolders(payload) {
+  settingsStore.update((store) => {
+    store.scannedFolders = payload;
+    return store;
+  });
 }
 
 export function setPlayStats(payload) {

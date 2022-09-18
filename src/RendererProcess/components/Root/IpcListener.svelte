@@ -11,6 +11,7 @@
     prevSong,
     restorePlaylists,
     restoreRecentlyPlayed,
+    restoreSettings,
     restoreTracks,
     setPlayStats,
     stepBackward,
@@ -22,6 +23,7 @@
   onMount(async () => {
     window?.api?.media("getTracks");
     // window?.api?.media("initializePlayer");
+    window?.api?.media("initializeSettings");
     window?.api?.["processedFiles"]((e, tracks) => {
       restoreTracks(tracks);
       generateGenreData();
@@ -31,6 +33,9 @@
     });
     window?.api?.["newTrack"]((e, newTrack) => {
       addTrack(newTrack);
+    });
+    window?.api?.["userSettings"]((e, payload) => {
+      restoreSettings(payload);
     });
     window?.api?.["userPlaylists"]((e, playlists) => {
       restorePlaylists(playlists);
