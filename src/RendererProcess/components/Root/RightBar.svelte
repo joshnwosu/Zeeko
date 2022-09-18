@@ -7,6 +7,7 @@
     toggleTransparency,
   } from "../../store/status";
   import { handleToggleDimMode } from "../../store/statusManager";
+  import Likey from "../Addon/Likey.svelte";
   import {
     CubeIcon,
     HeartIcon,
@@ -43,6 +44,7 @@
       </span>
       <span class="tooltip">Zen mode</span>
     </li> -->
+    <Likey />
   </ul>
 
   <ul class="bottom">
@@ -79,7 +81,7 @@
     padding-top: 20px;
     /* padding-bottom: 100px; */
     z-index: 99;
-    transition: 300ms ease-in-out;
+    transition: padding 300ms ease-in-out;
   }
 
   .bottom,

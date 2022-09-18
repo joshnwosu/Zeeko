@@ -8,6 +8,7 @@
     MenuBoldIcon,
     AddIcon,
     ArrowLeftTwoIcon,
+    ChartIcon,
   } from "../Icons";
   import { location, push } from "svelte-spa-router";
   import {
@@ -82,7 +83,7 @@
         </li>
         <li on:click={() => ($toggleNowPlaying = !$toggleNowPlaying)}>
           <span class="icon">
-            <svelte:component this={NoteIcon} />
+            <svelte:component this={ChartIcon} />
           </span>
           <span class="label"> Now playing </span>
         </li>

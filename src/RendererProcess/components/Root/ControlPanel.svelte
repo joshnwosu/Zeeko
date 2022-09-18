@@ -40,6 +40,7 @@
     Backward10Icon,
     WarningIcon,
     ChartIcon,
+    ArrowDownIcon,
   } from "../../components/Icons";
   import {
     playerStore,
@@ -75,7 +76,10 @@
     toggleFavorite,
   } from "../../store/playerManager";
   import Modal from "../Modal/Modal.svelte";
-  import { handleToggleEqualizer } from "../../store/statusManager";
+  import {
+    handleToggleControlStyle,
+    handleToggleEqualizer,
+  } from "../../store/statusManager";
   import { gainNode, setupEqualizer } from "./Equalizer/Equalizer";
   import { currentAccentColor } from "../../store/theme";
   import { clickOutside } from "../../utilities";
@@ -213,12 +217,12 @@
     ? '#00000080'
     : '#000000'}"
 >
-  <div
-    class="wrapper left"
-    on:click={() => ($toggleNowPlaying = !$toggleNowPlaying)}
-  >
+  <div class="wrapper left">
     <div class="overlay" />
-    <div class="cover-art">
+    <div
+      class="cover-art"
+      on:click={() => ($toggleNowPlaying = !$toggleNowPlaying)}
+    >
       <img
         src={$playbackManager?.nowPlaying?.albumArt || defaultCoverArt}
         alt="cover-art"
@@ -240,6 +244,12 @@
         </p>
       </div>
     </div>
+    <span
+      class="icon more-icon left-flare"
+      on:click={() => handleToggleControlStyle(true)}
+    >
+      <svelte:component this={ArrowDownIcon} />
+    </span>
   </div>
   <div class="wrapper middle">
     <div class="control-button">
@@ -261,6 +271,12 @@
         <span class="icon more-icon left-flare">
           <svelte:component this={MoreIcon} />
         </span>
+        <!-- <span
+          class="icon more-icon left-flare"
+          on:click={() => handleToggleControlStyle(true)}
+        >
+          <svelte:component this={ArrowDownIcon} />
+        </span> -->
       </div>
       <div class="control-button-inner main-control">
         <span class="icon previous-icon left-flare" on:click={prevSong}>
@@ -532,6 +548,11 @@
             visibility: visible;
             opacity: 1;
           }
+        }
+
+        .more-icon {
+          position: relative;
+          z-index: 999;
         }
       }
       &.middle {
