@@ -4,18 +4,22 @@
   import AddMusic from "../Widgets/AddMusic.svelte";
   import CreatePlaylist from "../Widgets/CreatePlaylist.svelte";
   import FileError from "../Widgets/FileError.svelte";
+  import GlassBg from "../Widgets/GlassBG.svelte";
 </script>
 
 <div class="modal" class:show={$toggleModal != "close"}>
   <div class="overlay" />
   <div class="content">
-    {#if $toggleModal === "add-music"}
-      <AddMusic />
-    {:else if $toggleModal === "file-error"}
-      <FileError />
-    {:else if $toggleModal === "create-playlist"}
-      <CreatePlaylist />
-    {/if}
+    <GlassBg />
+    <div class="padding">
+      {#if $toggleModal === "add-music"}
+        <AddMusic />
+      {:else if $toggleModal === "file-error"}
+        <FileError />
+      {:else if $toggleModal === "create-playlist"}
+        <CreatePlaylist />
+      {/if}
+    </div>
   </div>
 </div>
 
@@ -37,7 +41,7 @@
     &.show {
       visibility: visible;
       opacity: 1;
-      transition: 200ms ease;
+      /* transition: 200ms ease; */
     }
     .overlay {
       width: 100%;
@@ -50,11 +54,13 @@
     .content {
       position: relative;
       z-index: 1;
-      background-color: #121212;
-      padding: 30px;
       min-width: 400px;
       max-width: 400px;
       border: 1px solid #333333;
+      .padding {
+        position: relative;
+        padding: 30px;
+      }
     }
   }
 </style>
