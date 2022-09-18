@@ -38,9 +38,6 @@
 
 <style lang="scss">
   .create-playlist-card {
-    width: 500px;
-    background-color: #222222;
-    padding: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
