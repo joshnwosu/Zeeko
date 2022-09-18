@@ -21,6 +21,7 @@
   import ThemeProvider from "./RendererProcess/components/Root/ThemeProvider.svelte";
   import { currentTheme } from "./RendererProcess/store/theme";
   import MiniControlPanel from "./RendererProcess/components/Root/MiniControlPanel.svelte";
+  import Modal from "./RendererProcess/components/Modal/Modal.svelte";
 
   const routeLoaded = (event) => {
     // console.log("Eevnt: ", event);
@@ -35,7 +36,6 @@
   <div id="app" on:click={cleanUp} on:contextmenu={cleanUp} on:scroll={cleanUp}>
     <ContextMenu />
     <NowPlaying />
-    <CreatePlaylist />
     <IpcListener />
     <Bg />
     <Frame />
@@ -53,6 +53,7 @@
       <ControlPanel />
       <RightBar />
       <Equalizer />
+      <Modal />
     </section>
   </div>
 </ThemeProvider>

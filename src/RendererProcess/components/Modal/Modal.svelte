@@ -1,11 +1,28 @@
 <script>
-  export let show;
+  import { toggleModal } from "../../store/status";
+
+  // export let show;
+
+  import AddMusic from "../Widgets/AddMusic.svelte";
+  import CreatePlaylist from "../Widgets/CreatePlaylist.svelte";
+  import FileError from "../Widgets/FileError.svelte";
+
+  // $: console.log(show);
+  // let show = true;
+  // let name = "file-error";
 </script>
 
-<div class="modal" class:show>
+<div class="modal" class:show={$toggleModal != "close"}>
   <div class="overlay" />
   <div class="content">
-    <slot class="content" />
+    <!-- <slot class="content" /> -->
+    {#if $toggleModal === "add-music"}
+      <AddMusic />
+    {:else if $toggleModal === "file-error"}
+      <FileError />
+    {:else if $toggleModal === "create-playlist"}
+      <CreatePlaylist />
+    {/if}
   </div>
 </div>
 
@@ -21,6 +38,11 @@
     opacity: 0;
     visibility: hidden;
     transition: 0.2s ease;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     &.show {
       visibility: visible;
       opacity: 1;

@@ -17,6 +17,7 @@ let toggleWindowSystemStyle = writable(
 let toggleControlStyle = writable(
   JSON.parse(localStorage.getItem("ControlStyle")) || false
 );
+let toggleModal = writable("close");
 export {
   toggleSidebar,
   toggleDim,
@@ -27,4 +28,5 @@ export {
   toggleTransparency,
   toggleWindowSystemStyle,
   toggleControlStyle,
+  toggleModal,
 };

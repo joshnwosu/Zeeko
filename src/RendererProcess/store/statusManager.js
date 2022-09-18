@@ -8,6 +8,7 @@ import {
   toggleTransparency,
   toggleWindowSystemStyle,
   toggleControlStyle,
+  toggleModal,
 } from "./status";
 import { currentWindowStyle } from "./theme";
 
@@ -16,12 +17,14 @@ let sidebarStore;
 let nowPlayingStore;
 let equalizerStore;
 let transparencyStore;
+let modal;
 
 toggleDim.subscribe((d) => (dimStore = d));
 toggleSidebar.subscribe((s) => (sidebarStore = s));
 toggleNowPlaying.subscribe((n) => (nowPlayingStore = n));
 toggleEqualizer.subscribe((e) => (equalizerStore = e));
 toggleTransparency.subscribe((e) => (transparencyStore = e));
+toggleModal.subscribe((m) => (modal = m));
 
 export function handleToggleSidebar() {
   let sidebar = !sidebarStore;
@@ -79,4 +82,8 @@ export function handleToggleControlStyle(payload) {
   localStorage.setItem("ControlStyle", JSON.stringify(payload));
   toggleSidebar.set(false);
   localStorage.setItem("Sidebar", JSON.stringify(false));
+}
+
+export function handleToggleModal(payload) {
+  toggleModal.set(payload);
 }

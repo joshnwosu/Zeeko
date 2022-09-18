@@ -44,7 +44,7 @@
       </span>
       <span class="tooltip">Zen mode</span>
     </li> -->
-    <Likey />
+    <!-- <Likey /> -->
   </ul>
 
   <ul class="bottom">

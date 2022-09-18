@@ -79,6 +79,7 @@
   import {
     handleToggleControlStyle,
     handleToggleEqualizer,
+    handleToggleModal,
   } from "../../store/statusManager";
   import { gainNode, setupEqualizer } from "./Equalizer/Equalizer";
   import { currentAccentColor } from "../../store/theme";
@@ -128,7 +129,8 @@
     };
 
     audio.onerror = () => {
-      show = true;
+      // show = true;
+      handleToggleModal("file-error");
       $playbackManager.playing = false;
     };
   }
@@ -188,7 +190,7 @@
 
 <audio bind:this={audio} id="audioTag" autoplay />
 
-<Modal {show}>
+<!-- <Modal {show}>
   <div class="modal-content">
     <div class="modal-content-header">
       <svelte:component this={WarningIcon} />
@@ -208,7 +210,7 @@
       <button on:click={onClose}>Close</button>
     </div>
   </div>
-</Modal>
+</Modal> -->
 
 <div
   class="control-panel"
@@ -374,7 +376,7 @@
     }
   }
 
-  .modal-content {
+  /* .modal-content {
     width: 400px;
     background-color: #121212;
     padding: 20px;
@@ -418,7 +420,7 @@
         font-size: 12px;
       }
     }
-  }
+  } */
   .overlay {
     background-color: #22222250;
     width: 100%;

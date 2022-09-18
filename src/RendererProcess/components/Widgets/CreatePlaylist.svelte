@@ -1,7 +1,7 @@
 <script>
-  import { toggleCreatePlaylist } from "../../store/status";
+  import { toggleCreatePlaylist, toggleModal } from "../../store/status";
   import { createPlaylist } from "../../store/playerManager";
-  import Modal from "../Modal/Modal.svelte";
+  import { handleToggleModal } from "../../store/statusManager";
   let input;
   let inputValue;
 
@@ -13,33 +13,28 @@
   function handleCreatePlaylist() {
     createPlaylist(inputValue);
     inputValue = "";
-    $toggleCreatePlaylist = false;
+    handleToggleModal("close");
   }
 </script>
 
-<Modal show={$toggleCreatePlaylist}>
-  <div class="create-playlist-card">
-    <h1>Create Playlist</h1>
-    <div>
-      <input
-        type="text"
-        placeholder="Enter name"
-        bind:this={input}
-        bind:value={inputValue}
-      />
-    </div>
-
-    <div class="btn-wrapper">
-      <span class="add-btn" on:click={handleCreatePlaylist}>Add playlist</span>
-
-      <span
-        class="close-btn"
-        on:click={() => ($toggleCreatePlaylist = !$toggleCreatePlaylist)}
-        >Cancel</span
-      >
-    </div>
+<div class="create-playlist-card">
+  <h1>Create Playlist</h1>
+  <div>
+    <input
+      type="text"
+      placeholder="Enter name"
+      bind:this={input}
+      bind:value={inputValue}
+    />
   </div>
-</Modal>
+
+  <div class="btn-wrapper">
+    <span class="add-btn" on:click={handleCreatePlaylist}>Add playlist</span>
+    <span class="close-btn" on:click={() => handleToggleModal("close")}
+      >Cancel</span
+    >
+  </div>
+</div>
 
 <style lang="scss">
   .create-playlist-card {

@@ -1,20 +1,25 @@
 <script>
   import isElectron from "../../../../isElectron";
+  import { toggleModal } from "../../store/status";
   import { handleToggleEqualizer } from "../../store/statusManager";
 
   import Switch from "../Addon/Switch.svelte";
+  import Modal from "../Modal/Modal.svelte";
+  import AddMusic from "../Widgets/AddMusic.svelte";
   import StyleLayout from "../Widgets/StyleLayout.svelte";
   import SwitchLayout from "../Widgets/SwitchLayout.svelte";
   let checked3 = false;
+  let show;
 
   const pickFolder = () => {
-    if (isElectron()) {
-      window?.api?.media("addScanFolder");
-    } else {
-      console.log("Opening Browser Dialog...");
-      // browserFile.click();
-      getDir();
-    }
+    toggleModal.set("add-music");
+    // if (isElectron()) {
+    //   window?.api?.media("addScanFolder");
+    // } else {
+    //   console.log("Opening Browser Dialog...");
+    //   // browserFile.click();
+    //   getDir();
+    // }
   };
 
   async function getDir() {
@@ -23,6 +28,10 @@
     console.log("Browser Dir HERE: ", dirHandle);
   }
 </script>
+
+<!-- <Modal show={$toggleModal}>
+  <AddMusic />
+</Modal> -->
 
 <div>
   <div class="music-select">

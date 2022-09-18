@@ -13,6 +13,7 @@
   import { location, push } from "svelte-spa-router";
   import {
     toggleCreatePlaylist,
+    toggleModal,
     toggleNowPlaying,
     toggleSidebar,
     toggleTransparency,
@@ -24,7 +25,8 @@
   import { currentAccentColor } from "../../store/theme";
 
   function handleToggle() {
-    $toggleCreatePlaylist = !$toggleCreatePlaylist;
+    // $toggleCreatePlaylist = !$toggleCreatePlaylist;
+    toggleModal.set("create-playlist");
   }
 </script>
 
