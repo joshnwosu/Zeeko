@@ -5,12 +5,13 @@
   import TrackLists from "../components/Track/TrackLists.svelte";
   import TrackListsNew from "../components/Track/TrackListsNew.svelte";
   import TrackListTag from "../components/Track/TrackListTag.svelte";
+  import ScrollView from "../components/Widgets/ScrollView.svelte";
   import { playlistStore } from "../store/player";
   $: playlist =
     $playlistStore.filter((playlist) => playlist.name == params?.name)[0] || [];
 </script>
 
-<main class="page">
+<ScrollView>
   {#if playlist?.name}
     <PlaylistHeader name={params.name} {playlist} />
     <PlaylistView>
@@ -19,4 +20,4 @@
       <TrackListTag tracks={playlist?.tracks} />
     </PlaylistView>
   {/if}
-</main>
+</ScrollView>

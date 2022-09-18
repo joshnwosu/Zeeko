@@ -16,6 +16,7 @@
   import Artist from "../views/Artists.svelte";
   import Albums from "../views/Albums.svelte";
   import Genres from "../views/Genres.svelte";
+  import Folders from "../views/Folders.svelte";
 
   const prefix = "/my-music";
   const routes = {
@@ -23,6 +24,7 @@
     "/artists": Artist,
     "/albums": Albums,
     "/genres": Genres,
+    "/folders": Folders,
   };
 </script>
 
@@ -56,6 +58,12 @@
       >
         Genres
       </span> -->
+      <span
+        on:click={() => push(`${prefix}/folders`)}
+        class:active={$location == `${prefix}/folders`}
+      >
+        Folders
+      </span>
     </nav>
   </div>
 

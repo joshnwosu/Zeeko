@@ -486,7 +486,7 @@ export function getToPosition(e) {
 }
 
 export function addTrack(payload) {
-  console.log("Called from the store....");
+  // console.log("Called from the store....");
   const trackAlreadyAdded = player.some(
     (track) => track.fileLocation == payload.fileLocation
   );

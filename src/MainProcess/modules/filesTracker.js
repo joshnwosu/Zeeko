@@ -49,6 +49,41 @@ class FilesTracker {
     this.saveChanges();
   }
 
+  deleteFileBasedOnDirectory(folderPath) {
+    // const indexOfDeletedTrack = this.processedFiles.findIndex(
+    //   (track) =>
+    //     track.folderInfo.path.replace(/(.*)[\/\\]/, "") ==
+    //     folderPath.replace(/(.*)[\/\\]/, "")
+    // );
+    // this.processedFiles.splice(indexOfDeletedTrack, 1);
+    // this.saveChanges();
+    // console.log("lol:", indexOfDeletedTrack, folderPath);
+
+    // console.log("My guy");
+
+    const filtered = this.processedFiles.filter(
+      (track) =>
+        track.folderInfo.path.replace(/(.*)[\/\\]/, "") !=
+        folderPath.replace(/(.*)[\/\\]/, "")
+    );
+
+    // console.log(filtered.length);
+    this.processedFiles = filtered;
+    this.saveChanges();
+
+    // this.processedFiles.forEach((track, index) => {
+    //   if (
+    //     track.folderInfo.path.replace(/(.*)[\/\\]/, "") ==
+    //     folderPath.replace(/(.*)[\/\\]/, "")
+    //   ) {
+    //     // console.log("The track: ", track, folderPath);
+    //     this.processedFiles.splice(index, 1);
+    //     this.saveChanges();
+    //     // this.deleteFile(track.fileLocation);
+    //   }
+    // });
+  }
+
   clearData() {
     this.processedFiles = [];
   }

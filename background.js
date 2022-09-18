@@ -74,7 +74,7 @@ const createWindow = () => {
     window.loadURL(path.join(__dirname, "public/index.html"));
   });
 
-  console.log("dir", __dirname);
+  // console.log("dir", __dirname);
 
   function sendMediaControl(arg) {
     window.webContents.send("mediaControl", arg);
@@ -180,6 +180,7 @@ watcher = chokidar
       const newTrack = await createParsedTrack(path);
       window.webContents.send("newTrack", newTrack);
       fileTracker.saveChanges();
+      // playerReady();
     }
   })
 
@@ -191,6 +192,7 @@ watcher = chokidar
     console.log(`File ${path} has been removed`);
     fileTracker.deleteFile(path);
     playerReady();
+    // refreshTracks();
   })
   .on("ready", () => {
     console.log("Done.");
@@ -239,9 +241,9 @@ ipcMain.on("media", async (event, payload) => {
       })
       .catch((err) => console.log("Error: ", err));
   }
-  if (payload === "removeFromScannedFolders") {
-    console.log("Remove");
-  }
+  // if (payload === "removeFromScannedFolders") {
+  //   console.log("Remove");
+  // }
   if (payload === "getTracks") {
     playerReady();
   }
@@ -252,6 +254,17 @@ ipcMain.on("media", async (event, payload) => {
   if (payload === "initializeSettings") {
     window.webContents.send("userSettings", settings.getSttings);
   }
+});
+
+ipcMain.on("removeFromScannedFolders", (e, payload) => {
+  // console.log("ipc payload: ", payload);
+  payload = payload.replace(/\\/g, "\\\\");
+  settings.removeFromScannedFolders(payload);
+  window.webContents.send("userSettings", settings.getSttings);
+  fileTracker.deleteFileBasedOnDirectory(payload);
+  // refreshTracks();
+  playerReady();
+  // console.log("haaha:", payload);
 });
 
 ipcMain.on("updatePlaylists", async (event, payload) => {
@@ -279,8 +292,8 @@ function playerReady() {
 }
 
 function refreshTracks() {
-  const folders = [directories.musicDirectory];
-  // console.log(folders);
+  const folders = settings.getSttings.foldersToScan;
+  // console.log("kk: ", folders);
   let superFolder = [];
   handleAllFolders(folders, folders.length, 0);
   function handleAllFolders(folders, length, index) {

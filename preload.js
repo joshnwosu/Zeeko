@@ -24,6 +24,9 @@ contextBridge.exposeInMainWorld("api", {
     ipcRenderer.send("isPlaying", action);
     // console.log("Hello: ", action);
   },
+  removeFromScannedFolders: (action) => {
+    ipcRenderer.send("removeFromScannedFolders", action);
+  },
 
   // Bridge from main to renderer
   processedFiles: (action) => {

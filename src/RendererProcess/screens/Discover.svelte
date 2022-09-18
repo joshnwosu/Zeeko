@@ -9,7 +9,7 @@
   <ScreenHeader title="Discover" />
   <ScreenView>
     <LibraryStats />
-    <GenreTags />
+    <!-- <GenreTags /> -->
   </ScreenView>
 </main>
 

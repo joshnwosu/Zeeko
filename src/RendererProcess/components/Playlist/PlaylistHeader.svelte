@@ -25,7 +25,7 @@
     background-color: #121212;
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 9;
     .header-content {
       width: 100%;
       display: flex;

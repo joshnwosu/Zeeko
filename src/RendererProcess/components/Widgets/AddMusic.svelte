@@ -22,8 +22,9 @@
     console.log("Browser Dir HERE: ", dirHandle);
   }
 
-  const removeFromScannedFolders = (folder) => {
-    console.log(folder);
+  const removeFolder = (folder) => {
+    // console.log(folder);
+    window?.api?.removeFromScannedFolders(folder);
   };
 
   $: console.log("Settings store: ", $settingsStore);
@@ -51,10 +52,7 @@
               <h2>{folder.replace(/(.*)[\/\\]/, "")}</h2>
               <p>{folder}</p>
             </div>
-            <span
-              class="list-remove"
-              on:click={() => removeFromScannedFolders(folder)}
-            >
+            <span class="list-remove" on:click={() => removeFolder(folder)}>
               <svelte:component this={TrashIcon} />
             </span>
           </div>

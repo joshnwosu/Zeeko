@@ -24,6 +24,9 @@
     window?.api?.media("getTracks");
     // window?.api?.media("initializePlayer");
     window?.api?.media("initializeSettings");
+    window?.api?.media("removeFromScannedFolders", (e, i) =>
+      console.log("That i: ", i)
+    );
     window?.api?.["processedFiles"]((e, tracks) => {
       restoreTracks(tracks);
       generateGenreData();
