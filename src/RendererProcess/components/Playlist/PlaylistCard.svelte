@@ -13,7 +13,7 @@
     <div
       class="playlist-card"
       on:click={() => push(`/${routeName}/${list.name}`)}
-      on:contextmenu={displayContextMenu}
+      on:contextmenu={(e) => displayContextMenu(e, "playlist")}
     >
       <figure>
         <PlaylistCover img={getFirstAlbumArt(list?.tracks)} />

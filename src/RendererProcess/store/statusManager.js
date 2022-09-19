@@ -9,6 +9,7 @@ import {
   toggleWindowSystemStyle,
   toggleControlStyle,
   toggleModal,
+  toggleContextMenu,
 } from "./status";
 import { currentWindowStyle } from "./theme";
 
@@ -86,4 +87,8 @@ export function handleToggleControlStyle(payload) {
 
 export function handleToggleModal(payload) {
   toggleModal.set(payload);
+}
+
+export function handleToggleContextMenu(payload) {
+  toggleContextMenu.set(payload);
 }

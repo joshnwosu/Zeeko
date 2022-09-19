@@ -1,11 +1,15 @@
-export function displayContextMenu(e) {
+import { toggleContextMenu } from "../store/status";
+
+export function displayContextMenu(e, name) {
+  // console.log("Name: ", name);
+
   e.preventDefault();
   e.stopPropagation();
   const { clientX, clientY } = e;
   const contextMenu = document.querySelector(".contextMenu");
   const contextMenuOverlay = document.querySelector(".contextMenu-overlay");
 
-  contextMenuOverlay.style.display = "block";
+  contextMenuOverlay.style.display = "flex";
 
   const positionY =
     clientY + contextMenu.scrollHeight >= window.innerHeight
@@ -21,8 +25,6 @@ export function displayContextMenu(e) {
     `
       --top: ${positionY}px;
       --left: ${positionX}px;
-      --width: ${contextMenu.scrollWidth}px;
-      height: ${contextMenu.scrollHeight}px;
       `
   );
 
@@ -40,5 +42,6 @@ export function displayContextMenu(e) {
     iterations: 1,
   };
 
-  contextMenu.animate(keyframes, timing);
+  // contextMenu.animate(keyframes, timing);
+  toggleContextMenu.set(name);
 }

@@ -61,8 +61,8 @@ export const cleanUp = () => {
   let contextMenu = document.querySelector(".contextMenu");
   let contextMenuOverlay = document.querySelector(".contextMenu-overlay");
   if (contextMenu || contextMenuOverlay) {
-    contextMenu.setAttribute("style", `height: 0px;`);
     contextMenuOverlay.style.display = "none";
+    contextMenu.style.display = "none";
   }
 };
 

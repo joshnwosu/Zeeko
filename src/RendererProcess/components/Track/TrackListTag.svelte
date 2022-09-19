@@ -51,7 +51,7 @@
         }
         selectedTrack(track.fileLocation, tracks);
       }}
-      on:contextmenu={displayContextMenu}
+      on:contextmenu={(e) => displayContextMenu(e, "track")}
     >
       <div class="track-bg" />
       <div class="track-tag-wrapper">
