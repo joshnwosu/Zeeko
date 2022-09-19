@@ -1,9 +1,7 @@
 <script>
   export let params;
   import PlaylistHeader from "../components/Playlist/PlaylistHeader.svelte";
-  import PlaylistView from "../components/Playlist/PlaylistView.svelte";
-  import TrackLists from "../components/Track/TrackLists.svelte";
-  import TrackListsNew from "../components/Track/TrackListsNew.svelte";
+  import ScreenView from "../components/Root/ScreenView.svelte";
   import TrackListTag from "../components/Track/TrackListTag.svelte";
   import ScrollView from "../components/Widgets/ScrollView.svelte";
   import { playlistStore } from "../store/player";
@@ -11,13 +9,24 @@
     $playlistStore.filter((playlist) => playlist.name == params?.name)[0] || [];
 </script>
 
-<ScrollView>
+<div class="playlist-details">
   {#if playlist?.name}
     <PlaylistHeader name={params.name} {playlist} />
-    <PlaylistView>
-      <!-- <TrackLists tracks={playlist?.tracks} /> -->
-      <!-- <TrackListsNew tracks={playlist?.tracks} /> -->
+    <ScreenView>
       <TrackListTag tracks={playlist?.tracks} />
-    </PlaylistView>
+    </ScreenView>
   {/if}
-</ScrollView>
+</div>
+
+<style lang="scss">
+  .playlist-details {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar-track-piece:end {
+      margin-bottom: 100px;
+    }
+  }
+</style>

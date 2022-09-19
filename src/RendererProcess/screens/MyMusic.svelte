@@ -52,12 +52,12 @@
       >
         Albums
       </span>
-      <!-- <span
+      <span
         on:click={() => push(`${prefix}/genres`)}
         class:active={$location == `${prefix}/genres`}
       >
         Genres
-      </span> -->
+      </span>
       <span
         on:click={() => push(`${prefix}/folders`)}
         class:active={$location == `${prefix}/folders`}
