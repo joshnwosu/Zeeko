@@ -6,5 +6,5 @@
 </script>
 
 <ScrollView>
-  <PlaylistCard lists={$foldersStore} routeName="playlist-details" />
+  <PlaylistCard lists={$foldersStore} routeName="folder-details" />
 </ScrollView>

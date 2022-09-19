@@ -177,7 +177,7 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-
+        font-weight: 200;
         /* border: 1px solid red; */
       }
 
@@ -191,6 +191,7 @@
         font-size: 12px;
         text-align: left;
         margin-right: 10px;
+        opacity: 0.5;
       }
       .artist {
         width: 100%;

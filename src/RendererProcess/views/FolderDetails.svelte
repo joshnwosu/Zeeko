@@ -4,14 +4,14 @@
   import ScreenView from "../components/Root/ScreenView.svelte";
   import TrackListTag from "../components/Track/TrackListTag.svelte";
   import ScrollView from "../components/Widgets/ScrollView.svelte";
-  import { playlistStore } from "../store/player";
+  import { foldersStore } from "../store/player";
   $: playlist =
-    $playlistStore.filter((playlist) => playlist.name == params?.name)[0] || [];
+    $foldersStore.filter((folder) => folder.name == params?.name)[0] || [];
 </script>
 
 <div class="playlist-details">
   {#if playlist?.name}
-    <PlaylistHeader name={params.name} {playlist} mini={false} />
+    <PlaylistHeader name={params.name} {playlist} mini />
     <ScreenView>
       <TrackListTag tracks={playlist?.tracks} />
     </ScreenView>

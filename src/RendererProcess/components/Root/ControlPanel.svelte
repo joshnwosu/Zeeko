@@ -546,7 +546,7 @@
       .artist {
         font-size: 12px;
         font-weight: 200;
-        color: #ffffff60;
+        opacity: 0.5;
       }
     }
 

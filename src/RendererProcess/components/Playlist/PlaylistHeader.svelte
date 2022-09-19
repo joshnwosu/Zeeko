@@ -1,11 +1,15 @@
 <script>
   export let playlist;
   export let name;
+  export let mini;
   import { getFirstAlbumArt } from "../../store/playerManager";
   import BlurImg from "../Widgets/BlurImg.svelte";
   import PlaylistCover from "../Widgets/PlaylistCover.svelte";
   import PlaylistActionButtons from "./PlaylistActionButtons.svelte";
+  import PlaylistActionButtonsMini from "./PlaylistActionButtonsMini.svelte";
   import PlaylistCaption from "./PlaylistCaption.svelte";
+
+  // $: console.log("params: ", name);
 </script>
 
 <div class="header">
@@ -14,7 +18,11 @@
     <PlaylistCover img={getFirstAlbumArt(playlist?.tracks)} />
     <div class="details">
       <PlaylistCaption {name} length={playlist?.tracks?.length} fontSize={30} />
-      <PlaylistActionButtons {name} />
+      {#if mini}
+        <PlaylistActionButtonsMini />
+      {:else}
+        <PlaylistActionButtons {name} />
+      {/if}
     </div>
   </div>
 </div>

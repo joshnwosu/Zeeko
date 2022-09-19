@@ -8,6 +8,7 @@ import NotFound from "../views/NotFound.svelte";
 import ArtistDetails from "../views/ArtistDetails.svelte";
 import AlbumDetails from "../views/AlbumDetails.svelte";
 import PlaylistDetails from "../views/PlaylistDetails.svelte";
+import FolderDetails from "../views/FolderDetails.svelte";
 
 export const routes = {
   "/": Discover,
@@ -19,5 +20,6 @@ export const routes = {
   "/artist-details/:name": ArtistDetails,
   "/album-details/:name": AlbumDetails,
   "/playlist-details/:name": PlaylistDetails,
+  "/folder-details/:name": FolderDetails,
   "*": NotFound,
 };
