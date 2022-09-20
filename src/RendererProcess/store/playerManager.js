@@ -17,6 +17,7 @@ import {
   playStatsStore,
   EqualizerManager,
   settingsStore,
+  searchManager,
 } from "./player";
 
 let audio;
@@ -35,6 +36,7 @@ let storeAlbums;
 let storeArtists;
 
 let equalizerStore;
+let searchStore;
 
 audioContext.subscribe((context) => {
   audio = context;
@@ -90,6 +92,10 @@ recentlyPlayedTracksStore.subscribe((store) => {
 
 EqualizerManager.subscribe((store) => {
   equalizerStore = store;
+});
+
+searchManager.subscribe((store) => {
+  searchStore = store;
 });
 
 function sortArrayOfObjects(targetArray, param) {
@@ -707,4 +713,32 @@ export function changeBandGains(payload) {
     return store;
   });
   createdFilters.map((filter, index) => (filter.gain.value = payload[index]));
+}
+
+// Search
+
+export function searchResult(query) {
+  if (query) {
+    searchManager.update((store) => {
+      store.tracks = player.filter(
+        (track) =>
+          track.title?.toLowerCase()?.startsWith(query.toLocaleLowerCase()) ||
+          track.fileName
+            ?.toLowerCase()
+            ?.startsWith(query.toLocaleLowerCase()) ||
+          track.artist?.toLowerCase()?.startsWith(query.toLocaleLowerCase()) ||
+          track.album?.toLowerCase()?.startsWith(query.toLocaleLowerCase())
+      );
+      // .slice(0, 10);
+      store.artists = storeArtists.filter((artist) =>
+        artist.name?.toLowerCase()?.startsWith(query.toLocaleLowerCase())
+      );
+      // .slice(0, 5);
+      store.albums = storeAlbums.filter((album) =>
+        album.name?.toLowerCase()?.includes(query.toLocaleLowerCase())
+      );
+      // .slice(0, 5);
+      return store;
+    });
+  }
 }

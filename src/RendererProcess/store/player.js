@@ -68,6 +68,12 @@ let EqualizerManager = writable({
   ],
 });
 
+let searchManager = writable({
+  tracks: [],
+  artists: [],
+  albums: [],
+});
+
 export {
   genresStore,
   foldersStore,
@@ -85,4 +91,5 @@ export {
   recentlyPlayedTracksStore,
   playStatsStore,
   EqualizerManager,
+  searchManager,
 };
