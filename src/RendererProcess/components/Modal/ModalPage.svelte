@@ -1,15 +1,16 @@
 <script>
-  import { toggleModalPage } from "../../store/status";
+  import { toggleModalPage, toggleTransparency } from "../../store/status";
   import { handleNavigation } from "../../store/statusManager";
   import { ArrowLeftTwoIcon } from "../Icons";
   import NowPlaying from "../Root/NowPlaying.svelte";
   import Search from "../Root/Search.svelte";
-  import GlassBg from "../Widgets/GlassBG.svelte";
 </script>
 
-<div class="modal-page" class:show-modal-page={$toggleModalPage != "close"}>
-  <GlassBg />
-
+<div
+  class="modal-page"
+  class:show-modal-page={$toggleModalPage != "close"}
+  style="background-color: {$toggleTransparency ? '#12121250' : '#121212'}"
+>
   <div class="modal-page-content">
     <li class="go-back">
       <span class="icon" on:click={handleNavigation}>
@@ -36,6 +37,8 @@
     z-index: 9999;
     visibility: hidden;
     opacity: 0;
+    transition: 200ms linear;
+    backdrop-filter: blur(50px);
     &.show-modal-page {
       visibility: visible;
       opacity: 1;

@@ -15,14 +15,14 @@ import { currentWindowStyle } from "./theme";
 
 let dimStore;
 let sidebarStore;
-let nowPlayingStore;
+let modalPage;
 let equalizerStore;
 let transparencyStore;
 let modal;
 
 toggleDim.subscribe((d) => (dimStore = d));
 toggleSidebar.subscribe((s) => (sidebarStore = s));
-toggleModalPage.subscribe((n) => (nowPlayingStore = n));
+toggleModalPage.subscribe((n) => (modalPage = n));
 toggleEqualizer.subscribe((e) => (equalizerStore = e));
 toggleTransparency.subscribe((e) => (transparencyStore = e));
 toggleModal.subscribe((m) => (modal = m));
@@ -46,7 +46,7 @@ export function handleToggleDimMode(payload) {
 
 export function handleNavigation() {
   // checks if Now playing is visible
-  if (nowPlayingStore) {
+  if (modalPage != "close") {
     toggleModalPage.set("close");
   } else {
     pop();

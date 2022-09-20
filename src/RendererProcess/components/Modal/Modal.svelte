@@ -1,16 +1,16 @@
 <script>
-  import { toggleModal } from "../../store/status";
-
+  import { toggleModal, toggleTransparency } from "../../store/status";
   import AddMusic from "../Widgets/AddMusic.svelte";
   import CreatePlaylist from "../Widgets/CreatePlaylist.svelte";
   import FileError from "../Widgets/FileError.svelte";
-  import GlassBg from "../Widgets/GlassBG.svelte";
 </script>
 
 <div class="modal" class:show={$toggleModal != "close"}>
   <div class="overlay" />
-  <div class="content">
-    <GlassBg />
+  <div
+    class="content"
+    style="background-color: {$toggleTransparency ? '#12121250' : '#121212'}"
+  >
     <div class="padding">
       {#if $toggleModal === "add-music"}
         <AddMusic />
@@ -38,10 +38,10 @@
     left: 0;
     right: 0;
     bottom: 0;
+
     &.show {
       visibility: visible;
       opacity: 1;
-      /* transition: 200ms ease; */
     }
     .overlay {
       width: 100%;
@@ -57,6 +57,7 @@
       min-width: 400px;
       max-width: 400px;
       border: 1px solid #333333;
+      backdrop-filter: blur(50px);
       .padding {
         position: relative;
         padding: 30px;
