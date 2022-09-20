@@ -26,12 +26,12 @@
     : '#121212'} ; padding-bottom: {$toggleControlStyle ? '0px' : '100px'}"
 >
   <ul class="top">
-    <li>
+    <!-- <li>
       <span class="icon">
         <svelte:component this={CoffeeIcon} />
       </span>
       <span class="tooltip">Buy Me A Coffee 🥤😊</span>
-    </li>
+    </li> -->
     <li on:click={() => handleRouting("/playlist-details/Favorites")}>
       <span class="icon">
         <svelte:component this={HeartIcon} />

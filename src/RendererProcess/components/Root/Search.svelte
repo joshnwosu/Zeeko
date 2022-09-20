@@ -23,21 +23,21 @@
     <div class="search-content">
       {#if $searchManager.tracks.length > 0}
         <div class="section track-section">
-          <h1>Track</h1>
+          <h1>Songs <span>&#x2022;</span> {$searchManager.tracks.length}</h1>
           <TrackListTag tracks={$searchManager.tracks} />
         </div>
       {/if}
 
       {#if $searchManager.artists.length > 0}
         <div class="section artist-section">
-          <h1>Artist</h1>
+          <h1>Artists <span>&#x2022;</span> {$searchManager.artists.length}</h1>
           <ArtistCard data={$searchManager.artists} />
         </div>
       {/if}
 
       {#if $searchManager.albums.length > 0}
         <div class="section album-section">
-          <h1>Albums</h1>
+          <h1>Albums <span>&#x2022;</span> {$searchManager.albums.length}</h1>
           <AlbumCard data={$searchManager.albums} />
         </div>
       {/if}
