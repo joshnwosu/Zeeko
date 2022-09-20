@@ -3,7 +3,7 @@ import { windowStyleConfig } from "../config/appearance";
 import {
   toggleDim,
   toggleSidebar,
-  toggleNowPlaying,
+  toggleModalPage,
   toggleEqualizer,
   toggleTransparency,
   toggleWindowSystemStyle,
@@ -22,10 +22,14 @@ let modal;
 
 toggleDim.subscribe((d) => (dimStore = d));
 toggleSidebar.subscribe((s) => (sidebarStore = s));
-toggleNowPlaying.subscribe((n) => (nowPlayingStore = n));
+toggleModalPage.subscribe((n) => (nowPlayingStore = n));
 toggleEqualizer.subscribe((e) => (equalizerStore = e));
 toggleTransparency.subscribe((e) => (transparencyStore = e));
 toggleModal.subscribe((m) => (modal = m));
+
+export function handleToggleModalPage(payload) {
+  toggleModalPage.set(payload);
+}
 
 export function handleToggleSidebar() {
   let sidebar = !sidebarStore;
@@ -43,7 +47,7 @@ export function handleToggleDimMode(payload) {
 export function handleNavigation() {
   // checks if Now playing is visible
   if (nowPlayingStore) {
-    toggleNowPlaying.set(false);
+    toggleModalPage.set("close");
   } else {
     pop();
   }

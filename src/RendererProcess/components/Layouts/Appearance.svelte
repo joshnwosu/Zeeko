@@ -36,7 +36,7 @@
 
 <div class="appearance" style="--accent-color: {$currentAccentColor}">
   <StyleLayout>
-    <div slot="style-title">Theme</div>
+    <div slot="style-title">Layout style</div>
     <div slot="style-content">
       <ThemeLayout
         data={themesConfig}

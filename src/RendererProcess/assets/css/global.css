@@ -84,7 +84,6 @@ svg {
   --item-border: rgba(255, 255, 255, 0.1);
   --item-color: #fff;
   --item-bg-hover: rgba(255, 255, 255, 0.1);
-  /* height: 0; */
   overflow: hidden;
   background: var(--menu-bg);
   -webkit-backdrop-filter: blur(5px);

@@ -4,7 +4,6 @@
     HomeIcon,
     MusicIcon,
     MusicPlaylistIcon,
-    NoteIcon,
     MenuBoldIcon,
     AddIcon,
     ArrowLeftTwoIcon,
@@ -12,20 +11,18 @@
   } from "../Icons";
   import { location, push } from "svelte-spa-router";
   import {
-    toggleCreatePlaylist,
     toggleModal,
-    toggleNowPlaying,
     toggleSidebar,
     toggleTransparency,
   } from "../../store/status";
   import {
     handleNavigation,
+    handleToggleModalPage,
     handleToggleSidebar,
   } from "../../store/statusManager";
   import { currentAccentColor } from "../../store/theme";
 
   function handleToggle() {
-    // $toggleCreatePlaylist = !$toggleCreatePlaylist;
     toggleModal.set("create-playlist");
   }
 </script>
@@ -60,7 +57,7 @@
             <svelte:component this={MenuBoldIcon} />
           </span>
         </li>
-        <li>
+        <li on:click={() => handleToggleModalPage("search")}>
           <span class="icon">
             <svelte:component this={SearchIcon} />
           </span>
@@ -83,7 +80,7 @@
           </span>
           <span class="label"> My music </span>
         </li>
-        <li on:click={() => ($toggleNowPlaying = !$toggleNowPlaying)}>
+        <li on:click={() => handleToggleModalPage("now-playing")}>
           <span class="icon">
             <svelte:component this={ChartIcon} />
           </span>

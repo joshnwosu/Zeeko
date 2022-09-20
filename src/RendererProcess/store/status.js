@@ -4,7 +4,7 @@ let toggleSidebar = writable(
   JSON.parse(localStorage.getItem("Sidebar")) || false
 );
 let toggleDim = writable(JSON.parse(localStorage.getItem("DimMode")) || false);
-let toggleNowPlaying = writable(false);
+let toggleModalPage = writable("close");
 let toggleCreatePlaylist = writable(false);
 let toggleContextMenu = writable("close");
 let toggleEqualizer = writable(false);
@@ -21,7 +21,7 @@ let toggleModal = writable("close");
 export {
   toggleSidebar,
   toggleDim,
-  toggleNowPlaying,
+  toggleModalPage,
   toggleCreatePlaylist,
   toggleContextMenu,
   toggleEqualizer,

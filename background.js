@@ -136,8 +136,8 @@ const createWindow = () => {
       },
     },
     {
-      tooltip: !isPlaying ? "Play" : "Pause",
-      icon: !isPlaying ? "./play.png" : "./pause.png",
+      tooltip: isPlaying ? "Play" : "Pause",
+      icon: isPlaying ? "./play.png" : "./pause.png",
       click() {
         sendMediaControl("play" || "pause");
       },

@@ -211,10 +211,12 @@ export function togglePlaying() {
 
 export function playSong() {
   audio.play();
+  window?.api?.isPlaying(true);
 }
 
 export function pauseSong() {
   audio.pause();
+  window?.api?.isPlaying(false);
 }
 
 export function selectedTrack(id, tracks) {

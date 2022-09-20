@@ -2,18 +2,13 @@
   import "./RendererProcess/assets/css/global.css";
   import Router, { location, push } from "svelte-spa-router";
   import { routes } from "./RendererProcess/router";
-  import {
-    toggleContextMenu,
-    toggleSidebar,
-  } from "./RendererProcess/store/status";
+  import { toggleSidebar } from "./RendererProcess/store/status";
   import ControlPanel from "./RendererProcess/components/Root/ControlPanel.svelte";
   import SideBar from "./RendererProcess/components/Root/SideBar.svelte";
   import Bg from "./RendererProcess/components/Root/BG.svelte";
   import RightBar from "./RendererProcess/components/Root/RightBar.svelte";
   import Frame from "./RendererProcess/components/Root/Frame.svelte";
   import IpcListener from "./RendererProcess/components/Root/IpcListener.svelte";
-  import CreatePlaylist from "./RendererProcess/components/Widgets/CreatePlaylist.svelte";
-  import NowPlaying from "./RendererProcess/components/Root/NowPlaying.svelte";
   import ContextMenu from "./RendererProcess/components/ContextMenu/ContextMenu.svelte";
   import DimMode from "./RendererProcess/components/Root/DimMode.svelte";
   import { cleanUp } from "./RendererProcess/utilities";
@@ -22,6 +17,7 @@
   import { currentTheme } from "./RendererProcess/store/theme";
   import MiniControlPanel from "./RendererProcess/components/Root/MiniControlPanel.svelte";
   import Modal from "./RendererProcess/components/Modal/Modal.svelte";
+  import ModalPage from "./RendererProcess/components/Modal/ModalPage.svelte";
 
   const routeLoaded = (event) => {
     // console.log("Eevnt: ", event);
@@ -35,7 +31,6 @@
   <DimMode />
   <div id="app" on:click={cleanUp} on:contextmenu={cleanUp} on:scroll={cleanUp}>
     <ContextMenu />
-    <NowPlaying />
     <IpcListener />
     <Bg />
     <Frame />
@@ -54,6 +49,7 @@
       <RightBar />
       <Equalizer />
       <Modal />
+      <ModalPage />
     </section>
   </div>
 </ThemeProvider>

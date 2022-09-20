@@ -1,23 +1,5 @@
 <script>
-  import { ArrowLeftTwoIcon, MenuBoldIcon } from "../Icons";
-  import {
-    toggleCreatePlaylist,
-    toggleNowPlaying,
-    toggleSidebar,
-  } from "../../store/status";
-
   import ActionButton from "./ActionButton.svelte";
-  import { pop } from "svelte-spa-router";
-
-  function handleNavigation() {
-    // checks if Now playing or Create playlist modal is visible
-    if ($toggleNowPlaying || $toggleCreatePlaylist) {
-      $toggleNowPlaying = false;
-      $toggleCreatePlaylist = false;
-    } else {
-      pop();
-    }
-  }
 </script>
 
 <div class="frame">

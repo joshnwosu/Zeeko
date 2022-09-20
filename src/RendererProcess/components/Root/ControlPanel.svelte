@@ -2,43 +2,25 @@
   import { onMount } from "svelte";
   import { defaultCoverArt } from "../../utilities";
 
-  let browserFile;
   let audio;
-  let seekBarWidth;
   let volume = 0.5;
-  let show = false;
   let volumeBarWidth;
 
-  import { push } from "svelte-spa-router";
-  import isElectron from "../../../../isElectron";
   import {
-    PlayIcon,
-    PauseIcon,
-    BackwardIcon,
-    PreviousIcon,
-    ForwardIcon,
-    NextIcon,
     PreviousBoldIcon,
-    BackwardBoldIcon,
     PlayBoldIcon,
     PauseBoldIcon,
-    ForwardBoldIcon,
     NextBoldIcon,
     HeartIcon,
     ShuffleBoldIcon,
     RepeatBoldIcon,
     HeartBoldIcon,
-    MusicFilterBoldIcon,
     MoreIcon,
     RepeatOneBoldIcon,
-    VolumeHighIcon,
     VolumeHighBoldIcon,
-    MaximizeIcon,
-    CandleIcon,
     CandleBoldIcon,
     Forward10Icon,
     Backward10Icon,
-    WarningIcon,
     ChartIcon,
     ArrowDownIcon,
   } from "../../components/Icons";
@@ -50,14 +32,8 @@
     queuelistStore,
     playlistStore,
   } from "../../store/player";
+  import { toggleControlStyle, toggleTransparency } from "../../store/status";
   import {
-    toggleControlStyle,
-    toggleEqualizer,
-    toggleNowPlaying,
-    toggleTransparency,
-  } from "../../store/status";
-  import {
-    formatDuration,
     getSong,
     getSongIndex,
     nextSong,
@@ -67,11 +43,7 @@
     shuffleSong,
     stepBackward,
     stepForward,
-    // addToSelectedTracks,
     togglePlaying,
-    addSelectedTracksToPlaylist,
-    deleteSelectedTrackFromPlaylist,
-    // checkIfInFavorite,
     encodeTrackFile,
     toggleFavorite,
   } from "../../store/playerManager";
@@ -79,6 +51,7 @@
     handleToggleControlStyle,
     handleToggleEqualizer,
     handleToggleModal,
+    handleToggleModalPage,
   } from "../../store/statusManager";
   import { gainNode, setupEqualizer } from "./Equalizer/Equalizer";
   import { currentAccentColor } from "../../store/theme";
@@ -116,10 +89,6 @@
 
     audio.ontimeupdate = () => {
       $playbackManager.currentTime = audio.currentTime;
-      const percent = Math.floor(
-        ($playbackManager.currentTime / $playbackManager.duration) * 100
-      );
-      seekBarWidth = `${percent}%`;
     };
 
     audio.onended = () => {
@@ -146,7 +115,7 @@
 
 <div
   class="control-panel"
-  class:hide={$toggleNowPlaying || $toggleControlStyle}
+  class:hide={$toggleControlStyle}
   style="--accent-color: {$currentAccentColor}; background-color: {$toggleTransparency
     ? '#00000080'
     : '#000000'}"
@@ -155,7 +124,7 @@
     <div class="overlay" />
     <div
       class="cover-art"
-      on:click={() => ($toggleNowPlaying = !$toggleNowPlaying)}
+      on:click={() => handleToggleModalPage("now-playing")}
     >
       <img
         src={$playbackManager?.nowPlaying?.albumArt || defaultCoverArt}
@@ -205,12 +174,6 @@
         <span class="icon more-icon left-flare">
           <svelte:component this={MoreIcon} />
         </span>
-        <!-- <span
-          class="icon more-icon left-flare"
-          on:click={() => handleToggleControlStyle(true)}
-        >
-          <svelte:component this={ArrowDownIcon} />
-        </span> -->
       </div>
       <div class="control-button-inner main-control">
         <span class="icon previous-icon left-flare" on:click={prevSong}>
@@ -290,7 +253,7 @@
     </div>
     <span
       class="icon expand-icon right-flare"
-      on:click={() => window?.api?.titlebar("fullscreen")}
+      on:click={() => handleToggleModalPage("now-playing")}
     >
       <svelte:component this={ChartIcon} />
     </span>
@@ -307,52 +270,6 @@
       }
     }
   }
-
-  /* .modal-content {
-    width: 400px;
-    background-color: #121212;
-    padding: 20px;
-    color: #ffffff;
-    position: relative;
-    z-index: 2;
-    .modal-content-header {
-      display: flex;
-      align-items: center;
-      h2 {
-        font-weight: 400;
-        font-size: 18px;
-        margin-left: 10px;
-      }
-      :global(svg) {
-        :global(path) {
-          fill: orangered;
-        }
-      }
-    }
-    p {
-      font-size: 14px;
-      line-height: 1.5;
-      margin: 20px 0;
-      &.file-location {
-        font-size: 12px;
-        span {
-          opacity: 0.5;
-          display: block;
-        }
-      }
-    }
-    .modal-button-wrapper {
-      display: flex;
-      justify-content: flex-end;
-      button {
-        background-color: #333333;
-        padding: 10px 50px;
-        color: #fff;
-        font-weight: 200;
-        font-size: 12px;
-      }
-    }
-  } */
   .overlay {
     background-color: #22222250;
     width: 100%;
@@ -387,7 +304,6 @@
     }
     .seek-progress {
       background-color: var(--accent-color);
-      /* width: 50%; */
       height: 100%;
       border-radius: 5px;
       position: absolute;
@@ -473,7 +389,6 @@
       position: relative;
       overflow: hidden;
       flex: 1;
-      /* border: 1px solid red; */
       &.left {
         align-items: center;
         padding: 0 10px;
@@ -493,7 +408,6 @@
         flex-direction: column;
         justify-content: center;
         flex: 2.5;
-        /* border: 1px solid blue; */
       }
       &.right {
         justify-content: flex-end;

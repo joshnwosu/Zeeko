@@ -10,7 +10,10 @@
     togglePlaying,
   } from "../../store/playerManager";
   import { toggleControlStyle } from "../../store/status";
-  import { handleToggleControlStyle } from "../../store/statusManager";
+  import {
+    handleToggleControlStyle,
+    handleToggleModalPage,
+  } from "../../store/statusManager";
   import { currentAccentColor } from "../../store/theme";
   import { defaultCoverArt } from "../../utilities";
   import {
@@ -40,6 +43,7 @@
     <img
       src={$playbackManager?.nowPlaying?.albumArt || defaultCoverArt}
       alt="cover-art"
+      on:click={() => handleToggleModalPage("now-playing")}
     />
     <h1>
       {$playbackManager?.nowPlaying?.title ||
