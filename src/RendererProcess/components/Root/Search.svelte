@@ -2,6 +2,8 @@
   import { searchManager } from "../../store/player";
   import { searchResult } from "../../store/playerManager";
   import TrackListTag from "../Track/TrackListTag.svelte";
+  import AlbumCard from "../Widgets/AlbumCard.svelte";
+  import ArtistCard from "../Widgets/ArtistCard.svelte";
 
   let searchTerm = "";
 </script>
@@ -19,20 +21,26 @@
   </div>
   {#if searchTerm != ""}
     <div class="search-content">
-      <div class="section track-section">
-        <h1>Track</h1>
-        <TrackListTag tracks={$searchManager.tracks} />
-      </div>
+      {#if $searchManager.tracks.length > 0}
+        <div class="section track-section">
+          <h1>Track</h1>
+          <TrackListTag tracks={$searchManager.tracks} />
+        </div>
+      {/if}
 
-      <div class="section artist-section">
-        <h1>Artist</h1>
-        <!-- <TrackListTag tracks={$searchManager.tracks} /> -->
-      </div>
+      {#if $searchManager.artists.length > 0}
+        <div class="section artist-section">
+          <h1>Artist</h1>
+          <ArtistCard data={$searchManager.artists} />
+        </div>
+      {/if}
 
-      <div class="section album-section">
-        <h1>Albums</h1>
-        <!-- <TrackListTag tracks={$searchManager.tracks} /> -->
-      </div>
+      {#if $searchManager.albums.length > 0}
+        <div class="section album-section">
+          <h1>Albums</h1>
+          <AlbumCard data={$searchManager.albums} />
+        </div>
+      {/if}
     </div>
   {/if}
 </div>
@@ -63,9 +71,11 @@
     border: none;
     border-bottom: 1px solid #ffffff20;
     width: 50%;
-    padding: 20px;
-    font-size: 20px;
+    padding: 10px 20px;
+    font-size: 40px;
+    font-weight: 400;
     color: #ffffff;
+    /* text-transform: uppercase; */
   }
 
   input::placeholder {
@@ -75,7 +85,7 @@
   .section {
     h1 {
       font-size: 18px;
-      font-weight: 400;
+      font-weight: 200;
       padding: 20px 0;
     }
   }

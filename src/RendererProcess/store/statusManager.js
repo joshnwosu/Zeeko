@@ -1,4 +1,4 @@
-import { pop } from "svelte-spa-router";
+import { pop, push } from "svelte-spa-router";
 import { windowStyleConfig } from "../config/appearance";
 import {
   toggleDim,
@@ -44,7 +44,16 @@ export function handleToggleDimMode(payload) {
   toggleDim.set(payload);
 }
 
-export function handleNavigation() {
+export function handleRouting(payload) {
+  if (payload) {
+    push(payload);
+    if (modalPage != "close") {
+      toggleModalPage.set("close");
+    }
+  }
+}
+
+export function handleGoBack() {
   // checks if Now playing is visible
   if (modalPage != "close") {
     toggleModalPage.set("close");

@@ -11,19 +11,13 @@
     <StickyHeader>
       {album.group}
     </StickyHeader>
-    <div class="card-container">
-      <AlbumCard data={album.children} />
-    </div>
+
+    <AlbumCard data={album.children} />
   {/each}
 </div>
 
 <style lang="scss">
   .wrapper {
     position: relative;
-    .card-container {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
   }
 </style>

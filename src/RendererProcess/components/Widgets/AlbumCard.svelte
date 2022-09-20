@@ -1,30 +1,42 @@
 <script>
-  import { push } from "svelte-spa-router";
   import { getFirstAlbumArt } from "../../store/playerManager";
+  import { handleRouting } from "../../store/statusManager";
   import { defaultCoverArt } from "../../utilities";
 
   export let data;
   //   let img = getFirstAlbumArt(child?.tracks) || child?.tracks[0]?.albumArt
 </script>
 
-{#each data as child}
-  <div class="card" on:click={() => push(`#/album-details/${child.name}`)}>
-    <img src={getFirstAlbumArt(child?.tracks) || defaultCoverArt} alt="album" />
-    <div class="content">
-      <p class="name">{child.name}</p>
-      <p class="artist">{child.artist}</p>
+<div class="card-container">
+  {#each data as child}
+    <div
+      class="card"
+      on:click={() => {
+        handleRouting(`#/album-details/${child.name}`);
+      }}
+    >
+      <img
+        src={getFirstAlbumArt(child?.tracks) || defaultCoverArt}
+        alt="album"
+      />
+      <div class="content">
+        <p class="name">{child.name}</p>
+        <p class="artist">{child.artist}</p>
+      </div>
     </div>
-  </div>
-{/each}
+  {/each}
+</div>
 
 <style lang="scss">
+  .card-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
   .card {
     width: 150px;
     border-radius: 5px;
     overflow: hidden;
-    /* &:hover {
-          background-color: #121212;
-        } */
     img {
       width: 100%;
       height: 120px;

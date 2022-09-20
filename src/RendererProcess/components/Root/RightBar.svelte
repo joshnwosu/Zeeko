@@ -1,17 +1,17 @@
 <script>
-  import { push } from "svelte-spa-router";
-  import { playlistStore } from "../../store/player";
   import {
     toggleControlStyle,
     toggleDim,
     toggleTransparency,
   } from "../../store/status";
-  import { handleToggleDimMode } from "../../store/statusManager";
+  import {
+    handleRouting,
+    handleToggleDimMode,
+  } from "../../store/statusManager";
   import Likey from "../Addon/Likey.svelte";
   import {
     CubeIcon,
     HeartIcon,
-    HeartBoldIcon,
     MoonIcon,
     SettingIcon,
     SunnyIcon,
@@ -32,7 +32,7 @@
       </span>
       <span class="tooltip">Buy Me A Coffee 🥤😊</span>
     </li>
-    <li on:click={() => push("/playlist-details/Favorites")}>
+    <li on:click={() => handleRouting("/playlist-details/Favorites")}>
       <span class="icon">
         <svelte:component this={HeartIcon} />
       </span>
@@ -56,7 +56,7 @@
         {$toggleDim ? "Dim mode: On" : "Dim mode: Off"}
       </span>
     </li>
-    <li on:click={() => push("/settings")}>
+    <li on:click={() => handleRouting("/settings")}>
       <span class="icon">
         <svelte:component this={SettingIcon} />
       </span>
@@ -77,9 +77,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* padding: 20px 0; */
     padding-top: 20px;
-    /* padding-bottom: 100px; */
     z-index: 99;
     transition: padding 300ms ease-in-out;
   }

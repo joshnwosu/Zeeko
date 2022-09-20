@@ -722,12 +722,10 @@ export function searchResult(query) {
     searchManager.update((store) => {
       store.tracks = player.filter(
         (track) =>
-          track.title?.toLowerCase()?.startsWith(query.toLocaleLowerCase()) ||
-          track.fileName
-            ?.toLowerCase()
-            ?.startsWith(query.toLocaleLowerCase()) ||
-          track.artist?.toLowerCase()?.startsWith(query.toLocaleLowerCase()) ||
-          track.album?.toLowerCase()?.startsWith(query.toLocaleLowerCase())
+          track.title?.toLowerCase()?.includes(query.toLocaleLowerCase()) ||
+          track.fileName?.toLowerCase()?.includes(query.toLocaleLowerCase()) ||
+          track.artist?.toLowerCase()?.includes(query.toLocaleLowerCase()) ||
+          track.album?.toLowerCase()?.includes(query.toLocaleLowerCase())
       );
       // .slice(0, 10);
       store.artists = storeArtists.filter((artist) =>

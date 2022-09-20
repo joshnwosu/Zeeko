@@ -9,14 +9,15 @@
     ArrowLeftTwoIcon,
     ChartIcon,
   } from "../Icons";
-  import { location, push } from "svelte-spa-router";
+  import { location } from "svelte-spa-router";
   import {
     toggleModal,
     toggleSidebar,
     toggleTransparency,
   } from "../../store/status";
   import {
-    handleNavigation,
+    handleGoBack,
+    handleRouting,
     handleToggleModalPage,
     handleToggleSidebar,
   } from "../../store/statusManager";
@@ -48,7 +49,7 @@
       <ul>
         <div class="ul-head">Menu</div>
         <li class="menu-li">
-          <span class="icon" on:click={handleNavigation}>
+          <span class="icon" on:click={handleGoBack}>
             <svelte:component this={ArrowLeftTwoIcon} />
           </span>
         </li>
@@ -63,7 +64,10 @@
           </span>
           <span class="label"> Search </span>
         </li>
-        <li class:active-link-li={$location == "/"} on:click={() => push("/")}>
+        <li
+          class:active-link-li={$location == "/"}
+          on:click={() => handleRouting("/")}
+        >
           <span class="icon">
             <svelte:component this={HomeIcon} />
           </span>
@@ -73,7 +77,7 @@
           class:active-link-li={$location.includes("/my-music/") ||
             $location.includes("/artist-details/") ||
             $location.includes("/album-details/")}
-          on:click={() => push("/my-music/")}
+          on:click={() => handleRouting("/my-music/")}
         >
           <span class="icon">
             <svelte:component this={MusicIcon} />
@@ -91,7 +95,7 @@
 
         <li
           class:active-link-li={$location.includes("/playlist")}
-          on:click={() => push("/playlists")}
+          on:click={() => handleRouting("/playlists")}
         >
           <span class="icon">
             <svelte:component this={MusicPlaylistIcon} />

@@ -1,6 +1,6 @@
 <script>
   import { toggleModalPage, toggleTransparency } from "../../store/status";
-  import { handleNavigation } from "../../store/statusManager";
+  import { handleGoBack } from "../../store/statusManager";
   import { ArrowLeftTwoIcon } from "../Icons";
   import NowPlaying from "../Root/NowPlaying.svelte";
   import Search from "../Root/Search.svelte";
@@ -12,7 +12,7 @@
   style="background-color: {$toggleTransparency ? '#12121250' : '#121212'}"
 >
   <li class="go-back">
-    <span class="icon" on:click={handleNavigation}>
+    <span class="icon" on:click={handleGoBack}>
       <svelte:component this={ArrowLeftTwoIcon} />
     </span>
   </li>
