@@ -19,8 +19,8 @@
       <div class="header-right">
         <div class="text">
           <h1>{params.name}</h1>
-          <p>Albums &#x2022; {artistData?.albums.length}</p>
-          <p>Tracks &#x2022; {artistData?.tracks.length}</p>
+          <p>Albums &#x2022; {artistData?.albums?.length}</p>
+          <p>Tracks &#x2022; {artistData?.tracks?.length}</p>
         </div>
       </div>
     </div>

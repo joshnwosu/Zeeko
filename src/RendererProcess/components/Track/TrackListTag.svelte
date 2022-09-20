@@ -18,6 +18,7 @@
     playSong,
     selectedTrack,
   } from "../../store/playerManager";
+  import { handleRouting } from "../../store/statusManager";
   import { currentAccentColor } from "../../store/theme";
   import { displayContextMenu } from "../../utilities/contextMenu";
   import {
@@ -37,7 +38,7 @@
   }
 </script>
 
-<div class="tracks" style="--accent-color: {$currentAccentColor}">
+<div class="tracks">
   {#each tracks as track}
     <div
       class="track-tag"
@@ -56,9 +57,14 @@
       <div class="track-bg" />
       <div class="track-tag-wrapper">
         <span class="track-title">
-          <p>{track.title}</p>
+          <p class="title">{track.title}</p>
           <span>&#x2022;</span>
-          <p>{track.artist}</p>
+          <p
+            class="artist"
+            on:click={() => handleRouting(`#/artist-details/${track.artist}`)}
+          >
+            {track.artist}
+          </p>
         </span>
         <span class="track-play-pause-icon track-icon">
           {#if $selectedSong == track.fileLocation}
@@ -175,6 +181,10 @@
         font-size: 12px;
         font-weight: 400;
         color: #e9e9e9;
+        &.artist:hover {
+          opacity: 0.5;
+          cursor: pointer;
+        }
       }
       span {
         display: block;

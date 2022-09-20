@@ -109,7 +109,8 @@
         border-top: 3px solid transparent;
         border-bottom: 3px solid transparent;
         &.active {
-          border-bottom-color: #333333;
+          /* border-bottom-color: #333333; */
+          border-bottom-color: var(--accent-color);
           color: #ffffff;
         }
         &:hover {

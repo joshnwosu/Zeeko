@@ -38,7 +38,7 @@
   }
 </script>
 
-<table style="--accent-color: {$currentAccentColor}">
+<table>
   <tbody>
     {#if tracks.length}
       {#each tracks as track, index}

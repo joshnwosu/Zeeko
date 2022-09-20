@@ -1,6 +1,5 @@
 <script>
   import { createEventDispatcher } from "svelte";
-  import { currentAccentColor } from "../../../store/theme";
   import { gainNode } from "./Equalizer";
   const dispatch = createEventDispatcher();
   export let filterName;
@@ -53,7 +52,7 @@
   };
 </script>
 
-<div class="triangle_slider" style="--accent-color: {$currentAccentColor}">
+<div class="triangle_slider">
   <div class="slider_wrapper">
     <input on:input={updateInput} type="range" min="0" max="15" value="0" />
     {#if filterName === "VBoost"}

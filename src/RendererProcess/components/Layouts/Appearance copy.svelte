@@ -15,7 +15,7 @@
   let isTransparent = false;
 </script>
 
-<div class="appearance" style="--accent-color: {$currentAccentColor}">
+<div class="appearance">
   <div class="section accent-color-section">
     <h1>Choose your accent color</h1>
     <div class="accent-colors">

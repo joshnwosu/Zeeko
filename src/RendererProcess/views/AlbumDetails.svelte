@@ -22,7 +22,7 @@
       <div class="header-right">
         <div class="text">
           <h1>{params.name}</h1>
-          <p>Tracks &#x2022; {albumData?.tracks.length}</p>
+          <p>Tracks &#x2022; {albumData?.tracks?.length}</p>
         </div>
       </div>
     </div>

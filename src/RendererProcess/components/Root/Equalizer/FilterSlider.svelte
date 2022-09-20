@@ -1,6 +1,5 @@
 <script>
   import { createEventDispatcher } from "svelte";
-  import { currentAccentColor } from "../../../store/theme";
   const dispatch = createEventDispatcher();
   export let bandIndex;
   export let filterValue;
@@ -23,7 +22,7 @@
   }
 </script>
 
-<div class="base_slider" style="--accent-color: {$currentAccentColor}">
+<div class="base_slider">
   <input on:input={updateInput} value="0" min="-15" max="15" type="range" />
   <div class="base_slider_progress" style="height: {progressBarHeight};">
     <div class="knob" />

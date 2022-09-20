@@ -287,7 +287,6 @@ function playerReady() {
     window.webContents.send("recentlyPlayed", recentlyPlayedTracks);
     refreshTracks();
     window.webContents.send("playStats", playStats);
-    // window.webContents.send("platform", process.platform);
   }
 }
 

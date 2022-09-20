@@ -16,11 +16,7 @@
     handleToggleTransparency,
     handleToggleWindowSystemStyle,
   } from "../../store/statusManager";
-  import {
-    currentAccentColor,
-    currentTheme,
-    currentWindowStyle,
-  } from "../../store/theme";
+  import { currentTheme, currentWindowStyle } from "../../store/theme";
   import {
     changeAccentColor,
     changeTheme,
@@ -31,10 +27,9 @@
   import StyleLayout from "../Widgets/StyleLayout.svelte";
   import SwitchLayout from "../Widgets/SwitchLayout.svelte";
   import ThemeLayout from "../Widgets/ThemeLayout.svelte";
-  $: systemStyle = false;
 </script>
 
-<div class="appearance" style="--accent-color: {$currentAccentColor}">
+<div class="appearance">
   <StyleLayout>
     <div slot="style-title">Layout style</div>
     <div slot="style-content">

@@ -28,7 +28,7 @@
       <p>&times;</p>
     </div>
   </div>
-  <div class="presets" style="--accent-color: {$currentAccentColor}">
+  <div class="presets">
     {#each $EqualizerManager.equalizerPresets as preset}
       <button
         class:active={$EqualizerManager.currentPreset == preset.name}

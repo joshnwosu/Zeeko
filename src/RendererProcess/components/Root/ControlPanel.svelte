@@ -48,13 +48,13 @@
     toggleFavorite,
   } from "../../store/playerManager";
   import {
+    handleRouting,
     handleToggleControlStyle,
     handleToggleEqualizer,
     handleToggleModal,
     handleToggleModalPage,
   } from "../../store/statusManager";
   import { gainNode, setupEqualizer } from "./Equalizer/Equalizer";
-  import { currentAccentColor } from "../../store/theme";
   import TrackBar from "../Widgets/TrackBar.svelte";
 
   onMount(() => {
@@ -116,9 +116,7 @@
 <div
   class="control-panel"
   class:hide={$toggleControlStyle}
-  style="--accent-color: {$currentAccentColor}; background-color: {$toggleTransparency
-    ? '#00000080'
-    : '#000000'}"
+  style="background-color: {$toggleTransparency ? '#00000080' : '#000000'}"
 >
   <div class="wrapper left">
     <div class="overlay" />
@@ -139,7 +137,13 @@
             "Click to play"}
         </p>
       </div>
-      <div class="artist">
+      <div
+        class="artist"
+        on:click={() =>
+          handleRouting(
+            `#/artist-details/${$playbackManager?.nowPlaying?.artist}`
+          )}
+      >
         <p>
           {$playbackManager?.nowPlaying?.artist ||
             $playbackManager?.nowPlaying?.defaultArtist ||
@@ -461,6 +465,10 @@
         font-size: 12px;
         font-weight: 200;
         opacity: 0.5;
+        &:hover {
+          opacity: 0.2;
+          cursor: pointer;
+        }
       }
     }
 

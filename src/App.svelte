@@ -14,7 +14,10 @@
   import { cleanUp } from "./RendererProcess/utilities";
   import Equalizer from "./RendererProcess/components/Root/Equalizer/Equalizer.svelte";
   import ThemeProvider from "./RendererProcess/components/Root/ThemeProvider.svelte";
-  import { currentTheme } from "./RendererProcess/store/theme";
+  import {
+    currentAccentColor,
+    currentTheme,
+  } from "./RendererProcess/store/theme";
   import MiniControlPanel from "./RendererProcess/components/Root/MiniControlPanel.svelte";
   import Modal from "./RendererProcess/components/Modal/Modal.svelte";
   import ModalPage from "./RendererProcess/components/Modal/ModalPage.svelte";
@@ -24,12 +27,18 @@
     // document.querySelectorAll(".page").forEach((el) => (el.scrollTop = 0));
   };
 
-  push("/my-music/");
+  // push("/my-music/");
 </script>
 
 <ThemeProvider theme={$currentTheme}>
   <DimMode />
-  <div id="app" on:click={cleanUp} on:contextmenu={cleanUp} on:scroll={cleanUp}>
+  <div
+    id="app"
+    style="--accent-color: {$currentAccentColor}"
+    on:click={cleanUp}
+    on:contextmenu={cleanUp}
+    on:scroll={cleanUp}
+  >
     <ContextMenu />
     <IpcListener />
     <Bg />

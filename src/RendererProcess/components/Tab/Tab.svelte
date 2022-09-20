@@ -9,11 +9,7 @@
   registerTab(tab);
 </script>
 
-<button
-  style="--accent-color: {$currentAccentColor}"
-  class:selected={$selectedTab === tab}
-  on:click={() => selectTab(tab)}
->
+<button class:selected={$selectedTab === tab} on:click={() => selectTab(tab)}>
   <slot />
 </button>
 

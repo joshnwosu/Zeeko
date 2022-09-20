@@ -2,7 +2,6 @@
   export let name;
   import { audioContext, playbackManager } from "../../store/player";
   import { formatDuration } from "../../store/playerManager";
-  import { currentAccentColor } from "../../store/theme";
 
   let seekBar;
   let seekProgress;
@@ -34,7 +33,7 @@
   }
 </script>
 
-<div class="track-bar" style="--accent-color: {$currentAccentColor};">
+<div class="track-bar">
   <span class="">
     <p>{formatDuration($playbackManager.currentTime) || "00:00"}</p>
   </span>

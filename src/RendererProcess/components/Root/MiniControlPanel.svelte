@@ -11,10 +11,10 @@
   } from "../../store/playerManager";
   import { toggleControlStyle } from "../../store/status";
   import {
+    handleRouting,
     handleToggleControlStyle,
     handleToggleModalPage,
   } from "../../store/statusManager";
-  import { currentAccentColor } from "../../store/theme";
   import { defaultCoverArt } from "../../utilities";
   import {
     ArrowDownIcon,
@@ -31,11 +31,7 @@
   import TrackBar from "../Widgets/TrackBar.svelte";
 </script>
 
-<div
-  class="mini-control"
-  class:hide={!$toggleControlStyle}
-  style="--accent-color: {$currentAccentColor};"
->
+<div class="mini-control" class:hide={!$toggleControlStyle}>
   <div class="collapse" on:click={() => handleToggleControlStyle(false)}>
     <svelte:component this={ArrowDownIcon} />
   </div>
@@ -51,7 +47,12 @@
         "Click to play"}
     </h1>
     <div class="artist">
-      <p>
+      <p
+        on:click={() =>
+          handleRouting(
+            `#/artist-details/${$playbackManager?.nowPlaying?.artist}`
+          )}
+      >
         {$playbackManager?.nowPlaying?.artist ||
           $playbackManager?.nowPlaying?.defaultArtist ||
           "Select a song to play"}
@@ -196,6 +197,10 @@
         text-align: left;
         margin-right: 10px;
         opacity: 0.5;
+        &:hover {
+          opacity: 0.2;
+          cursor: pointer;
+        }
       }
       .artist {
         width: 100%;

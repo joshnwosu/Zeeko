@@ -6,6 +6,8 @@
     artistsStore,
     playerStore,
     playlistStore,
+    recentlyPlayedTracksStore,
+    playStatsStore,
   } from "../../store/player";
   import {
     FolderIcon,
@@ -14,6 +16,7 @@
     PlayIcon,
     MusicFilterIcon,
     GalleryIcon,
+    ClockIcon,
   } from "../Icons";
   $: libraries = [
     {
@@ -50,6 +53,13 @@
       icon: MusicFilterIcon,
       color: "#5910EA",
       click: () => push("/playlists"),
+    },
+    {
+      name: "Recently played",
+      total: $recentlyPlayedTracksStore.length,
+      icon: ClockIcon,
+      color: "#09BB90",
+      click: () => console.log($recentlyPlayedTracksStore, $playStatsStore),
     },
   ];
 </script>

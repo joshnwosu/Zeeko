@@ -1,15 +1,9 @@
 <script>
-  import { currentAccentColor } from "../../store/theme";
-
   export let checked;
   export let toggle;
 </script>
 
-<label
-  class="switch"
-  class:checked
-  style="--accent-color: {$currentAccentColor}"
->
+<label class="switch" class:checked>
   <input type="checkbox" bind:checked on:input={toggle} />
   <div class="knob" />
 </label>

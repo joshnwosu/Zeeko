@@ -58,7 +58,7 @@
   }
 </script>
 
-<div class="track-wrapper" style="--accent-color: {$currentAccentColor}">
+<div class="track-wrapper">
   <AnotherVirtualScrollList
     width="100%"
     height={trackWrapperHeight}
