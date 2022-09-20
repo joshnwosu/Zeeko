@@ -1,18 +1,11 @@
 <script>
   import { queuelistStore } from "../../store/player";
-  import TrackLists from "../Track/TrackLists.svelte";
-  import TrackListsNew from "../Track/TrackListsNew.svelte";
-  import TrackListTag from "../Track/TrackListTag.svelte";
-  let tag = true;
+  import Track from "../Track/Track.svelte";
 </script>
 
 <div class="now-playing">
   <div class="track-list">
-    {#if tag}
-      <TrackListTag tracks={$queuelistStore} />
-    {:else}
-      <TrackListsNew tracks={$queuelistStore} />
-    {/if}
+    <Track tracks={$queuelistStore} />
   </div>
 </div>
 
