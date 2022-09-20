@@ -1,6 +1,7 @@
 <script>
   import { searchManager } from "../../store/player";
   import { searchResult } from "../../store/playerManager";
+  import Track from "../Track/Track.svelte";
   import TrackListTag from "../Track/TrackListTag.svelte";
   import AlbumCard from "../Widgets/AlbumCard.svelte";
   import ArtistCard from "../Widgets/ArtistCard.svelte";
@@ -24,7 +25,8 @@
       {#if $searchManager.tracks.length > 0}
         <div class="section track-section">
           <h1>Songs <span>&#x2022;</span> {$searchManager.tracks.length}</h1>
-          <TrackListTag tracks={$searchManager.tracks} />
+          <!-- <TrackListTag tracks={$searchManager.tracks} /> -->
+          <Track tracks={$searchManager.tracks} />
         </div>
       {/if}
 
@@ -54,7 +56,7 @@
     top: 0;
   }
   .search-content {
-    height: 100%;
+    height: calc(100% - 100px);
     overflow-y: auto;
     margin-top: 20px;
   }

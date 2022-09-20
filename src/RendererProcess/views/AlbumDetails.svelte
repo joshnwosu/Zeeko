@@ -1,6 +1,7 @@
 <script>
   export let params;
   import PlaylistView from "../components/Playlist/PlaylistView.svelte";
+  import Track from "../components/Track/Track.svelte";
   import TrackLists from "../components/Track/TrackLists.svelte";
   import TrackListTag from "../components/Track/TrackListTag.svelte";
   import { albumsStore } from "../store/player";
@@ -30,7 +31,8 @@
     {#if albumData?.tracks}
       <PlaylistView>
         <!-- <TrackLists tracks={albumData?.tracks} /> -->
-        <TrackListTag tracks={albumData?.tracks} />
+        <!-- <TrackListTag tracks={albumData?.tracks} /> -->
+        <Track tracks={albumData?.tracks} />
       </PlaylistView>
     {/if}
   {/if}

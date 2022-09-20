@@ -1,17 +1,17 @@
 <script>
-  import { playerStore } from "../../store/player";
+  export let tracks;
   import TrackLists from "./TrackLists.svelte";
   import TrackListsNew from "./TrackListsNew.svelte";
   import TrackListTag from "./TrackListTag.svelte";
 
-  $: spliced = $playerStore.slice(0, 50);
-  const tag = true;
+  const tag = false;
 </script>
 
 {#if tag}
-  <TrackListTag tracks={$playerStore} />
+  <TrackListTag {tracks} />
 {:else}
-  <TrackListsNew tracks={$playerStore} />
+  <!-- <TrackListsNew {tracks} /> -->
+  <TrackLists {tracks} />
 {/if}
 
 <!-- <TrackLists tracks={$playerStore} /> -->

@@ -54,7 +54,7 @@
             }
             selectedTrack(track.fileLocation, tracks);
           }}
-          on:contextmenu={displayContextMenu}
+          on:contextmenu={(e) => displayContextMenu(e, "track")}
         >
           <td class="check-box">
             <button class="icon" on:click={() => console.log("Checky")}>
@@ -64,6 +64,7 @@
           <td class="index">
             {#if $selectedSong == track.fileLocation}
               <!-- <PlayAnimation /> -->
+              <p>{formatIndex(index)}</p>
             {:else}
               <p>{formatIndex(index)}</p>
             {/if}

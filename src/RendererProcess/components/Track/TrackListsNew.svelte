@@ -67,7 +67,7 @@
     overscanCount={20}
   >
     <div
-      on:contextmenu={displayContextMenu}
+      on:contextmenu={(e) => displayContextMenu(e, "track")}
       on:dblclick={(e) => playThisTrack(e, index)}
       class:even={index % 2 !== 0}
       class="track tr"
@@ -78,7 +78,8 @@
     >
       <div class="index col">
         {#if $selectedSong == tracks[index].fileLocation}
-          <PlayAnimation />
+          <p>{formatIndex(index)}</p>
+          <p />
         {:else}
           <p>{formatIndex(index)}</p>
         {/if}

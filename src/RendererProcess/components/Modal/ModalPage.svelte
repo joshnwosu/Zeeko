@@ -9,7 +9,7 @@
 <div
   class="modal-page"
   class:show-modal-page={$toggleModalPage != "close"}
-  style="background-color: {$toggleTransparency ? '#12121250' : '#121212'}"
+  style="background-color: {$toggleTransparency ? '#00000080' : '#000000'}"
 >
   <li class="go-back">
     <span class="icon" on:click={handleGoBack}>

@@ -2,6 +2,7 @@
   export let params;
   import { UserIcon } from "../components/Icons";
   import PlaylistView from "../components/Playlist/PlaylistView.svelte";
+  import Track from "../components/Track/Track.svelte";
   import TrackLists from "../components/Track/TrackLists.svelte";
   import TrackListTag from "../components/Track/TrackListTag.svelte";
   import AlbumCard from "../components/Widgets/AlbumCard.svelte";
@@ -38,7 +39,8 @@
     {#if artistData?.tracks}
       <PlaylistView>
         <!-- <TrackLists tracks={artistData?.tracks} /> -->
-        <TrackListTag tracks={artistData?.tracks} />
+        <!-- <TrackListTag tracks={artistData?.tracks} /> -->
+        <Track tracks={artistData?.tracks} />
       </PlaylistView>
     {/if}
   {/if}

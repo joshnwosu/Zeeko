@@ -2,6 +2,7 @@
   export let params;
   import PlaylistHeader from "../components/Playlist/PlaylistHeader.svelte";
   import ScreenView from "../components/Root/ScreenView.svelte";
+  import Track from "../components/Track/Track.svelte";
   import TrackListTag from "../components/Track/TrackListTag.svelte";
   import ScrollView from "../components/Widgets/ScrollView.svelte";
   import { foldersStore } from "../store/player";
@@ -13,7 +14,8 @@
   {#if playlist?.name}
     <PlaylistHeader name={params.name} {playlist} mini />
     <ScreenView>
-      <TrackListTag tracks={playlist?.tracks} />
+      <!-- <TrackListTag tracks={playlist?.tracks} /> -->
+      <Track tracks={playlist?.tracks} />
     </ScreenView>
   {/if}
 </div>
