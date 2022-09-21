@@ -38,6 +38,9 @@
       <button class="contextMenu-button">Play next</button>
     </li>
     <li class="contextMenu-item">
+      <button class="contextMenu-button">Add to</button>
+    </li>
+    <li class="contextMenu-item">
       <button class="contextMenu-button">Show album</button>
     </li>
     <li class="contextMenu-item">
