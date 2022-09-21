@@ -175,11 +175,11 @@
             }
           }
         }
-        &:nth-child(even) {
+        /* &:nth-child(even) {
           background-color: #121212;
-        }
+        } */
         &:hover {
-          background-color: #333333;
+          background-color: #121212;
           td {
             .checker {
               visibility: visible;

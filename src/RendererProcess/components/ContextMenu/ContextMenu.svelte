@@ -11,7 +11,7 @@
 />
 <ul
   class="contextMenu"
-  data-theme="light"
+  data-theme="dark"
   class:visible={$toggleContextMenu != "close"}
 >
   {#if $toggleContextMenu == "playlist"}
