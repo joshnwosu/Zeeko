@@ -163,6 +163,7 @@
         padding: 10px 0;
         height: 50px;
         display: table-row;
+        border-bottom: 1px solid #ffffff20;
         &.playing-track {
           td {
             p {
@@ -179,7 +180,7 @@
           background-color: #121212;
         } */
         &:hover {
-          background-color: #121212;
+          background-color: #333333;
           td {
             .checker {
               visibility: visible;

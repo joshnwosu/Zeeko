@@ -10,6 +10,7 @@ import {
   toggleControlStyle,
   toggleModal,
   toggleContextMenu,
+  toggleTrackStyle,
 } from "./status";
 import { currentWindowStyle } from "./theme";
 
@@ -104,4 +105,7 @@ export function handleToggleModal(payload) {
 
 export function handleToggleContextMenu(payload) {
   toggleContextMenu.set(payload);
+}
+export function handleToggleTrackStyle(payload) {
+  toggleTrackStyle.set(payload);
 }

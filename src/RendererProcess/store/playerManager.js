@@ -720,22 +720,27 @@ export function changeBandGains(payload) {
 export function searchResult(query) {
   if (query) {
     searchManager.update((store) => {
-      store.tracks = player.filter(
-        (track) =>
-          track.title?.toLowerCase()?.includes(query.toLocaleLowerCase()) ||
-          track.fileName?.toLowerCase()?.includes(query.toLocaleLowerCase()) ||
-          track.artist?.toLowerCase()?.includes(query.toLocaleLowerCase()) ||
-          track.album?.toLowerCase()?.includes(query.toLocaleLowerCase())
-      );
-      // .slice(0, 10);
-      store.artists = storeArtists.filter((artist) =>
-        artist.name?.toLowerCase()?.startsWith(query.toLocaleLowerCase())
-      );
-      // .slice(0, 5);
-      store.albums = storeAlbums.filter((album) =>
-        album.name?.toLowerCase()?.includes(query.toLocaleLowerCase())
-      );
-      // .slice(0, 5);
+      store.tracks = player
+        .filter(
+          (track) =>
+            track.title?.toLowerCase()?.includes(query.toLocaleLowerCase()) ||
+            track.fileName
+              ?.toLowerCase()
+              ?.includes(query.toLocaleLowerCase()) ||
+            track.artist?.toLowerCase()?.includes(query.toLocaleLowerCase()) ||
+            track.album?.toLowerCase()?.includes(query.toLocaleLowerCase())
+        )
+        .slice(0, 20);
+      store.artists = storeArtists
+        .filter((artist) =>
+          artist.name?.toLowerCase()?.startsWith(query.toLocaleLowerCase())
+        )
+        .slice(0, 10);
+      store.albums = storeAlbums
+        .filter((album) =>
+          album.name?.toLowerCase()?.includes(query.toLocaleLowerCase())
+        )
+        .slice(0, 10);
       return store;
     });
   }

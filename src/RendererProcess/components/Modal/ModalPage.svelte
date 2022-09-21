@@ -38,7 +38,7 @@
     visibility: hidden;
     opacity: 0;
     transition: 200ms ease;
-    backdrop-filter: blur(50px);
+    backdrop-filter: blur(100px);
     &.show-modal-page {
       visibility: visible;
       opacity: 1;

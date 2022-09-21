@@ -1,12 +1,14 @@
 <script>
-  import { toggleModal } from "../../store/status";
-  import { handleToggleEqualizer } from "../../store/statusManager";
+  import { toggleModal, toggleTrackStyle } from "../../store/status";
+  import {
+    handleToggleEqualizer,
+    handleToggleTrackStyle,
+  } from "../../store/statusManager";
 
   import Switch from "../Addon/Switch.svelte";
   import StyleLayout from "../Widgets/StyleLayout.svelte";
   import SwitchLayout from "../Widgets/SwitchLayout.svelte";
   let checked3 = false;
-  let checked4 = false;
 </script>
 
 <div>
@@ -23,7 +25,7 @@
   </div>
 
   <StyleLayout>
-    <div slot="style-title">Track setting</div>
+    <div slot="style-title">Track configuration</div>
     <div slot="style-content">
       <SwitchLayout value={checked3}>
         <div slot="title">Track index</div>
@@ -35,13 +37,13 @@
           />
         </div>
       </SwitchLayout>
-      <SwitchLayout value={checked4}>
+      <SwitchLayout value={$toggleTrackStyle}>
         <div slot="title">Tag</div>
-        <div slot="description">Display track in tag style</div>
+        <div slot="description">Display tracks in tag style</div>
         <div slot="switch">
           <Switch
-            checked={checked4}
-            toggle={(e) => (checked4 = e.target.checked)}
+            checked={$toggleTrackStyle}
+            toggle={(e) => handleToggleTrackStyle(e.target.checked)}
           />
         </div>
       </SwitchLayout>
