@@ -168,7 +168,7 @@ function isValidFileType(path) {
 
 // listen for file changes
 watcher = chokidar
-  .watch(`${directories.musicDirectory}`, {
+  .watch(settings.getSttings.foldersToScan, {
     ignored: /[\/\\]\./,
     persistent: true,
     ignoreInitial: true,
@@ -180,7 +180,8 @@ watcher = chokidar
       const newTrack = await createParsedTrack(path);
       window.webContents.send("newTrack", newTrack);
       fileTracker.saveChanges();
-      // playerReady();
+      playerReady();
+      // refreshTracks();
     }
   })
 

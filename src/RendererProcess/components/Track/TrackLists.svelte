@@ -18,6 +18,7 @@
     playSong,
     selectedTrack,
   } from "../../store/playerManager";
+  import { handleRouting } from "../../store/statusManager";
   import { currentAccentColor } from "../../store/theme";
   import { displayContextMenu } from "../../utilities/contextMenu";
   import {
@@ -98,14 +99,17 @@
           </td>
           <td class="artist"
             ><p>
-              <span on:click={() => push(`#/artist-details/${track.artist}`)}
+              <span
+                on:click={() =>
+                  handleRouting(`#/artist-details/${track.artist}`)}
                 >{track.artist}</span
               >
             </p></td
           >
           <td class="album"
             ><p>
-              <span on:click={() => push(`#/album-details/${track.album}`)}
+              <span
+                on:click={() => handleRouting(`#/album-details/${track.album}`)}
                 >{track.album}</span
               >
             </p></td

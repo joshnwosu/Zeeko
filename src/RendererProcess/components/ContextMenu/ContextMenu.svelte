@@ -41,16 +41,13 @@
       <button class="contextMenu-button">Add to</button>
     </li>
     <li class="contextMenu-item">
-      <button class="contextMenu-button">Show album</button>
-    </li>
-    <li class="contextMenu-item">
       <button class="contextMenu-button">Edit info</button>
     </li>
     <li class="contextMenu-item">
       <button class="contextMenu-button">Properties</button>
     </li>
     <li class="contextMenu-item">
-      <button class="contextMenu-button">Delete</button>
+      <button class="contextMenu-button">Delete permanently</button>
     </li>
     <li class="contextMenu-item" data-divider="top">
       <button class="contextMenu-button">Select</button>
