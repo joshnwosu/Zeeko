@@ -108,4 +108,5 @@ export function handleToggleContextMenu(payload) {
 }
 export function handleToggleTrackStyle(payload) {
   toggleTrackStyle.set(payload);
+  localStorage.setItem("TrackStyle", JSON.stringify(payload));
 }

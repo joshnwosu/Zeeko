@@ -18,7 +18,9 @@ let toggleControlStyle = writable(
   JSON.parse(localStorage.getItem("ControlStyle")) || false
 );
 let toggleModal = writable("close");
-let toggleTrackStyle = writable(false);
+let toggleTrackStyle = writable(
+  JSON.parse(localStorage.getItem("TrackStyle")) || false
+);
 export {
   toggleSidebar,
   toggleDim,
