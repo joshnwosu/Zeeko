@@ -23,7 +23,7 @@
   class="right-nav"
   style="background-color: {$toggleTransparency
     ? '#12121280'
-    : '#121212'} ; padding-bottom: {$toggleControlStyle ? '0px' : '100px'}"
+    : '#121212'} ; padding-bottom: {$toggleControlStyle ? '0px' : '0px'}"
 >
   <ul class="top">
     <!-- <li>
@@ -36,7 +36,7 @@
       <span class="icon">
         <svelte:component this={HeartIcon} />
       </span>
-      <span class="tooltip">Favorites</span>
+      <!-- <span class="tooltip">Favorites</span> -->
     </li>
     <!-- <li>
       <span class="icon">
@@ -77,8 +77,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-top: 20px;
-    z-index: 99;
+    /* padding-top: 20px; */
+    z-index: 99999;
     transition: padding 300ms ease-in-out;
   }
 

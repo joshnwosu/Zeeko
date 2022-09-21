@@ -160,7 +160,7 @@
       }
     }
     &.hide {
-      transform: translateY(300px);
+      transform: translateY(100%);
     }
 
     .meta {

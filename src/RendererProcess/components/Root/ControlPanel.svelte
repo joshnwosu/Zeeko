@@ -370,7 +370,7 @@
   }
   .control-panel {
     position: absolute;
-    width: calc(100% - 0px);
+    width: calc(100% - 60px);
     left: 0;
     height: 100px;
     bottom: 0;

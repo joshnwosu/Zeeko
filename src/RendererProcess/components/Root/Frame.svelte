@@ -12,15 +12,15 @@
 
 <style lang="scss">
   .frame {
-    width: calc(100% - 60px);
+    width: calc(100% - 120px);
     height: 30px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     padding: 0;
-    right: 0;
+    left: 60px;
     top: 0;
-    padding-right: 60px;
+    /* padding-right: 60px; */
     -webkit-app-region: drag;
     position: fixed;
     z-index: 99999999;
