@@ -209,6 +209,7 @@
   .control-cover {
     display: flex;
     align-items: center;
+    padding-left: 20px;
     img {
       width: 100px;
       height: 100px;
