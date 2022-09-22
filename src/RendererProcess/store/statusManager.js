@@ -11,6 +11,7 @@ import {
   toggleModal,
   toggleContextMenu,
   toggleTrackStyle,
+  toggleTrackIndex,
 } from "./status";
 import { currentWindowStyle } from "./theme";
 
@@ -109,4 +110,13 @@ export function handleToggleContextMenu(payload) {
 export function handleToggleTrackStyle(payload) {
   toggleTrackStyle.set(payload);
   localStorage.setItem("TrackStyle", JSON.stringify(payload));
+  if (!payload) {
+    toggleTrackIndex.set(false);
+    localStorage.setItem("TrackIndex", JSON.stringify(false));
+  }
+}
+
+export function handleToggleTrackIndex(payload) {
+  toggleTrackIndex.set(payload);
+  localStorage.setItem("TrackIndex", JSON.stringify(payload));
 }

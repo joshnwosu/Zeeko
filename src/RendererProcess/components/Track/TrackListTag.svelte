@@ -18,6 +18,7 @@
     playSong,
     selectedTrack,
   } from "../../store/playerManager";
+  import { toggleTrackIndex } from "../../store/status";
   import { handleRouting } from "../../store/statusManager";
   import { currentAccentColor } from "../../store/theme";
   import { displayContextMenu } from "../../utilities/contextMenu";
@@ -39,7 +40,7 @@
 </script>
 
 <div class="tracks">
-  {#each tracks as track}
+  {#each tracks as track, index}
     <div
       class="track-tag"
       class:playing-track={$selectedSong == track.fileLocation}
@@ -57,6 +58,10 @@
       <div class="track-bg" />
       <div class="track-tag-wrapper">
         <span class="track-title">
+          {#if $toggleTrackIndex}
+            <p class="index">{formatIndex(index)}</p>
+            <span>&#x2022;</span>
+          {/if}
           <p class="title">{track.title}</p>
           <span>&#x2022;</span>
           <p
@@ -184,6 +189,11 @@
         &.artist:hover {
           opacity: 0.5;
           cursor: pointer;
+        }
+
+        &.index {
+          opacity: 0.5;
+          font-size: 10px;
         }
       }
       span {
