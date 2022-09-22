@@ -27,6 +27,9 @@
 </script>
 
 <div class="now-playing">
+  <div class="track-list">
+    <Track tracks={$queuelistStore} />
+  </div>
   <div class="control">
     <div class="control-cover">
       <img
@@ -65,7 +68,7 @@
     </div>
     <div class="control-btn">
       <span
-        class="icon repeat-icon right-flare"
+        class="icon repeat-icon left-flare"
         class:repeat-on={$playbackManager?.repeat == 1 ||
           $playbackManager?.repeat == 2}
         on:click={repeatSong}
@@ -108,16 +111,13 @@
       </span>
     </div>
   </div>
-  <div class="track-list">
-    <Track tracks={$queuelistStore} />
-  </div>
 </div>
 
 <style lang="scss">
   .now-playing {
     width: 100%;
     height: 100%;
-    padding: 60px;
+    padding: 60px 60px 20px 60px;
     position: absolute;
     top: 0;
 
@@ -127,13 +127,14 @@
     .control {
       display: flex;
       flex-direction: column;
+      margin-top: 20px;
     }
 
     .track-list {
       flex: 1;
       /* height: calc(100% - 100px); */
       overflow-y: auto;
-      margin-top: 20px;
+      /* margin-top: 20px; */
     }
   }
 
