@@ -41,18 +41,18 @@
           />
         </div>
       </SwitchLayout>
-      {#if $toggleTrackStyle}
-        <SwitchLayout value={$toggleTrackIndex}>
-          <div slot="title">Track tag index</div>
-          <div slot="description">Show track tag index number</div>
-          <div slot="switch">
-            <Switch
-              checked={$toggleTrackIndex}
-              toggle={(e) => handleToggleTrackIndex(e.target.checked)}
-            />
-          </div>
-        </SwitchLayout>
-      {/if}
+      <!-- {#if $toggleTrackStyle} -->
+      <SwitchLayout value={$toggleTrackIndex}>
+        <div slot="title">Track tag index</div>
+        <div slot="description">Show track tag index number</div>
+        <div slot="switch">
+          <Switch
+            checked={$toggleTrackIndex}
+            toggle={(e) => handleToggleTrackIndex(e.target.checked)}
+          />
+        </div>
+      </SwitchLayout>
+      <!-- {/if} -->
     </div>
   </StyleLayout>
 </div>
