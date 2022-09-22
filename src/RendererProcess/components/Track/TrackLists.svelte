@@ -168,6 +168,9 @@
         height: 50px;
         display: table-row;
         border-bottom: 1px solid #ffffff20;
+        &:last-child {
+          border-bottom: none;
+        }
         &.playing-track {
           td {
             p {
@@ -185,6 +188,7 @@
         } */
         &:hover {
           background-color: #333333;
+          border-bottom: none;
           td {
             .checker {
               visibility: visible;
