@@ -117,12 +117,21 @@
   .now-playing {
     width: 100%;
     height: 100%;
-    padding: 50px;
+    padding: 60px;
     position: absolute;
     top: 0;
 
+    display: flex;
+    flex-direction: column;
+
+    .control {
+      display: flex;
+      flex-direction: column;
+    }
+
     .track-list {
-      height: calc(100% - 100px);
+      flex: 1;
+      /* height: calc(100% - 100px); */
       overflow-y: auto;
       margin-top: 20px;
     }

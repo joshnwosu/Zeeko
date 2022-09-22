@@ -15,9 +15,9 @@
         <div class="tab-list">
           <Tab>General</Tab>
           <Tab>Appearance</Tab>
-          <Tab>Shortcuts</Tab>
-          <Tab>Notifications</Tab>
-          <Tab>Updates</Tab>
+          <!-- <Tab>Shortcuts</Tab> -->
+          <!-- <Tab>Notifications</Tab> -->
+          <!-- <Tab>Updates</Tab> -->
           <Tab>About</Tab>
         </div>
       </TabList>
@@ -34,22 +34,22 @@
         </div>
       </TabPanel>
 
-      <TabPanel>
+      <!-- <TabPanel>
         <div class="tab-panel">
           <Shortcuts />
         </div>
-      </TabPanel>
+      </TabPanel> -->
 
-      <TabPanel>
+      <!-- <TabPanel>
         <h2>Forth panel</h2>
-      </TabPanel>
+      </TabPanel> -->
 
-      <TabPanel>
+      <!-- <TabPanel>
         <h2>Fifth panel</h2>
-      </TabPanel>
+      </TabPanel> -->
 
       <TabPanel>
-        <h2>Sixth panel</h2>
+        <h2>About Zeeko</h2>
       </TabPanel>
     </Tabs>
   </ScreenView>
