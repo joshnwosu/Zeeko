@@ -123,9 +123,10 @@
     flex-wrap: wrap;
     gap: 10px;
     margin: 10px 0;
+    /* justify-content: space-evenly; */
   }
   .track-tag {
-    max-width: 300px;
+    max-width: calc(25% - 20px);
     position: relative;
     background-color: #121212;
     border-radius: 20px;
