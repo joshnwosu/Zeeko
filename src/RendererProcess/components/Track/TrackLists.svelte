@@ -21,6 +21,7 @@
   import { handleRouting } from "../../store/statusManager";
   import { currentAccentColor } from "../../store/theme";
   import { displayContextMenu } from "../../utilities/contextMenu";
+  import Checker from "../Addon/Checker.svelte";
   import {
     AddIcon,
     HeartBoldIcon,
@@ -58,9 +59,14 @@
           on:contextmenu={(e) => displayContextMenu(e, "track")}
         >
           <td class="check-box">
-            <button class="icon" on:click={() => console.log("Checky")}>
-              <span class="checker" />
-            </button>
+            <span class="checker">
+              <button
+                class="icon"
+                on:click={() => console.log(track.fileLocation)}
+              >
+                <svelte:component this={Checker} />
+              </button>
+            </span>
           </td>
           <td class="index">
             {#if $selectedSong == track.fileLocation}
@@ -293,15 +299,8 @@
     width: 70px;
 
     .checker {
-      display: inline-flex;
-      width: 15px;
-      height: 15px;
-      border: 1px solid #ffffff;
       visibility: hidden;
       opacity: 0;
-      &:hover {
-        border-color: #ffffff;
-      }
     }
   }
 </style>

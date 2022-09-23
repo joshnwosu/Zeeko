@@ -22,6 +22,7 @@
   import { handleRouting } from "../../store/statusManager";
   import { currentAccentColor } from "../../store/theme";
   import { displayContextMenu } from "../../utilities/contextMenu";
+  import Checker from "../Addon/Checker.svelte";
   import {
     AddIcon,
     HeartBoldIcon,
@@ -57,21 +58,26 @@
     >
       <div class="track-bg" />
       <div class="track-tag-wrapper">
+        <span class="track-checker-icon track-icon mr">
+          <button class="icon" on:click={() => console.log(track.fileLocation)}>
+            <svelte:component this={Checker} />
+          </button>
+        </span>
         <span class="track-title">
           {#if $toggleTrackIndex}
             <p class="index">{formatIndex(index)}</p>
             <span>&#x2022;</span>
           {/if}
           <p class="title">{track.title}</p>
-          <span>&#x2022;</span>
+          <!-- <span>&#x2022;</span>
           <p
             class="artist"
             on:click={() => handleRouting(`#/artist-details/${track.artist}`)}
           >
             {track.artist}
-          </p>
+          </p> -->
         </span>
-        <span class="track-play-pause-icon track-icon">
+        <span class="track-play-pause-icon track-icon ml">
           {#if $selectedSong == track.fileLocation}
             {#if $playbackManager.playing}
               <button class="icon" on:click={pauseSong}
@@ -92,7 +98,7 @@
         </span>
 
         <span
-          class="track-heart-icon track-icon"
+          class="track-heart-icon track-icon ml"
           class:in-favorite={getSong(
             $playlistStore[0].tracks,
             track.fileLocation
@@ -119,6 +125,7 @@
     margin: 10px 0;
   }
   .track-tag {
+    max-width: 300px;
     position: relative;
     background-color: #121212;
     border-radius: 20px;
@@ -127,6 +134,9 @@
     &:hover {
       .track-bg {
         opacity: 0.2;
+      }
+      .track-checker-icon {
+        display: flex !important;
       }
     }
 
@@ -179,17 +189,17 @@
       overflow: hidden;
       align-items: center;
       p {
-        max-width: 200px;
+        /* max-width: 200px; */
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         font-size: 12px;
         font-weight: 400;
         color: #e9e9e9;
-        &.artist:hover {
+        /* &.artist:hover {
           opacity: 0.5;
           cursor: pointer;
-        }
+        } */
 
         &.index {
           opacity: 0.5;
@@ -205,7 +215,6 @@
     }
 
     .track-icon {
-      margin-left: 10px;
       width: 30px;
       height: 30px;
       border-radius: 50%;
@@ -213,6 +222,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
+
+      &.ml {
+        margin-left: 10px;
+      }
+
+      &.mr {
+        margin-right: 10px;
+      }
+
       &:hover {
         background-color: #12121250;
       }
@@ -227,7 +245,8 @@
       }
 
       &.track-heart-icon,
-      &.track-play-pause-icon {
+      &.track-play-pause-icon,
+      &.track-checker-icon {
         display: none;
       }
     }
