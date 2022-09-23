@@ -369,13 +369,13 @@
     }
   }
   .control-panel {
-    position: absolute;
+    position: fixed;
     width: calc(100% - 60px);
     left: 0;
     height: 100px;
     bottom: 0;
-    background-color: #00000080;
-    backdrop-filter: blur(100px);
+    background-color: #00000050;
+    backdrop-filter: blur(20px);
     z-index: 999;
 
     display: flex;
