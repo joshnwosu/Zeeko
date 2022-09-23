@@ -10,7 +10,7 @@
   </button>
   <button>
     <svelte:component this={AddIcon} />
-    <p>Add to</p>
+    <p>Add music</p>
   </button>
   {#if name != "Favorites"}
     <button>
