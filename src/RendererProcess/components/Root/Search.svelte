@@ -1,12 +1,15 @@
 <script>
+  import { onMount } from "svelte";
   import { searchManager } from "../../store/player";
   import { searchResult } from "../../store/playerManager";
   import Track from "../Track/Track.svelte";
-  import TrackListTag from "../Track/TrackListTag.svelte";
   import AlbumCard from "../Widgets/AlbumCard.svelte";
   import ArtistCard from "../Widgets/ArtistCard.svelte";
-
+  let searchInput;
   let searchTerm = "";
+
+  // onMount(() => searchInput.focus());
+  import { autofocus } from "../../utilities";
 </script>
 
 <div class="search">
@@ -14,10 +17,13 @@
     <!-- {#if searchTerm != ""}
       <h1>Search ``{searchTerm}``</h1>
     {/if} -->
+    <!-- svelte-ignore a11y-autofocus -->
     <input
       placeholder="Search"
       bind:value={searchTerm}
       on:keyup={searchResult(searchTerm)}
+      bind:this={searchInput}
+      use:autofocus
     />
   </div>
   {#if searchTerm != ""}

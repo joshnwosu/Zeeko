@@ -180,3 +180,9 @@ export function clickOutside(node) {
     },
   };
 }
+
+export async function autofocus(node) {
+  setTimeout(() => {
+    node.focus();
+  }, 100);
+}

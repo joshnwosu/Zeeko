@@ -226,7 +226,7 @@
         </span>
       </div>
     </div>
-    <TrackBar name="control-panel" />
+    <TrackBar />
   </div>
   <div class="wrapper right">
     <span

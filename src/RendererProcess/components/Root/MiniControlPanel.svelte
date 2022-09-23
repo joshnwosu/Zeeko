@@ -76,7 +76,7 @@
   </div>
 
   <div class="track-progress">
-    <TrackBar name="mini-control-panel" />
+    <TrackBar />
   </div>
 
   <div class="control-btn">

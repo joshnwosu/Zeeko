@@ -1,5 +1,4 @@
 <script>
-  export let name;
   import { audioContext, playbackManager } from "../../store/player";
   import { formatDuration } from "../../store/playerManager";
 
@@ -39,7 +38,7 @@
   </span>
   <div class="seek-bar-wrap" on:click={goToPosition}>
     <div class="seek-bar" bind:this={seekBar}>
-      <input on:input={seek} type="range" {name} value="0" min="0" max="100" />
+      <input on:input={seek} type="range" value="0" min="0" max="100" />
       <div
         class="seek-progress"
         bind:this={seekProgress}
