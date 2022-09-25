@@ -58,7 +58,10 @@
             <svelte:component this={MenuBoldIcon} />
           </span>
         </li>
-        <li on:click={() => handleToggleModalPage("search")}>
+        <li
+          class:active-link-li={$location.includes("/search")}
+          on:click={() => handleRouting("/search")}
+        >
           <span class="icon">
             <svelte:component this={SearchIcon} />
           </span>
