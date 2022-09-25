@@ -47,7 +47,7 @@
     justify-content: space-between;
     align-items: center;
     max-width: 100%;
-    margin-right: 20px;
+    margin-right: 15px;
   }
 
   .window-action-button {

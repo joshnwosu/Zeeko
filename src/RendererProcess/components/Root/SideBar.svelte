@@ -78,9 +78,10 @@
         </li>
         <li
           class:active-link-li={$location.includes("/my-music/") ||
+            $location.includes("/folder-details/") ||
             $location.includes("/artist-details/") ||
             $location.includes("/album-details/")}
-          on:click={() => handleRouting("/my-music/")}
+          on:click={() => handleRouting("/my-music/folders")}
         >
           <span class="icon">
             <svelte:component this={MusicIcon} />
