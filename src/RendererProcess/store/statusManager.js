@@ -12,6 +12,8 @@ import {
   toggleContextMenu,
   toggleTrackStyle,
   toggleTrackIndex,
+  toggleShowAlbumSearch,
+  toggleShowArtistSearch,
 } from "./status";
 import { currentWindowStyle } from "./theme";
 
@@ -119,4 +121,14 @@ export function handleToggleTrackStyle(payload) {
 export function handleToggleTrackIndex(payload) {
   toggleTrackIndex.set(payload);
   localStorage.setItem("TrackIndex", JSON.stringify(payload));
+}
+
+export function handleToggleShowAlbumSearch(payload) {
+  toggleShowAlbumSearch.set(payload);
+  localStorage.setItem("ShowAlbumSearch", JSON.stringify(payload));
+}
+
+export function handleToggleShowArtistSearch(payload) {
+  toggleShowArtistSearch.set(payload);
+  localStorage.setItem("ShowArtistSearch", JSON.stringify(payload));
 }

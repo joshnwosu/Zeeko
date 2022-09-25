@@ -9,6 +9,6 @@
 {#if $toggleTrackStyle}
   <TrackListTag {tracks} />
 {:else}
-  <!-- <TrackListsNew {tracks} /> -->
-  <TrackLists {tracks} />
+  <TrackListsNew {tracks} />
+  <!-- <TrackLists {tracks} /> -->
 {/if}

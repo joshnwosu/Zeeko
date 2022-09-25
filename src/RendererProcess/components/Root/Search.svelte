@@ -10,6 +10,10 @@
 
   // onMount(() => searchInput.focus());
   import { autofocus } from "../../utilities";
+  import {
+    toggleShowAlbumSearch,
+    toggleShowArtistSearch,
+  } from "../../store/status";
 </script>
 
 <div class="search">
@@ -36,14 +40,14 @@
         </div>
       {/if}
 
-      {#if $searchManager.artists.length > 0}
+      {#if $toggleShowArtistSearch && $searchManager.artists.length > 0}
         <div class="section artist-section">
           <h1>Artists <span>&#x2022;</span> {$searchManager.artists.length}</h1>
           <ArtistCard data={$searchManager.artists} />
         </div>
       {/if}
 
-      {#if $searchManager.albums.length > 0}
+      {#if $toggleShowAlbumSearch && $searchManager.albums.length > 0}
         <div class="section album-section">
           <h1>Albums <span>&#x2022;</span> {$searchManager.albums.length}</h1>
           <AlbumCard data={$searchManager.albums} />

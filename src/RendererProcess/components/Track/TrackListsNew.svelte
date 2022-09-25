@@ -25,14 +25,15 @@
   } from "../Icons";
   import AnotherVirtualScrollList from "../Virtual/AnotherVirtualScrollList.svelte";
   import PlayAnimation from "../Widgets/PlayAnimation.svelte";
-  import { onMount } from "svelte";
+  import { onMount, tick } from "svelte";
   import { currentAccentColor } from "../../store/theme";
 
   let viewport;
   let contents;
   let trackWrapperHeight;
 
-  onMount(() => {
+  onMount(async () => {
+    await tick();
     viewport = document.querySelector(".virtual-list-wrapper");
     contents = document.querySelector(".virtual-list-inner");
     trackWrapperHeight =

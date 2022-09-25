@@ -64,7 +64,7 @@
     margin-right: 15px;
 
     p {
-      font-size: 10px;
+      font-size: 12px;
       letter-spacing: 0.5px;
     }
 

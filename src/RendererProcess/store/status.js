@@ -24,6 +24,12 @@ let toggleTrackStyle = writable(
 let toggleTrackIndex = writable(
   JSON.parse(localStorage.getItem("TrackIndex")) || false
 );
+let toggleShowAlbumSearch = writable(
+  JSON.parse(localStorage.getItem("ShowAlbumSearch")) || false
+);
+let toggleShowArtistSearch = writable(
+  JSON.parse(localStorage.getItem("ShowArtistSearch")) || false
+);
 export {
   toggleSidebar,
   toggleDim,
@@ -37,4 +43,6 @@ export {
   toggleModal,
   toggleTrackStyle,
   toggleTrackIndex,
+  toggleShowAlbumSearch,
+  toggleShowArtistSearch,
 };

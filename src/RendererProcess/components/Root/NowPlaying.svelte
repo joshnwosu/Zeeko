@@ -117,7 +117,7 @@
   .now-playing {
     width: 100%;
     height: 100%;
-    padding: 60px 60px 20px 60px;
+    padding: 60px 60px 0px 20px;
     position: absolute;
     top: 0;
 
@@ -128,6 +128,7 @@
       display: flex;
       flex-direction: column;
       margin-top: 20px;
+      padding-right: 15px;
     }
 
     .track-list {
@@ -146,9 +147,9 @@
     margin: 10px 0 20px 0;
     display: flex;
     /* justify-content: space-between; */
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
   }
 
   .play-pause {
@@ -175,8 +176,8 @@
     border-radius: 50%;
 
     :global(svg) {
-      width: 25px;
-      height: 25px;
+      width: 20px;
+      height: 20px;
     }
     &.left-flare:hover {
       background-image: linear-gradient(
@@ -209,13 +210,14 @@
   .control-cover {
     display: flex;
     align-items: center;
-    padding-left: 20px;
+    padding-left: 15px;
     img {
       width: 100px;
       height: 100px;
       object-fit: cover;
       object-position: center;
       margin-right: 20px;
+      border-radius: 10px;
     }
 
     .cover-detail {

@@ -1,11 +1,15 @@
 <script>
   import {
     toggleModal,
+    toggleShowAlbumSearch,
+    toggleShowArtistSearch,
     toggleTrackIndex,
     toggleTrackStyle,
   } from "../../store/status";
   import {
     handleToggleEqualizer,
+    handleToggleShowAlbumSearch,
+    handleToggleShowArtistSearch,
     handleToggleTrackIndex,
     handleToggleTrackStyle,
   } from "../../store/statusManager";
@@ -53,6 +57,33 @@
           </div>
         </SwitchLayout>
       {/if}
+    </div>
+  </StyleLayout>
+
+  <StyleLayout>
+    <div slot="style-title">Search</div>
+    <div slot="style-content">
+      <SwitchLayout value={$toggleShowAlbumSearch}>
+        <div slot="title">Album</div>
+        <div slot="description">Show album in search result</div>
+        <div slot="switch">
+          <Switch
+            checked={$toggleShowAlbumSearch}
+            toggle={(e) => handleToggleShowAlbumSearch(e.target.checked)}
+          />
+        </div>
+      </SwitchLayout>
+
+      <SwitchLayout value={$toggleShowArtistSearch}>
+        <div slot="title">Artist</div>
+        <div slot="description">Show artist in search result</div>
+        <div slot="switch">
+          <Switch
+            checked={$toggleShowArtistSearch}
+            toggle={(e) => handleToggleShowArtistSearch(e.target.checked)}
+          />
+        </div>
+      </SwitchLayout>
     </div>
   </StyleLayout>
 </div>
