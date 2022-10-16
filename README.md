@@ -4,9 +4,9 @@ Zeeko!
 
 ![Discover](public/assets/images/discover.png)
 
-# Song
+# Songs
 
-![Song](public/assets/images/song.png)
+![Songs](public/assets/images/song.png)
 
 # Artist
 
